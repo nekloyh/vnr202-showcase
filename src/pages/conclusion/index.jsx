@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import Section from "../../components/layout/Section";
-import Card from "../../components/ui/Card";
 import {
   ArrowDown,
 } from "lucide-react";

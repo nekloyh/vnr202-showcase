@@ -2,10 +2,8 @@ import { useState, useEffect } from "react";
 import { Gamepad2, ScrollText, Trophy, Zap, BookOpen, X, Info } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Section from "../../components/layout/Section";
-import Card from "../../components/ui/Card";
 import Button from "../../components/ui/Button";
-import { KineticHeading, KineticSubline } from "../../components/ui/KineticText";
-import RunnerQuizGame from "./runner-quiz/RunnerQuizGame";
+import RunnerQuizGame from "./runner-quiz/three/RunnerQuiz3DWrapper";
 import CrosswordGame from "./crossword/CrosswordGame";
 import { fetchLeaderboard } from "../../services/runnerQuizApi";
 
@@ -43,13 +41,13 @@ const GuideModal = ({ gameId, onClose }) => {
             ]
         },
         2: { // Ô chữ
-            title: "Ô CHỮ PHÁP QUYỀN",
+            title: "Ô CHỮ LỊCH SỬ",
             sections: [
                 {
                     heading: "Luật chơi",
                     content: [
                         "Giải 7 hàng ngang để tìm ra từ khóa dọc bí ẩn",
-                        "Mỗi hàng ngang là một câu hỏi về Nhà nước pháp quyền XHCN",
+                        "Mỗi hàng ngang là một câu hỏi về lịch sử Việt Nam giai đoạn 1954–1965",
                         "Nhập đáp án vào ô trống (có dấu, có khoảng cách)"
                     ]
                 },
@@ -57,15 +55,15 @@ const GuideModal = ({ gameId, onClose }) => {
                     heading: "Cách nhập đáp án",
                     content: [
                         "Click vào hàng ngang muốn giải",
-                        "Đọc câu hỏi và gợi ý bên dưới",
-                        "Nếu cần thêm gợi ý, nhấn nút 'Gợi ý thêm'",
-                        "Nhập câu trả lời và nhấn Enter hoặc nút Kiểm tra"
+                        "Đọc câu hỏi — gợi ý sẽ khóa lúc đầu",
+                        "Trả lời sai hoặc nhấn nút ? để mở gợi ý (tối đa 2 gợi ý)",
+                        "Nhập câu trả lời và nhấn Enter hoặc nút Xác nhận"
                     ]
                 },
                 {
                     heading: "Chiến thắng",
                     content: [
-                        "Giải đúng tất cả hàng ngang để lộ diện từ khóa: ĐOÀN KẾT",
+                        "Giải đúng tất cả hàng ngang để lộ diện từ khóa: MIỀN NAM",
                         "Từ khóa dọc sẽ sáng lên khi bạn hoàn thành",
                         "Không giới hạn thời gian - hãy suy nghĩ kỹ!"
                     ]
@@ -274,8 +272,8 @@ const GamesPage = () => {
         },
         {
             id: 2,
-            title: "Ô Chữ Pháp Quyền",
-            description: "Sân khấu MC chính luận: giải 8 hàng ngang, lộ diện từ khóa PHÁP LUẬT. Đáp án đúng sẽ làm chữ dọc bừng sáng.",
+            title: "Ô Chữ Lịch Sử",
+            description: "Giải 7 hàng ngang về lịch sử Việt Nam giai đoạn 1954–1965, lộ diện từ khóa bí ẩn. Đáp án đúng sẽ làm chữ dọc bừng sáng.",
             icon: <ScrollText size={40} className="text-gold" />,
             status: "Sẵn sàng",
             action: "Chơi ngay",
@@ -315,7 +313,7 @@ const GamesPage = () => {
                      <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="bg-gold border-4 border-ink px-6 py-2 shadow-hard transform rotate-1"
+                        className="bg-gold border-4 border-ink px-6 py-2 shadow-hard transform rotate-1 mt-10 md:mt-10"
                      >
                         <span className="font-mono font-bold uppercase tracking-widest text-sm md:text-base text-ink">
                            HỌC TẬP QUA TRÒ CHƠI
@@ -323,12 +321,12 @@ const GamesPage = () => {
                      </motion.div>
 
                      {/* Main Title Block */}
-                     <div className="relative text-center">
+                     <div className="relative text-center flex flex-wrap justify-center items-center gap-4 md:gap-6">
                         <motion.h1
                            initial={{ scale: 0.9, opacity: 0 }}
                            animate={{ scale: 1, opacity: 1 }}
                            transition={{ delay: 0.1, duration: 0.25, ease: "linear" }}
-                           className="font-display font-black text-6xl md:text-8xl uppercase text-ink leading-[0.85] tracking-tighter drop-shadow-[4px_4px_0px_#ffd700]"
+                           className="font-display font-black text-5xl sm:text-6xl md:text-8xl uppercase text-ink leading-[0.85] tracking-tighter drop-shadow-[4px_4px_0px_#ffd700]"
                         >
                            ĐẤU TRƯỜNG
                         </motion.h1>
@@ -337,14 +335,14 @@ const GamesPage = () => {
                            initial={{ scale: 0.9, opacity: 0 }}
                            animate={{ scale: 1, opacity: 1 }}
                            transition={{ delay: 0.2, duration: 0.25, ease: "linear" }}
-                           className="font-display font-black text-6xl md:text-8xl uppercase text-crimson leading-[0.85] tracking-tighter drop-shadow-[4px_4px_0px_#000000]"
+                           className="font-display font-black text-5xl sm:text-6xl md:text-8xl uppercase text-crimson leading-[0.85] tracking-tighter drop-shadow-[4px_4px_0px_#000000]"
                         >
                            TRÍ TUỆ
                         </motion.h1>
                      </div>
 
                     <p className="max-w-3xl mx-auto text-xl font-medium mt-6 text-center text-graphite/90 leading-relaxed">
-                        Các hoạt động tương tác dưới đây được thiết kế không phải để giải trí đơn thuần, mà nhằm kiểm tra và củng cố sự nhận thức của bạn về các tuyến lập luận phức tạp, hệ thống bằng chứng, và các cột mốc lịch sử cốt lõi đã được trình bày xuyên suốt trang nghiên cứu này.
+                        Các hoạt động tương tác dưới đây được thiết kế giúp củng cố sự hiểu biết của bạn về các tuyến lập luận phức tạp, hệ thống bằng chứng, và các cột mốc lịch sử cốt lõi đã được trình bày xuyên suốt trang nghiên cứu này.
                     </p>
                 </div>
 

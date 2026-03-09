@@ -18,7 +18,6 @@ createRoot(document.getElementById("root")).render(
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/trang-chu" element={<HomePage />} />
         <Route path="/boi-canh-lich-su" element={<HistoricalPage />} />
         <Route path="/tranh-luan-ket-luan" element={<ConclusionPage />} />
         <Route path="/tro-choi" element={<GamesPage />} />

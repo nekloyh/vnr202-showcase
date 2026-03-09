@@ -143,15 +143,33 @@ const BoMayNhaNuocPage = () => {
       {/* ═══════════ AFTER GENEVA ═══════════ */}
       <Section
         scrollable={true}
-        className="items-center justify-center px-4 md:px-10 bg-white"
+        className="items-center justify-center px-4 md:px-10 bg-white relative overflow-hidden"
       >
-        <div className="max-w-screen-lg mx-auto w-full py-24">
-          <div className="brutal-badge mb-4">PHẦN 1</div>
-          <h2 className="text-4xl md:text-5xl font-display font-black text-ink uppercase leading-none mt-2 mb-10 text-stroke-white drop-shadow-[4px_4px_0px_#ffd700]">
-            Sau Geneva: Đất Nước Bị Chia Cắt
-          </h2>
+        <div className="max-w-screen-lg mx-auto w-full py-24 relative z-10">
+          <div className="brutal-badge mb-4 relative z-10 shadow-hard inline-block">PHẦN 1</div>
+          <div className="relative z-10 mb-10 w-fit max-w-[90%]">
+            <h2 className="text-4xl md:text-5xl font-display font-black text-ink uppercase leading-tight bg-bone border-4 border-ink p-4 shadow-[8px_8px_0px_#ffd700]">
+              Sau Geneva: Đất Nước Bị Chia Cắt
+            </h2>
+          </div>
 
-          <div className="brutal-card shadow-[8px_8px_0px_#1C1C1A]">
+          <div className="absolute right-[-70%] top-[18%] w-[120%] md:w-[100%] lg:w-[90%] opacity-80 z-0 pointer-events-none select-none">
+            <div 
+              className="w-full h-full scale-[2.6]"
+              style={{
+                maskImage: 'radial-gradient(ellipse at center, black 20%, transparent 60%)',
+                WebkitMaskImage: 'radial-gradient(ellipse at center, black 20%, transparent 60%)'
+              }}
+            >
+              <img 
+                src="/historical/ViTuyen17.png" 
+                alt="Vĩ tuyến 17 chia cắt đất nước sau thời kỳ hiệp định Geneva" 
+                className="w-full h-auto object-cover mix-blend-multiply grayscale-[50%]"
+              />
+            </div>
+          </div>
+
+          <div className="relative z-10 brutal-card shadow-[8px_8px_0px_#1C1C1A] bg-white/90 backdrop-blur-sm">
             <div className="space-y-6 text-lg text-ink font-medium leading-relaxed max-w-3xl">
               <p>
                 Hiệp định Geneva năm 1954 kết thúc Chiến tranh Đông Dương lần thứ nhất chống Pháp và tạm thời chia cắt Việt Nam tại vĩ tuyến 17. Hiệp định kêu gọi tổ chức tổng tuyển cử thống nhất đất nước vào năm 1956, nhưng cuộc bầu cử này chưa bao giờ diễn ra.

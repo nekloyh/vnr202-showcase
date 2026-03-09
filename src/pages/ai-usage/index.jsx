@@ -4,17 +4,10 @@ import {
   Cpu,
   Layout,
   ArrowRight,
-  Terminal,
-  Sparkles,
-  FileText,
   ShieldAlert
 } from "lucide-react";
-import {
-  KineticHeading,
-  KineticSubline,
-} from "../../components/ui/KineticText";
+import { KineticSubline } from "../../components/ui/KineticText";
 import Section from "../../components/layout/Section";
-import Card from "../../components/ui/Card";
 
 const tools = [
   {
@@ -82,7 +75,7 @@ const ToolCard = ({ item }) => {
 
   return (
     <div
-      className="brutal-card h-full flex flex-col p-6 md:p-8 bg-bone border-4 border-ink shadow-[8px_8px_0_0_#000000]"
+      className="brutal-card h-full flex flex-col p-5 md:p-6 bg-bone border-4 border-ink shadow-[8px_8px_0_0_#000000]"
     >
       <div className="flex-1">
         {/* Header */}
@@ -162,10 +155,10 @@ const ToolCard = ({ item }) => {
 const AiUsagePage = () => {
   return (
     <div className="w-full bg-bone min-h-screen page-shell selection:bg-crimson selection:text-white">
-      <Section autoHeight={true} className="pt-32 pb-24 px-4 md:px-8">
+      <Section autoHeight={true} className="pt-24 pb-16 px-4 md:px-8">
 
         {/* Header Section */}
-        <div className="flex flex-col items-center justify-center space-y-8 max-w-5xl mx-auto w-full relative z-10 mb-20">
+        <div className="flex flex-col items-center justify-center space-y-4 max-w-5xl mx-auto w-full relative z-10 mb-12 mt-5">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -197,13 +190,13 @@ const AiUsagePage = () => {
             </motion.h1>
           </div>
 
-          <KineticSubline className="max-w-3xl mx-auto text-xl md:text-2xl text-center leading-relaxed">
+          <KineticSubline className="max-w-3xl mx-auto text-xl md:text-2xl text-center leading-relaxed mt-4">
             Báo cáo chi tiết về việc ứng dụng Trí tuệ nhân tạo trong quá trình phát triển dự án, đảm bảo tính minh bạch và liêm chính học thuật.
           </KineticSubline>
         </div>
 
         {/* Tools Section */}
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 lg:gap-10 mb-24">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 mb-16">
           {tools.map((item, index) => (
             <div key={item.name} className="h-full">
               <ToolCard item={item} index={index} />

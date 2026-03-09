@@ -1,22 +1,13 @@
 import { motion } from "framer-motion";
 import {
-  Users,
   Crown,
   FileText,
   Video,
   Newspaper,
   ExternalLink,
-  BookOpen,
-  Sparkles,
-  Fingerprint,
-  FolderOpen
 } from "lucide-react";
-import {
-  KineticHeading,
-  KineticSubline,
-} from "../../components/ui/KineticText";
+import { KineticSubline } from "../../components/ui/KineticText";
 import Section from "../../components/layout/Section";
-import Card from "../../components/ui/Card";
 
 const members = [
   {
@@ -81,7 +72,7 @@ const ProfileCard = ({ member }) => {
 
   return (
     <div
-      className={`brutal-card relative group h-full flex flex-col p-6 overflow-hidden border-4 border-ink shadow-hard bg-white`}
+      className={`brutal-card relative group h-full flex flex-col p-4 md:p-6 overflow-hidden border-4 border-ink shadow-hard bg-white`}
     >
       <div className="flex justify-between items-start mb-6">
         {/* Avatar Image */}
@@ -163,10 +154,10 @@ const ReferenceCard = ({ reference }) => {
 const InformationsPage = () => {
   return (
     <div className="w-full bg-bone min-h-screen page-shell selection:bg-gold selection:text-ink">
-      <Section autoHeight={true} className="pt-32 pb-24 px-4 md:px-8">
+      <Section autoHeight={true} className="pt-24 pb-16 px-4 md:px-8">
 
         {/* Header Section */}
-        <div className="flex flex-col items-center justify-center space-y-8 max-w-5xl mx-auto w-full relative z-10 mb-20">
+        <div className="flex flex-col items-center justify-center space-y-6 max-w-5xl mx-auto w-full relative z-10 mb-12 mt-5">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -189,12 +180,12 @@ const InformationsPage = () => {
           </div>
 
           <KineticSubline className="max-w-2xl mx-auto text-xl text-center">
-            Nhóm thực hiện đề tài VNR202: Chủ nghĩa xã hội khoa học & Tư tưởng Hồ Chí Minh.
+            Nhóm thực hiện đề tài VNR202: Lịch sử Đảng Cộng sản Việt Nam.
           </KineticSubline>
         </div>
 
         {/* Team Section */}
-        <div className="max-w-7xl mx-auto mb-20">
+        <div className="max-w-7xl mx-auto mb-16">
           <div className="flex items-center justify-center gap-4 mb-12">
             <div className="h-px bg-ink/30 flex-1 max-w-[100px]"></div>
             <h2 className="text-2xl font-display font-bold text-ink uppercase tracking-widest">
@@ -203,7 +194,7 @@ const InformationsPage = () => {
             <div className="h-px bg-ink/30 flex-1 max-w-[100px]"></div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {members.map((m, index) => (
               <div key={index} className="w-full h-full">
                 <ProfileCard member={m} />
@@ -213,7 +204,7 @@ const InformationsPage = () => {
         </div>
 
         {/* References Section */}
-        <div className="max-w-5xl mx-auto mb-20">
+        <div className="max-w-5xl mx-auto mb-12">
           <div className="flex items-center justify-center gap-4 mb-12">
             <div className="h-px bg-ink/30 flex-1 max-w-[100px]"></div>
             <h2 className="text-2xl font-display font-bold text-ink uppercase tracking-widest">
@@ -222,7 +213,7 @@ const InformationsPage = () => {
             <div className="h-px bg-ink/30 flex-1 max-w-[100px]"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
             {references.map((ref, index) => (
               <div key={index} className="w-full h-full">
                 <ReferenceCard reference={ref} index={index} />

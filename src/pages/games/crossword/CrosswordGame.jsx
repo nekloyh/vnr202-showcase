@@ -1,83 +1,81 @@
 import React, { useMemo, useState, useEffect, useRef } from "react";
 import { Mic2, ScrollText, X, HelpCircle, Send, Check, Lightbulb } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import Button from "../../../components/ui/Button";
 
-const VERTICAL_WORD = "ĐOÀN KẾT";
+const VERTICAL_WORD = "MIỀN NAM";
 
-// Vertical word alignment:
-// 1. Đ Ả N G C Ộ N G S Ả N  -> Đ (index 0)
-// 2. K I Ể M S O Á T       -> O (index 5)  
-// 3. P H Á P L U Ậ T       -> A (index 2, but Á)
-// 4. N H Â N D Â N         -> N (index 4)
-// 5. K I Ể M T R A         -> K (index 0)
-// 6. H I Ế N P H Á P       -> Ế (index 2)
-// 7. T H Ố N G N H Ấ T     -> T (index 0)
+// Vertical word alignment (non-space cursor index → highlighted char):
+// 1. N Ă [M]   1 9 5 4         -> M (verticalIndex 2)
+// 2. V [Ĩ]   T U Y Ế N        -> Ĩ (verticalIndex 1, base I)
+// 3. T Ổ N G   T U Y [Ể] N   C Ử -> Ể (verticalIndex 7, base E)
+// 4. Đ Ồ [N] G   K H Ở I      -> N (verticalIndex 2)
+// 5. Ấ P   C H I Ế [N]   L Ư Ợ C -> N (verticalIndex 6)
+// 6. C H I Ế N   T R [A] N H  -> A (verticalIndex 7)
+// 7. [M] Ặ T   T R Ậ N        -> M (verticalIndex 0)
 
 const CROSSWORD_ROWS = [
-    {
-        id: 1,
-        answer: "ĐẢNG CỘNG SẢN",
-        hint1: "Định hướng cho Nhà nước đi lên chủ nghĩa xã hội.",
-        hint2: "Đây là tổ chức chính trị mang bản chất giai cấp công nhân.",
-        clue: "Tổ chức chính trị nào đóng vai trò lãnh đạo đối với Nhà nước pháp quyền XHCN Việt Nam, phù hợp với Điều 4 Hiến pháp năm 2013? (11 chữ cái)",
-        verticalIndex: 0,
-        anchor: "Chữ Đ ở vị trí 1"
-    },
-    {
-        id: 2,
-        answer: "KIỂM SOÁT",
-        hint1: "Giữa các cơ quan lập pháp, hành pháp và tư pháp cần phải có sự tác động qua lại này.",
-        hint2: "Đảm bảo quyền lực nhà nước được thực thi đúng đắn và hiệu quả.",
-        clue: "Theo quan niệm về Nhà nước pháp quyền XHCN ở Việt Nam, giữa các cơ quan lập pháp, hành pháp và tư pháp phải có sự phân công, phối hợp và hành động này lẫn nhau. (8 chữ cái)",
-        verticalIndex: 5,
-        anchor: "Chữ O ở vị trí 6"
-    },
-    {
-        id: 3,
-        answer: "PHÁP LUẬT",
-        hint1: "Công cụ đảm bảo tính tối thượng trong việc điều chỉnh các quan hệ xã hội.",
-        hint2: "Dân chủ xã hội chủ nghĩa muốn thực hiện được phải gắn liền với kỷ cương và được thể chế hóa bằng yếu tố này.",
-        clue: "Nhà nước pháp quyền XHCN Việt Nam quản lý xã hội chủ yếu bằng công cụ gì? (8 chữ cái)",
-        verticalIndex: 2,
-        anchor: "Chữ Á ở vị trí 3"
-    },
-    {
-        id: 4,
-        answer: "NHÂN DÂN",
-        hint1: "Theo quan điểm của Hồ Chí Minh và Đảng ta, trong chế độ xã hội chủ nghĩa, bao nhiêu quyền hạn đều là của đối tượng này.",
-        hint2: "Đây là chủ thể tối cao của quyền lực nhà nước; Nhà nước pháp quyền XHCN Việt Nam được xây dựng là nhà nước của ai, do ai và vì ai?",
-        clue: "Trong đặc điểm của Nhà nước pháp quyền XHCN Việt Nam, đây là chủ thể làm chủ đất nước; Nhà nước được xây dựng là của chủ thể này, do chủ thể này và vì chủ thể này. (7 chữ cái)",
-        verticalIndex: 4,
-        anchor: "Chữ N ở vị trí 5"
-    },
-    {
-        id: 5,
-        answer: "KIỂM TRA",
-        hint1: "Đây là hoạt động mà công dân có thể thực hiện (cùng với giám sát) thông qua các tổ chức hoặc Ban thanh tra nhân dân để phòng, chống tham nhũng.",
-        hint2: "Phương châm \"Dân biết, dân bàn, dân làm, dân ...\" thể hiện quyền giám sát của nhân dân.",
-        clue: "Phương châm để nhân dân thực hiện quyền giám sát hoạt động của Nhà nước là: \"Dân biết, dân bàn, dân làm, dân ...\". (7 chữ cái)",
-        verticalIndex: 0,
-        anchor: "Chữ K ở vị trí 1"
-    },
-    {
-        id: 6,
-        answer: "HIẾN PHÁP",
-        hint1: "Nhà nước và các tổ chức phải hoạt động dựa trên cơ sở của pháp luật và văn bản đạo luật cơ bản này.",
-        hint2: "Mọi cơ quan, tổ chức, cán bộ, công chức và công dân đều có nghĩa vụ chấp hành nghiêm chỉnh pháp luật và văn bản này.",
-        clue: "Trong Nhà nước pháp quyền, văn bản pháp lý nào được đặt ở vị trí tối thượng để điều chỉnh các quan hệ xã hội? (8 chữ cái)",
-        verticalIndex: 2,
-        anchor: "Chữ Ế ở vị trí 3"
-    },
-    {
-        id: 7,
-        answer: "THỐNG NHẤT",
-        hint1: "Đây là đặc điểm cơ bản nhất về tính chất của quyền lực nhà nước ở Việt Nam: Quyền lực nhà nước là..., có sự phân công, phối hợp và kiểm soát giữa các cơ quan nhà nước.",
-        hint2: "Nguyên tắc tổ chức quyền lực này đảm bảo sự chỉ đạo xuyên suốt của Nhà nước, khác biệt với cơ chế \"tam quyền phân lập\" của các nhà nước tư sản.",
-        clue: "Đây là tính chất cơ bản của quyền lực nhà nước trong Nhà nước pháp quyền XHCN Việt Nam. Dù có sự phân công, phối hợp nhưng quyền lực nhà nước phải luôn đảm bảo yếu tố này. (8 chữ cái)",
-        verticalIndex: 0,
-        anchor: "Chữ T ở vị trí 1"
-    }
+  {
+    id: 1,
+    answer: "NĂM 1954",
+    hint1: "Năm ký kết Hiệp định kết thúc chiến tranh Đông Dương lần thứ nhất.",
+    hint2: "Cũng là năm diễn ra chiến thắng Điện Biên Phủ lừng lẫy, \"chấn động địa cầu.\"",
+    clue: "Mốc thời gian quan trọng đánh dấu sự chia cắt đất nước tại một hội nghị quốc tế. (7 ký tự)",
+    verticalIndex: 2,
+    anchor: "Chữ M ở vị trí 3",
+  },
+  {
+    id: 2,
+    answer: "VĨ TUYẾN",
+    hint1: "Đường phân chia tạm thời chạy ngang qua tỉnh Quảng Trị.",
+    hint2: "Con số đi kèm là 17, nằm trên sông Bến Hải.",
+    clue: "Đường ranh giới tạm thời chia cắt Việt Nam thành hai miền theo Hiệp định Geneva. (7 chữ cái)",
+    verticalIndex: 1,
+    anchor: "Chữ I ở vị trí 2",
+  },
+  {
+    id: 3,
+    answer: "TỔNG TUYỂN CỬ",
+    hint1: "Theo Hiệp định Geneva, sự kiện này phải được tổ chức trong vòng 2 năm sau ký kết.",
+    hint2: "Chính quyền Ngô Đình Diệm từ chối tham gia vì lo ngại kết quả bất lợi.",
+    clue: "Cuộc bỏ phiếu toàn quốc dự kiến vào năm 1956 nhằm thống nhất đất nước nhưng không bao giờ diễn ra. (11 chữ cái)",
+    verticalIndex: 7,
+    anchor: "Chữ E ở vị trí 8",
+  },
+  {
+    id: 4,
+    answer: "ĐỒNG KHỞI",
+    hint1: "Bắt đầu mạnh mẽ nhất tại tỉnh Bến Tre, lan rộng ra nhiều tỉnh miền Nam.",
+    hint2: "Bà Nguyễn Thị Định là nhân vật tiêu biểu của phong trào này.",
+    clue: "Phong trào đấu tranh vũ trang và chính trị bùng nổ ở miền Nam năm 1960. (8 chữ cái)",
+    verticalIndex: 2,
+    anchor: "Chữ N ở vị trí 3",
+  },
+  {
+    id: 5,
+    answer: "ẤP CHIẾN LƯỢC",
+    hint1: "Chính sách do chính quyền Ngô Đình Diệm thực hiện với sự hậu thuẫn của Mỹ đầu thập niên 1960.",
+    hint2: "Mục đích là tách lực lượng cách mạng ra khỏi nhân dân, nhưng gặp sự phản đối mạnh mẽ.",
+    clue: "Chương trình dồn dân lập làng có hàng rào nhằm cô lập cách mạng khỏi nông thôn miền Nam. (11 chữ cái)",
+    verticalIndex: 6,
+    anchor: "Chữ N ở vị trí 7",
+  },
+  {
+    id: 6,
+    answer: "CHIẾN TRANH",
+    hint1: "Có nhiều cách gọi khác nhau tùy góc nhìn: kháng chiến, nội chiến, hay xung đột ủy nhiệm.",
+    hint2: "Cuộc xung đột này leo thang mạnh từ giữa thập niên 1960 khi Mỹ đưa quân trực tiếp tham chiến.",
+    clue: "Cuộc xung đột vũ trang kéo dài hàng thập kỷ trên lãnh thổ Việt Nam với sự can thiệp của nước ngoài. (10 chữ cái)",
+    verticalIndex: 7,
+    anchor: "Chữ A ở vị trí 8",
+  },
+  {
+    id: 7,
+    answer: "MẶT TRẬN",
+    hint1: "Tên đầy đủ bao gồm cụm từ \"Dân tộc Giải phóng miền Nam Việt Nam.\"",
+    hint2: "Tổ chức chính trị đại diện cho phong trào cách mạng miền Nam, thành lập tháng 12/1960.",
+    clue: "Tổ chức chính trị được thành lập năm 1960 nhằm tập hợp các lực lượng đấu tranh ở miền Nam. (7 chữ cái)",
+    verticalIndex: 0,
+    anchor: "Chữ M ở vị trí 1",
+  },
 ];
 
 const normalizeAnswer = (text) =>
@@ -106,10 +104,10 @@ const CrosswordGame = ({ onClose }) => {
     const [activeRow, setActiveRow] = useState(null);
     const [guess, setGuess] = useState("");
     const [openedRows, setOpenedRows] = useState([]);
-    const [hostLine, setHostLine] = useState("Chào mừng đến với Ô CHỮ PHÁP QUYỀN XHCN!");
+    const [hostLine, setHostLine] = useState("Chào mừng đến với Ô CHỮ LỊCH SỬ VIỆT NAM 1954–1965!");
     const [, setFeedback] = useState(null); // Used for triggering re-renders
     const [gameState, setGameState] = useState('playing'); // playing, won
-    const [hintLevel, setHintLevel] = useState({}); // Track which hint level each row is on (1 or 2)
+    const [hintLevel, setHintLevel] = useState({}); // 0 = no hints, 1 = hint1 unlocked, 2 = both unlocked
     
     // Board logic
     const maxOffset = useMemo(getMaxLeftOffset, []);
@@ -122,19 +120,24 @@ const CrosswordGame = ({ onClose }) => {
         }
     }, [activeRow]);
 
-    // Get current hint for a row based on hint level
-    const getCurrentHint = (row) => {
-        const level = hintLevel[row.id] || 1;
-        return level === 1 ? row.hint1 : row.hint2;
-    };
+    const getHintLevel = (rowId) => hintLevel[rowId] || 0;
 
     const handleRowSelect = (row) => {
         if (openedRows.includes(row.id)) return;
         setActiveRow(row);
         setGuess("");
         setFeedback(null);
-        const currentHint = getCurrentHint(row);
-        setHostLine(`Gợi ý Hàng ${row.id}: ${row.clue}\n\n💡 ${currentHint}`);
+        setHostLine(`Hàng ${row.id}: ${row.clue}`);
+    };
+
+    const handleRevealHint = () => {
+        if (!activeRow) return;
+        const current = getHintLevel(activeRow.id);
+        if (current >= 2) return;
+        const next = current + 1;
+        setHintLevel(prev => ({ ...prev, [activeRow.id]: next }));
+        const hintText = next === 1 ? activeRow.hint1 : activeRow.hint2;
+        setHostLine(`Gợi ý ${next} đã mở!\n\n💡 ${hintText}`);
     };
 
     const handleSubmit = (e) => {
@@ -162,15 +165,17 @@ const CrosswordGame = ({ onClose }) => {
         } else {
             setFeedback({ type: "error", text: "SAI RỒI!" });
             
-            // Check current hint level and upgrade to hint 2 if on hint 1
-            const currentLevel = hintLevel[activeRow.id] || 1;
-            if (currentLevel === 1) {
-                // Show hint 2
-                setHintLevel(prev => ({ ...prev, [activeRow.id]: 2 }));
-                setHostLine(`Sai rồi! Đây là gợi ý thứ 2:\n\n💡 ${activeRow.hint2}`);
+            // Unlock next hint on wrong answer
+            const current = getHintLevel(activeRow.id);
+            const next = Math.min(current + 1, 2);
+            setHintLevel(prev => ({ ...prev, [activeRow.id]: next }));
+            
+            if (next === 1) {
+                setHostLine(`Sai rồi! Gợi ý 1 đã mở.\n\n💡 ${activeRow.hint1}`);
+            } else if (next === 2 && current < 2) {
+                setHostLine(`Sai rồi! Gợi ý 2 đã mở.\n\n💡 ${activeRow.hint2}`);
             } else {
-                // Already on hint 2, just show error
-                setHostLine(`Sai rồi! Hãy thử lại.\n\n💡 ${activeRow.hint2}`);
+                setHostLine(`Sai rồi! Hãy thử lại.`);
             }
             
             // Clear the input
@@ -185,13 +190,6 @@ const CrosswordGame = ({ onClose }) => {
         }
     };
 
-    const handleGiveUp = () => {
-        if (!activeRow) return;
-        setOpenedRows(prev => [...prev, activeRow.id]);
-        setActiveRow(null);
-        setHostLine(`Bạn đã bỏ qua hàng này. Tiếp tục nào!`);
-    };
-
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/20 backdrop-blur-sm p-4 animate-in fade-in duration-200">
         {/* Main Window */}
@@ -202,7 +200,7 @@ const CrosswordGame = ({ onClose }) => {
               <div className="w-4 h-4 rounded-full border-2 border-black bg-white" />
               <div className="w-4 h-4 rounded-full border-2 border-black bg-black" />
               <h2 className="font-display font-black text-xl text-black ml-2 uppercase tracking-wide">
-                GAME.EXE: Ô CHỮ - MÔ HÌNH NHÀ NƯỚC PHÁP QUYỀN
+                GAME.EXE: Ô CHỮ - LỊCH SỬ VIỆT NAM 1954–1965
               </h2>
             </div>
             <button
@@ -386,29 +384,44 @@ const CrosswordGame = ({ onClose }) => {
                         <span className="bg-black text-white px-2 py-1 font-mono text-sm font-bold transform -rotate-1">
                           HÀNG {activeRow.id}
                         </span>
-                        <div className="flex items-center gap-2">
-                          <span className={`px-2 py-1 text-xs font-bold border-2 border-black ${(hintLevel[activeRow.id] || 1) === 2 ? 'bg-[#FACC15]' : 'bg-white'}`}>
-                            <Lightbulb size={12} className="inline mr-1" />
-                            Gợi ý {hintLevel[activeRow.id] || 1}/2
-                          </span>
-                          <button
-                            type="button"
-                            onClick={() => setActiveRow(null)}
-                            className="p-1 hover:bg-black hover:text-white rounded-full border-2 border-black transition-colors bg-white"
-                          >
-                            <X size={16} strokeWidth={3} />
-                          </button>
-                        </div>
+                        <button
+                          type="button"
+                          onClick={() => setActiveRow(null)}
+                          className="p-1 hover:bg-black hover:text-white rounded-full border-2 border-black transition-colors bg-white"
+                        >
+                          <X size={16} strokeWidth={3} />
+                        </button>
                       </div>
 
-                      <p className="font-bold text-base mb-3 leading-snug bg-white/50 p-2 border-2 border-black/20 rounded">
+                      <p className="font-bold text-lg mb-3 leading-snug bg-white/50 p-3 border-2 border-black/20 rounded">
                         {activeRow.clue}
                       </p>
                       
-                      <div className="bg-[#FACC15] border-2 border-black p-2 mb-4 rounded">
-                        <p className="font-medium text-sm">
-                          <Lightbulb size={14} className="inline mr-1" />
-                          {getCurrentHint(activeRow)}
+                      {/* Hint 1 */}
+                      <div className={`border-2 border-black p-3 mb-2 rounded transition-all ${
+                        getHintLevel(activeRow.id) >= 1
+                          ? 'bg-[#FACC15]'
+                          : 'bg-gray-200 opacity-60'
+                      }`}>
+                        <p className="font-semibold text-base">
+                          <Lightbulb size={16} className="inline mr-1" />
+                          {getHintLevel(activeRow.id) >= 1
+                            ? activeRow.hint1
+                            : '🔒 Gợi ý 1 — mở khi trả lời sai hoặc nhấn ?'}
+                        </p>
+                      </div>
+
+                      {/* Hint 2 */}
+                      <div className={`border-2 border-black p-3 mb-4 rounded transition-all ${
+                        getHintLevel(activeRow.id) >= 2
+                          ? 'bg-[#FACC15]'
+                          : 'bg-gray-200 opacity-60'
+                      }`}>
+                        <p className="font-semibold text-base">
+                          <Lightbulb size={16} className="inline mr-1" />
+                          {getHintLevel(activeRow.id) >= 2
+                            ? activeRow.hint2
+                            : '🔒 Gợi ý 2 — mở khi trả lời sai 2 lần hoặc nhấn ?'}
                         </p>
                       </div>
 
@@ -437,9 +450,14 @@ const CrosswordGame = ({ onClose }) => {
                         </button>
                         <button
                           type="button"
-                          onClick={handleGiveUp}
-                          title="Bỏ qua"
-                          className="w-12 h-12 flex items-center justify-center bg-white border-4 border-black hover:bg-gray-200 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+                          onClick={handleRevealHint}
+                          disabled={getHintLevel(activeRow.id) >= 2}
+                          title="Mở gợi ý"
+                          className={`w-12 h-12 flex items-center justify-center border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-colors ${
+                            getHintLevel(activeRow.id) >= 2
+                              ? 'bg-gray-300 cursor-not-allowed opacity-50'
+                              : 'bg-[#FACC15] hover:bg-[#eab308]'
+                          }`}
                         >
                           <HelpCircle size={24} strokeWidth={3} />
                         </button>

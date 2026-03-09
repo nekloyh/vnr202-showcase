@@ -14,20 +14,40 @@ const AITalkingAvatar = () => {
   );
 };
 
-const AIResponse = ({ text }) => {
+const AIResponse = ({ text, isLoading }) => {
   return (
     <motion.div
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       className="w-full flex gap-4 mb-8"
     >
-      <div className="shrink-0 mt-1">
+      <div className="shrink-0 mt-1 flex-col items-center">
         <AITalkingAvatar />
       </div>
-      <div className="bg-bone p-5 border-4 border-ink shadow-[4px_4px_0_0_#d91c1c] rounded-none max-w-[85%] md:max-w-[75%] relative">
+      <div className="bg-bone p-5 md:p-6 border-4 border-ink shadow-[4px_4px_0_0_#d91c1c] rounded-none max-w-[95%] md:max-w-[85%] xl:max-w-[1000px] relative">
         <h4 className="font-display text-crimson text-sm mb-2 uppercase tracking-wide font-bold">Sử Đảng</h4>
-        <div className="ai-markdown text-ink font-body text-lg leading-relaxed">
-          <ReactMarkdown>{text}</ReactMarkdown>
+        <div className="ai-markdown text-ink font-body text-lg leading-relaxed min-h-[1.5rem]">
+          {isLoading ? (
+            <div className="flex gap-2 py-2">
+              <motion.div 
+                animate={{ y: [0, -8, 0] }} 
+                transition={{ duration: 0.6, repeat: Infinity, delay: 0 }} 
+                className="w-3 h-3 bg-crimson"
+              />
+              <motion.div 
+                animate={{ y: [0, -8, 0] }} 
+                transition={{ duration: 0.6, repeat: Infinity, delay: 0.2 }} 
+                className="w-3 h-3 bg-gold"
+              />
+              <motion.div 
+                animate={{ y: [0, -8, 0] }} 
+                transition={{ duration: 0.6, repeat: Infinity, delay: 0.4 }} 
+                className="w-3 h-3 bg-blue-500"
+              />
+            </div>
+          ) : (
+            <ReactMarkdown>{text}</ReactMarkdown>
+          )}
         </div>
       </div>
     </motion.div>
@@ -39,9 +59,9 @@ const UserPrompt = ({ text }) => {
     <motion.div
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
-      className="w-full flex items-center justify-end gap-3 mb-8"
+      className="w-full flex items-start justify-end gap-3 mb-8"
     >
-      <div className="p-5 bg-ink text-bone border-4 border-ink shadow-[4px_4px_0_0_#ffd700] rounded-none max-w-[80%] md:max-w-[70%] text-right relative">
+      <div className="p-5 md:p-6 bg-ink text-bone border-4 border-ink shadow-[4px_4px_0_0_#ffd700] rounded-none max-w-[90%] md:max-w-[85%] xl:max-w-[1000px] text-left relative">
         <p className="wrap-break-word font-body leading-relaxed">{text}</p>
       </div>
       <div className="shrink-0 w-12 h-12 bg-white flex items-center justify-center border-4 border-ink shadow-hard-sm rounded-none">
@@ -118,11 +138,11 @@ const AIPage = () => {
 
   return (
     <div className="w-full h-screen flex flex-col bg-bone">
-      <Section className="flex-1 flex flex-col items-center pt-20 pb-4 px-4 md:px-8 border-b-0 h-full">
-        <div className="w-full max-w-5xl mx-auto flex-1 flex flex-col overflow-hidden px-0 lg:px-4 h-full">
+      <Section className="flex-1 flex flex-col items-center pt-8 md:pt-10 pb-4 px-4 md:px-8 border-b-0 h-full">
+        <div className="w-full flex-1 flex flex-col overflow-hidden px-0 h-full">
 
           {/* Header */}
-          <div className="flex flex-col items-center justify-center mb-5 shrink-0 relative z-10 w-full">
+          <div className="flex flex-col items-center justify-center mb-3 shrink-0 relative z-10 w-full">
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -143,7 +163,7 @@ const AIPage = () => {
           </div>
 
           {/* Chat Container */}
-          <div className="flex-1 bg-white border-4 border-ink shadow-hard-lg flex flex-col relative overflow-hidden rounded-none mb-4">
+          <div className="flex-1 w-full max-w-7xl mx-auto bg-white border-4 border-ink shadow-hard-lg flex flex-col relative overflow-hidden rounded-none mb-4">
 
             {/* Decorative Header Bar */}
             <div className="h-10 bg-ink flex items-center justify-between px-4 shrink-0">
@@ -164,7 +184,7 @@ const AIPage = () => {
                 {chatHistory.map((msg, index) => (
                   <div key={index}>
                     {msg.role === "ai" ? (
-                      <AIResponse text={msg.text} />
+                      <AIResponse text={msg.text} isLoading={msg.isLoading} />
                     ) : (
                       <UserPrompt text={msg.text} />
                     )}
@@ -178,7 +198,7 @@ const AIPage = () => {
             <div className="p-6 bg-bone border-t-2 border-ink shrink-0">
               <form
                 onSubmit={handleFormSubmit}
-                className="relative flex items-center gap-3 max-w-4xl mx-auto"
+                className="relative flex items-center gap-3 w-full max-w-5xl mx-auto"
               >
                 <input
                   ref={inputRef}
@@ -200,7 +220,7 @@ const AIPage = () => {
                   )}
                 </Button>
               </form>
-              <div className="flex flex-wrap items-center justify-center gap-2 mt-4 max-w-4xl mx-auto">
+              <div className="flex flex-wrap items-center justify-center gap-2 mt-4 w-full max-w-5xl mx-auto">
                 {[
                   "Tóm tắt sự ra đời của Đảng Cộng sản Việt Nam năm 1930",
                   "Ý nghĩa lịch sử của Cách mạng Tháng Tám 1945 là gì?",

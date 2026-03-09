@@ -27,9 +27,7 @@ const HomePage = () => {
             className="brutal-badge mb-10 inline-flex items-center gap-2"
           >
             <span className="w-2 h-2 bg-bone border border-transparent"></span>
-            <span>
-              Lịch sử Đảng - VNR202
-            </span>
+            <span>Lịch sử Đảng - VNR202</span>
           </motion.div>
 
           <motion.h1
@@ -38,15 +36,31 @@ const HomePage = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-display font-black text-6xl sm:text-7xl md:text-8xl lg:text-9xl uppercase text-ink leading-[0.85] tracking-tighter drop-shadow-[4px_4px_0px_#ffd700]"
           >
-            VIỆT NAM
+            CUỘC KHÁNG CHIẾN
           </motion.h1>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-display font-black text-6xl sm:text-7xl md:text-8xl lg:text-9xl uppercase text-ink leading-[0.85] tracking-tighter drop-shadow-[4px_4px_0px_#ffd700]"
+          >
+            CHỐNG MỸ CỨU NƯỚC
+          </motion.h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             className="font-display font-black text-6xl sm:text-7xl md:text-8xl lg:text-9xl uppercase leading-[0.85] tracking-tighter text-crimson drop-shadow-[4px_4px_0px_#000000]"
           >
-            CÓ PHẢI NỘI CHIẾN?
+            HAY
+          </motion.h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-display font-black text-6xl sm:text-7xl md:text-8xl lg:text-9xl uppercase leading-[0.85] tracking-tighter text-crimson drop-shadow-[4px_4px_0px_#000000]"
+          >
+            NỘI CHIẾN VIỆT NAM?
           </motion.h1>
 
           <motion.p
@@ -55,7 +69,9 @@ const HomePage = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="font-body text-xl md:text-2xl text-graphite/90 max-w-2xl mt-10 leading-relaxed font-medium"
           >
-            1954–1965. Giai đoạn định hình cách chúng ta hiểu về cuộc chiến — và tại sao câu trả lời lại phức tạp hơn những gì lịch sử chính thống thường ghi nhận.
+            1954–1965. Giai đoạn định hình cách chúng ta hiểu về cuộc chiến — và
+            tại sao câu trả lời lại phức tạp hơn những gì lịch sử chính thống
+            thường ghi nhận.
           </motion.p>
 
           <motion.div
@@ -164,7 +180,10 @@ const HomePage = () => {
                 Nội Chiến
               </h3>
               <p className="font-body text-xl text-ink font-medium leading-relaxed">
-                Một cuộc xung đột giữa những tầm nhìn chính trị đối lập của người Việt — Cách mạng Xã hội chủ nghĩa chống lại Chủ nghĩa Cộng hòa chống cộng — được tiến hành chủ yếu bởi người Việt ở cả hai chiến tuyến.
+                Một cuộc xung đột giữa những tầm nhìn chính trị đối lập của
+                người Việt — Cách mạng Xã hội chủ nghĩa chống lại Chủ nghĩa Cộng
+                hòa chống Cộng — được tiến hành chủ yếu bởi người Việt ở cả hai
+                chiến tuyến.
               </p>
             </motion.div>
 
@@ -182,7 +201,10 @@ const HomePage = () => {
                 Giải Phóng Dân Tộc
               </h3>
               <p className="font-body text-xl text-ink font-medium leading-relaxed">
-                Một cuộc đấu tranh chống lại sự khuất phục do nước ngoài hậu thuẫn và vì mục tiêu thống nhất đất nước — một sự tiếp nối của phong trào chống thực dân nhằm chống lại một chế độ do Mỹ chống lưng.
+                Một cuộc đấu tranh chống lại sự khuất phục do nước ngoài hậu
+                thuẫn và vì mục tiêu thống nhất đất nước — một sự tiếp nối của
+                phong trào chống thực dân nhằm chống lại một chế độ do Mỹ chống
+                lưng.
               </p>
             </motion.div>
           </div>
@@ -198,10 +220,11 @@ const HomePage = () => {
             viewport={{ once: true }}
             className="font-body text-xl md:text-2xl text-ink leading-relaxed mb-6 font-medium"
           >
-            Sau Hiệp định Geneva năm 1954 chia cắt Việt Nam tại vĩ tuyến 17,
-            hai quốc gia đối lập đã hình thành — mỗi quốc gia đều tuyên bố đại diện cho dân tộc
-            Việt Nam. Đến năm 1965, xung đột đã leo thang thành một cuộc chiến tranh toàn diện
-            với sự tham gia của hàng trăm ngàn lính ngoại quốc.
+            Sau Hiệp định Geneva năm 1954 chia cắt Việt Nam tại vĩ tuyến 17, hai
+            quốc gia đối lập đã hình thành — mỗi quốc gia đều tuyên bố đại diện
+            cho dân tộc Việt Nam. Đến năm 1965, xung đột đã leo thang thành một
+            cuộc chiến tranh toàn diện với sự tham gia của hàng trăm ngàn lính
+            ngoại quốc.
           </motion.p>
           <motion.p
             initial={{ opacity: 0 }}
@@ -210,10 +233,11 @@ const HomePage = () => {
             transition={{ delay: 0.1 }}
             className="font-body text-xl md:text-2xl text-ink font-bold leading-relaxed mb-12"
           >
-            Để hiểu tại sao các nhà sử học lại bất đồng quan điểm, trước tiên bạn cần hiểu
-            Việt Nam thực sự trông như thế nào sau năm 1954 — một đất nước bị chia cắt,
-            hai chính phủ cạnh tranh, và một quần chúng nhân dân mà lòng trung thành của họ phức tạp
-            hơn nhiều so với những gì các bên muốn thừa nhận.
+            Để hiểu tại sao các nhà sử học lại bất đồng quan điểm, trước tiên
+            bạn cần hiểu Việt Nam thực sự trông như thế nào sau năm 1954 — một
+            đất nước bị chia cắt, hai chính phủ cạnh tranh, và một quần chúng
+            nhân dân mà lòng trung thành của họ phức tạp hơn nhiều so với những
+            gì các bên muốn thừa nhận.
           </motion.p>
 
           <Button

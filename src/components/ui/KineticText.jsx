@@ -22,16 +22,4 @@ export const KineticSubline = ({ children, className = "" }) => {
     );
 };
 
-export const MarqueeStrip = ({ text, speed = 20, tone = "light", className = "" }) => {
-    return (
-        <div className={`overflow-hidden whitespace-nowrap py-3 border-y-2 border-ink ${tone === "dark" ? "bg-ink text-bone" : "bg-gold text-ink"} ${className}`}>
-            <motion.div
-                className="inline-block"
-                animate={{ x: [0, -1000] }}
-                transition={{ repeat: Infinity, duration: speed, ease: "linear" }}
-            >
-                <span className="font-display text-2xl font-bold uppercase tracking-widest mx-4">{text} • {text} • {text} • {text}</span>
-            </motion.div>
-        </div>
-    );
-};
+
