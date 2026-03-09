@@ -107,17 +107,17 @@ export default function EndGameDialog({
       <NeoCard className="w-full max-w-md text-center bg-[#FAF7F0] p-6 flex flex-col gap-5 items-center shadow-[16px_16px_0px_#000]">
         {/* Header - Different for Victory vs Game Over */}
         <div className={`${isVictory ? 'bg-[#00C853]' : 'bg-[#FF3B30]'} text-white px-4 py-1 text-sm font-black uppercase tracking-widest border-[3px] border-black shadow-[4px_4px_0px_#000] ${isVictory ? '-rotate-2' : 'rotate-2'}`}>
-          {isVictory ? '🏆 VICTORY! 🏆' : 'GAME OVER'}
+          {isVictory ? '🏆 CHIẾN THẮNG! 🏆' : 'TRÒ CHƠI KẾT THÚC'}
         </div>
 
         <h2 className="text-4xl font-black uppercase text-black leading-none">
-          {saveState === 'saved' ? '🎉 Saved!' : 'Save Your Score?'}
+          {saveState === 'saved' ? '🎉 Đã lưu!' : 'Lưu điểm của bạn?'}
         </h2>
 
         {/* Score Display */}
         <div className={`${isVictory ? 'bg-[#00C853]' : 'bg-black'} text-${isVictory ? 'white' : '[#FFD400]'} p-5 border-[3px] border-${isVictory ? 'black' : 'gray-800'} w-full shadow-[6px_6px_0px_#888]`}>
           <div className={`text-xs ${isVictory ? 'text-white/70' : 'text-gray-400'} font-bold tracking-widest mb-1`}>
-            {isVictory ? 'CHAMPION SCORE' : 'FINAL SCORE'}
+            {isVictory ? 'ĐIỂM NHÀ VÔ ĐỊCH' : 'ĐIỂM CUỐI CÙNG'}
           </div>
           <div className="text-5xl font-black">{score.toLocaleString()}</div>
         </div>
@@ -126,14 +126,14 @@ export default function EndGameDialog({
         {saveState !== 'saved' && (
           <div className="w-full">
             <label className="block text-left text-xs font-black uppercase tracking-widest text-gray-500 mb-2">
-              Enter Your Name
+              Nhập tên của bạn
             </label>
             <input
               type="text"
               value={playerName}
               onChange={(e) => setPlayerName(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Your name..."
+              placeholder="Tên của bạn..."
               maxLength={MAX_NAME_LENGTH}
               disabled={saveState === 'saving'}
               className={`
@@ -151,7 +151,7 @@ export default function EndGameDialog({
             <div className="flex justify-between mt-1 text-xs text-gray-400">
               <span>
                 {playerName.trim().length > 0 && playerName.trim().length < MIN_NAME_LENGTH && (
-                  <span className="text-red-500">Min {MIN_NAME_LENGTH} characters</span>
+                  <span className="text-red-500">Tối thiểu {MIN_NAME_LENGTH} ký tự</span>
                 )}
               </span>
               <span>{playerName.length}/{MAX_NAME_LENGTH}</span>
@@ -169,7 +169,7 @@ export default function EndGameDialog({
         {/* Success Message */}
         {saveState === 'saved' && (
           <div className="w-full px-3 py-2 bg-green-100 border-[2px] border-green-500 text-green-700 text-sm font-bold">
-            Score saved to leaderboard!
+            Điểm đã được lưu vào bảng xếp hạng!
           </div>
         )}
 
@@ -188,10 +188,10 @@ export default function EndGameDialog({
               >
                 {saveState === 'saving' ? (
                   <span className="flex items-center justify-center gap-2">
-                    <span className="animate-spin">⏳</span> Saving...
+                    <span className="animate-spin">⏳</span> Đang lưu...
                   </span>
                 ) : (
-                  'Save Score'
+                  'Lưu điểm'
                 )}
               </NeoButton>
 
@@ -201,7 +201,7 @@ export default function EndGameDialog({
                 disabled={saveState === 'saving'}
                 className="w-full py-3 text-lg"
               >
-                Don't Save
+                Không lưu
               </NeoButton>
             </>
           )}
@@ -212,7 +212,7 @@ export default function EndGameDialog({
               variant="primary"
               className="w-full py-3 text-lg"
             >
-              Continue
+              Tiếp tục
             </NeoButton>
           )}
         </div>

@@ -153,7 +153,7 @@ const LeaderboardModal = ({ onClose }) => {
                     <div className="w-4 h-4 rounded-full border-2 border-black bg-black"></div>
                 </div>
                 <div className="font-black font-mono text-lg uppercase tracking-widest text-white">
-                    LEADERBOARD.EXE
+                    BANG_XEP_HANG.EXE
                 </div>
                 <button onClick={onClose} className="hover:bg-black hover:text-white p-1 border-2 border-transparent hover:border-white transition-all">
                     <X size={20} className="text-black hover:text-white" strokeWidth={3} />
@@ -167,7 +167,7 @@ const LeaderboardModal = ({ onClose }) => {
                         TOP RUNNERS
                     </h2>
                     <p className="font-mono text-xs md:text-sm text-white/80 uppercase tracking-[0.3em]">
-                        Runner Quiz Championship • Season 1
+                        Giải Vô Địch Runner Quiz • Mùa 1
                     </p>
                 </div>
                 {/* Decorative grid or lines */}
@@ -175,12 +175,12 @@ const LeaderboardModal = ({ onClose }) => {
             </div>
 
             {/* Table Area */}
-            <div className="p-6 md:p-8 bg-[#FFDEE2] overflow-y-auto max-h-[50vh] custom-scrollbar">
+            <div className="p-6 md:p-8 bg-[#FFDEE2] overflow-y-auto max-h-[60vh] md:max-h-[70vh] custom-scrollbar">
                 
                 {/* Loading State */}
                 {loading && (
                     <div className="text-center py-8 font-mono text-black/50 animate-pulse">
-                        Loading scores...
+                        Đang tải bảng xếp hạng...
                     </div>
                 )}
 
@@ -194,7 +194,7 @@ const LeaderboardModal = ({ onClose }) => {
                 {/* Empty State */}
                 {!loading && !error && scores.length === 0 && (
                     <div className="text-center py-8 font-mono text-black/50">
-                        No scores yet! Be the first to play!
+                        Chưa có điểm nào! Hãy là người đầu tiên chơi!
                     </div>
                 )}
 
@@ -203,9 +203,9 @@ const LeaderboardModal = ({ onClose }) => {
                     <>
                         {/* Table Header */}
                         <div className="grid grid-cols-12 gap-4 mb-4 text-xs font-black font-mono uppercase tracking-widest text-black/50 border-b-2 border-black/10 pb-2">
-                            <div className="col-span-2 text-center">#</div>
-                            <div className="col-span-6">Agent</div>
-                            <div className="col-span-4 text-right">Score</div>
+                            <div className="col-span-2 text-center">Hạng</div>
+                            <div className="col-span-6">Người Chơi</div>
+                            <div className="col-span-4 text-right">Điểm</div>
                         </div>
 
                         {/* Top 1 Highlight */}
@@ -218,7 +218,7 @@ const LeaderboardModal = ({ onClose }) => {
                                     </div>
                                     <div className="col-span-6">
                                         <div className="font-black text-xl uppercase truncate">{topPlayer.playerName}</div>
-                                        <div className="text-xs font-mono bg-black text-white inline-block px-1">LEGEND</div>
+                                        <div className="text-xs font-mono bg-black text-white inline-block px-1">HUYỀN THOẠI</div>
                                     </div>
                                     <div className="col-span-4 text-right font-black text-2xl text-[#FF4757]">
                                         {topPlayer.score.toLocaleString()}
@@ -246,8 +246,8 @@ const LeaderboardModal = ({ onClose }) => {
             
             {/* Footer */}
             <div className="bg-black p-4 flex justify-between items-center text-white font-mono text-xs uppercase">
-                <span>Status: {loading ? 'LOADING...' : 'ONLINE'}</span>
-                <span className="animate-pulse">Waiting for challenger...</span>
+                <span>Trạng thái: {loading ? 'ĐANG TẢI...' : 'TRỰC TUYẾN'}</span>
+                <span className="animate-pulse">Đang chờ người thách đấu...</span>
             </div>
         </div>
     </div>
@@ -318,7 +318,7 @@ const GamesPage = () => {
                         className="bg-gold border-4 border-ink px-6 py-2 shadow-hard transform rotate-1"
                      >
                         <span className="font-mono font-bold uppercase tracking-widest text-sm md:text-base text-ink">
-                           Gamification Learning
+                           HỌC TẬP QUA TRÒ CHƠI
                         </span>
                      </motion.div>
 
@@ -327,17 +327,17 @@ const GamesPage = () => {
                         <motion.h1
                            initial={{ scale: 0.9, opacity: 0 }}
                            animate={{ scale: 1, opacity: 1 }}
-                           transition={{ delay: 0.1, type: "spring" }}
-                           className="font-display font-black text-6xl md:text-8xl uppercase text-ink leading-[0.85] tracking-tighter drop-shadow-hard"
+                           transition={{ delay: 0.1, duration: 0.25, ease: "linear" }}
+                           className="font-display font-black text-6xl md:text-8xl uppercase text-ink leading-[0.85] tracking-tighter drop-shadow-[4px_4px_0px_#ffd700]"
                         >
-                           ARENA
+                           ĐẤU TRƯỜNG
                         </motion.h1>
 
                         <motion.h1
                            initial={{ scale: 0.9, opacity: 0 }}
                            animate={{ scale: 1, opacity: 1 }}
-                           transition={{ delay: 0.2, type: "spring" }}
-                           className="font-display font-black text-6xl md:text-8xl uppercase text-transparent text-stroke-red leading-[0.85] tracking-tighter"
+                           transition={{ delay: 0.2, duration: 0.25, ease: "linear" }}
+                           className="font-display font-black text-6xl md:text-8xl uppercase text-crimson leading-[0.85] tracking-tighter drop-shadow-[4px_4px_0px_#000000]"
                         >
                            TRÍ TUỆ
                         </motion.h1>
@@ -348,14 +348,12 @@ const GamesPage = () => {
                     </KineticSubline>
                 </div>
 
-                <div className="max-w-5xl mx-auto w-full relative z-10">
-                    <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+                <div className="max-w-6xl mx-auto w-full relative z-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
                         {games.map((game) => (
-                            <Card
+                            <div
                                 key={game.id}
-                                variant="default"
-                                hoverEffect
-                                className={`p-8 flex flex-col h-full border-t-8 ${game.color} transform transition-all duration-300 hover:scale-105`}
+                                className={`brutal-card p-8 flex flex-col h-full border-t-8 bg-white border-2 border-ink ${game.color} transform transition-transform duration-300 hover:scale-102`}
                             >
                                 <div className="mb-6 flex justify-between items-start">
                                     <div className="p-4 bg-bone rounded-full border-2 border-ink shadow-sm group-hover:bg-gold transition-colors">
@@ -393,7 +391,7 @@ const GamesPage = () => {
                                         Hướng dẫn
                                     </Button>
                                 </div>
-                            </Card>
+                            </div>
                         ))}
                     </div>
 
@@ -408,7 +406,7 @@ const GamesPage = () => {
                                     <div className="flex items-center justify-center md:justify-start gap-4 mb-2">
                                         <Trophy className="text-[#FFD700]" size={48} strokeWidth={2.5} />
                                         <h3 className="font-black text-4xl md:text-5xl text-[#FFD700] uppercase tracking-tighter [text-shadow:4px_4px_0px_#000]">
-                                            Runner Quiz<br/>Rankings
+                                            Bảng Xếp Hạng<br/>Runner Quiz
                                         </h3>
                                     </div>
                                     <p className="text-white/80 text-lg font-mono mt-4 max-w-2xl bg-black/50 inline-block px-2">
@@ -436,3 +434,4 @@ const GamesPage = () => {
 
 
 export default GamesPage;
+

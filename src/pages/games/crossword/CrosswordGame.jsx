@@ -364,7 +364,7 @@ const CrosswordGame = ({ onClose }) => {
                   </div>
                   <div className="flex-1 bg-[#FACC15] border-4 border-black p-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                     <div className="text-xs font-black uppercase mb-1">
-                      Key Word
+                      Từ Khóa
                     </div>
                     <div className="text-xl font-black truncate tracking-tighter">
                       {gameState === "won" ? VERTICAL_WORD : "???"}
@@ -433,7 +433,7 @@ const CrosswordGame = ({ onClose }) => {
                           type="submit"
                           className="flex-1 h-12 bg-black text-white font-black uppercase tracking-wider border-2 border-black hover:bg-white hover:text-black transition-colors shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
                         >
-                          ENTER
+                          XÁC NHẬN
                         </button>
                         <button
                           type="button"
@@ -462,7 +462,7 @@ const CrosswordGame = ({ onClose }) => {
 
           {/* Status Bar */}
           <div className="bg-black text-white px-4 py-1 text-xs font-mono flex justify-between uppercase">
-            <span>SYSTEM_READY</span>
+            <span>HỆ THỐNG_SẴN SÀNG</span>
             <span>VNR202-SHOWCASE v2.0</span>
           </div>
         </div>

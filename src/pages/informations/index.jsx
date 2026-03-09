@@ -20,30 +20,23 @@ import Card from "../../components/ui/Card";
 
 const members = [
   {
-    name: "Lê Thị Thanh Thúy",
-    studentCode: "SE170111",
+    name: "Ông Trần Hải Triều",
+    studentCode: "SE173617",
     role: "leader",
-    gender: "female",
+    gender: "male",
     task: [
       "Tìm kiếm và đóng góp tư liệu học thuật",
       "Điều phối tiến độ, rà soát học thuật",
     ],
   },
   {
-    name: "Nguyễn Tấn Phát",
-    studentCode: "SE183397",
-    role: "member",
-    gender: "male",
-    task: ["Biên tập nội dung thuyết trình", "Thiết kế & xây dựng website"],
-  },
-  {
-    name: "Châu Vĩnh Tiến",
-    studentCode: "SE183243",
+    name: "Ngô Khai Nguyên",
+    studentCode: "SE150947",
     role: "member",
     gender: "male",
     task: [
-      "Thu thập tư liệu, số liệu cho website",
-      "Tìm kiếm và đóng góp tư liệu học thuật",
+      "Biên tập nội dung thuyết trình",
+      "Kiểm thử và đánh giá trải nghiệm",
     ],
   },
   {
@@ -62,8 +55,8 @@ const members = [
     role: "member",
     gender: "male",
     task: [
-      "Tích hợp và phát triển chatbot AI", 
-      "Kiểm thử và đánh giá trải nghiệm"
+      "Thiết kế & xây dựng website",
+      "Thu thập tư liệu, số liệu cho website",
     ],
   },
 ];
@@ -75,9 +68,9 @@ const references = [
     link: "https://drive.google.com/file/d/1fgQf9P5Vc77CiIkhcXfs65qgAFgWlp9u/view",
   },
   {
-    title: "Slide bài giảng VNR202 - FPT University",
+    title: "Tài liệu môn VNR202 - FPT University",
     type: "document",
-    link: "https://drive.google.com/drive/folders/1QupRI2q9CcG8rycs1V7Hqd1iGvfzv1Q5",
+    link: "https://drive.google.com/drive/folders/14fM8b59OFX9CHfEMl449oWC7k-N4Te0O",
   },
 ];
 
@@ -87,11 +80,8 @@ const ProfileCard = ({ member }) => {
   const avatarSrc = isFemale ? "/images/user/female.png" : "/images/user/male.png";
 
   return (
-    <Card
-      variant="default"
-      hoverEffect
-      className={`relative group h-full flex flex-col p-6 overflow-hidden border-2 border-ink shadow-hard bg-white`}
-      hasDecorativeCorners={false}
+    <div
+      className={`brutal-card relative group h-full flex flex-col p-6 overflow-hidden border-4 border-ink shadow-hard bg-white`}
     >
       <div className="flex justify-between items-start mb-6">
         {/* Avatar Image */}
@@ -115,7 +105,7 @@ const ProfileCard = ({ member }) => {
           </h3>
           <div className="text-sm font-mono text-ink/60 mb-1">{member.studentCode}</div>
           <span className={`inline-block px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider border border-ink ${isLeader ? 'bg-gold text-ink' : 'bg-gray-100 text-ink/70'}`}>
-            {isLeader ? "Leader" : "Member"}
+            {isLeader ? "Trưởng Nhóm" : "Thành Viên"}
           </span>
         </div>
       </div>
@@ -131,7 +121,7 @@ const ProfileCard = ({ member }) => {
           ))}
         </ul>
       </div>
-    </Card>
+    </div>
   );
 };
 
@@ -151,7 +141,7 @@ const ReferenceCard = ({ reference }) => {
       href={reference.link}
       target="_blank"
       rel="noopener noreferrer"
-      className="block group relative bg-white border-2 border-ink shadow-hard hover:shadow-hard-lg hover:-translate-y-1 transition-all h-full"
+      className="block group brutal-card relative bg-bone border-4 border-ink shadow-hard hover:shadow-[4px_4px_0_0_#d91c1c] hover:translate-y-[-4px] hover:-translate-x-1 transition-all h-full"
     >
       <div className="p-6 flex flex-col h-full">
         <div className="mb-4 flex items-center justify-between">
@@ -180,10 +170,10 @@ const InformationsPage = () => {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-orange-600 border-4 border-ink px-6 py-2 shadow-hard transform rotate-1"
+            className="bg-gold border-4 border-ink px-6 py-2 shadow-hard transform rotate-1"
           >
-            <span className="font-mono font-bold uppercase tracking-widest text-sm md:text-base text-white">
-              Project Profile
+            <span className="font-mono font-bold uppercase tracking-widest text-sm md:text-base text-ink">
+              THÔNG TIN CHUNG
             </span>
           </motion.div>
 
@@ -192,8 +182,8 @@ const InformationsPage = () => {
             <motion.h1
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.1, type: "spring" }}
-              className="font-display font-black text-6xl md:text-8xl uppercase text-ink leading-[0.85] tracking-tighter drop-shadow-hard"
+              transition={{ delay: 0.1, duration: 0.25, ease: "linear" }}
+              className="font-display font-black text-6xl md:text-8xl uppercase text-ink leading-[0.85] tracking-tighter drop-shadow-[4px_4px_0px_#ffd700]"
             >
               HỒ SƠ
             </motion.h1>
@@ -201,8 +191,8 @@ const InformationsPage = () => {
             <motion.h1
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.2, type: "spring" }}
-              className="font-display font-black text-6xl md:text-8xl uppercase text-transparent text-stroke-black leading-[0.85] tracking-tighter"
+              transition={{ delay: 0.2, duration: 0.25, ease: "linear" }}
+              className="font-display font-black text-6xl md:text-8xl uppercase text-crimson leading-[0.85] tracking-tighter drop-shadow-[4px_4px_0px_#000000]"
             >
               DỰ ÁN
             </motion.h1>
@@ -223,9 +213,9 @@ const InformationsPage = () => {
             <div className="h-px bg-ink/30 flex-1 max-w-[100px]"></div>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {members.map((m, index) => (
-              <div key={index} className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1rem)] max-w-sm">
+              <div key={index} className="w-full h-full">
                 <ProfileCard member={m} />
               </div>
             ))}
@@ -242,9 +232,9 @@ const InformationsPage = () => {
             <div className="h-px bg-ink/30 flex-1 max-w-[100px]"></div>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {references.map((ref, index) => (
-              <div key={index} className="w-full md:w-[calc(50%-0.75rem)] max-w-md">
+              <div key={index} className="w-full h-full">
                 <ReferenceCard reference={ref} index={index} />
               </div>
             ))}
@@ -254,7 +244,7 @@ const InformationsPage = () => {
         {/* Footer Note */}
         <div className="text-center pb-12 opacity-50">
           <p className="font-mono text-xs uppercase tracking-widest text-ink">
-            FPT University &copy; 2026
+            Đại học FPT &copy; 2026
           </p>
         </div>
       </Section>
@@ -263,3 +253,4 @@ const InformationsPage = () => {
 };
 
 export default InformationsPage;
+

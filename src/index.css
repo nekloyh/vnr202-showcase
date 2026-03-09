@@ -2,17 +2,18 @@
 
 @theme {
   /* COLORS */
-  --color-bone: #fffdf5;
-  --color-paper: #f2efe9;
-  --color-ink: #000000;
-  --color-crimson: #ff2a2a;
-  --color-gold: #ffd700;
+  --color-bone: #DFD8C8;
+  --color-paper: #EAE6DA;
+  --color-ink: #1C1C1A;
+  --color-crimson: #9B1B30;
+  --color-gold: #C89B3C;
+  --color-olive: #4A5D23;
   --color-ember: #ff5500;
   --color-mint: #00ff99;
-  --color-charcoal: #1a1a1a;
-  --color-graphite: #333333;
-  --color-sand: #f0f0e0;
-  --color-void: #050505;
+  --color-charcoal: #2A2A28;
+  --color-graphite: #3A3A36;
+  --color-sand: #D0CBBF;
+  --color-void: #0A0A09;
 
   /* SHADOWS (Hard Shadows) */
   --shadow-hard-sm: 2px 2px 0px 0px var(--color-ink);
@@ -40,9 +41,9 @@
 /* BASE STYLES */
 :root {
   /* Typography */
-  --font-display: "Oswald", "Impact", "Arial Black", sans-serif;
+  --font-display: "Oswald", "Archivo Black", "Impact", sans-serif;
   --font-body: "Be Vietnam Pro", "Inter", "Arial", sans-serif;
-  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+  --font-mono: "IBM Plex Mono", "JetBrains Mono", monospace;
 
   /* Base Colors */
   --color-bg-default: var(--color-bone);
@@ -91,6 +92,60 @@ body {
   color: transparent;
 }
 
+.text-stroke-ink {
+  -webkit-text-stroke: 1.5px var(--color-ink);
+  color: transparent;
+}
+
+/* BRUTALIST COMPONENTS */
+@layer components {
+  .brutal-card {
+    border: 2px solid var(--color-ink);
+    background-color: #ffffff;
+    box-shadow: var(--shadow-hard);
+    padding: 2rem;
+  }
+
+  .brutal-button {
+    border: 2px solid var(--color-ink);
+    box-shadow: var(--shadow-hard);
+    background-color: var(--color-bone);
+    color: var(--color-ink);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.2s cubic-bezier(0.87, 0, 0.13, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .brutal-button:hover {
+    box-shadow: var(--shadow-hard-lg);
+    transform: translate(-4px, -4px);
+  }
+  
+  .brutal-button:active {
+    box-shadow: none;
+    transform: translate(0, 0);
+  }
+
+  .brutal-badge {
+    border: 2px solid var(--color-ink);
+    background-color: var(--color-crimson);
+    color: #ffffff;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    display: inline-block;
+  }
+}
+
 /* UTILITIES */
 .snap-container {
   height: 100vh;
@@ -123,7 +178,7 @@ body {
 
 /* GLOBAL SCROLLBAR */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 16px;
 }
 
 ::-webkit-scrollbar-track {
@@ -133,7 +188,9 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: var(--color-ink);
-  border: 2px solid var(--color-bone);
+  border-top: 2px solid var(--color-ink);
+  border-bottom: 2px solid var(--color-ink);
+  border-left: 2px solid var(--color-ink);
 }
 
 ::-webkit-scrollbar-thumb:hover {

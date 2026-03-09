@@ -53,7 +53,7 @@ export default function Leaderboard({
   if (loading && !data) {
     return (
       <div className={`flex flex-col items-center justify-center p-4 ${className}`}>
-        <div className="text-gray-500 font-bold animate-pulse">Loading leaderboard...</div>
+        <div className="text-gray-500 font-bold animate-pulse">Đang tải bảng xếp hạng...</div>
       </div>
     );
   }
@@ -67,7 +67,7 @@ export default function Leaderboard({
           onClick={loadLeaderboard}
           className="px-3 py-1 bg-gray-200 border-2 border-black text-sm font-bold hover:bg-gray-300"
         >
-          Retry
+          Thử lại
         </button>
       </div>
     );
@@ -78,8 +78,8 @@ export default function Leaderboard({
     return (
       <div className={`flex flex-col items-center justify-center p-4 ${className}`}>
         <div className="text-gray-400 font-bold text-center">
-          No scores yet!<br />
-          <span className="text-sm">Be the first to play!</span>
+          Chưa có điểm nào!<br />
+          <span className="text-sm">Hãy là người đầu tiên chơi!</span>
         </div>
       </div>
     );
@@ -90,10 +90,10 @@ export default function Leaderboard({
       {/* Header */}
       <div className="flex items-center justify-between px-3 py-2 bg-[#FFD400] border-b-[3px] border-black">
         <span className="font-black uppercase tracking-widest text-sm text-black">
-          🏆 Leaderboard
+          🏆 BẢNG XẾP HẠNG
         </span>
         {loading && (
-          <span className="text-xs text-black/50 animate-pulse">Updating...</span>
+          <span className="text-xs text-black/50 animate-pulse">Đang cập nhật...</span>
         )}
       </div>
 

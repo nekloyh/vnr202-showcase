@@ -473,7 +473,7 @@ export default function RunnerQuiz3D({ onClose }) {
                         {/* Quiz Header Bar with Score Display */}
                         <div className="flex bg-[#FFD400] text-black border-b-[3px] border-black px-4 py-2 justify-between items-center gap-3">
                             <span className="font-black uppercase tracking-widest text-sm shrink-0">
-                                {activeQuestion ? `QUESTION ${questionCount.toString().padStart(2, '0')}` : "CHECKPOINT AHEAD"}
+                                {activeQuestion ? `CÂU HỎI ${questionCount.toString().padStart(2, '0')}` : "KIỂM TRA CHƯỚNG NGẠI VẬT"}
                             </span>
                             
                             {/* Score Display - Shows potential score in real-time */}
@@ -516,7 +516,7 @@ export default function RunnerQuiz3D({ onClose }) {
                         <div className="p-4 flex flex-col gap-4">
                             {/* Question */}
                             <div className="text-lg md:text-xl font-black leading-tight text-center min-h-[3rem] flex items-center justify-center">
-                                {activeQuestion ? activeQuestion.question : <span className="opacity-40 tracking-widest">AWAITING NEXT QUESTION...</span>}
+                                {activeQuestion ? activeQuestion.question : <span className="opacity-40 tracking-widest">ĐANG CHỜ CÂU HỎI TIẾP THEO...</span>}
                             </div>
 
                             {/* (B) Answer Grid 2x2 */}
@@ -601,7 +601,7 @@ export default function RunnerQuiz3D({ onClose }) {
                                     ${feedback.type === 'CORRECT' ? 'bg-[#00C853]' : 'bg-[#FF3B30]'}
                                 `}>
                                     <div className="text-8xl font-black italic text-white drop-shadow-[8px_8px_0px_#000] whitespace-nowrap tracking-tighter">
-                                        {feedback.type === 'CORRECT' ? 'PERFECT!' : 'WRONG!'}
+                                        {feedback.type === 'CORRECT' ? 'CHÍNH XÁC!' : 'SAI RỒI!'}
                                     </div>
                                     {feedback.score !== undefined && feedback.type === 'CORRECT' && (
                                         <div className="mt-4 text-center text-white font-mono font-black text-4xl drop-shadow-[4px_4px_0px_#000]">
@@ -626,9 +626,9 @@ export default function RunnerQuiz3D({ onClose }) {
                     {/* (A) Header */}
                     <div className="p-4 border-b-[3px] border-black bg-white">
                         <div className="flex flex-col gap-1">
-                            <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">CURRENT ROUND</span>
+                            <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">VÒNG HIỆN TẠI</span>
                             <div className="text-2xl font-black">
-                                QUESTION {questionCount.toString().padStart(2, '0')}
+                                CÂU HỎI {questionCount.toString().padStart(2, '0')}
                             </div>
                         </div>
                     </div>
@@ -638,7 +638,7 @@ export default function RunnerQuiz3D({ onClose }) {
 
                         {/* Stats: Lives */}
                         <div className="flex flex-col gap-2">
-                            <div className="text-[10px] font-black uppercase tracking-widest text-gray-500">HEARTS</div>
+                            <div className="text-[10px] font-black uppercase tracking-widest text-gray-500">MẠNG</div>
                             <div className="flex flex-wrap gap-2">
                                 {Array.from({ length: GAME_CONFIG.MAX_HEARTS }).map((_, i) => (
                                     <NeoHeart key={i} active={i < hearts} />
@@ -648,7 +648,7 @@ export default function RunnerQuiz3D({ onClose }) {
 
                         {/* Stats: Score */}
                         <div className="flex flex-col gap-2">
-                            <div className="text-[10px] font-black uppercase tracking-widest text-gray-500">TOTAL SCORE</div>
+                            <div className="text-[10px] font-black uppercase tracking-widest text-gray-500">TỔNG ĐIỂM</div>
                             <div className="border-[3px] border-black bg-white p-3 shadow-[4px_4px_0px_#000]">
                                 <div className="text-4xl font-black font-mono text-right tracking-tighter text-black">
                                     {score.toString().padStart(5, '0')}
@@ -668,7 +668,7 @@ export default function RunnerQuiz3D({ onClose }) {
 
                         {/* Controls hint */}
                         <div className="opacity-30 pt-2">
-                            <div className="text-[10px] font-black uppercase text-center mb-1">CONTROLS</div>
+                            <div className="text-[10px] font-black uppercase text-center mb-1">ĐIỀU KHIỂN</div>
                             <div className="grid grid-cols-4 gap-1 text-center text-xs font-bold font-mono">
                                 <div className="border border-black p-1">←</div>
                                 <div className="border border-black p-1">→</div>
@@ -692,14 +692,14 @@ export default function RunnerQuiz3D({ onClose }) {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
                                     </svg>
-                                    SOUND OFF
+                                    TẮT ÂM THANH
                                 </>
                             ) : (
                                 <>
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
                                     </svg>
-                                    SOUND ON
+                                    BẬT ÂM THANH
                                 </>
                             )}
                         </button>
@@ -712,7 +712,7 @@ export default function RunnerQuiz3D({ onClose }) {
                             variant="danger"
                             className="w-full text-sm py-2 shadow-[3px_3px_0px_#000]"
                         >
-                            EXIT
+                            THOÁT
                         </NeoButton>
                     </div>
 
@@ -753,10 +753,10 @@ export default function RunnerQuiz3D({ onClose }) {
                                 TERMINATED
                             </div>
 
-                            <h2 className="text-5xl font-black uppercase text-black leading-none mt-2">Game Over</h2>
+                            <h2 className="text-5xl font-black uppercase text-black leading-none mt-2">TRÒ CHƠI KẾT THÚC</h2>
 
                             <div className="bg-black text-[#FFD400] p-6 border-[3px] border-gray-800 w-full shadow-[6px_6px_0px_#888]">
-                                <div className="text-xs text-gray-400 font-bold tracking-widest mb-1">FINAL SCORE</div>
+                                <div className="text-xs text-gray-400 font-bold tracking-widest mb-1">ĐIỀM CUỐI CÙNG</div>
                                 <div className="text-6xl font-black">{score.toLocaleString()}</div>
                             </div>
 
@@ -771,7 +771,7 @@ export default function RunnerQuiz3D({ onClose }) {
                             </div>
 
                             <NeoButton onClick={handleRestart} variant="primary" className="w-full py-4 text-xl">
-                                TRY AGAIN
+                                CHƠI LẠI
                             </NeoButton>
                         </NeoCard>
                     </div>
@@ -783,11 +783,11 @@ export default function RunnerQuiz3D({ onClose }) {
                         <NeoCard className="w-full max-w-lg text-center bg-[#FAF7F0] p-6 flex flex-col gap-6 items-center shadow-[16px_16px_0px_#000]">
                             {/* Victory Badge */}
                             <div className="bg-[#00C853] text-white px-6 py-2 text-lg font-black uppercase tracking-widest border-[3px] border-black shadow-[4px_4px_0px_#000] -rotate-2 animate-pulse">
-                                🏆 CHAMPION 🏆
+                                🏆 NHÀ VÔ ĐỊCH 🏆
                             </div>
 
                             <h2 className="text-5xl font-black uppercase text-black leading-none mt-2">
-                                VICTORY!
+                                CHIẾN THẮNG!
                             </h2>
 
                             <p className="text-gray-600 font-bold">

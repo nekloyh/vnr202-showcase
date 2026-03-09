@@ -81,11 +81,8 @@ const ToolCard = ({ item }) => {
   const Icon = item.icon;
 
   return (
-    <Card
-      variant="default"
-      hoverEffect
-      className="h-full flex flex-col p-6 md:p-8 bg-white border-4 border-ink shadow-hard"
-      hasDecorativeCorners={false}
+    <div
+      className="brutal-card h-full flex flex-col p-6 md:p-8 bg-bone border-4 border-ink shadow-[8px_8px_0_0_#000000]"
     >
       <div className="flex-1">
         {/* Header */}
@@ -158,7 +155,7 @@ const ToolCard = ({ item }) => {
           {item.status}
         </div>
       </div>
-    </Card>
+    </div>
   );
 };
 
@@ -175,7 +172,7 @@ const AiUsagePage = () => {
             className="bg-blue-600 border-4 border-ink px-6 py-2 shadow-hard transform rotate-1"
           >
             <span className="font-mono font-bold uppercase tracking-widest text-sm md:text-base text-white">
-              Transparency Report
+              Báo cáo học thuật
             </span>
           </motion.div>
 
@@ -184,8 +181,8 @@ const AiUsagePage = () => {
             <motion.h1
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.1, type: "spring" }}
-              className="font-display font-black text-6xl md:text-8xl uppercase text-ink leading-[0.85] tracking-tighter drop-shadow-hard"
+              transition={{ delay: 0.1, duration: 0.25, ease: "linear" }}
+              className="font-display font-black text-6xl md:text-8xl uppercase text-ink leading-[0.85] tracking-tighter drop-shadow-[4px_4px_0px_#ffd700]"
             >
               AI TOOLS
             </motion.h1>
@@ -193,8 +190,8 @@ const AiUsagePage = () => {
             <motion.h1
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.2, type: "spring" }}
-              className="font-display font-black text-6xl md:text-8xl uppercase text-transparent text-stroke-black leading-[0.85] tracking-tighter"
+              transition={{ delay: 0.2, duration: 0.25, ease: "linear" }}
+              className="font-display font-black text-6xl md:text-8xl uppercase text-crimson leading-[0.85] tracking-tighter drop-shadow-[4px_4px_0px_#000000]"
             >
               USAGE
             </motion.h1>
@@ -206,9 +203,9 @@ const AiUsagePage = () => {
         </div>
 
         {/* Tools Section */}
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 mb-24">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 lg:gap-10 mb-24">
           {tools.map((item, index) => (
-            <div key={item.name} className={index === 2 ? "lg:col-span-2 lg:w-2/3 lg:mx-auto" : ""}>
+            <div key={item.name} className="h-full">
               <ToolCard item={item} index={index} />
             </div>
           ))}
@@ -249,3 +246,4 @@ const AiUsagePage = () => {
 };
 
 export default AiUsagePage;
+

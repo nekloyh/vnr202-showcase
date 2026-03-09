@@ -45,8 +45,8 @@ export default function Header() {
 
   const navItems = [
     { name: "Trang chủ", path: "/" },
-    { name: "Bối cảnh lịch sử", path: "/bo-may-nha-nuoc" },
-    { name: "Tranh luận & Kết luận", path: "/dang-va-nhan-dan" },
+    { name: "Bối cảnh lịch sử", path: "/boi-canh-lich-su" },
+    { name: "Tranh luận & Kết luận", path: "/tranh-luan-ket-luan" },
     { name: "Trò chơi", path: "/tro-choi" },
     { name: "Trợ lý VNR202", path: "/ai-chatbot" },
     { name: "Công cụ AI", path: "/ai-usage" },
@@ -59,7 +59,7 @@ export default function Header() {
   };
 
   const headerBgClass = "bg-bone border-b-2 border-ink";
-  const headerShadowClass = scrolled ? "shadow-hard" : "";
+  const headerShadowClass = scrolled ? "shadow-hard-md" : "";
 
   return (
     <>
@@ -72,11 +72,11 @@ export default function Header() {
           {/* Logo / Brand */}
           <div
             onClick={() => handleNavigate("/")}
-            className="font-display text-3xl text-ink cursor-pointer select-none hover:translate-x-1 transition-transform tracking-tighter leading-none uppercase border-2 border-transparent hover:border-ink hover:bg-gold p-1"
+            className="font-display text-3xl text-ink cursor-pointer select-none border-2 border-transparent hover:border-ink hover:bg-gold hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard p-1 transition-all"
           >
             VNR<span className="text-crimson">202</span>
-            <span className="hidden md:inline-block ml-3 text-xs font-mono tracking-widest text-ink/60 border-l-2 border-ink/20 pl-3">
-              HISTORICAL INQUIRY
+            <span className="hidden md:inline-block ml-3 text-xs font-mono font-bold tracking-widest text-ink/60 border-l-2 border-ink pl-3">
+              LỊCH SỬ ĐẢNG
             </span>
           </div>
 
@@ -140,7 +140,7 @@ export default function Header() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "tween", duration: 0.3 }}
-              className="absolute right-0 top-0 h-full w-4/5 max-w-sm bg-bone border-l-2 border-ink shadow-2xl p-6 pt-24"
+              className="absolute right-0 top-0 h-full w-4/5 max-w-sm bg-bone border-l-4 border-ink shadow-[-12px_12px_0_0_rgba(0,0,0,1)] p-6 pt-24"
             >
               <div className="flex flex-col gap-4">
                 <div className="border-b-2 border-ink pb-4 mb-4">
