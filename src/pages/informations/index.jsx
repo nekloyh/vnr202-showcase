@@ -177,24 +177,14 @@ const InformationsPage = () => {
             </span>
           </motion.div>
 
-          {/* Main Title Block */}
           <div className="relative text-center">
             <motion.h1
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.1, duration: 0.25, ease: "linear" }}
-              className="font-display font-black text-6xl md:text-8xl uppercase text-ink leading-[0.85] tracking-tighter drop-shadow-[4px_4px_0px_#ffd700]"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className="font-display font-black text-5xl md:text-7xl lg:text-8xl uppercase text-ink tracking-tight text-center leading-tight drop-shadow-[4px_4px_0px_#ffd700]"
             >
-              HỒ SƠ
-            </motion.h1>
-
-            <motion.h1
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.25, ease: "linear" }}
-              className="font-display font-black text-6xl md:text-8xl uppercase text-crimson leading-[0.85] tracking-tighter drop-shadow-[4px_4px_0px_#000000]"
-            >
-              DỰ ÁN
+              HỒ SƠ <span className="text-crimson">DỰ ÁN</span>
             </motion.h1>
           </div>
 

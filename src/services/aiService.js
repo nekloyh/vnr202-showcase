@@ -1,11 +1,8 @@
-import {
-  AI_CONFIG,
-  PROVIDER_CONFIGS,
-  MOCK_RESPONSES,
-} from "../data/aiConfig";
+import { AI_CONFIG, PROVIDER_CONFIGS, MOCK_RESPONSES } from "../data/aiConfig";
 
 // Debug logging helper - only logs in development
-const isDev = import.meta.env.VITE_NODE_ENV === 'development' || import.meta.env.DEV;
+const isDev =
+  import.meta.env.VITE_NODE_ENV === "development" || import.meta.env.DEV;
 const debug = (...args) => isDev && console.log(...args);
 const debugWarn = (...args) => isDev && console.warn(...args);
 const debugError = (...args) => console.error(...args); // Always log errors
@@ -21,11 +18,9 @@ export const sendMessageToAI = async (message, previousMessages = []) => {
   try {
     const { groqApiKey, geminiApiKey, systemPrompt } = AI_CONFIG;
 
-    // Debug logging
     debug("Groq API key available:", groqApiKey ? "Yes" : "No");
     debug("Gemini API key available:", geminiApiKey ? "Yes" : "No");
 
-    // Check if any API key is available
     const hasGroqKey = groqApiKey && groqApiKey.trim() !== "";
     const hasGeminiKey = geminiApiKey && geminiApiKey.trim() !== "";
 
@@ -34,7 +29,6 @@ export const sendMessageToAI = async (message, previousMessages = []) => {
       return getMockResponse(message);
     }
 
-    // Format previous messages for context
     const formattedMessages = previousMessages
       .filter((msg) => msg.role === "user" || msg.role === "assistant")
       .map((msg) => ({
@@ -42,10 +36,9 @@ export const sendMessageToAI = async (message, previousMessages = []) => {
         content: msg.content,
       }));
 
-    // Strategy: Groq first, Gemini as backup
     if (hasGroqKey) {
       try {
-        debug("🚀 Trying Groq API (primary)...");
+        debug("Trying Groq API (primary)...");
         const messages = [
           { role: "system", content: systemPrompt },
           ...formattedMessages,
@@ -53,21 +46,19 @@ export const sendMessageToAI = async (message, previousMessages = []) => {
         ];
         return await sendToGroq(messages, groqApiKey);
       } catch (groqError) {
-        debugWarn("⚠️ Groq API error:", groqError.message);
+        debugWarn("Groq API error:", groqError.message);
 
-        // Check if it's a rate limit/overload error
         if (isOverloadError(groqError) && hasGeminiKey) {
-          debug("🔄 Switching to Gemini API (backup)...");
+          debug("Switching to Gemini API (backup)...");
           try {
             return await sendToGemini(
               message,
               formattedMessages,
               geminiApiKey,
-              systemPrompt
+              systemPrompt,
             );
           } catch (geminiError) {
-            debugWarn("⚠️ Gemini API also failed:", geminiError.message);
-            // Trả về thông báo rate limit nếu cả 2 API đều quá tải
+            debugWarn("Gemini API also failed:", geminiError.message);
             if (isOverloadError(geminiError)) {
               return getMockResponse(message, "rateLimit");
             }
@@ -75,18 +66,17 @@ export const sendMessageToAI = async (message, previousMessages = []) => {
           }
         }
 
-        // If not overload error or no Gemini key, fallback to mock
         if (hasGeminiKey) {
-          debug("🔄 Trying Gemini API as fallback...");
+          debug("Trying Gemini API as fallback...");
           try {
             return await sendToGemini(
               message,
               formattedMessages,
               geminiApiKey,
-              systemPrompt
+              systemPrompt,
             );
           } catch (geminiError) {
-            debugWarn("⚠️ Gemini API also failed:", geminiError.message);
+            debugWarn("Gemini API also failed:", geminiError.message);
             if (isOverloadError(geminiError)) {
               return getMockResponse(message, "rateLimit");
             }
@@ -94,24 +84,22 @@ export const sendMessageToAI = async (message, previousMessages = []) => {
           }
         }
 
-        // Groq lỗi và không có Gemini
         if (isOverloadError(groqError)) {
           return getMockResponse(message, "rateLimit");
         }
         return getMockResponse(message, "apiError");
       }
     } else if (hasGeminiKey) {
-      // Only Gemini key available
-      debug("🚀 Using Gemini API (no Groq key)...");
+      debug("Using Gemini API (no Groq key)...");
       try {
         return await sendToGemini(
           message,
           formattedMessages,
           geminiApiKey,
-          systemPrompt
+          systemPrompt,
         );
       } catch (err) {
-        debugWarn("⚠️ Gemini API error:", err.message);
+        debugWarn("Gemini API error:", err.message);
         if (isOverloadError(err)) {
           return getMockResponse(message, "rateLimit");
         }
@@ -148,14 +136,17 @@ const isOverloadError = (error) => {
 /**
  * Send message to Google Gemini API
  */
-const sendToGemini = async (message, previousMessages, apiKey, systemPrompt) => {
+const sendToGemini = async (
+  message,
+  previousMessages,
+  apiKey,
+  systemPrompt,
+) => {
   debug("Sending request to Gemini API...");
   const config = PROVIDER_CONFIGS.gemini;
 
-  // Build conversation history for Gemini format
   const contents = [];
 
-  // Add previous messages
   previousMessages.forEach((msg) => {
     contents.push({
       role: msg.role === "assistant" ? "model" : "user",
@@ -163,7 +154,6 @@ const sendToGemini = async (message, previousMessages, apiKey, systemPrompt) => 
     });
   });
 
-  // Add current user message
   contents.push({
     role: "user",
     parts: [{ text: message }],
@@ -219,7 +209,6 @@ const sendToGemini = async (message, previousMessages, apiKey, systemPrompt) => 
   const data = await res.json();
   debug("Gemini response:", data);
 
-  // Extract text from Gemini response
   const responseText =
     data.candidates?.[0]?.content?.parts?.[0]?.text ||
     "Không có nội dung trả về.";
@@ -228,7 +217,7 @@ const sendToGemini = async (message, previousMessages, apiKey, systemPrompt) => 
 };
 
 /**
- * Send message to Groq API (backup provider)
+ * Send message to Groq API
  */
 const sendToGroq = async (messages, apiKey) => {
   debug("Sending request to Groq API...");
@@ -236,9 +225,12 @@ const sendToGroq = async (messages, apiKey) => {
 
   const requestBody = {
     model: config.defaultModel,
-    temperature: config.temperature ?? 0.5,
+    temperature: config.temperature ?? 0.1,
+    max_tokens: config.maxTokens,
     messages,
     stream: false,
+    // Disable Qwen3 chain-of-thought thinking mode to prevent <think> blocks in output
+    thinking: { type: "disabled" },
   };
 
   const res = await fetch(config.baseUrl, {
@@ -258,75 +250,114 @@ const sendToGroq = async (messages, apiKey) => {
 
   const data = await res.json();
   debug("Groq response:", data);
-  return data.choices?.[0]?.message?.content || "Không có nội dung trả về.";
+
+  const content = data.choices?.[0]?.message?.content || "Không có nội dung trả về.";
+  // Strip any <think>...</think> reasoning blocks emitted by Qwen3
+  return content.replace(/<think>[\s\S]*?<\/think>\s*/gi, "").trim() || "Không có nội dung trả về.";
+};
+
+/**
+ * Normalize text for keyword matching
+ */
+const normalizeText = (text = "") => {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/đ/g, "d");
 };
 
 /**
  * Get mock response for offline/testing mode
  */
 const getMockResponse = (message, errorType = null) => {
-  // Nếu có lỗi cụ thể, trả về thông báo tương ứng
   if (errorType === "rateLimit") {
     return MOCK_RESPONSES.rateLimit;
   }
+
   if (errorType === "apiError") {
     return MOCK_RESPONSES.apiError;
   }
 
-  const lowerMessage = message.toLowerCase();
+  const normalizedMessage = normalizeText(message);
 
-  // Kiểm tra từ khóa và trả về mock response phù hợp
-  
   // Lời chào
   if (
-    lowerMessage.includes("chào") ||
-    lowerMessage.includes("xin chào") ||
-    lowerMessage.includes("hello") ||
-    lowerMessage.includes("hi ")
+    normalizedMessage.includes("xin chao") ||
+    normalizedMessage.includes("chao") ||
+    normalizedMessage.includes("hello") ||
+    normalizedMessage.includes("hi")
   ) {
     return MOCK_RESPONSES.greeting;
   }
 
-  // Nhà nước pháp quyền
+  // Sự ra đời của Đảng (1920 - 1930)
   if (
-    lowerMessage.includes("nhà nước pháp quyền") ||
-    lowerMessage.includes("pháp quyền xhcn") ||
-    lowerMessage.includes("đặc trưng") ||
-    lowerMessage.includes("hiến pháp")
+    normalizedMessage.includes("su ra doi cua dang") ||
+    normalizedMessage.includes("ra doi cua dang") ||
+    normalizedMessage.includes("thanh lap dang") ||
+    normalizedMessage.includes("1920") ||
+    normalizedMessage.includes("1930") ||
+    normalizedMessage.includes("nguyen ai quoc") ||
+    normalizedMessage.includes("cuong linh chinh tri dau tien") ||
+    normalizedMessage.includes("chanh cuong van tat") ||
+    normalizedMessage.includes("sach luoc van tat")
   ) {
-    return MOCK_RESPONSES.nhanuoc;
+    return MOCK_RESPONSES.raDoiDang;
   }
 
-  // Mối quan hệ Đảng - Nhà nước - Nhân dân
+  // Giai đoạn 1930 - 1945
   if (
-    lowerMessage.includes("mối quan hệ") ||
-    lowerMessage.includes("đảng lãnh đạo") ||
-    lowerMessage.includes("nhân dân làm chủ") ||
-    lowerMessage.includes("nhà nước quản lý") ||
-    lowerMessage.includes("đảng - nhà nước")
+    normalizedMessage.includes("1930 - 1945") ||
+    normalizedMessage.includes("1930-1945") ||
+    normalizedMessage.includes("dau tranh gianh chinh quyen") ||
+    normalizedMessage.includes("xo viet nghe tinh") ||
+    normalizedMessage.includes("cao trao dan chu") ||
+    normalizedMessage.includes("cach mang thang tam") ||
+    normalizedMessage.includes("tong khoi nghia") ||
+    normalizedMessage.includes("khang nhat cuu nuoc")
   ) {
-    return MOCK_RESPONSES.moiquanhe;
+    return MOCK_RESPONSES.dauTranhGianhChinhQuyen;
   }
 
-  // Bộ máy nhà nước
+  // Giai đoạn 1945 - 1975
   if (
-    lowerMessage.includes("bộ máy") ||
-    lowerMessage.includes("quốc hội") ||
-    lowerMessage.includes("chính phủ") ||
-    lowerMessage.includes("chủ tịch nước") ||
-    lowerMessage.includes("tòa án") ||
-    lowerMessage.includes("viện kiểm sát")
+    normalizedMessage.includes("1945 - 1975") ||
+    normalizedMessage.includes("1945-1975") ||
+    normalizedMessage.includes("khang chien chong phap") ||
+    normalizedMessage.includes("khang chien chong my") ||
+    normalizedMessage.includes("dien bien phu") ||
+    normalizedMessage.includes("giai phong mien nam") ||
+    normalizedMessage.includes("thong nhat dat nuoc") ||
+    normalizedMessage.includes("dai thang mua xuan 1975")
   ) {
-    return MOCK_RESPONSES.bomay;
+    return MOCK_RESPONSES.khangChien;
   }
 
-  // Chủ nghĩa xã hội (chung)
+  // Giai đoạn 1975 - 2018
   if (
-    lowerMessage.includes("chủ nghĩa xã hội") ||
-    lowerMessage.includes("cnxh") ||
-    lowerMessage.includes("xã hội chủ nghĩa")
+    normalizedMessage.includes("1975 - 2018") ||
+    normalizedMessage.includes("1975-2018") ||
+    normalizedMessage.includes("doi moi") ||
+    normalizedMessage.includes("dai hoi vi") ||
+    normalizedMessage.includes("qua do len chu nghia xa hoi") ||
+    normalizedMessage.includes("cong nghiep hoa") ||
+    normalizedMessage.includes("hien dai hoa") ||
+    normalizedMessage.includes("hoi nhap quoc te")
   ) {
-    return MOCK_RESPONSES.nhanuoc;
+    return MOCK_RESPONSES.doiMoi;
+  }
+
+  // Tổng kết / ý nghĩa môn học
+  if (
+    normalizedMessage.includes("lich su dang") ||
+    normalizedMessage.includes("y nghia mon hoc") ||
+    normalizedMessage.includes("muc tieu mon hoc") ||
+    normalizedMessage.includes("tong ket") ||
+    normalizedMessage.includes("bai hoc kinh nghiem") ||
+    normalizedMessage.includes("y nghia hoc tap")
+  ) {
+    return MOCK_RESPONSES.tongKet;
   }
 
   return MOCK_RESPONSES.default;

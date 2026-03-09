@@ -123,8 +123,7 @@ const HomePage = () => {
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="flex items-start gap-6 brutal-card p-8 !bg-ink border-bone/20 !shadow-[8px_8px_0px_#fffdf5]"
+                className="flex items-start gap-6 brutal-card p-8 !bg-ink border-bone !shadow-[8px_8px_0px_#fffdf5]"
               >
                 <span className="font-display text-5xl font-black text-stroke-red text-transparent leading-none mt-0 shrink-0">
                   {String(idx + 1).padStart(2, "0")}
@@ -156,7 +155,7 @@ const HomePage = () => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="p-10 md:p-16 bg-white md:border-r-4 md:border-ink border-b-4 md:border-b-0 border-ink flex flex-col justify-center"
+              className="p-10 md:p-16 bg-paper md:border-r-4 md:border-ink border-b-4 md:border-b-0 border-ink flex flex-col justify-center"
             >
               <div className="inline-block self-start px-4 py-2 bg-crimson border-2 border-ink shadow-hard-sm text-bone font-mono text-sm font-bold uppercase tracking-widest mb-6">
                 Luồng Quan Điểm A
@@ -174,13 +173,12 @@ const HomePage = () => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="p-10 md:p-16 bg-bone flex flex-col justify-center"
+              className="p-10 md:p-16 bg-paper flex flex-col justify-center"
             >
               <div className="inline-block self-start px-4 py-2 bg-ink border-2 border-ink shadow-hard-sm text-bone font-mono text-sm font-bold uppercase tracking-widest mb-6">
                 Luồng Quan Điểm B
               </div>
-              <h3 className="font-display text-3xl md:text-5xl font-black text-ink uppercase mt-3 mb-8 drop-shadow-[2px_2px_0px_#ffffff]">
+              <h3 className="font-display text-3xl md:text-5xl font-black text-ink uppercase mt-3 mb-8 drop-shadow-[2px_2px_0px_#EAE6DA]">
                 Giải Phóng Dân Tộc
               </h3>
               <p className="font-body text-xl text-ink font-medium leading-relaxed">

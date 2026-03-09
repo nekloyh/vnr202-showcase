@@ -18,61 +18,61 @@ const timelineData = [
     year: "1954",
     event: "Ký kết Hiệp định Geneva",
     detail: "Việt Nam tạm thời bị chia cắt tại vĩ tuyến 17 sau chiến thắng Điện Biên Phủ.",
-    interpretation: "Tạo ra điều kiện cấu trúc cho việc xây dựng nhà nước cạnh tranh — điểm khởi đầu của 'hai nước Việt Nam' khiến vấn đề nội chiến trở nên khả dĩ.",
+    interpretation: "Điều này tạo ra điều kiện cấu trúc cho việc xây dựng nhà nước cạnh tranh — điểm khởi đầu của 'hai nước Việt Nam' khiến vấn đề nội chiến trở nên khả dĩ.",
   },
   {
     year: "1955",
     event: "Diệm củng cố quyền lực",
     detail: "Ngô Đình Diệm đánh bại các giáo phái đối lập, phế truất Bảo Đại và tuyên bố thành lập Việt Nam Cộng hòa.",
-    interpretation: "Thiết lập miền Nam như một thực thể chính trị riêng biệt — bằng chứng cho thấy có những dự án nhà nước Việt Nam cạnh tranh thực sự.",
+    interpretation: "Điều này ủng hộ lập luận nội chiến: Nó cho thấy mâu thuẫn phe phái không chỉ tồn tại giữa hai miền mà còn khốc liệt ngay trong lòng chính quyền miền Nam.",
   },
   {
     year: "1956",
     event: "Tuyển cử thống nhất không diễn ra",
     detail: "Miền Nam Việt Nam từ chối tham gia cuộc tổng tuyển cử toàn quốc.",
-    interpretation: "Miền Bắc coi đây là bằng chứng của sự cản trở do nước ngoài hậu thuẫn; miền Nam lập luận rằng bầu cử tự do là bất khả thi. Cả hai cách lý giải đều có cơ sở.",
+    interpretation: "Điều này làm phức tạp thêm cuộc tranh luận: Miền Bắc coi đây là sự cản trở do nước ngoài hậu thuẫn, trong khi miền Nam xem đây là hành động tự vệ chính đáng.",
   },
   {
     year: "1957–58",
     event: "Gia tăng đàn áp",
     detail: "Chiến dịch Tố Cộng, Diệt Cộng; bắt giữ hàng loạt, bỏ tù và tái định cư nông thôn.",
-    interpretation: "Tạo ra những mâu thuẫn nội tại ở miền Nam, điều sau này châm ngòi cho cuộc nổi dậy — làm phức tạp thêm mọi lập luận cho rằng cuộc chiến hoàn toàn là sự xâm lược từ miền Bắc.",
+    interpretation: "Sự kiện này củng cố góc nhìn nội chiến: Nó tạo ra những mâu thuẫn nội tại ở miền Nam, nguồn cơn trực tiếp châm ngòi cho cuộc nổi dậy cục bộ.",
   },
   {
     year: "1959",
     event: "Thông qua Nghị quyết 15",
     detail: "Đảng cho phép đấu tranh vũ trang ở miền Nam; Đoàn 559 mở các tuyến đường tiếp tế.",
-    interpretation: "Đánh dấu sự chuyển hướng từ đấu tranh chính trị sang quân sự. Hỗ trợ sự chỉ đạo của miền Bắc đối với cuộc chiến, nhưng cũng một phần xuất phát từ yêu cầu của cán bộ miền Nam.",
+    interpretation: "Điều này củng cố quan điểm tiến công từ bên ngoài: Nó đánh dấu sự chuyển hướng quân sự có chủ đích từ Hà Nội để bảo trợ và điều phối cuộc chiến ở miền Nam.",
   },
   {
     year: "1960",
     event: "Thành lập Mặt trận Dân tộc Giải phóng",
     detail: "Mặt trận Dân tộc Giải phóng miền Nam Việt Nam được thành lập; Đại hội Đảng tái khẳng định mục tiêu thống nhất.",
-    interpretation: "Mặt trận bao gồm cả những người miền Nam thực sự cùng với các cán bộ do miền Bắc chỉ đạo — bằng chứng ủng hộ cả quan điểm nội chiến lẫn nổi dậy có chỉ đạo.",
+    interpretation: "Điều này phản ánh tính chất kép của cuộc chiến: Mặt trận tập hợp những người miền Nam thực sự uất ức, nhưng hoạt động dưới bộ khung chiến lược do Hà Nội định hướng.",
   },
   {
     year: "1961–62",
     event: "Chương trình Ấp Chiến lược",
     detail: "Di dời dân nhằm cô lập họ khỏi lực lượng nổi dậy; gây ra sự phẫn nộ lan rộng.",
-    interpretation: "Một chính sách xây dựng nhà nước làm sâu sắc thêm xung đột nội bộ ở miền Nam — phù hợp với động lực của một cuộc nội chiến.",
+    interpretation: "Điều này ủng hộ luận điểm nội chiến cục bộ: Một chính sách xây dựng nhà nước thất bại đã đào sâu thêm sự phân hóa xã hội ở nông thôn miền Nam.",
   },
   {
     year: "1963",
     event: "Khủng hoảng Phật giáo và sự sụp đổ của Diệm",
     detail: "Sự kiện tự thiêu của Thích Quảng Đức; cuộc đảo chính quân sự lật đổ Diệm vào tháng 11.",
-    interpretation: "Sự sụp đổ nội bộ của miền Nam xuất phát từ những thất bại trong nước, không phải do tấn công từ bên ngoài — bằng chứng mạnh mẽ cho góc nhìn nội chiến.",
+    interpretation: "Đây là ví dụ điển hình cho lăng kính nội chiến: Sự sụp đổ của miền Nam xuất phát từ những rạn nứt chính trị và tôn giáo trong nước, không phải do tấn công từ bên ngoài.",
   },
   {
     year: "1964",
     event: "Sự kiện Vịnh Bắc Bộ",
     detail: "Quốc hội Mỹ thông qua Nghị quyết Vịnh Bắc Bộ; bất ổn chính trị tại Sài Gòn.",
-    interpretation: "Sự leo thang của Mỹ làm thay đổi tính chất cuộc xung đột — ủng hộ lập luận rằng sự can thiệp của nước ngoài đóng vai trò định hình cuộc chiến.",
+    interpretation: "Sự kiện này củng cố góc nhìn về chiến tranh ủy nhiệm: Sự leo thang của Mỹ làm thay đổi tính chất cuộc xung đột, biến nó thành một chiến trường của Chiến tranh Lạnh.",
   },
   {
     year: "1965",
     event: "Quân chiến đấu Mỹ đổ bộ",
     detail: "Chiến dịch Sấm Rền; Thủy quân lục chiến đổ bộ tại Đà Nẵng; cuộc chiến bị quốc tế hóa.",
-    interpretation: "Sự hiện diện của lính ngoại quốc khiến nhãn dán 'nội chiến' trở nên không đầy đủ — nhưng nó không xóa bỏ những khía cạnh quốc nội đã tồn tại trước đó.",
+    interpretation: "Điều này làm phức tạp thêm nhận định 'nội chiến': Sự hiện diện khổng lồ của lính ngoại quốc khiến danh xưng nội chiến trở nên không đầy đủ, dù không xóa đi động lực cốt lõi ban đầu.",
   },
 ];
 
@@ -326,9 +326,9 @@ const BoMayNhaNuocPage = () => {
             </div>
           </div>
 
-          <div className="mt-12 brutal-card bg-ink text-bone border-4 border-bone p-8 max-w-5xl shadow-[8px_8px_0_0_#DFD8C8]">
-            <p className="font-body text-lg font-medium leading-relaxed">
-              Nhận định hợp lý nhất cần nhìn nhận cả hai góc độ: Quyền chủ động ở miền Nam và sự tinh chỉnh từ miền Bắc đã song song vận hành. Sự dịch chuyển từ đấu tranh chính trị sang quân sự không phải là một quyết định chớp nhoáng từ Hà Nội, mà là sự ứng biến không ngừng trước áp lực của cán bộ nằm vùng và các chính sách của Diệm.
+          <div className="mt-12 brutal-card bg-gold text-ink border-4 border-ink p-8 max-w-5xl shadow-[8px_8px_0_0_#1C1C1A]">
+            <p className="font-body text-xl font-bold leading-relaxed">
+              Dù là chiến lược chính trị hay quân sự, sự tùy biến của Đảng cho thấy cuộc chiến mang cả dáng dấp của một cuộc nổi dậy có chỉ đạo lẫn một cuộc đánh trả tự phát từ cơ sở. Sự dịch chuyển từ đấu tranh chính trị sang quân sự không phải là một quyết định chớp nhoáng từ Hà Nội, mà là sự ứng biến không ngừng trước áp lực của cán bộ nằm vùng và các chính sách của Diệm.
             </p>
           </div>
         </div>

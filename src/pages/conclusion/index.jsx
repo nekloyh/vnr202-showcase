@@ -125,7 +125,7 @@ const DangVaNhanDanPage = () => {
               <span className="brutal-badge !bg-bone !text-ink !text-[12px]">
                 QUAN ĐIỂM A
               </span>
-              <h3 className="font-display text-3xl md:text-4xl font-black text-white uppercase mt-6 mb-6">
+              <h3 className="font-display text-4xl md:text-5xl font-black text-white uppercase mt-6 mb-8 drop-shadow-[3px_3px_0_#9B1B30]">
                 Đó có phải là một cuộc nội chiến?
               </h3>
               <p className="font-body text-xl font-medium text-bone/90 leading-relaxed">
@@ -149,7 +149,7 @@ const DangVaNhanDanPage = () => {
               <span className="brutal-badge !bg-bone !text-ink !text-[12px]">
                 QUAN ĐIỂM B
               </span>
-              <h3 className="font-display text-3xl md:text-4xl font-black text-white uppercase mt-6 mb-6">
+              <h3 className="font-display text-4xl md:text-5xl font-black text-white uppercase mt-6 mb-8 drop-shadow-[3px_3px_0_#C89B3C]">
                 Hay đấu tranh giải phóng dân tộc?
               </h3>
               <p className="font-body text-xl font-medium text-bone/90 leading-relaxed">
@@ -437,7 +437,7 @@ const DangVaNhanDanPage = () => {
                 Xung đột tại Việt Nam là bằng chứng rành rành cho thấy cách cái màng lọc Chiến tranh Lạnh đã khoác lên vai cuộc chiến một sự minh định nhân tạo, trong khi ẩn ức nội bộ của bản ngã nó lại chằng chịt và ngoằn ngoèo hơn nhiều so với những gì Washington hay Hà Nội muốn thừa nhận. Lập trường trung thực nhất về mặt học thuật là khước từ vòng kim cô của những nhãn mác độc tôn, mà hãy ôm vào lòng mọi tầng lớp chồng lấn đó bằng tư tưởng khách quan.
               </p>
               <p className="font-bold border-l-8 border-gold pl-6 mt-10">
-                Câu hỏi làm sao để "gọi tên" cuộc tương tàn này đến nay vẫn chưa thế cất gọn trong kho tàng văn học lịch sử. Thế nhưng điều chắc chắn là danh xưng làm nên chuyện — nếu buông lời cẩu thả, ta đã vô tình vò nát sinh mệnh của hàng triệu phận người thành một trò mô phỏng địa chính trị trống rỗng.
+                Tên gọi định hình cách chúng ta phán xét lịch sử. Nếu buông lời cẩu thả, ta đã vô tình vò nát sinh mệnh của hàng triệu phận người thành một trò mô phỏng địa chính trị rỗng tuếch. Lịch sử không đòi hỏi chúng ta phải chọn một phe để phán xét; nó đòi hỏi chúng ta đủ dũng khí để nhìn thẳng vào những mâu thuẫn khốc liệt đan xen mà không vội vã cất chúng vào một chiếc hộp dán mác đơn giản.
               </p>
             </div>
           </div>

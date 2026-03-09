@@ -25,7 +25,7 @@ const AIResponse = ({ text }) => {
         <AITalkingAvatar />
       </div>
       <div className="bg-bone p-5 border-4 border-ink shadow-[4px_4px_0_0_#d91c1c] rounded-none max-w-[85%] md:max-w-[75%] relative">
-        <h4 className="font-display text-crimson text-sm mb-2 uppercase tracking-wide font-bold">VNR202 Bot</h4>
+        <h4 className="font-display text-crimson text-sm mb-2 uppercase tracking-wide font-bold">Sử Đảng</h4>
         <div className="ai-markdown text-ink font-body text-lg leading-relaxed">
           <ReactMarkdown>{text}</ReactMarkdown>
         </div>
@@ -42,7 +42,7 @@ const UserPrompt = ({ text }) => {
       className="w-full flex items-center justify-end gap-3 mb-8"
     >
       <div className="p-5 bg-ink text-bone border-4 border-ink shadow-[4px_4px_0_0_#ffd700] rounded-none max-w-[80%] md:max-w-[70%] text-right relative">
-        <p className="break-words font-body leading-relaxed">{text}</p>
+        <p className="wrap-break-word font-body leading-relaxed">{text}</p>
       </div>
       <div className="shrink-0 w-12 h-12 bg-white flex items-center justify-center border-4 border-ink shadow-hard-sm rounded-none">
         <User className="text-ink w-6 h-6" />
@@ -56,7 +56,7 @@ const AIPage = () => {
   const [chatHistory, setChatHistory] = useState([
     {
       role: "ai",
-      text: `Chào bạn, mình là trợ lý VNR202. Mình hỗ trợ bạn học môn Chủ nghĩa xã hội khoa học: khái niệm, phương pháp và các chủ đề liên quan. Bạn muốn bắt đầu với nội dung nào?`,
+      text: `Xin chào. Tôi là Sử Đảng – trợ lý học thuật chuyên về môn Lịch sử Đảng Cộng sản Việt Nam. Tôi có thể hỗ trợ bạn tìm hiểu, ôn tập và hệ thống hóa kiến thức các giai đoạn: sự ra đời của Đảng (1920–1930), đấu tranh giành chính quyền (1930–1945), kháng chiến chống Pháp và Mỹ (1945–1975), cùng công cuộc đổi mới (1975–2018). Bạn muốn bắt đầu từ nội dung nào?`,
     },
   ]);
   const inputRef = useRef();
@@ -94,9 +94,6 @@ const AIPage = () => {
         role: msg.role === "ai" ? "assistant" : "user",
         content: msg.text,
       }));
-
-      // Append current user message
-      formattedHistory.push({ role: "user", content: userMessage });
 
       const response = await sendMessageToAI(userMessage, formattedHistory);
 
@@ -203,6 +200,25 @@ const AIPage = () => {
                   )}
                 </Button>
               </form>
+              <div className="flex flex-wrap items-center justify-center gap-2 mt-4 max-w-4xl mx-auto">
+                {[
+                  "Tóm tắt sự ra đời của Đảng Cộng sản Việt Nam năm 1930",
+                  "Ý nghĩa lịch sử của Cách mạng Tháng Tám 1945 là gì?",
+                  "Đại hội VI và đường lối đổi mới của Đảng có nội dung gì?"
+                ].map((q, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    disabled={isLoading}
+                    onClick={() => {
+                       inputRef.current.value = q;
+                    }}
+                    className="px-3 py-1.5 text-xs md:text-sm font-mono font-bold bg-white text-ink border-2 border-ink hover:bg-ink/5 hover:text-crimson transition-colors disabled:opacity-50"
+                  >
+                    {q}
+                  </button>
+                ))}
+              </div>
               <p className="text-center text-xs text-graphite/60 mt-3 font-mono">
                 * AI có thể mắc lỗi. Hãy kiểm tra lại thông tin.
               </p>

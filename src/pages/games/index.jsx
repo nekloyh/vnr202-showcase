@@ -144,56 +144,56 @@ const LeaderboardModal = ({ onClose }) => {
 
     return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/90 backdrop-blur-sm p-4 animate-in zoom-in-95 duration-200">
-        <div className="w-full max-w-3xl bg-[#FFDEE2] border-4 border-black shadow-[12px_12px_0px_0px_#000] flex flex-col relative">
+        <div className="w-full max-w-3xl bg-paper border-4 border-ink shadow-[12px_12px_0px_0px_#1C1C1A] flex flex-col relative rounded-none">
             
             {/* Retro Mac/Windows Title Bar */}
-            <div className="h-12 bg-[#FF4757] border-b-4 border-black flex items-center justify-between px-4 select-none">
+            <div className="h-12 bg-crimson border-b-4 border-ink flex items-center justify-between px-4 select-none">
                 <div className="flex gap-2">
-                    <div className="w-4 h-4 rounded-full border-2 border-black bg-white"></div>
-                    <div className="w-4 h-4 rounded-full border-2 border-black bg-black"></div>
+                    <div className="w-4 h-4 rounded-none border-2 border-ink bg-bone"></div>
+                    <div className="w-4 h-4 rounded-none border-2 border-ink bg-ink"></div>
                 </div>
-                <div className="font-black font-mono text-lg uppercase tracking-widest text-white">
+                <div className="font-black font-mono text-lg uppercase tracking-widest text-bone">
                     BANG_XEP_HANG.EXE
                 </div>
-                <button onClick={onClose} className="hover:bg-black hover:text-white p-1 border-2 border-transparent hover:border-white transition-all">
-                    <X size={20} className="text-black hover:text-white" strokeWidth={3} />
+                <button onClick={onClose} className="hover:bg-ink hover:text-bone p-1 border-2 border-transparent hover:border-bone transition-all">
+                    <X size={20} className="text-ink hover:text-bone" strokeWidth={3} />
                 </button>
             </div>
 
             {/* Arcade Header */}
-            <div className="bg-black text-[#FFD700] p-8 text-center border-b-4 border-black relative overflow-hidden">
+            <div className="bg-ink text-gold p-8 text-center border-b-4 border-ink relative overflow-hidden">
                 <div className="relative z-10">
-                    <h2 className="text-4xl md:text-6xl font-black font-display uppercase tracking-tighter leading-none mb-2 [text-shadow:4px_4px_0px_#000]">
+                    <h2 className="text-4xl md:text-6xl font-black font-display uppercase tracking-tighter leading-none mb-2 drop-shadow-[4px_4px_0_#9B1B30]">
                         TOP RUNNERS
                     </h2>
-                    <p className="font-mono text-xs md:text-sm text-white/80 uppercase tracking-[0.3em]">
+                    <p className="font-mono text-xs md:text-sm text-bone/80 uppercase tracking-[0.3em]">
                         Giải Vô Địch Runner Quiz • Mùa 1
                     </p>
                 </div>
                 {/* Decorative grid or lines */}
-                <div className="absolute inset-0 opacity-20 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.2)_50%,transparent_75%,transparent_100%)] bg-[length:20px_20px]"></div>
+                <div className="absolute inset-0 opacity-10 bg-[linear-gradient(45deg,transparent_25%,#fffdf5_50%,transparent_75%,transparent_100%)] bg-[length:20px_20px]"></div>
             </div>
 
             {/* Table Area */}
-            <div className="p-6 md:p-8 bg-[#FFDEE2] overflow-y-auto max-h-[60vh] md:max-h-[70vh] custom-scrollbar">
+            <div className="p-6 md:p-8 bg-paper overflow-y-auto max-h-[60vh] md:max-h-[70vh] custom-scrollbar">
                 
                 {/* Loading State */}
                 {loading && (
-                    <div className="text-center py-8 font-mono text-black/50 animate-pulse">
+                    <div className="text-center py-8 font-mono text-ink/60 animate-pulse">
                         Đang tải bảng xếp hạng...
                     </div>
                 )}
 
                 {/* Error State */}
                 {error && !loading && (
-                    <div className="text-center py-8 font-mono text-red-500">
+                    <div className="text-center py-8 font-mono text-crimson">
                         ⚠️ {error}
                     </div>
                 )}
 
                 {/* Empty State */}
                 {!loading && !error && scores.length === 0 && (
-                    <div className="text-center py-8 font-mono text-black/50">
+                    <div className="text-center py-8 font-mono text-ink/60">
                         Chưa có điểm nào! Hãy là người đầu tiên chơi!
                     </div>
                 )}
@@ -202,7 +202,7 @@ const LeaderboardModal = ({ onClose }) => {
                 {!loading && !error && scores.length > 0 && (
                     <>
                         {/* Table Header */}
-                        <div className="grid grid-cols-12 gap-4 mb-4 text-xs font-black font-mono uppercase tracking-widest text-black/50 border-b-2 border-black/10 pb-2">
+                        <div className="grid grid-cols-12 gap-4 mb-4 text-xs font-black font-mono uppercase tracking-widest text-ink/60 border-b-2 border-ink/20 pb-2">
                             <div className="col-span-2 text-center">Hạng</div>
                             <div className="col-span-6">Người Chơi</div>
                             <div className="col-span-4 text-right">Điểm</div>
@@ -211,16 +211,16 @@ const LeaderboardModal = ({ onClose }) => {
                         {/* Top 1 Highlight */}
                         {topPlayer && (
                             <div className="relative mb-6 group">
-                                <div className="absolute inset-0 bg-yellow-400 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] translate-x-1 translate-y-1"></div>
-                                <div className="relative bg-white border-4 border-black p-4 grid grid-cols-12 gap-4 items-center hover:-translate-y-1 hover:-translate-x-1 transition-transform cursor-default">
+                                <div className="absolute inset-0 bg-gold border-4 border-ink shadow-[8px_8px_0px_0px_#1C1C1A] translate-x-1 translate-y-1"></div>
+                                <div className="relative bg-bone border-4 border-ink p-4 grid grid-cols-12 gap-4 items-center hover:-translate-y-1 hover:-translate-x-1 transition-transform cursor-default">
                                     <div className="col-span-2 flex justify-center">
-                                        <Trophy size={32} className="text-yellow-500 fill-yellow-500" strokeWidth={2.5} />
+                                        <Trophy size={32} className="text-gold fill-gold drop-shadow-[1px_1px_0_#1C1C1A]" strokeWidth={2.5} />
                                     </div>
                                     <div className="col-span-6">
-                                        <div className="font-black text-xl uppercase truncate">{topPlayer.playerName}</div>
-                                        <div className="text-xs font-mono bg-black text-white inline-block px-1">HUYỀN THOẠI</div>
+                                        <div className="font-black text-xl uppercase truncate text-ink">{topPlayer.playerName}</div>
+                                        <div className="text-xs font-mono bg-ink text-bone inline-block px-1">HUYỀN THOẠI</div>
                                     </div>
-                                    <div className="col-span-4 text-right font-black text-2xl text-[#FF4757]">
+                                    <div className="col-span-4 text-right font-black text-2xl text-crimson">
                                         {topPlayer.score.toLocaleString()}
                                     </div>
                                 </div>
@@ -230,12 +230,12 @@ const LeaderboardModal = ({ onClose }) => {
                         {/* Rest of List */}
                         <div className="space-y-3">
                             {otherPlayers.map((player) => (
-                                <div key={player.id} className="grid grid-cols-12 gap-4 items-center p-3 border-b-2 border-dashed border-black/20 hover:bg-white hover:border-solid hover:border-black transition-all font-mono">
-                                    <div className="col-span-2 text-center font-black text-lg text-black/40">
+                                <div key={player.id} className="grid grid-cols-12 gap-4 items-center p-3 border-b-2 border-dashed border-ink/20 hover:bg-bone hover:border-solid hover:border-ink transition-all font-mono text-ink">
+                                    <div className="col-span-2 text-center font-black text-lg text-ink/40">
                                         {String(player.rank).padStart(2, '0')}
                                     </div>
                                     <div className="col-span-6 font-bold uppercase truncate">{player.playerName}</div>
-                                    <div className="col-span-4 text-right font-bold">{player.score.toLocaleString()}</div>
+                                    <div className="col-span-4 text-right font-bold text-crimson">{player.score.toLocaleString()}</div>
                                 </div>
                             ))}
                         </div>
@@ -245,7 +245,7 @@ const LeaderboardModal = ({ onClose }) => {
             </div>
             
             {/* Footer */}
-            <div className="bg-black p-4 flex justify-between items-center text-white font-mono text-xs uppercase">
+            <div className="bg-ink p-4 flex justify-between items-center text-bone font-mono text-xs uppercase border-t-4 border-ink">
                 <span>Trạng thái: {loading ? 'ĐANG TẢI...' : 'TRỰC TUYẾN'}</span>
                 <span className="animate-pulse">Đang chờ người thách đấu...</span>
             </div>
@@ -343,9 +343,9 @@ const GamesPage = () => {
                         </motion.h1>
                      </div>
 
-                    <KineticSubline className="max-w-2xl mx-auto text-xl text-center">
-                        Vừa chơi vừa học. Thử thách bản thân với các trò chơi tương tác, ghi điểm và leo lên bảng xếp hạng cao thủ.
-                    </KineticSubline>
+                    <p className="max-w-3xl mx-auto text-xl font-medium mt-6 text-center text-graphite/90 leading-relaxed">
+                        Các hoạt động tương tác dưới đây được thiết kế không phải để giải trí đơn thuần, mà nhằm kiểm tra và củng cố sự nhận thức của bạn về các tuyến lập luận phức tạp, hệ thống bằng chứng, và các cột mốc lịch sử cốt lõi đã được trình bày xuyên suốt trang nghiên cứu này.
+                    </p>
                 </div>
 
                 <div className="max-w-6xl mx-auto w-full relative z-10">
@@ -395,30 +395,29 @@ const GamesPage = () => {
                         ))}
                     </div>
 
-                    {/* LEADERBOARD TEASER INTEGRATED */}
                     <div className="mt-24 mb-12">
-                        <div className="relative overflow-hidden rounded-xl border-4 border-black bg-black text-white shadow-[12px_12px_0px_0px_#FF4757] p-8 md:p-12">
+                        <div className="relative overflow-hidden rounded-none border-4 border-ink bg-ink text-bone shadow-[12px_12px_0_0_#9B1B30] p-8 md:p-12">
                             {/* Animated Background */}
-                            <div className="absolute inset-0 opacity-20 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.2)_50%,transparent_75%,transparent_100%)] bg-[length:20px_20px]"></div>
+                            <div className="absolute inset-0 opacity-10 bg-[linear-gradient(45deg,transparent_25%,#fffdf5_50%,transparent_75%,transparent_100%)] bg-[length:20px_20px]"></div>
                             
                             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
                                 <div className="flex-1 text-center md:text-left">
                                     <div className="flex items-center justify-center md:justify-start gap-4 mb-2">
-                                        <Trophy className="text-[#FFD700]" size={48} strokeWidth={2.5} />
-                                        <h3 className="font-black text-4xl md:text-5xl text-[#FFD700] uppercase tracking-tighter [text-shadow:4px_4px_0px_#000]">
+                                        <Trophy className="text-gold" size={48} strokeWidth={2.5} />
+                                        <h3 className="font-black text-4xl md:text-5xl text-gold uppercase tracking-tighter drop-shadow-[2px_2px_0_#1C1C1A]">
                                             Bảng Xếp Hạng<br/>Runner Quiz
                                         </h3>
                                     </div>
-                                    <p className="text-white/80 text-lg font-mono mt-4 max-w-2xl bg-black/50 inline-block px-2">
+                                    <p className="text-bone/90 text-lg font-mono mt-4 max-w-2xl bg-ink/50 inline-block px-2">
                                         Vượt chướng ngại vật - Trả lời câu hỏi - Ghi danh lịch sử.
                                     </p>
                                 </div>
                                 <div className="flex-shrink-0 relative group">
-                                    <div className="absolute inset-0 bg-[#FF4757] translate-x-2 translate-y-2 border-2 border-black"></div>
+                                    <div className="absolute inset-0 bg-crimson translate-x-2 translate-y-2 border-2 border-ink"></div>
                                     <Button 
                                         onClick={() => setShowLeaderboard(true)}
                                         variant="outline" 
-                                        className="relative bg-white text-black border-2 border-black hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all text-lg px-8 py-4 uppercase font-black tracking-wider"
+                                        className="relative bg-bone text-ink border-2 border-ink hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all text-lg px-8 py-4 uppercase font-black tracking-wider"
                                     >
                                         Xem Bảng Xếp Hạng
                                     </Button>
