@@ -45,8 +45,8 @@ export default function Header() {
 
   const navItems = [
     { name: "Trang chủ", path: "/" },
-    { name: "Bộ máy Nhà nước", path: "/bo-may-nha-nuoc" },
-    { name: "Đảng & Nhân dân", path: "/dang-va-nhan-dan" },
+    { name: "Bối cảnh lịch sử", path: "/bo-may-nha-nuoc" },
+    { name: "Tranh luận & Kết luận", path: "/dang-va-nhan-dan" },
     { name: "Trò chơi", path: "/tro-choi" },
     { name: "Trợ lý VNR202", path: "/ai-chatbot" },
     { name: "Công cụ AI", path: "/ai-usage" },
@@ -74,9 +74,9 @@ export default function Header() {
             onClick={() => handleNavigate("/")}
             className="font-display text-3xl text-ink cursor-pointer select-none hover:translate-x-1 transition-transform tracking-tighter leading-none uppercase border-2 border-transparent hover:border-ink hover:bg-gold p-1"
           >
-            MLN<span className="text-crimson">131</span>
+            VNR<span className="text-crimson">202</span>
             <span className="hidden md:inline-block ml-3 text-xs font-mono tracking-widest text-ink/60 border-l-2 border-ink/20 pl-3">
-              SCIENTIFIC SOCIALISM
+              HISTORICAL INQUIRY
             </span>
           </div>
 

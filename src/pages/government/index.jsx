@@ -1,71 +1,118 @@
 import { motion } from "framer-motion";
 import {
-  KineticHeading,
   KineticSubline,
 } from "../../components/ui/KineticText";
 import Section from "../../components/layout/Section";
 import Card from "../../components/ui/Card";
+import Button from "../../components/ui/Button";
 import {
   ArrowDown,
-  CheckCircle,
-  RefreshCw,
+  ArrowRight,
+  Flag,
+  Shield,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
+const timelineData = [
+  {
+    year: "1954",
+    event: "Geneva Accords signed",
+    detail: "Vietnam temporarily divided at 17th parallel after French defeat at Điện Biên Phủ.",
+    interpretation: "Creates the structural condition for rival state-building — the starting point of the 'two Vietnams' that makes the civil war question possible.",
+  },
+  {
+    year: "1955",
+    event: "Diệm consolidates power",
+    detail: "Ngô Đình Diệm defeats rival sects, deposes Bảo Đại, and proclaims the Republic of Vietnam.",
+    interpretation: "Establishes the South as a distinct political entity — evidence that there were genuinely competing Vietnamese state projects, not just foreign imposition.",
+  },
+  {
+    year: "1956",
+    event: "Reunification elections not held",
+    detail: "South Vietnam refuses to participate in the planned nationwide elections.",
+    interpretation: "The North sees this as proof of foreign-backed obstruction; the South argues free elections were impossible under communist conditions. Both readings have merit.",
+  },
+  {
+    year: "1957–58",
+    event: "Repression intensifies",
+    detail: "Denounce the Communists campaign; mass arrests, imprisonment, and rural resettlement in the South.",
+    interpretation: "Generates indigenous southern grievances that later fuel the insurgency — complicating any reading that the war was purely northern aggression.",
+  },
+  {
+    year: "1959",
+    event: "Resolution 15 passed",
+    detail: "Communist Party Central Committee authorises armed struggle in the South; Group 559 opens supply routes.",
+    interpretation: "Marks the shift from political to military strategy. Supports northern direction of the war, but was partly driven by southern cadre demand — a hybrid dynamic.",
+  },
+  {
+    year: "1960",
+    event: "NLF founded",
+    detail: "National Liberation Front established; Third Party Congress reaffirms reunification goal.",
+    interpretation: "The NLF included genuine southern participants alongside northern-directed cadres — evidence for both the civil war and the directed-insurgency interpretations.",
+  },
+  {
+    year: "1961–62",
+    event: "Strategic Hamlet Program",
+    detail: "Mass rural relocation to isolate population from insurgents; generates widespread resentment.",
+    interpretation: "A state-building policy that deepened the internal conflict within the South — more consistent with civil war dynamics than external invasion.",
+  },
+  {
+    year: "1963",
+    event: "Buddhist Crisis and Diệm's fall",
+    detail: "Self-immolation of Thích Quảng Đức; military coup overthrows and kills Diệm in November.",
+    interpretation: "The South's internal collapse was driven by domestic failures, not external attack — the strongest single piece of evidence for the civil war reading.",
+  },
+  {
+    year: "1964",
+    event: "Gulf of Tonkin incident",
+    detail: "US Congress passes Tonkin Resolution; political instability continues in Saigon.",
+    interpretation: "American escalation transforms the conflict's character — supporting the argument that foreign intervention, not internal dynamics, defined the war.",
+  },
+  {
+    year: "1965",
+    event: "US combat troops arrive",
+    detail: "Operation Rolling Thunder begins; Marines land at Đà Nẵng; war becomes fully internationalised.",
+    interpretation: "The arrival of foreign combat troops makes the 'civil war' label increasingly inadequate — but it doesn't erase the domestic dimensions that preceded this moment.",
+  },
+];
 
 const BoMayNhaNuocPage = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="page-shell w-full bg-bone selection:bg-ink selection:text-gold snap-container">
-      {/* SECTION 1: HEADER */}
+      {/* ═══════════ HERO ═══════════ */}
       <Section className="items-center justify-center px-4 md:px-10 border-b-2 border-ink bg-bone">
         <div className="flex flex-col items-center justify-center space-y-8 max-w-5xl mx-auto w-full relative z-10">
-          {/* Top Label Box */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="bg-ink border-4 border-ink px-6 py-2 shadow-hard transform rotate-1"
           >
             <span className="font-mono font-bold uppercase tracking-widest text-sm md:text-base text-bone">
-              Communist Party of Vietnam
+              Page 1 — Historical Context
             </span>
           </motion.div>
 
-          {/* Main Title Block */}
           <div className="relative text-center">
             <motion.h1
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.1, type: "spring" }}
-              className="font-display font-black text-6xl md:text-8xl uppercase text-ink leading-[0.85] tracking-tighter drop-shadow-hard"
+              className="font-display font-black text-5xl md:text-7xl lg:text-8xl uppercase text-ink leading-[0.85] tracking-tighter"
             >
-              ĐẢNG CỘNG SẢN
+              FROM PARTITION
             </motion.h1>
-
             <motion.h1
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.2, type: "spring" }}
-              className="font-display font-black text-6xl md:text-8xl uppercase text-transparent text-stroke-black leading-[0.85] tracking-tighter"
+              className="font-display font-black text-5xl md:text-7xl lg:text-8xl uppercase text-crimson leading-[0.85] tracking-tighter"
             >
-              VIỆT NAM
+              TO CONFLICT
             </motion.h1>
           </div>
 
-          {/* Quote Box */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.4 }}
-            className="bg-white border-4 border-crimson p-6 md:p-8 shadow-hard-lg max-w-2xl transform -rotate-1 mt-8 relative"
-          >
-            <p className="font-body text-xl md:text-2xl text-ink text-center font-medium italic">
-              "Đảng lãnh đạo, Nhà nước quản lý,{" "}
-              <span className="bg-crimson/10 px-1 font-bold text-crimson not-italic">
-                Nhân dân làm chủ
-              </span>
-              ."
-            </p>
-          </motion.div>
-
-          {/* Decorative Arrow */}
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
@@ -76,329 +123,323 @@ const BoMayNhaNuocPage = () => {
         </div>
       </Section>
 
-      {/* SECTION 2: PARTY LEADERSHIP (Topic 3) */}
+      {/* ═══════════ WHY CONTEXT MATTERS ═══════════ */}
+      <Section className="items-center justify-center bg-ink text-bone">
+        <div className="max-w-screen-md mx-auto text-center py-12 relative z-10">
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="font-body text-xl md:text-2xl text-bone/80 leading-relaxed"
+          >
+            Before evaluating whether the Vietnam conflict was a civil war, you need to
+            understand the conditions that produced it. This page builds the evidential
+            foundation — not a complete history of Vietnam, but the specific political
+            developments that make the question genuinely difficult to answer.
+          </motion.p>
+        </div>
+      </Section>
+
+      {/* ═══════════ AFTER GENEVA ═══════════ */}
       <Section
         scrollable={true}
         className="items-center justify-center px-4 md:px-10 bg-white"
       >
-        <div className="max-w-screen-2xl mx-auto w-full py-16">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="order-2 md:order-1 relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-crimson/20 to-gold/20 rounded-sm -rotate-2 transform scale-105"></div>
-              <Card variant="default" className="p-10 rotate-1 kinetic-grid">
-                <h3 className="font-display text-3xl font-bold text-crimson mb-8 uppercase border-b-2 border-crimson/20 pb-4">
-                  1. Vì sao Đảng lãnh đạo?
-                </h3>
-                <ul className="space-y-6">
-                  <li className="flex gap-4 items-start">
-                    <CheckCircle
-                      className="text-crimson shrink-0 mt-1"
-                      size={24}
-                    />
-                    <div className="text-graphite font-medium text-lg">
-                      <strong className="block text-ink">
-                        Bản chất của Đảng:
-                      </strong>
-                      Là đội tiên phong của giai cấp công nhân, Nhân dân lao
-                      động.
-                    </div>
-                  </li>
-                  <li className="flex gap-4 items-start">
-                    <CheckCircle
-                      className="text-crimson shrink-0 mt-1"
-                      size={24}
-                    />
-                    <div className="text-graphite font-medium text-lg">
-                      <strong className="block text-ink">
-                        Đại diện cho lợi ích:
-                      </strong>
-                      <ul className="list-disc list-inside mt-1 ml-2 text-base text-graphite/80">
-                        <li>Giai cấp công nhân</li>
-                        <li>Nhân dân lao động</li>
-                        <li>Dân tộc Việt Nam</li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li className="bg-crimson/10 p-4 border-l-4 border-crimson text-crimson font-bold italic">
-                    Vai trò lãnh đạo là yêu cầu khách quan của lịch sử.
-                  </li>
-                </ul>
-              </Card>
-            </div>
+        <div className="max-w-screen-lg mx-auto w-full py-24">
+          <span className="font-mono text-sm text-crimson font-bold uppercase tracking-widest">Section 1</span>
+          <h2 className="text-4xl md:text-5xl font-display font-black text-ink uppercase leading-none mt-2 mb-10">
+            After Geneva: The Divided Nation
+          </h2>
 
-            <div className="order-1 md:order-2 space-y-8">
-              <h2 className="text-4xl md:text-5xl font-display font-black text-ink uppercase leading-none">
-                2. Đảng lãnh đạo{" "}
-                <span className="text-crimson">như thế nào?</span>
-              </h2>
-              <p className="text-xl text-graphite/80 leading-relaxed font-body">
-                Đảng lãnh đạo Nhà nước nhưng tôn trọng chức năng của Nhà nước và
-                nguyên tắc pháp quyền.
-              </p>
+          <div className="space-y-6 text-lg text-graphite/80 leading-relaxed max-w-3xl">
+            <p>
+              The 1954 Geneva Accords ended the First Indochina War against France and
+              temporarily divided Vietnam at the 17th parallel. The agreements called for
+              nationwide reunification elections in 1956. Those elections were never held.
+            </p>
+            <p>
+              Ngô Đình Diệm's southern government refused to participate, arguing that free
+              elections were impossible in the communist-controlled North. Hanoi viewed this
+              as a violation of the Geneva settlement — and as proof that reunification
+              would require something other than diplomacy.
+            </p>
+            <p>
+              What emerged were two rival states, each claiming to represent the Vietnamese
+              nation: the Democratic Republic of Vietnam in the North, pursuing socialist
+              transformation under Hồ Chí Minh, and the Republic of Vietnam in the South,
+              building an anti-communist state with American backing under Ngô Đình Diệm.
+            </p>
+          </div>
 
-              <div className="bg-paper p-8 border-l-8 border-l-crimson border-y-2 border-r-2 border-ink shadow-hard-md text-base">
-                <div className="space-y-6">
-                  {/* Item A */}
-                  <div>
-                    <h4 className="font-bold text-ink mb-2 uppercase tracking-wide flex items-center gap-2">
-                      <span className="w-6 h-6 bg-crimson text-white rounded-full flex items-center justify-center text-xs">
-                        A
-                      </span>
-                      Lãnh đạo bằng đường lối
-                    </h4>
-                    <p className="text-graphite/90 ml-8">
-                      Thông qua Cương lĩnh, Đường lối, Nghị quyết.
-                    </p>
-                  </div>
+          <div className="mt-10 bg-crimson/5 p-6 border-l-4 border-crimson max-w-3xl">
+            <p className="font-body text-lg text-ink font-medium italic">
+              The failure to hold reunification elections in 1956 is often identified as
+              a critical turning point — the moment that made armed conflict increasingly
+              likely and peaceful reunification effectively impossible.
+            </p>
+          </div>
+        </div>
+      </Section>
 
-                  {/* Item B */}
-                  <div>
-                    <h4 className="font-bold text-ink mb-2 uppercase tracking-wide flex items-center gap-2">
-                      <span className="w-6 h-6 bg-crimson text-white rounded-full flex items-center justify-center text-xs">
-                        B
-                      </span>
-                      Nguyên tắc quan trọng
-                    </h4>
-                    <ul className="list-disc ml-12 text-graphite/90 space-y-1">
-                      <li>
-                        Không can thiệp trực tiếp vào hoạt động quản lý cụ thể.
-                      </li>
-                      <li>Tôn trọng chức năng của Nhà nước.</li>
-                      <li>Hoạt động trong khuôn khổ Hiến pháp và pháp luật.</li>
-                    </ul>
-                  </div>
+      {/* ═══════════ TWO STATES, TWO SYSTEMS ═══════════ */}
+      <Section
+        scrollable={true}
+        className="items-center justify-center px-4 md:px-10 bg-ink text-bone border-y-2 border-bone"
+      >
+        <div className="max-w-screen-2xl mx-auto w-full py-24">
+          <div className="text-center mb-16">
+            <h2 className="font-display text-4xl md:text-5xl font-black uppercase mb-6 text-white">
+              Two States, Two Systems
+            </h2>
+            <p className="font-body text-lg text-bone/60 max-w-2xl mx-auto">
+              Neither was politically simple. Neither was socially uniform.
+              Understanding their internal dynamics is essential to the debate.
+            </p>
+          </div>
 
-                  <div className="mt-4 pt-4 border-t border-ink/20">
-                    <p className="text-lg font-bold text-ink text-center">
-                      "Đảng không đứng trên Nhà nước, mà lãnh đạo Nhà nước."
-                    </p>
-                  </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* NORTH */}
+            <div className="bg-white/5 border border-bone/20 p-8 md:p-10">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-crimson text-white flex items-center justify-center">
+                  <Flag size={20} />
+                </div>
+                <div>
+                  <h3 className="font-display text-2xl font-bold text-white uppercase">North Vietnam</h3>
+                  <span className="font-mono text-xs text-bone/50 uppercase">Democratic Republic of Vietnam</span>
                 </div>
               </div>
+
+              <div className="space-y-4 text-bone/75 leading-relaxed">
+                <p>
+                  The DRV consolidated a socialist state under the Vietnamese Workers' Party.
+                  Land reform (1953–56) redistributed property but caused severe excesses and
+                  violence against perceived class enemies. Industrialisation proceeded with
+                  Soviet and Chinese support.
+                </p>
+                <p>
+                  Dissent was suppressed — intellectuals involved in the Nhân Văn–Giai Phẩm
+                  literary movement were silenced, Catholics faced pressure, and internal
+                  Party debates over southern strategy were tightly controlled.
+                </p>
+                <p className="text-sm text-bone/50 border-t border-bone/10 pt-4 mt-4">
+                  The North was not politically monolithic. Its internal repression and
+                  debates over strategy complicate any simple narrative.
+                </p>
+              </div>
+            </div>
+
+            {/* SOUTH */}
+            <div className="bg-white/5 border border-bone/20 p-8 md:p-10">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-blue-600 text-white flex items-center justify-center">
+                  <Shield size={20} />
+                </div>
+                <div>
+                  <h3 className="font-display text-2xl font-bold text-white uppercase">South Vietnam</h3>
+                  <span className="font-mono text-xs text-bone/50 uppercase">Republic of Vietnam</span>
+                </div>
+              </div>
+
+              <div className="space-y-4 text-bone/75 leading-relaxed">
+                <p>
+                  Ngô Đình Diệm consolidated power by destroying rival sects, launching the
+                  Denounce the Communists campaign, and building an authoritarian state with
+                  American financial and military support.
+                </p>
+                <p>
+                  Internal opposition was widespread: the Caravelle Manifesto (1960) expressed
+                  elite dissent, a coup attempt failed the same year, the Strategic Hamlet
+                  Program generated rural resentment, and the 1963 Buddhist Crisis triggered
+                  international outrage and Diệm's assassination in a military coup.
+                </p>
+                <p className="text-sm text-bone/50 border-t border-bone/10 pt-4 mt-4">
+                  The South's fragmentation was not only caused by external forces. Its
+                  internal legitimacy crises are central evidence for the civil war reading.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Synthesis note */}
+          <div className="mt-10 text-center max-w-3xl mx-auto">
+            <p className="font-body text-base text-bone/50 italic">
+              When you compare these two systems, the question becomes clearer: was this a
+              conflict between foreign-imposed structures, or between genuinely different
+              Vietnamese political visions? The evidence suggests elements of both.
+            </p>
+          </div>
+
+          {/* Comparison table */}
+          <div className="mt-12 overflow-x-auto">
+            <table className="w-full border border-bone/20 text-sm">
+              <thead>
+                <tr className="bg-white/5 font-display uppercase tracking-wider text-bone/70">
+                  <th className="p-4 text-left border-r border-bone/10">Dimension</th>
+                  <th className="p-4 text-left border-r border-bone/10">North (DRV)</th>
+                  <th className="p-4 text-left">South (RVN)</th>
+                </tr>
+              </thead>
+              <tbody className="font-body text-bone/65">
+                {[
+                  ["Political System", "Single-party socialist state", "Authoritarian republic"],
+                  ["Ideology", "Marxism-Leninism, Vietnamese nationalism", "Anti-communism, nationalist legitimacy"],
+                  ["Foreign Support", "Soviet Union, China", "United States, France (initially)"],
+                  ["Internal Challenges", "Land reform excesses, intellectual dissent", "Sectarian rivalries, Buddhist crisis, coups"],
+                  ["Leadership", "Hồ Chí Minh, Lê Duẩn", "Ngô Đình Diệm (until 1963), military juntas"],
+                  ["Legitimacy Claim", "Anti-colonial victor, reunification", "Sovereignty, anti-communist independence"],
+                ].map(([dim, north, south], idx) => (
+                  <tr key={idx} className="border-t border-bone/10">
+                    <td className="p-4 font-bold text-bone/80 border-r border-bone/10">{dim}</td>
+                    <td className="p-4 border-r border-bone/10">{north}</td>
+                    <td className="p-4">{south}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </Section>
+
+      {/* ═══════════ CPV STRATEGY — reframed ═══════════ */}
+      <Section
+        scrollable={true}
+        className="items-center justify-center px-4 md:px-10 bg-white"
+      >
+        <div className="max-w-screen-lg mx-auto w-full py-24">
+          <span className="font-mono text-sm text-crimson font-bold uppercase tracking-widest">Section 4</span>
+          <h2 className="text-4xl md:text-5xl font-display font-black text-ink uppercase leading-none mt-2 mb-4">
+            The Communist Party's Evolving Strategy
+          </h2>
+          <p className="font-body text-lg text-graphite/60 mb-10 max-w-3xl">
+            How does the Party's strategy speak to the civil war question? The answer
+            depends on whether you emphasise northern direction or southern initiative.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl">
+            {/* Political strategy */}
+            <div className="border-2 border-ink p-8 bg-bone shadow-hard">
+              <h3 className="font-display text-xl font-bold text-ink uppercase mb-4">
+                Political Strategy (1954–59)
+              </h3>
+              <div className="space-y-3 text-graphite/80 leading-relaxed">
+                <p>
+                  After Geneva, the Party initially focused on political mobilisation in the
+                  South, expecting that reunification elections would resolve the division
+                  peacefully. When elections were blocked, southern cadres — facing Diệm's
+                  repression — increasingly pressed Hanoi for permission to fight back.
+                </p>
+                <p className="text-sm text-graphite/60 border-t border-ink/10 pt-3 mt-3 italic">
+                  This phase supports the civil war reading: the pressure for armed struggle
+                  came partly from below, from southern Vietnamese facing local conditions.
+                </p>
+              </div>
+            </div>
+
+            {/* Military strategy */}
+            <div className="border-2 border-ink p-8 bg-bone shadow-hard">
+              <h3 className="font-display text-xl font-bold text-ink uppercase mb-4">
+                Military Strategy (1959–65)
+              </h3>
+              <div className="space-y-3 text-graphite/80 leading-relaxed">
+                <p>
+                  Resolution 15 (1959) authorised armed struggle. Group 559 established the
+                  Hồ Chí Minh Trail supply network. The NLF was founded in 1960. The Third
+                  Party Congress reaffirmed reunification as a strategic goal. By 1963, Hanoi
+                  was escalating material support as the South's government collapsed from within.
+                </p>
+                <p className="text-sm text-graphite/60 border-t border-ink/10 pt-3 mt-3 italic">
+                  This phase supports the directed-insurgency reading: Hanoi coordinated
+                  logistics, strategy, and political organisation across the border.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-10 bg-ink text-bone p-6 max-w-4xl">
+            <p className="font-body text-base leading-relaxed">
+              The strongest reading acknowledges both dynamics: southern initiative and
+              northern direction operated simultaneously. The shift from political to armed
+              struggle was not a sudden decision from Hanoi but an evolving response shaped
+              by southern cadre pressure, Diệm's repression, and changing strategic
+              calculations — a hybrid dynamic that defies simple categorisation.
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      {/* ═══════════ INTERPRETED TIMELINE ═══════════ */}
+      <Section
+        scrollable={true}
+        className="items-center justify-center px-4 md:px-10 bg-bone border-y-2 border-ink"
+      >
+        <div className="max-w-screen-lg mx-auto w-full py-24">
+          <div className="text-center mb-16">
+            <h2 className="font-display text-3xl md:text-5xl font-black uppercase mb-4 text-ink">
+              Timeline: 1954–1965
+            </h2>
+            <p className="text-graphite/60 max-w-2xl mx-auto">
+              Not just what happened — but why each event complicates the question.
+            </p>
+          </div>
+
+          <div className="relative">
+            <div className="absolute left-6 md:left-8 top-0 bottom-0 w-px bg-ink/15"></div>
+
+            <div className="space-y-10">
+              {timelineData.map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.03 }}
+                  className="relative pl-16 md:pl-20"
+                >
+                  {/* Dot */}
+                  <div className="absolute left-[18px] md:left-[26px] top-1 w-3 h-3 bg-crimson rounded-full border-2 border-bone z-10"></div>
+
+                  <div className="font-display text-xl font-black text-crimson">{item.year}</div>
+                  <div className="font-display text-base font-bold uppercase text-ink mt-1">{item.event}</div>
+                  <p className="text-sm text-graphite/70 mt-1">{item.detail}</p>
+                  <div className="mt-3 bg-crimson/5 border-l-4 border-crimson pl-4 py-2">
+                    <p className="text-sm text-ink/70 font-medium">
+                      <span className="font-mono text-xs text-crimson uppercase tracking-wider">For the debate: </span>
+                      {item.interpretation}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
       </Section>
 
-      {/* SECTION 3: PHÂN CÔNG THỰC HIỆN QUYỀN LỰC */}
-      <Section className="items-center justify-center px-4 md:px-10 bg-sand border-b-2 border-ink">
-        <div className="max-w-screen-2xl mx-auto w-full py-16">
-          <div className="text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="inline-block bg-crimson border-4 border-ink px-6 py-2 shadow-hard transform -rotate-1 mb-6"
-            >
-              <span className="font-mono font-bold uppercase tracking-widest text-sm md:text-base text-white">
-                Phần 3
-              </span>
-            </motion.div>
-            <h2 className="font-display text-4xl md:text-5xl font-black uppercase mb-4 text-ink">
-              Phân công thực hiện{" "}
-              <span className="text-crimson">Quyền lực</span>
-            </h2>
-            <p className="font-body text-xl text-graphite/70 max-w-3xl mx-auto">
-              Quyền lực nhà nước được phân công rõ ràng giữa các cơ quan lập pháp, hành pháp và tư pháp.
+      {/* ═══════════ SYNTHESIS + TRANSITION CTA ═══════════ */}
+      <Section className="items-center justify-center bg-sand border-t-2 border-ink">
+        <div className="max-w-screen-md mx-auto text-center relative z-10 py-24">
+          <div className="space-y-6 text-lg text-graphite/80 leading-relaxed">
+            <p>
+              You now have the historical foundation. The conditions were real,
+              the divisions were deep, and the violence escalated in ways neither
+              side fully controlled.
+            </p>
+            <p className="font-medium text-ink">
+              Now the harder question: what does all of this actually mean? Three
+              schools of historical thought give three different answers — and
+              the evidence doesn't make the choice simple.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Lập pháp */}
-            <Card variant="default" hoverEffect className="p-8 border-t-8 border-t-blue-600">
-              <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6 border-2 border-blue-600 shadow-[4px_4px_0px_0px_#2563EB]">
-                <span className="font-display font-black text-2xl text-blue-600">01</span>
-              </div>
-              <h3 className="font-display text-2xl font-bold mb-4 uppercase text-ink">
-                Lập pháp
-              </h3>
-              <p className="text-lg text-graphite/80 mb-4">
-                Quốc hội là cơ quan đại biểu cao nhất của Nhân dân, cơ quan quyền lực nhà nước cao nhất.
-              </p>
-              <ul className="space-y-2 text-graphite/70">
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 w-1.5 h-1.5 bg-blue-600 rounded-full shrink-0"></span>
-                  Xây dựng Hiến pháp và pháp luật
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 w-1.5 h-1.5 bg-blue-600 rounded-full shrink-0"></span>
-                  Giám sát tối cao hoạt động Nhà nước
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 w-1.5 h-1.5 bg-blue-600 rounded-full shrink-0"></span>
-                  Quyết định các vấn đề quan trọng của đất nước
-                </li>
-              </ul>
-            </Card>
-
-            {/* Hành pháp */}
-            <Card variant="default" hoverEffect className="p-8 border-t-8 border-t-ember">
-              <div className="w-16 h-16 bg-ember/20 rounded-lg flex items-center justify-center mb-6 border-2 border-ember shadow-[4px_4px_0px_0px_#FF5500]">
-                <span className="font-display font-black text-2xl text-ember">02</span>
-              </div>
-              <h3 className="font-display text-2xl font-bold mb-4 uppercase text-ink">
-                Hành pháp
-              </h3>
-              <p className="text-lg text-graphite/80 mb-4">
-                Chính phủ là cơ quan hành chính nhà nước cao nhất, thực hiện quyền hành pháp.
-              </p>
-              <ul className="space-y-2 text-graphite/70">
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 w-1.5 h-1.5 bg-ember rounded-full shrink-0"></span>
-                  Tổ chức thi hành Hiến pháp, pháp luật
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 w-1.5 h-1.5 bg-ember rounded-full shrink-0"></span>
-                  Quản lý nhà nước về các lĩnh vực
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 w-1.5 h-1.5 bg-ember rounded-full shrink-0"></span>
-                  Bảo đảm an ninh, quốc phòng
-                </li>
-              </ul>
-            </Card>
-
-            {/* Tư pháp */}
-            <Card variant="default" hoverEffect className="p-8 border-t-8 border-t-purple-600">
-              <div className="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-6 border-2 border-purple-600 shadow-[4px_4px_0px_0px_#9333EA]">
-                <span className="font-display font-black text-2xl text-purple-600">03</span>
-              </div>
-              <h3 className="font-display text-2xl font-bold mb-4 uppercase text-ink">
-                Tư pháp
-              </h3>
-              <p className="text-lg text-graphite/80 mb-4">
-                Tòa án nhân dân thực hiện quyền tư pháp, xét xử độc lập và chỉ tuân theo pháp luật.
-              </p>
-              <ul className="space-y-2 text-graphite/70">
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 w-1.5 h-1.5 bg-purple-600 rounded-full shrink-0"></span>
-                  Bảo vệ công lý, quyền con người
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 w-1.5 h-1.5 bg-purple-600 rounded-full shrink-0"></span>
-                  Xét xử các vụ án hình sự, dân sự
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 w-1.5 h-1.5 bg-purple-600 rounded-full shrink-0"></span>
-                  Giải quyết tranh chấp hành chính
-                </li>
-              </ul>
-            </Card>
-          </div>
-        </div>
-      </Section>
-
-      {/* SECTION 4: PHỐI HỢP & KIỂM SOÁT QUYỀN LỰC */}
-      <Section className="items-center justify-center px-4 md:px-10 bg-ink text-bone border-y-2 border-bone">
-        <div className="max-w-screen-2xl mx-auto w-full py-16">
-          <div className="text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="inline-block bg-gold border-4 border-bone px-6 py-2 shadow-hard transform rotate-1 mb-6"
+          <div className="mt-12">
+            <Button
+              variant="danger"
+              size="lg"
+              onClick={() => navigate("/dang-va-nhan-dan")}
+              className="gap-3 shadow-hard hover:shadow-hard-lg transition-all"
             >
-              <span className="font-mono font-bold uppercase tracking-widest text-sm md:text-base text-ink">
-                Phần 4
-              </span>
-            </motion.div>
-            <h2 className="font-display text-4xl md:text-5xl font-black uppercase mb-4 text-white">
-              Phối hợp & Kiểm soát{" "}
-              <span className="text-gold">Quyền lực</span>
-            </h2>
-            <p className="font-body text-xl text-bone/70 max-w-3xl mx-auto">
-              Mối quan hệ biện chứng giữa Đảng - Nhà nước - Nhân dân trong cơ chế vận hành quyền lực.
-            </p>
-          </div>
-
-          <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-0 relative">
-            {/* Card 1: Party */}
-            <div className="w-64 h-64 border-2 border-crimson bg-crimson/10 rounded-full flex flex-col items-center justify-center p-6 text-center shadow-[0_0_30px_rgba(255,42,42,0.2)] md:mr-[-20px] z-10 hover:scale-110 transition-transform duration-300">
-              <h3 className="font-display text-2xl font-bold mb-2 text-crimson">
-                Đảng Lãnh đạo
-              </h3>
-              <p className="text-sm opacity-80">
-                Đề ra đường lối, chủ trương, định hướng chính trị.
-              </p>
-            </div>
-
-            {/* Arrow Right */}
-            <div className="hidden md:block w-32 h-1 bg-gradient-to-r from-crimson to-white"></div>
-            <div className="md:hidden w-1 h-16 bg-gradient-to-b from-crimson to-white"></div>
-
-            {/* Card 2: State */}
-            <div className="w-64 h-64 border-2 border-bone bg-white/10 rounded-full flex flex-col items-center justify-center p-6 text-center shadow-[0_0_30px_rgba(255,255,255,0.1)] z-20 hover:scale-110 transition-transform duration-300">
-              <h3 className="font-display text-2xl font-bold mb-2 text-white">
-                Nhà nước Quản lý
-              </h3>
-              <p className="text-sm opacity-80">
-                Thể chế hóa thành pháp luật, tổ chức thực hiện.
-              </p>
-            </div>
-
-            {/* Arrow Right */}
-            <div className="hidden md:block w-32 h-1 bg-gradient-to-r from-white to-gold"></div>
-            <div className="md:hidden w-1 h-16 bg-gradient-to-b from-white to-gold"></div>
-
-            {/* Card 3: People */}
-            <div className="w-64 h-64 border-2 border-gold bg-gold/10 rounded-full flex flex-col items-center justify-center p-6 text-center shadow-[0_0_30px_rgba(255,215,0,0.2)] md:ml-[-20px] z-10 hover:scale-110 transition-transform duration-300">
-              <h3 className="font-display text-2xl font-bold mb-2 text-gold">
-                Nhân dân Làm chủ
-              </h3>
-              <p className="text-sm opacity-80">
-                Kiểm tra, giám sát, thụ hưởng thành quả.
-              </p>
-            </div>
-          </div>
-
-          {/* Kiểm soát quyền lực */}
-          <div className="mt-16 grid md:grid-cols-2 gap-8">
-            <div className="bg-white/5 border-2 border-bone/30 p-8 hover:-translate-y-1 transition-transform">
-              <h3 className="font-display text-2xl font-bold mb-4 text-gold uppercase">
-                Cơ chế phối hợp
-              </h3>
-              <ul className="space-y-3 text-bone/80">
-                <li className="flex items-start gap-3">
-                  <span className="mt-1 w-2 h-2 bg-gold rounded-full shrink-0"></span>
-                  Các cơ quan nhà nước phối hợp chặt chẽ trong thực hiện nhiệm vụ
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-1 w-2 h-2 bg-gold rounded-full shrink-0"></span>
-                  Đảm bảo tính thống nhất trong hoạch định và thực thi chính sách
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-1 w-2 h-2 bg-gold rounded-full shrink-0"></span>
-                  Nhân dân tham gia xây dựng và giám sát quyền lực
-                </li>
-              </ul>
-            </div>
-
-            <div className="bg-white/5 border-2 border-bone/30 p-8 hover:-translate-y-1 transition-transform">
-              <h3 className="font-display text-2xl font-bold mb-4 text-crimson uppercase">
-                Kiểm soát quyền lực
-              </h3>
-              <ul className="space-y-3 text-bone/80">
-                <li className="flex items-start gap-3">
-                  <span className="mt-1 w-2 h-2 bg-crimson rounded-full shrink-0"></span>
-                  Kiểm soát bên trong: giữa các cơ quan trong bộ máy nhà nước
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-1 w-2 h-2 bg-crimson rounded-full shrink-0"></span>
-                  Kiểm soát bên ngoài: từ Đảng, Mặt trận Tổ quốc và Nhân dân
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-1 w-2 h-2 bg-crimson rounded-full shrink-0"></span>
-                  Phòng chống tham nhũng, lãng phí, quan liêu
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="text-center mt-12">
-            <div className="inline-flex items-center gap-2 text-crimson font-mono font-bold uppercase border border-crimson px-4 py-2 rounded-full animate-pulse">
-              <RefreshCw size={16} />
-              Chu trình khép kín & liên tục
-            </div>
+              Enter the Debate <ArrowRight size={20} strokeWidth={3} />
+            </Button>
           </div>
         </div>
       </Section>
