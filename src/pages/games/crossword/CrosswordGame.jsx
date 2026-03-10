@@ -24,9 +24,9 @@ const CROSSWORD_ROWS = [
   },
   {
     id: 2,
-    answer: "VĨ TUYẾN",
+    answer: "VĨ TUYẾN 17",
     hint1: "Đường phân chia tạm thời chạy ngang qua tỉnh Quảng Trị.",
-    hint2: "Con số đi kèm là 17, nằm trên sông Bến Hải.",
+    hint2: "Có cầu Hiền Lương, nằm trên sông Bến Hải.",
     clue: "Đường ranh giới tạm thời chia cắt Việt Nam thành hai miền theo Hiệp định Geneva. (7 chữ cái)",
     verticalIndex: 1,
     anchor: "Chữ I ở vị trí 2",

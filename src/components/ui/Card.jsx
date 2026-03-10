@@ -8,17 +8,17 @@ const Card = ({
     hoverEffect = false,
     ...props
 }) => {
-    const baseStyles = "border-2 border-ink overflow-hidden p-6 relative";
+    const baseStyles = "border-[4px] border-ink overflow-hidden p-6 relative transition-all duration-300";
 
     const variants = {
-        default: "bg-bone shadow-hard",
-        flat: "bg-white",
-        highlight: "bg-gold shadow-hard",
-        paper: "bg-paper shadow-hard-lg",
+        default: "bg-paper shadow-[8px_8px_0_#000]",
+        flat: "bg-[#FFFFFF]",
+        highlight: "bg-blue text-white shadow-[8px_8px_0_#000]",
+        paper: "bg-[#FAFAFA] shadow-[12px_12px_0_#000]",
     };
 
     const hoverStyles = hoverEffect
-        ? "hover:-translate-y-1 hover:shadow-hard-lg transition-transform duration-200"
+        ? "hover:-translate-y-2 hover:shadow-[12px_12px_0_#000]"
         : "";
 
     return (

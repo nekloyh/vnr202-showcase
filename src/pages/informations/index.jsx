@@ -59,9 +59,9 @@ const members = [
 
 const references = [
   {
-    title: "Giáo trình Chủ nghĩa Xã hội khoa học (Bộ GD&ĐT)",
+    title: "Giáo trình Lịch sử Đảng Cộng sản Việt Nam (Bộ GD&ĐT)",
     type: "document",
-    link: "https://drive.google.com/file/d/1fgQf9P5Vc77CiIkhcXfs65qgAFgWlp9u/view",
+    link: "https://www.iuv.edu.vn/cms/plugin_upload/preview/news/1468/1113/gt-lich-su-dang-csvn-ban-tuyen-giao-tw.pdf",
   },
   {
     title: "Tài liệu môn VNR202 - FPT University",
@@ -95,7 +95,7 @@ const tools = [
     tools: ["Google AI Studio", "Groq Cloud"],
     icon: Cpu,
     description: [
-      "Fine-tune Gemini 1.5 Flash với dữ liệu Tư tưởng HCM.",
+      "Fine-tune Gemini 1.5 Flash với dữ liệu Tư tưởng Hồ Chí Minh.",
       "Tối ưu độ trễ phản hồi (<1s) với Groq LPU.",
       "Xây dựng Persona 'Cộng' gần gũi, học thuật.",
     ],
@@ -125,16 +125,16 @@ const ProfileCard = ({ member }) => {
   const avatarSrc = isFemale ? "/images/user/female.png" : "/images/user/male.png";
 
   return (
-    <div className="brutal-card relative group h-full flex flex-col p-4 md:p-6 overflow-hidden border-4 border-ink shadow-hard bg-white">
+    <div className="brutal-card relative group h-full flex flex-col p-6 md:p-8 overflow-hidden border-[6px] border-ink shadow-[12px_12px_0_0_#000] bg-white">
       <div className="flex justify-between items-start mb-6">
-        <div className="w-20 h-20 border-2 border-ink bg-bone shrink-0 flex items-center justify-center relative shadow-sm overflow-hidden">
+        <div className="w-20 h-20 border-[4px] border-ink bg-bone shrink-0 flex items-center justify-center relative shadow-[4px_4px_0_#000] overflow-hidden">
           <img
             src={avatarSrc}
             alt={member.name}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 filter grayscale group-hover:grayscale-0"
           />
           {isLeader && (
-            <div className="absolute -top-1 -right-1 w-6 h-6 bg-gold border-2 border-ink flex items-center justify-center shadow-sm">
+            <div className="absolute -top-1 -right-1 w-6 h-6 bg-gold border-[2px] border-ink flex items-center justify-center shadow-sm">
               <Crown size={12} className="text-ink" />
             </div>
           )}
@@ -146,7 +146,7 @@ const ProfileCard = ({ member }) => {
           </h3>
           <div className="text-sm font-mono text-ink/60 mb-1">{member.studentCode}</div>
           <span
-            className={`inline-block px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider border border-ink ${isLeader ? "bg-gold text-ink" : "bg-gray-100 text-ink/70"}`}
+            className={`inline-block px-3 py-1 text-[10px] font-black uppercase tracking-widest border-2 border-ink shadow-[2px_2px_0_#000] ${isLeader ? "bg-gold text-ink" : "bg-[#f0f0f0] text-ink"}`}
           >
             {isLeader ? "Trưởng Nhóm" : "Thành Viên"}
           </span>
@@ -189,9 +189,9 @@ const ReferenceCard = ({ reference }) => {
       href={reference.link}
       target="_blank"
       rel="noopener noreferrer"
-      className="block group brutal-card relative bg-bone border-4 border-ink shadow-hard hover:shadow-[4px_4px_0_0_#d91c1c] hover:translate-y-[-4px] hover:-translate-x-1 transition-all h-full"
+      className="block group brutal-card relative bg-white border-[6px] border-ink shadow-[12px_12px_0_#000] hover:shadow-[16px_16px_0_#d91c1c] hover:translate-y-[-4px] hover:-translate-x-1 transition-all h-full"
     >
-      <div className="p-6 flex flex-col h-full">
+      <div className="p-8 flex flex-col h-full">
         <div className="mb-4 flex items-center justify-between">
           <span className="inline-flex items-center gap-2 bg-bone px-2 py-1 text-xs font-bold font-mono uppercase border border-ink/20 rounded-sm">
             <Icon size={14} />
@@ -212,22 +212,22 @@ const ToolCard = ({ item }) => {
   const Icon = item.icon;
 
   return (
-    <div className="brutal-card h-full flex flex-col p-5 md:p-6 bg-bone border-4 border-ink shadow-[8px_8px_0_0_#000000]">
+    <div className="brutal-card h-full flex flex-col p-6 md:p-8 bg-white border-[6px] border-ink shadow-[16px_16px_0_#000]">
       <div className="flex-1">
         <div className="flex justify-between items-start mb-6">
           <div>
             <span
-              className={`inline-block border-2 border-ink px-3 py-1 font-bold font-mono text-xs mb-3 uppercase shadow-sm ${item.color}`}
+              className={`inline-block border-[4px] border-ink px-3 py-1 font-black font-mono text-xs mb-4 uppercase shadow-[4px_4px_0_#000] ${item.color}`}
             >
               {item.category}
             </span>
-            <h3 className="font-display text-4xl text-ink leading-[0.9] uppercase font-black">
+            <h3 className="font-display text-4xl text-ink leading-[0.9] uppercase font-black tracking-tighter">
               {item.name}
             </h3>
           </div>
 
-          <div className="shrink-0 p-3 border-4 border-ink bg-white shadow-sm">
-            <Icon size={32} strokeWidth={1.5} className="text-ink" />
+          <div className="shrink-0 p-4 border-[4px] border-ink bg-[#f0f0f0] shadow-[6px_6px_0_#000]">
+            <Icon size={36} strokeWidth={2.5} className="text-ink" />
           </div>
         </div>
 
@@ -298,42 +298,50 @@ const ToolCard = ({ item }) => {
 
 const InformationsPage = () => {
   return (
-    <div className="w-full bg-bone min-h-screen page-shell selection:bg-gold selection:text-ink">
-      <Section autoHeight={true} className="pt-24 pb-16 px-4 md:px-8">
-        <div className="flex flex-col items-center justify-center space-y-6 max-w-5xl mx-auto w-full relative z-10 mb-12 mt-5">
+    <div className="w-full bg-[#FAFAFA] min-h-screen page-shell selection:bg-gold selection:text-ink">
+      <Section autoHeight={true} className="pt-24 pb-32 px-4 md:px-8 border-b-[8px] border-ink bg-[#f0f0f0] relative overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-20 pointer-events-none mix-blend-multiply"
+          style={{
+            backgroundImage:
+              "linear-gradient(#000 1px, transparent 1px), linear-gradient(to right, #000 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
+        />
+
+        <div className="flex flex-col items-center justify-center space-y-8 max-w-5xl mx-auto w-full relative z-10 mb-20 mt-5">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-gold border-4 border-ink px-6 py-2 shadow-hard transform rotate-1"
+            className="bg-ink border-[4px] border-ink px-6 py-2 shadow-[8px_8px_0_#D32F2F] transform -rotate-1"
           >
-            <span className="font-mono font-bold uppercase tracking-widest text-sm md:text-base text-ink">
-              THÔNG TIN DỰ ÁN
+            <span className="font-mono font-bold uppercase tracking-widest text-sm md:text-base text-white">
+              HỒ SƠ 05 — TÀI LIỆU DỰ ÁN & BÁO CÁO
             </span>
           </motion.div>
 
-          <div className="relative text-center">
+          <div className="relative text-center mt-6">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="font-display font-black text-5xl md:text-7xl lg:text-8xl uppercase text-ink tracking-tight text-center leading-tight drop-shadow-[4px_4px_0px_#ffd700]"
+              className="font-display font-black text-[clamp(4rem,6vw,6rem)] uppercase text-ink tracking-tighter text-center leading-none drop-shadow-[6px_6px_0px_#1976D2] mb-4"
             >
-              HỒ SƠ <span className="text-crimson">DỰ ÁN</span>
+              HỒ SƠ <span className="text-crimson bg-white px-4 border-[6px] border-ink drop-shadow-[6px_6px_0_#D32F2F] ml-2 transform rotate-1 inline-block">DỰ ÁN</span>
             </motion.h1>
           </div>
 
-          <KineticSubline className="max-w-3xl mx-auto text-xl text-center">
+          <div className="max-w-3xl mx-auto text-2xl font-bold bg-white px-6 py-4 border-[4px] border-ink shadow-[6px_6px_0_#F9A826] mt-8 text-center text-ink leading-relaxed">
             Tổng hợp thành viên thực hiện, tài liệu tham khảo và báo cáo ứng dụng AI trong dự án VNR202.
-          </KineticSubline>
+          </div>
         </div>
 
-        <div className="max-w-7xl mx-auto mb-16">
-          <div className="flex items-center justify-center gap-4 mb-12">
-            <div className="h-px bg-ink/30 flex-1 max-w-[100px]" />
-            <h2 className="text-2xl font-display font-bold text-ink uppercase tracking-widest">
-              Thành viên nhóm
+        <div className="max-w-7xl mx-auto mb-20 relative z-10">
+          <div className="flex items-center justify-center mb-16 relative">
+            <h2 className="text-[clamp(2.5rem,4vw,4rem)] font-display font-black text-ink uppercase tracking-tighter bg-white px-8 py-4 border-[6px] border-ink shadow-[12px_12px_0_#000] inline-block -rotate-1 relative z-10">
+              Nhân Sự Hạch Tâm
             </h2>
-            <div className="h-px bg-ink/30 flex-1 max-w-[100px]" />
+            <div className="absolute left-0 right-0 h-[6px] bg-ink top-1/2 -translate-y-1/2 z-0"></div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
@@ -345,13 +353,12 @@ const InformationsPage = () => {
           </div>
         </div>
 
-        <div className="max-w-5xl mx-auto mb-16">
-          <div className="flex items-center justify-center gap-4 mb-12">
-            <div className="h-px bg-ink/30 flex-1 max-w-[100px]" />
-            <h2 className="text-2xl font-display font-bold text-ink uppercase tracking-widest">
-              Tài liệu tham khảo
+        <div className="max-w-5xl mx-auto mb-20 relative z-10">
+          <div className="flex items-center justify-center mb-16 relative">
+            <h2 className="text-[clamp(2.5rem,4vw,4rem)] font-display font-black text-ink uppercase tracking-tighter bg-[#1976D2] text-white px-8 py-4 border-[6px] border-ink shadow-[12px_12px_0_#000] inline-block rotate-1 relative z-10">
+              Tài Liệu Chiếu Khảo
             </h2>
-            <div className="h-px bg-ink/30 flex-1 max-w-[100px]" />
+            <div className="absolute left-0 right-0 h-[6px] bg-ink top-1/2 -translate-y-1/2 z-0 hidden md:block"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
@@ -363,18 +370,17 @@ const InformationsPage = () => {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto mb-16">
-          <div className="flex items-center justify-center gap-4 mb-8">
-            <div className="h-px bg-ink/30 flex-1 max-w-[100px]" />
-            <h2 className="text-2xl font-display font-bold text-ink uppercase tracking-widest">
-              Ứng dụng AI
+        <div className="max-w-7xl mx-auto mb-24 relative z-10">
+          <div className="flex items-center justify-center mb-16 relative">
+            <h2 className="text-[clamp(2.5rem,4vw,4rem)] font-display font-black text-ink uppercase tracking-tighter bg-gold px-8 py-4 border-[6px] border-ink shadow-[12px_12px_0_#000] inline-block -rotate-1 relative z-10">
+              Báo Cáo Công Nghệ
             </h2>
-            <div className="h-px bg-ink/30 flex-1 max-w-[100px]" />
+            <div className="absolute left-0 right-0 h-[6px] bg-ink top-1/2 -translate-y-1/2 z-0 hidden md:block"></div>
           </div>
 
-          <KineticSubline className="max-w-4xl mx-auto text-lg md:text-xl text-center leading-relaxed mb-8">
-            Báo cáo minh bạch cách nhóm sử dụng AI trong nghiên cứu, vận hành chatbot và phát triển website.
-          </KineticSubline>
+          <div className="max-w-4xl mx-auto text-2xl font-bold bg-white text-ink border-[6px] border-ink shadow-[8px_8px_0_#D32F2F] text-center leading-relaxed mb-16 p-8">
+            Báo cáo minh bạch cách nhóm sử dụng AI trong nghiên cứu, vận hành chatbot và tối ưu website.
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
             {tools.map((item) => (
@@ -389,27 +395,27 @@ const InformationsPage = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto mb-12"
+          className="max-w-5xl mx-auto pb-12 relative z-10"
         >
-          <div className="bg-white border-4 border-ink p-8 md:p-12 text-center relative shadow-hard-lg">
-            <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-crimson text-white px-6 py-2 font-bold font-mono uppercase text-sm border-2 border-ink shadow-sm">
-              Academic Integrity
+          <div className="bg-white border-[8px] border-ink p-10 md:p-16 text-center relative shadow-[24px_24px_0_#D32F2F]">
+            <div className="absolute -top-[28px] left-1/2 -translate-x-1/2 bg-crimson text-white px-8 py-3 font-black font-mono uppercase text-lg border-[6px] border-ink shadow-[8px_8px_0_#000] whitespace-nowrap">
+              CẢNH BÁO: HỌC THUẬT NGHIÊM NGẶT
             </div>
 
-            <ShieldAlert size={64} className="text-crimson mx-auto mb-6" />
+            <ShieldAlert size={80} className="text-crimson mx-auto mb-8 stroke-[1.5]" />
 
-            <h3 className="font-display text-4xl text-ink uppercase mb-4">
-              Cam kết học thuật
+            <h3 className="font-display text-[clamp(2.5rem,4vw,4rem)] font-black text-ink uppercase mb-6 tracking-tighter">
+              Cam Kết Toàn Vẹn Học Thuật
             </h3>
 
-            <div className="space-y-4 text-ink/80 text-lg leading-relaxed max-w-2xl mx-auto">
+            <div className="space-y-6 text-ink font-bold text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto bg-[#FAFAFA] border-[4px] border-ink p-8 shadow-[8px_8px_0_#1976D2]">
               <p>
-                AI chỉ đóng vai trò là <strong>công cụ hỗ trợ</strong> (tra cứu, gợi ý, tối ưu mã nguồn),
-                <span className="text-crimson font-bold"> KHÔNG</span> thay thế tư duy.
+                Trí tuệ nhân tạo (AI) chỉ đóng vai trò là <strong>công cụ hỗ trợ</strong> nghiên cứu biểu hiện qua (tra cứu, tổng hợp, tối ưu phần mềm),
+                <span className="text-crimson font-black text-2xl uppercase underline decoration-4 underline-offset-4 decoration-crimson bg-gold px-2 ml-2"> KHÔNG</span> thay thế tư duy và lập trường.
               </p>
               <p>
-                Mọi nội dung chuyên môn đều được đối chiếu với <strong>Giáo trình Tư tưởng Hồ Chí Minh</strong> và
-                Văn kiện Đảng.
+                Mọi nội dung chuyên môn đều được đối chiếu chéo cẩn trọng với các tài liệu <strong>Giáo trình chính quy</strong> và
+                nguồn dẫn gốc được công nhận.
               </p>
             </div>
           </div>

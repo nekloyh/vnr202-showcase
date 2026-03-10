@@ -11,17 +11,17 @@ const Button = ({
     ...props
 }) => {
     const baseStyles =
-        "inline-flex items-center justify-center font-bold uppercase tracking-wider border-2 transition-all duration-200 ease-[cubic-bezier(0.87,0,0.13,1)] select-none disabled:opacity-50 disabled:pointer-events-none cursor-pointer";
+        "inline-flex items-center justify-center font-bold uppercase tracking-wider border-[4px] border-ink transition-transform transition-shadow duration-200 ease-out select-none disabled:opacity-50 disabled:pointer-events-none cursor-pointer rounded-none";
 
     const variants = {
         primary:
-            "bg-bone text-ink border-ink shadow-hard hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg active:translate-x-0 active:translate-y-0 active:shadow-none",
+            "bg-blue text-white shadow-[6px_6px_0_#000] hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[10px_10px_0_#000] active:translate-x-1 active:translate-y-1 active:shadow-[2px_2px_0_#000]",
         outline:
-            "bg-transparent text-ink border-ink hover:bg-ink hover:text-bone hover:shadow-hard hover:-translate-x-1 hover:-translate-y-1 active:translate-x-0 active:translate-y-0 active:shadow-none",
+            "bg-paper text-ink hover:bg-blue hover:text-white hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0_#000] active:translate-x-1 active:translate-y-1 active:shadow-none",
         ghost:
-            "bg-transparent border-transparent text-ink hover:bg-ink/5 hover:border-ink/20",
+            "bg-transparent text-ink border-transparent hover:border-ink hover:bg-blue hover:text-white hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0_#000] active:translate-x-1 active:translate-y-1 active:shadow-none",
         danger:
-            "bg-crimson text-bone border-ink shadow-hard hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg active:translate-x-0 active:translate-y-0 active:shadow-none",
+            "bg-crimson text-white shadow-[6px_6px_0_#000] hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[10px_10px_0_#000] active:translate-x-1 active:translate-y-1 active:shadow-[2px_2px_0_#000]",
     };
 
     const sizes = {

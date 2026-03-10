@@ -10,6 +10,7 @@ import ConclusionPage from "./pages/conclusion/index.jsx";
 import GamesPage from "./pages/games/index.jsx";
 import AIChatboxPage from "./pages/ai/index.jsx";
 import InformationsPage from "./pages/informations/index.jsx";
+import TimelinePage from "./pages/timeline/index.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -21,6 +22,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/tranh-luan-ket-luan" element={<ConclusionPage />} />
         <Route path="/tro-choi" element={<GamesPage />} />
         <Route path="/ai-chatbot" element={<AIChatboxPage />} />
+        <Route path="/moc-thoi-gian" element={<TimelinePage />} />
         <Route path="/thong-tin-du-an" element={<InformationsPage />} />
       </Routes>
     </BrowserRouter>

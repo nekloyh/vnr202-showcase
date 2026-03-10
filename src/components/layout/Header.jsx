@@ -49,6 +49,7 @@ export default function Header() {
     { name: "Tranh luận & Kết luận", path: "/tranh-luan-ket-luan" },
     { name: "Trò chơi", path: "/tro-choi" },
     { name: "Trợ lý VNR202", path: "/ai-chatbot" },
+    { name: "Mốc thời gian", path: "/moc-thoi-gian" },
     { name: "Thông tin dự án", path: "/thong-tin-du-an" },
   ];
 
@@ -57,8 +58,8 @@ export default function Header() {
     setMobileMenuOpen(false);
   };
 
-  const headerBgClass = "bg-bone border-b-2 border-ink";
-  const headerShadowClass = scrolled ? "shadow-hard-md" : "";
+  const headerBgClass = "bg-paper border-b-[6px] border-ink";
+  const headerShadowClass = scrolled ? "shadow-[0_8px_0_0_#000]" : "";
 
   return (
     <>
@@ -71,10 +72,10 @@ export default function Header() {
           {/* Logo / Brand */}
           <div
             onClick={() => handleNavigate("/")}
-            className="font-display text-3xl text-ink cursor-pointer select-none border-2 border-transparent hover:border-ink hover:bg-gold hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard p-1 transition-all"
+            className="font-display font-black text-3xl text-ink cursor-pointer select-none border-[4px] border-transparent hover:border-ink hover:bg-blue hover:text-white hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0_#000] px-2 py-1 transition-all"
           >
             VNR<span className="text-crimson">202</span>
-            <span className="hidden md:inline-block ml-3 text-xs font-mono font-bold tracking-widest text-ink/60 border-l-2 border-ink pl-3">
+            <span className="hidden md:inline-block ml-3 text-xs font-mono font-bold tracking-widest border-l-[4px] border-ink pl-3">
               LỊCH SỬ ĐẢNG
             </span>
           </div>
@@ -92,11 +93,6 @@ export default function Header() {
                   variant={isActive ? "danger" : "ghost"}
                   onClick={() => handleNavigate(item.path)}
                   size="sm"
-                  className={
-                    isActive
-                      ? ""
-                      : "hover:bg-gold hover:text-ink hover:border-ink hover:shadow-hard"
-                  }
                 >
                   {item.name}
                 </Button>
@@ -139,11 +135,11 @@ export default function Header() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "tween", duration: 0.3 }}
-              className="absolute right-0 top-0 h-full w-4/5 max-w-sm bg-bone border-l-4 border-ink shadow-[-12px_12px_0_0_rgba(0,0,0,1)] p-6 pt-24"
+              className="absolute right-0 top-0 h-full w-4/5 max-w-sm bg-paper border-l-[6px] border-ink shadow-[-12px_12px_0_0_#000] p-6 pt-24"
             >
               <div className="flex flex-col gap-4">
-                <div className="border-b-2 border-ink pb-4 mb-4">
-                  <h3 className="font-display text-2xl text-ink uppercase">
+                <div className="border-b-[4px] border-ink pb-4 mb-4">
+                  <h3 className="font-display font-black text-2xl text-ink uppercase">
                     Điều hướng
                   </h3>
                 </div>

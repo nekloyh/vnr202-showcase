@@ -142,7 +142,7 @@ const LeaderboardModal = ({ onClose }) => {
 
     return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/90 backdrop-blur-sm p-4 animate-in zoom-in-95 duration-200">
-        <div className="w-full max-w-3xl bg-paper border-4 border-ink shadow-[12px_12px_0px_0px_#1C1C1A] flex flex-col relative rounded-none">
+        <div className="w-full max-w-3xl bg-paper border-[8px] border-ink shadow-[20px_20px_0px_0px_#1C1C1A] flex flex-col relative rounded-none">
             
             {/* Retro Mac/Windows Title Bar */}
             <div className="h-12 bg-crimson border-b-4 border-ink flex items-center justify-between px-4 select-none">
@@ -161,7 +161,7 @@ const LeaderboardModal = ({ onClose }) => {
             {/* Arcade Header */}
             <div className="bg-ink text-gold p-8 text-center border-b-4 border-ink relative overflow-hidden">
                 <div className="relative z-10">
-                    <h2 className="text-4xl md:text-6xl font-black font-display uppercase tracking-tighter leading-none mb-2 drop-shadow-[4px_4px_0_#9B1B30]">
+                    <h2 className="text-fluid-6xl font-black font-display uppercase tracking-tighter leading-none mb-2 drop-shadow-[4px_4px_0_#9B1B30]">
                         TOP RUNNERS
                     </h2>
                     <p className="font-mono text-xs md:text-sm text-bone/80 uppercase tracking-[0.3em]">
@@ -284,7 +284,7 @@ const GamesPage = () => {
     ];
 
     return (
-        <div className="page-shell w-full bg-bone min-h-screen">
+        <div className="page-shell w-full bg-[#f0f0f0] min-h-screen">
             {/* Guide Modal */}
             <AnimatePresence>
                 {activeGuide && <GuideModal gameId={activeGuide} onClose={() => setActiveGuide(null)} />}
@@ -306,27 +306,35 @@ const GamesPage = () => {
             )}
 
             {/* SECTION 1: HEADER & GAME LIST COMBINED FOR BETTER FLOW */}
-            <Section autoHeight={true} className="items-center justify-center pt-24 px-4 md:px-10 border-b-2 border-ink bg-bone relative overflow-hidden">
+            <Section autoHeight={true} className="items-center justify-center pt-24 pb-32 px-4 md:px-10 border-b-[8px] border-ink bg-[#f0f0f0] relative overflow-hidden">
+                <div
+                  className="absolute inset-0 opacity-20 pointer-events-none mix-blend-multiply"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(#000 1px, transparent 1px), linear-gradient(to right, #000 1px, transparent 1px)",
+                    backgroundSize: "60px 60px",
+                  }}
+                />
 
-                <div className="flex flex-col items-center justify-center space-y-8 max-w-5xl mx-auto w-full relative z-10 mb-16">
+                <div className="flex flex-col items-center justify-center space-y-8 max-w-5xl mx-auto w-full relative z-10 mb-20">
                      {/* Top Label Box */}
                      <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="bg-gold border-4 border-ink px-6 py-2 shadow-hard transform rotate-1 mt-10 md:mt-10"
+                        className="bg-ink border-[4px] border-ink px-6 py-2 shadow-[8px_8px_0_#D32F2F] transform -rotate-1 mt-10 md:mt-10"
                      >
-                        <span className="font-mono font-bold uppercase tracking-widest text-sm md:text-base text-ink">
-                           HỌC TẬP QUA TRÒ CHƠI
+                        <span className="font-mono font-bold uppercase tracking-widest text-sm md:text-base text-white">
+                           HỒ SƠ 04 — MÔ PHỎNG & ĐÁNH GIÁ THỰC NGHIỆM
                         </span>
                      </motion.div>
 
                      {/* Main Title Block */}
-                     <div className="relative text-center flex flex-wrap justify-center items-center gap-4 md:gap-6">
+                     <div className="relative text-center mt-8">
                         <motion.h1
                            initial={{ scale: 0.9, opacity: 0 }}
                            animate={{ scale: 1, opacity: 1 }}
                            transition={{ delay: 0.1, duration: 0.25, ease: "linear" }}
-                           className="font-display font-black text-5xl sm:text-6xl md:text-8xl uppercase text-ink leading-[0.85] tracking-tighter drop-shadow-[4px_4px_0px_#ffd700]"
+                           className="font-display font-black text-[clamp(4.5rem,8vw,8rem)] uppercase text-ink leading-[0.85] tracking-tighter drop-shadow-[8px_8px_0_#F9F9F9] mb-4"
                         >
                            ĐẤU TRƯỜNG
                         </motion.h1>
@@ -335,89 +343,96 @@ const GamesPage = () => {
                            initial={{ scale: 0.9, opacity: 0 }}
                            animate={{ scale: 1, opacity: 1 }}
                            transition={{ delay: 0.2, duration: 0.25, ease: "linear" }}
-                           className="font-display font-black text-5xl sm:text-6xl md:text-8xl uppercase text-crimson leading-[0.85] tracking-tighter drop-shadow-[4px_4px_0px_#000000]"
+                           className="font-display font-black text-[clamp(4.5rem,8vw,8rem)] uppercase text-white bg-ink px-8 py-2 border-[6px] border-ink leading-[0.85] tracking-tighter drop-shadow-[8px_8px_0_#D32F2F] mt-4 rotate-1 inline-block shadow-[16px_16px_0_rgba(0,0,0,0.2)]"
                         >
                            TRÍ TUỆ
                         </motion.h1>
                      </div>
 
-                    <p className="max-w-3xl mx-auto text-xl font-medium mt-6 text-center text-graphite/90 leading-relaxed">
-                        Các hoạt động tương tác dưới đây được thiết kế giúp củng cố sự hiểu biết của bạn về các tuyến lập luận phức tạp, hệ thống bằng chứng, và các cột mốc lịch sử cốt lõi đã được trình bày xuyên suốt trang nghiên cứu này.
+                    <p className="max-w-3xl mx-auto text-2xl font-bold mt-12 bg-white px-6 py-4 border-[4px] border-ink shadow-[6px_6px_0_#1976D2] -rotate-1 text-center text-ink leading-relaxed">
+                        Các hoạt động tương tác dưới đây được thiết kế giúp bạn củng cố sự hiểu biết về lập luận phức tạp, hệ thống bằng chứng và các cột mốc lịch sử cốt lõi.
                     </p>
                 </div>
 
                 <div className="max-w-6xl mx-auto w-full relative z-10">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14">
                         {games.map((game) => (
                             <div
                                 key={game.id}
-                                className={`brutal-card p-8 flex flex-col h-full border-t-8 bg-white border-2 border-ink ${game.color} transform transition-transform duration-300 hover:scale-102`}
+                                className={`brutal-card p-10 md:p-12 flex flex-col h-full border-t-[16px] bg-white border-[8px] border-ink ${game.color} shadow-[16px_16px_0_0_#000] transform transition-transform duration-300 hover:-translate-y-2 relative`}
                             >
-                                <div className="mb-6 flex justify-between items-start">
-                                    <div className="p-4 bg-bone rounded-full border-2 border-ink shadow-sm group-hover:bg-gold transition-colors">
+                                <div className="absolute top-0 right-0 bg-ink text-white font-mono text-sm uppercase px-4 py-1 border-l-[8px] border-b-[8px] border-ink font-bold tracking-widest">
+                                    [ BÀI TẬP KIỂM TRA ]
+                                </div>
+                                <div className="mb-8 flex justify-between items-start mt-6">
+                                    <div className="p-4 bg-bone border-[6px] border-ink shadow-[6px_6px_0_#1C1C1A] group-hover:bg-gold transition-colors inline-block">
                                         {game.icon}
                                     </div>
-                                    <span className="text-xs font-mono uppercase font-bold bg-ink/5 px-3 py-1.5 rounded border border-ink/20 text-ink/70">
+                                    <span className="text-sm font-mono uppercase font-black bg-gold text-ink px-4 py-2 border-[4px] border-ink shadow-[4px_4px_0_#000] rotate-2">
                                         {game.status}
                                     </span>
                                 </div>
 
                                 <div className="flex-grow">
-                                    <h3 className="font-display text-3xl font-bold mb-4 uppercase tracking-tight">{game.title}</h3>
-                                    <p className="text-graphite/80 text-lg leading-relaxed mb-6">
+                                    <h3 className="font-display text-[clamp(2rem,3vw,3rem)] font-black mb-6 uppercase tracking-tighter leading-none">{game.title}</h3>
+                                    <p className="text-ink font-bold text-xl leading-relaxed mb-8">
                                         {game.description}
                                     </p>
                                 </div>
 
-                                <div className="mt-4 pt-6 border-t-2 border-dashed border-ink/20 space-y-3">
+                                <div className="mt-4 pt-8 border-t-[8px] border-ink space-y-4">
                                     <Button 
                                         variant="primary"
-                                        className="w-full justify-center group text-lg py-4 shadow-hard hover:shadow-hard-lg hover:translate-y-[-2px]"
+                                        className="w-full justify-center group text-xl py-5 shadow-[8px_8px_0_#000] hover:shadow-[10px_10px_0_#000] border-[4px] border-ink bg-ink text-white hover:bg-gold hover:text-ink hover:-translate-y-1 font-black uppercase tracking-widest transition-all"
                                         onClick={game.onClick}
                                         disabled={!game.playable && !game.onClick}
                                     >
                                         {game.action}
-                                        {game.playable && <Gamepad2 className="ml-3 group-hover:rotate-12 transition-transform" size={20} />}
+                                        {game.playable && <Gamepad2 className="ml-3 group-hover:rotate-12 transition-transform" size={24} />}
                                     </Button>
                                     
                                     <Button
                                         variant="outline"
-                                        className="w-full justify-center text-sm font-bold border-2 border-dashed border-ink/40 hover:border-ink hover:bg-ink/5 hover:text-ink py-3 transition-all"
+                                        className="w-full justify-center text-lg font-bold border-[4px] border-ink hover:bg-[#E5E5E5] hover:text-ink py-4 transition-all"
                                         onClick={() => setActiveGuide(game.id)}
                                     >
-                                        <BookOpen size={16} className="mr-2" />
-                                        Hướng dẫn
+                                        <BookOpen size={20} className="mr-3" />
+                                        ĐỌC HƯỚNG DẪN
                                     </Button>
                                 </div>
                             </div>
                         ))}
                     </div>
 
-                    <div className="mt-24 mb-12">
-                        <div className="relative overflow-hidden rounded-none border-4 border-ink bg-ink text-bone shadow-[12px_12px_0_0_#9B1B30] p-8 md:p-12">
+                    <div className="mt-32 mb-16 max-w-5xl mx-auto relative">
+                        <div className="absolute -top-[48px] left-0 bg-gold text-ink font-mono text-xl font-bold uppercase tracking-widest px-8 py-3 border-[8px] border-b-0 border-ink shadow-[12px_0_0_#D32F2F] z-20">
+                            TRUY CẬP DỮ LIỆU
+                        </div>
+                        <div className="relative overflow-hidden rounded-none border-[8px] border-ink bg-ink text-bone shadow-[24px_24px_0_0_#D32F2F] p-10 md:p-16">
                             {/* Animated Background */}
-                            <div className="absolute inset-0 opacity-10 bg-[linear-gradient(45deg,transparent_25%,#fffdf5_50%,transparent_75%,transparent_100%)] bg-[length:20px_20px]"></div>
+                            <div className="absolute inset-0 opacity-10 bg-[linear-gradient(45deg,transparent_25%,#fffdf5_50%,transparent_75%,transparent_100%)] bg-[length:30px_30px]"></div>
                             
-                            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
+                            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
                                 <div className="flex-1 text-center md:text-left">
-                                    <div className="flex items-center justify-center md:justify-start gap-4 mb-2">
-                                        <Trophy className="text-gold" size={48} strokeWidth={2.5} />
-                                        <h3 className="font-black text-4xl md:text-5xl text-gold uppercase tracking-tighter drop-shadow-[2px_2px_0_#1C1C1A]">
-                                            Bảng Xếp Hạng<br/>Runner Quiz
+                                    <div className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-6 mb-2">
+                                        <Trophy className="text-gold hidden md:block" size={64} strokeWidth={2.5} />
+                                        <h3 className="font-display font-black text-fluid-5xl uppercase tracking-tighter drop-shadow-[4px_4px_0_#D32F2F] text-white">
+                                            Bảng Phân Hạng<br/>
+                                            <span className="text-gold drop-shadow-[4px_4px_0_#D32F2F]">Chiến Dịch Sinh Tồn</span>
                                         </h3>
                                     </div>
-                                    <p className="text-bone/90 text-lg font-mono mt-4 max-w-2xl bg-ink/50 inline-block px-2">
-                                        Vượt chướng ngại vật - Trả lời câu hỏi - Ghi danh lịch sử.
+                                    <p className="text-white text-xl font-bold font-mono mt-6 max-w-2xl bg-crimson inline-block px-4 py-2 border-[4px] border-ink shadow-[6px_6px_0_#000] -rotate-1">
+                                        Ghi danh vào lịch sử. Vượt qua thử thách và đoạt vị trí dẫn đầu.
                                     </p>
                                 </div>
-                                <div className="flex-shrink-0 relative group">
-                                    <div className="absolute inset-0 bg-crimson translate-x-2 translate-y-2 border-2 border-ink"></div>
+                                <div className="flex-shrink-0 relative group mt-8 md:mt-0">
+                                    <div className="absolute inset-0 bg-gold translate-x-2 translate-y-2 border-[4px] border-ink shadow-[4px_4px_0_#D32F2F]"></div>
                                     <Button 
                                         onClick={() => setShowLeaderboard(true)}
                                         variant="outline" 
-                                        className="relative bg-bone text-ink border-2 border-ink hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all text-lg px-8 py-4 uppercase font-black tracking-wider"
+                                        className="relative bg-white text-ink border-[6px] border-ink hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all text-xl md:text-2xl px-10 py-5 uppercase font-black tracking-widest"
                                     >
-                                        Xem Bảng Xếp Hạng
+                                        XEM DANH SÁCH
                                     </Button>
                                 </div>
                             </div>

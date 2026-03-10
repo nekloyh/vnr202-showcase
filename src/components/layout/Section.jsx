@@ -9,21 +9,18 @@ const Section = ({
     id = "",
     ...props
 }) => {
-    // If autoHeight is true, we don't apply the snap-section classes which enforce 100vh
-    // Instead we rely on min-h-screen or just natural height
-    let baseClass = scrollable ? "snap-section-scrollable" : "snap-section";
-
-    if (autoHeight) {
-        baseClass = "relative w-full overflow-hidden min-h-screen py-20";
-    }
+    // Remove rigid CSS snap values and replace with fluid document-flow classes
+    let baseClass = autoHeight 
+        ? "relative w-full overflow-x-hidden min-h-screen py-section" 
+        : "section-fluid py-section";
 
     return (
         <section
             id={id}
-            className={`${!autoHeight ? 'relative w-full overflow-hidden' : ''} ${baseClass} ${className}`}
+            className={`${baseClass} ${className}`}
             {...props}
         >
-            <div className={`max-w-screen-2xl mx-auto w-full px-4 md:px-10 lg:px-16 flex flex-col justify-center ${autoHeight ? 'min-h-full' : 'min-h-full pt-20'} ${containerClass}`}>
+            <div className={`max-w-[1536px] mx-auto w-full px-section flex flex-col justify-center min-h-full ${containerClass}`}>
                 {children}
             </div>
         </section>
