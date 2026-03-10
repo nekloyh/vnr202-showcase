@@ -18,7 +18,8 @@ import useMapSpring from "../../hooks/useMapSpring";
 import vietnamMapEvents from "../../data/vietnamMapEvents";
 import ArrowLayer from "./ArrowLayer";
 
-export const GEO_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json";
+export const GEO_URL =
+  "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json";
 export const VN_PROVINCES_URL = "/vietnam-provinces-topo.json";
 export const VIETNAM_ID = 704;
 
@@ -29,28 +30,10 @@ const DEFAULT_ZOOM = 4.9;
 const MIN_ZOOM = 3;
 const MAX_ZOOM = 18;
 
+/* ── Simplified archipelago data: just center dots ── */
 const ARCHIPELAGOS = [
-  {
-    id: "hoang-sa",
-    name: "Quần đảo Hoàng Sa",
-    center: [112.33, 16.5],
-    radiusKm: 90,
-    islands: [
-      [112.33, 16.83], [111.6, 16.52], [112.34, 16.5],
-      [112.72, 16.48], [111.92, 16.33], [112.19, 16.06],
-    ],
-  },
-  {
-    id: "truong-sa",
-    name: "Quần đảo Trường Sa",
-    center: [114.2, 9.5],
-    radiusKm: 200,
-    islands: [
-      [114.36, 11.06], [115.82, 9.88], [113.82, 9.88],
-      [114.08, 8.65], [112.88, 10.38], [114.48, 10.0],
-      [115.02, 8.85], [113.6, 8.1],
-    ],
-  },
+  { id: "hoang-sa", label: "Hoàng Sa", center: [112.33, 16.5] },
+  { id: "truong-sa", label: "Trường Sa", center: [114.2, 9.5] },
 ];
 
 const REGION_ANCHORS = {
@@ -66,19 +49,6 @@ const REGION_ANCHORS = {
   "VN-SG": [106.6297, 10.8231],
 };
 
-const REGION_TO_HASC = {
-  "VN-HN": "VN.HI",
-  "VN-HP": "VN.HP",
-  "VN-CB": "VN.CB",
-  "VN-LS": "VN.LS",
-  "VN-DI": "VN.DB",
-  "VN-TTH": "VN.TT",
-  "VN-QT": "VN.QT",
-  "VN-DN": "VN.DA",
-  "VN-BT": "VN.BR",
-  "VN-SG": "VN.HC",
-};
-
 function isCoord(value) {
   return (
     Array.isArray(value) &&
@@ -91,7 +61,9 @@ function isCoord(value) {
 function isVietnam(geo) {
   const geoId = Number(geo.id);
   const iso = geo.properties?.ISO_A3 || geo.properties?.iso_a3;
-  return geoId === VIETNAM_ID || geo.id === String(VIETNAM_ID) || iso === "VNM";
+  return (
+    geoId === VIETNAM_ID || geo.id === String(VIETNAM_ID) || iso === "VNM"
+  );
 }
 
 function splitLines(text = "", maxChars = 34) {
@@ -99,7 +71,6 @@ function splitLines(text = "", maxChars = 34) {
   const words = text.split(" ");
   const lines = [];
   let current = "";
-
   words.forEach((word) => {
     const next = current ? `${current} ${word}` : word;
     if (next.length <= maxChars) {
@@ -109,7 +80,6 @@ function splitLines(text = "", maxChars = 34) {
       current = word;
     }
   });
-
   if (current) lines.push(current);
   return lines.slice(0, 3);
 }
@@ -123,8 +93,8 @@ function normalizeInfluencePaths(rawPaths, originCoords, eventKey) {
       id: `${eventKey}-legacy-${index}`,
       coordinates: [originCoords, target],
       dashed: true,
-      color: "#E63946",
-      strokeWidth: 1.5,
+      color: "#C9484A",
+      strokeWidth: 1,
     }));
   }
 
@@ -135,11 +105,10 @@ function normalizeInfluencePaths(rawPaths, originCoords, eventKey) {
           id: `${eventKey}-path-${index}`,
           coordinates: path,
           dashed: true,
-          color: "#E63946",
-          strokeWidth: 1.5,
+          color: "#C9484A",
+          strokeWidth: 1,
         };
       }
-
       if (path && typeof path === "object" && Array.isArray(path.coordinates)) {
         const coordinates = path.coordinates.filter(isCoord);
         if (coordinates.length < 2) return null;
@@ -147,11 +116,10 @@ function normalizeInfluencePaths(rawPaths, originCoords, eventKey) {
           id: path.id ?? `${eventKey}-custom-${index}`,
           coordinates,
           dashed: path.dashed ?? true,
-          color: path.color ?? "#E63946",
-          strokeWidth: path.strokeWidth ?? 1.5,
+          color: path.color ?? "#C9484A",
+          strokeWidth: path.strokeWidth ?? 1,
         };
       }
-
       return null;
     })
     .filter(Boolean);
@@ -185,22 +153,22 @@ function findEventById(events, id) {
   return events.find((event) => event.id === id) ?? events[0];
 }
 
+/* ═══════════════════════════════════════════════════════════════ */
+
 const InteractiveVietnamMap = forwardRef(function InteractiveVietnamMap(
-  {
-    events = vietnamMapEvents,
-    selectedEventId,
-    onSelectEvent,
-    className = "",
-  },
+  { events = vietnamMapEvents, selectedEventId, onSelectEvent, className = "" },
   ref,
 ) {
   const normalizedEvents = useMemo(() => {
-    const source = Array.isArray(events) && events.length > 0 ? events : vietnamMapEvents;
+    const source =
+      Array.isArray(events) && events.length > 0 ? events : vietnamMapEvents;
     return source.map((event, index) => normalizeEvent(event, index));
   }, [events]);
 
   const controlled = selectedEventId !== undefined && selectedEventId !== null;
-  const [internalSelectedId, setInternalSelectedId] = useState(normalizedEvents[0]?.id ?? null);
+  const [internalSelectedId, setInternalSelectedId] = useState(
+    normalizedEvents[0]?.id ?? null,
+  );
   const [hoveredMarkerId, setHoveredMarkerId] = useState(null);
   const [pinnedMarkerId, setPinnedMarkerId] = useState(null);
 
@@ -210,26 +178,30 @@ const InteractiveVietnamMap = forwardRef(function InteractiveVietnamMap(
     [normalizedEvents, effectiveSelectedId],
   );
 
-  const { center, zoom, flyTo, jumpTo } = useMapSpring(DEFAULT_CENTER, DEFAULT_ZOOM);
+  const { center, zoom, flyTo, jumpTo } = useMapSpring(
+    DEFAULT_CENTER,
+    DEFAULT_ZOOM,
+  );
 
   const highlightedRegionIds = useMemo(
-    () => (Array.isArray(selectedEvent?.regionIds) ? selectedEvent.regionIds : []),
+    () =>
+      Array.isArray(selectedEvent?.regionIds) ? selectedEvent.regionIds : [],
     [selectedEvent],
   );
 
-  const highlightedHascCodes = useMemo(
-    () => highlightedRegionIds.map((id) => REGION_TO_HASC[id]).filter(Boolean),
-    [highlightedRegionIds],
-  );
-
   const influencePaths = useMemo(
-    () => (Array.isArray(selectedEvent?.influencePaths) ? selectedEvent.influencePaths : []),
+    () =>
+      Array.isArray(selectedEvent?.influencePaths)
+        ? selectedEvent.influencePaths
+        : [],
     [selectedEvent],
   );
 
   const highlightedAnchors = useMemo(() => {
     if (!Array.isArray(highlightedRegionIds)) return [];
-    return highlightedRegionIds.map((id) => REGION_ANCHORS[id]).filter(isCoord);
+    return highlightedRegionIds
+      .map((id) => REGION_ANCHORS[id])
+      .filter(isCoord);
   }, [highlightedRegionIds]);
 
   const visibleTooltipEventId = pinnedMarkerId ?? hoveredMarkerId;
@@ -240,9 +212,7 @@ const InteractiveVietnamMap = forwardRef(function InteractiveVietnamMap(
 
   const selectEvent = useCallback(
     (eventId) => {
-      if (!controlled) {
-        setInternalSelectedId(eventId);
-      }
+      if (!controlled) setInternalSelectedId(eventId);
       if (onSelectEvent) {
         const nextEvent = findEventById(normalizedEvents, eventId);
         onSelectEvent(eventId, nextEvent);
@@ -253,20 +223,16 @@ const InteractiveVietnamMap = forwardRef(function InteractiveVietnamMap(
 
   useImperativeHandle(
     ref,
-    () => ({
-      flyTo,
-      jumpTo,
-      selectEvent,
-    }),
+    () => ({ flyTo, jumpTo, selectEvent }),
     [flyTo, jumpTo, selectEvent],
   );
 
   useEffect(() => {
     if (!controlled && normalizedEvents.length > 0) {
-      const exists = normalizedEvents.some((event) => event.id === internalSelectedId);
-      if (!exists) {
-        setInternalSelectedId(normalizedEvents[0].id);
-      }
+      const exists = normalizedEvents.some(
+        (event) => event.id === internalSelectedId,
+      );
+      if (!exists) setInternalSelectedId(normalizedEvents[0].id);
     }
   }, [controlled, internalSelectedId, normalizedEvents]);
 
@@ -278,26 +244,24 @@ const InteractiveVietnamMap = forwardRef(function InteractiveVietnamMap(
   const handleMarkerClick = useCallback(
     (eventData) => {
       selectEvent(eventData.id);
-      setPinnedMarkerId((current) => (current === eventData.id ? null : eventData.id));
+      setPinnedMarkerId((current) =>
+        current === eventData.id ? null : eventData.id,
+      );
     },
     [selectEvent],
   );
 
   const handleMoveEnd = useCallback(
-    ({ coordinates, zoom: z }) => {
-      jumpTo(coordinates, z);
-    },
+    ({ coordinates, zoom: z }) => jumpTo(coordinates, z),
     [jumpTo],
   );
 
   const handleZoomIn = useCallback(() => {
-    const next = Math.min(zoom + 1.5, MAX_ZOOM);
-    flyTo(center, next);
+    flyTo(center, Math.min(zoom + 1.5, MAX_ZOOM));
   }, [zoom, center, flyTo]);
 
   const handleZoomOut = useCallback(() => {
-    const next = Math.max(zoom - 1.5, MIN_ZOOM);
-    flyTo(center, next);
+    flyTo(center, Math.max(zoom - 1.5, MIN_ZOOM));
   }, [zoom, center, flyTo]);
 
   const handleResetView = useCallback(() => {
@@ -313,7 +277,7 @@ const InteractiveVietnamMap = forwardRef(function InteractiveVietnamMap(
       initial={{ opacity: 0, scale: 0.99 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.35, ease: "easeOut" }}
-      className={`relative h-full min-h-90 overflow-hidden border-2 border-[#5D564C] shadow-hard-md bg-[#C8D1C0] ${className}`}
+      className={`relative h-full min-h-90 overflow-hidden bg-transparent ${className}`}
     >
       <ComposableMap
         projection="geoMercator"
@@ -323,36 +287,69 @@ const InteractiveVietnamMap = forwardRef(function InteractiveVietnamMap(
         className="w-full h-full"
       >
         <defs>
+          {/* Subtle paper noise */}
           <filter id="paperNoise">
-            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.65"
+              numOctaves="3"
+              result="noise"
+            />
             <feColorMatrix
               in="noise"
               type="matrix"
-              values="0 0 0 0 0.36 0 0 0 0 0.32 0 0 0 0 0.25 0 0 0 0.06 0"
+              values="0 0 0 0 0.8  0 0 0 0 0.7  0 0 0 0 0.6  0 0 0 0.04 0"
               result="sepiaNoise"
             />
           </filter>
-          <pattern id="vintageGrid" patternUnits="userSpaceOnUse" width="16" height="16">
-            <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#8A8272" strokeWidth="0.35" opacity="0.15" />
+          <pattern
+            id="vintageGrid"
+            patternUnits="userSpaceOnUse"
+            width="24"
+            height="24"
+          >
+            <path
+              d="M 24 0 L 0 0 0 24"
+              fill="none"
+              stroke="var(--color-vintage-stone)"
+              strokeWidth="0.4"
+              opacity="0.2"
+            />
           </pattern>
-          <filter id="regionGlow" x="-40%" y="-40%" width="180%" height="180%">
-            <feDropShadow dx="0" dy="0" stdDeviation="2.5" floodColor="#E63946" floodOpacity="0.5" />
+          {/* Compact glow for active marker */}
+          <filter id="markerGlow" x="-60%" y="-60%" width="220%" height="220%">
+            <feDropShadow
+              dx="0"
+              dy="0"
+              stdDeviation="1.5"
+              floodColor="var(--color-vintage-gold)"
+              floodOpacity="0.5"
+            />
           </filter>
-          <filter id="markerGlow" x="-80%" y="-80%" width="260%" height="260%">
-            <feDropShadow dx="0" dy="0" stdDeviation="1.5" floodColor="#E63946" floodOpacity="0.45" />
-          </filter>
-          <filter id="vnShadow" x="-5%" y="-5%" width="110%" height="110%">
-            <feDropShadow dx="1" dy="1" stdDeviation="2.5" floodColor="#3D3425" floodOpacity="0.3" />
+          {/* Vietnam silhouette shadow */}
+          <filter id="vnShadow" x="-3%" y="-3%" width="106%" height="106%">
+            <feDropShadow
+              dx="1"
+              dy="1"
+              stdDeviation="2"
+              floodColor="#000"
+              floodOpacity="0.6"
+            />
           </filter>
           <radialGradient id="oceanGrad" cx="50%" cy="50%" r="60%">
-            <stop offset="0%" stopColor="#B5C4AD" />
-            <stop offset="100%" stopColor="#9AAE92" />
+            <stop offset="0%" stopColor="#140E0A" />
+            <stop offset="100%" stopColor="var(--color-vintage-bg)" />
           </radialGradient>
         </defs>
 
         <rect width={MAP_WIDTH} height={MAP_HEIGHT} fill="url(#oceanGrad)" />
         <rect width={MAP_WIDTH} height={MAP_HEIGHT} fill="url(#vintageGrid)" />
-        <rect width={MAP_WIDTH} height={MAP_HEIGHT} filter="url(#paperNoise)" opacity="0.25" />
+        <rect
+          width={MAP_WIDTH}
+          height={MAP_HEIGHT}
+          filter="url(#paperNoise)"
+          opacity="0.2"
+        />
 
         <ZoomableGroup
           center={center}
@@ -360,12 +357,17 @@ const InteractiveVietnamMap = forwardRef(function InteractiveVietnamMap(
           minZoom={MIN_ZOOM}
           maxZoom={MAX_ZOOM}
           onMoveEnd={handleMoveEnd}
-          translateExtent={[[-500, -300], [MAP_WIDTH + 500, MAP_HEIGHT + 300]]}
+          translateExtent={[
+            [-500, -300],
+            [MAP_WIDTH + 500, MAP_HEIGHT + 300],
+          ]}
         >
+          {/* ── World: faint neighboring countries ── */}
           <Geographies geography={GEO_URL}>
             {({ geographies }) =>
               geographies.map((geo) => {
                 const vietnam = isVietnam(geo);
+                if (vietnam) return null; // skip — silhouette from provinces
                 return (
                   <Geography
                     key={geo.rsmKey}
@@ -373,21 +375,21 @@ const InteractiveVietnamMap = forwardRef(function InteractiveVietnamMap(
                     tabIndex={-1}
                     style={{
                       default: {
-                        fill: vietnam ? "transparent" : "#E8DFCC",
-                        stroke: vietnam ? "none" : "#C4BAA4",
-                        strokeWidth: vietnam ? 0 : 0.5,
+                        fill: "#1A1410",
+                        stroke: "#2A2018",
+                        strokeWidth: 0.3,
                         outline: "none",
                       },
                       hover: {
-                        fill: vietnam ? "transparent" : "#DDD4BF",
-                        stroke: vietnam ? "none" : "#B8AE98",
-                        strokeWidth: vietnam ? 0 : 0.6,
+                        fill: "#1E1812",
+                        stroke: "#2A2018",
+                        strokeWidth: 0.3,
                         outline: "none",
                       },
                       pressed: {
-                        fill: vietnam ? "transparent" : "#E8DFCC",
-                        stroke: vietnam ? "none" : "#C4BAA4",
-                        strokeWidth: vietnam ? 0 : 0.5,
+                        fill: "#1A1410",
+                        stroke: "#2A2018",
+                        strokeWidth: 0.3,
                         outline: "none",
                       },
                     }}
@@ -397,172 +399,230 @@ const InteractiveVietnamMap = forwardRef(function InteractiveVietnamMap(
             }
           </Geographies>
 
+          {/* ── Vietnam: unified silhouette, no province borders ── */}
           <Geographies geography={VN_PROVINCES_URL}>
             {({ geographies }) =>
-              geographies.map((geo) => {
-                const hasc = geo.properties?.HASC_1;
-                const isHighlighted = highlightedHascCodes.includes(hasc);
-                return (
-                  <Geography
-                    key={geo.rsmKey}
-                    geography={geo}
-                    tabIndex={-1}
-                    style={{
-                      default: {
-                        fill: isHighlighted ? "#E8985A" : "#DDA84B",
-                        stroke: "#A08530",
-                        strokeWidth: 0.4,
-                        outline: "none",
-                        filter: "url(#vnShadow)",
-                      },
-                      hover: {
-                        fill: isHighlighted ? "#EDA46A" : "#E5B35A",
-                        stroke: "#8B7936",
-                        strokeWidth: 0.6,
-                        outline: "none",
-                        filter: "url(#vnShadow)",
-                      },
-                      pressed: {
-                        fill: isHighlighted ? "#E8985A" : "#D49D3E",
-                        stroke: "#A08530",
-                        strokeWidth: 0.4,
-                        outline: "none",
-                        filter: "url(#vnShadow)",
-                      },
-                    }}
-                  />
-                );
-              })
+              geographies.map((geo) => (
+                <Geography
+                  key={geo.rsmKey}
+                  geography={geo}
+                  tabIndex={-1}
+                  style={{
+                    default: {
+                      fill: "#221C16",
+                      stroke: "#221C16",
+                      strokeWidth: 0.15,
+                      outline: "none",
+                      filter: "url(#vnShadow)",
+                    },
+                    hover: {
+                      fill: "#28221A",
+                      stroke: "#28221A",
+                      strokeWidth: 0.15,
+                      outline: "none",
+                      filter: "url(#vnShadow)",
+                    },
+                    pressed: {
+                      fill: "#221C16",
+                      stroke: "#221C16",
+                      strokeWidth: 0.15,
+                      outline: "none",
+                      filter: "url(#vnShadow)",
+                    },
+                  }}
+                />
+              ))
             }
           </Geographies>
 
+          {/* ── Archipelago dots (minimal) ── */}
           {ARCHIPELAGOS.map((arch) => (
             <Marker key={arch.id} coordinates={arch.center}>
               <circle
-                r={arch.radiusKm / 5}
-                fill="rgba(221,168,75,0.08)"
-                stroke="#C4A23A"
-                strokeWidth="0.5"
-                strokeDasharray="3 2"
+                r={2}
+                fill="#DDA84B"
+                fillOpacity={0.5}
+                stroke="#A08530"
+                strokeWidth="0.4"
               />
               <text
-                y={arch.radiusKm / 5 + 8}
+                y={7}
                 textAnchor="middle"
                 fill="#6B5B2E"
                 fontFamily="IBM Plex Mono, monospace"
-                fontSize="5.5"
-                fontWeight="600"
-                letterSpacing="0.04em"
+                fontSize="4"
+                fontWeight="500"
+                letterSpacing="0.06em"
+                opacity="0.6"
               >
-                {arch.name}
+                {arch.label}
               </text>
             </Marker>
           ))}
 
-          {ARCHIPELAGOS.flatMap((arch) =>
-            arch.islands.map((isle, i) => (
-              <Marker key={`${arch.id}-isle-${i}`} coordinates={isle}>
-                <circle r={1.2} fill="#DDA84B" stroke="#A08530" strokeWidth="0.3" />
-              </Marker>
-            ))
-          )}
-
+          {/* ── Region anchor highlights (compact) ── */}
           {highlightedAnchors.map((coords, index) => (
-            <Marker key={`region-${highlightedRegionIds[index]}-${index}`} coordinates={coords}>
+            <Marker
+              key={`region-${highlightedRegionIds[index]}-${index}`}
+              coordinates={coords}
+            >
               <motion.circle
-                r={10}
-                fill="rgba(230,57,70,0.18)"
-                animate={{ scale: [0.95, 1.1, 0.95], opacity: [0.5, 0.85, 0.5] }}
-                transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut", delay: index * 0.08 }}
-                style={{ filter: "url(#regionGlow)" }}
+                r={6}
+                fill="rgba(184, 134, 11, 0.12)"
+                animate={{
+                  scale: [1, 1.25, 1],
+                  opacity: [0.4, 0.15, 0.4],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: index * 0.1,
+                }}
               />
               <motion.circle
-                r={5}
-                fill="#E63946"
-                initial={{ scale: 0.6, opacity: 0 }}
-                animate={{ scale: 1, opacity: 0.9 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
+                r={2.5}
+                fill="var(--color-vintage-crimson)"
+                fillOpacity={0.75}
+                initial={{ scale: 0.5, opacity: 0 }}
+                animate={{ scale: 1, opacity: 0.75 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
               />
             </Marker>
           ))}
 
-          <ArrowLayer paths={influencePaths} activeKey={selectedEvent?.id ?? "event"} />
+          {/* ── Influence arrows ── */}
+          <ArrowLayer
+            paths={influencePaths}
+            activeKey={selectedEvent?.id ?? "event"}
+          />
 
+          {/* ── Event markers ── */}
           {normalizedEvents.map((eventData) => {
             const isActive = eventData.id === selectedEvent?.id;
+            if (!isActive && selectedEvent !== null) return null;
+
             const showTooltip = tooltipEvent?.id === eventData.id;
             const tooltipLines = splitLines(eventData.shortDesc, 30);
-            const tooltipHeight = 38 + tooltipLines.length * 12;
-            const tooltipWidth = 180;
+            const tooltipHeight = 34 + tooltipLines.length * 11;
+            const tooltipWidth = 170;
 
             return (
               <Marker key={eventData.id} coordinates={eventData.coords}>
                 <g
                   onMouseEnter={() => setHoveredMarkerId(eventData.id)}
-                  onMouseLeave={() => setHoveredMarkerId((current) => (current === eventData.id ? null : current))}
+                  onMouseLeave={() =>
+                    setHoveredMarkerId((c) =>
+                      c === eventData.id ? null : c,
+                    )
+                  }
                   onClick={() => handleMarkerClick(eventData)}
                   className="cursor-pointer"
                 >
+                  {/* Pulse ring (active only) */}
                   {isActive && (
                     <motion.circle
-                      r={10}
-                      fill="rgba(230,57,70,0.16)"
-                      animate={{ scale: [1, 1.3, 1], opacity: [0.6, 0.1, 0.6] }}
-                      transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut" }}
+                      r={8}
+                      fill="none"
+                      stroke="var(--color-vintage-gold)"
+                      strokeWidth={0.6}
+                      animate={{
+                        scale: [1, 1.6, 1],
+                        opacity: [0.5, 0, 0.5],
+                      }}
+                      transition={{
+                        duration: 2.2,
+                        repeat: Infinity,
+                        ease: "easeOut",
+                      }}
                     />
                   )}
+                  {/* Main dot */}
                   <motion.circle
-                    r={isActive ? 5 : 3.5}
-                    fill="#F5F0E6"
-                    stroke="#E63946"
-                    strokeWidth={isActive ? 2 : 1.5}
-                    animate={{ scale: isActive ? 1 : 0.95, opacity: isActive ? 1 : 0.85 }}
-                    transition={{ duration: 0.35, ease: "easeOut" }}
-                    style={{ filter: isActive ? "url(#markerGlow)" : "none" }}
+                    r={isActive ? 3.5 : 2.5}
+                    fill={
+                      isActive
+                        ? "var(--color-vintage-gold)"
+                        : "var(--color-vintage-stone)"
+                    }
+                    stroke={
+                      isActive
+                        ? "var(--color-vintage-gold)"
+                        : "var(--color-vintage-stone)"
+                    }
+                    strokeWidth={isActive ? 1 : 0.5}
+                    animate={{
+                      scale: isActive ? 1 : 0.9,
+                      opacity: isActive ? 1 : 0.7,
+                    }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    style={{
+                      filter: isActive ? "url(#markerGlow)" : "none",
+                    }}
                   />
-                  <circle r={isActive ? 1.8 : 1.2} fill="#E63946" />
+                  {/* Inner dot */}
+                  <circle
+                    r={isActive ? 1.2 : 0.8}
+                    fill={
+                      isActive
+                        ? "var(--color-vintage-bg)"
+                        : "var(--color-vintage-crimson)"
+                    }
+                  />
                 </g>
 
+                {/* Tooltip */}
                 <AnimatePresence>
                   {showTooltip && (
                     <motion.g
-                      initial={{ opacity: 0, y: 4 }}
+                      initial={{ opacity: 0, y: 3 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 4 }}
-                      transition={{ duration: 0.2 }}
-                      transform="translate(10, -46)"
+                      exit={{ opacity: 0, y: 3 }}
+                      transition={{ duration: 0.18 }}
+                      transform="translate(8, -38)"
                       style={{ pointerEvents: "none" }}
                     >
                       <rect
                         x="0"
                         y="0"
-                        rx="2"
+                        rx="1.5"
                         width={tooltipWidth}
                         height={tooltipHeight}
                         fill="#E9DFC9"
                         stroke="#5D564C"
-                        strokeWidth="0.8"
+                        strokeWidth="0.6"
                       />
-                      <rect x="0" y="0" width={tooltipWidth} height="18" rx="2" fill="#D5C7AB" />
+                      <rect
+                        x="0"
+                        y="0"
+                        width={tooltipWidth}
+                        height="16"
+                        rx="1.5"
+                        fill="#D5C7AB"
+                      />
                       <text
-                        x="6"
-                        y="13"
+                        x="5"
+                        y="11.5"
                         fill="#3B352D"
                         fontFamily="IBM Plex Mono, monospace"
-                        fontSize="8"
+                        fontSize="7"
                         fontWeight="700"
                       >
-                        {eventData.year} | {eventData.title}
+                        {eventData.year} · {eventData.title}
                       </text>
                       <text
-                        x="6"
-                        y="28"
+                        x="5"
+                        y="25"
                         fill="#2F2923"
                         fontFamily="Be Vietnam Pro, sans-serif"
-                        fontSize="8.5"
+                        fontSize="7.5"
                       >
-                        {tooltipLines.map((line, lineIndex) => (
-                          <tspan key={`${eventData.id}-line-${lineIndex}`} x="6" dy={lineIndex === 0 ? 0 : 12}>
+                        {tooltipLines.map((line, li) => (
+                          <tspan
+                            key={`${eventData.id}-l-${li}`}
+                            x="5"
+                            dy={li === 0 ? 0 : 11}
+                          >
                             {line}
                           </tspan>
                         ))}
@@ -576,28 +636,30 @@ const InteractiveVietnamMap = forwardRef(function InteractiveVietnamMap(
         </ZoomableGroup>
       </ComposableMap>
 
-      <div className="absolute left-3 bottom-3 bg-[#E9DFC9]/95 border border-[#5D564C] px-3 py-1.5 text-[11px] font-mono uppercase tracking-[0.15em] text-[#2F2923] shadow-hard-sm">
+      {/* Bottom-left event label */}
+      <div className="absolute left-3 bottom-3 bg-[#E9DFC9]/90 border border-[#5D564C] px-3 py-1 text-[10px] font-mono uppercase tracking-[0.15em] text-[#2F2923] shadow-hard-sm">
         {selectedEvent?.year ?? "--"} · {selectedEvent?.title ?? ""}
       </div>
 
-      <div className="absolute right-3 bottom-3 flex flex-col gap-1.5">
+      {/* Zoom controls */}
+      <div className="absolute right-3 bottom-3 flex flex-col gap-1">
         <button
           onClick={handleZoomIn}
-          className="w-8 h-8 bg-[#E9DFC9]/95 border border-[#5D564C] text-[#2F2923] font-mono text-base font-bold flex items-center justify-center hover:bg-[#DDD2B8] active:scale-95 transition-all cursor-pointer shadow-hard-sm"
+          className="w-7 h-7 bg-[#E9DFC9]/90 border border-[#5D564C] text-[#2F2923] font-mono text-sm font-bold flex items-center justify-center hover:bg-[#DDD2B8] active:scale-95 transition-all cursor-pointer shadow-hard-sm"
           aria-label="Phóng to"
         >
           +
         </button>
         <button
           onClick={handleZoomOut}
-          className="w-8 h-8 bg-[#E9DFC9]/95 border border-[#5D564C] text-[#2F2923] font-mono text-base font-bold flex items-center justify-center hover:bg-[#DDD2B8] active:scale-95 transition-all cursor-pointer shadow-hard-sm"
+          className="w-7 h-7 bg-[#E9DFC9]/90 border border-[#5D564C] text-[#2F2923] font-mono text-sm font-bold flex items-center justify-center hover:bg-[#DDD2B8] active:scale-95 transition-all cursor-pointer shadow-hard-sm"
           aria-label="Thu nhỏ"
         >
           −
         </button>
         <button
           onClick={handleResetView}
-          className="w-8 h-8 bg-[#E9DFC9]/95 border border-[#5D564C] text-[#2F2923] font-mono text-[10px] font-bold flex items-center justify-center hover:bg-[#DDD2B8] active:scale-95 transition-all cursor-pointer shadow-hard-sm"
+          className="w-7 h-7 bg-[#E9DFC9]/90 border border-[#5D564C] text-[#2F2923] font-mono text-[9px] font-bold flex items-center justify-center hover:bg-[#DDD2B8] active:scale-95 transition-all cursor-pointer shadow-hard-sm"
           aria-label="Trở về vị trí sự kiện"
           title="Trở về vị trí sự kiện"
         >

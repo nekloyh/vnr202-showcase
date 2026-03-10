@@ -1,494 +1,433 @@
 import { motion } from "framer-motion";
-import {
-  KineticSubline,
-} from "../../components/ui/KineticText";
-import Section from "../../components/layout/Section";
-import Card from "../../components/ui/Card";
+import RevealSection from "../../components/layout/RevealSection";
 import Button from "../../components/ui/Button";
-import {
-  ArrowDown,
-  ArrowRight,
-  Flag,
-  Shield,
-} from "lucide-react";
+import { ArrowDown, ArrowRight, Flag, Shield, AlertTriangle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-const timelineData = [
+const R = RevealSection.Item;
+
+const genevaTableData = [
   {
-    year: "1954",
-    event: "Ký kết Hiệp định Geneva",
-    detail: "Việt Nam tạm thời bị chia cắt tại vĩ tuyến 17 sau chiến thắng Điện Biên Phủ.",
-    interpretation: "Điều này tạo ra điều kiện cấu trúc cho việc xây dựng nhà nước cạnh tranh — điểm khởi đầu của 'hai nước Việt Nam' khiến vấn đề nội chiến trở nên khả dĩ.",
+    provision: "Ngừng bắn tạm thời, tái tập kết quân sự",
+    reality: "Hòa bình tạm thời nhưng ngay lập tức bị vi phạm bởi các hoạt động ngầm",
+    consequence: "Tạo ra \"vùng xám\" giữa hòa bình và chiến tranh bí mật",
   },
   {
-    year: "1955",
-    event: "Diệm củng cố quyền lực",
-    detail: "Ngô Đình Diệm đánh bại các giáo phái đối lập, phế truất Bảo Đại và tuyên bố thành lập Việt Nam Cộng hòa.",
-    interpretation: "Điều này ủng hộ lập luận nội chiến: Nó cho thấy mâu thuẫn phe phái không chỉ tồn tại giữa hai miền mà còn khốc liệt ngay trong lòng chính quyền miền Nam.",
+    provision: "Vĩ tuyến 17 là ranh giới quân sự tạm thời, không phải biên giới quốc gia",
+    reality: "Bị cố tình biến thành biên giới vĩnh viễn với hàng rào phòng thủ dày đặc",
+    consequence: "Hình thành hai khối tư tưởng đối địch nhau",
   },
   {
-    year: "1956",
-    event: "Tuyển cử thống nhất không diễn ra",
-    detail: "Miền Nam Việt Nam từ chối tham gia cuộc tổng tuyển cử toàn quốc.",
-    interpretation: "Điều này làm phức tạp thêm cuộc tranh luận: Miền Bắc coi đây là sự cản trở do nước ngoài hậu thuẫn, trong khi miền Nam xem đây là hành động tự vệ chính đáng.",
+    provision: "Tổng tuyển cử thống nhất năm 1956",
+    reality: "Bị Mỹ và chính quyền Diệm cố tình ngăn chặn",
+    consequence: "Vi phạm trắng trợn luật pháp quốc tế, đẩy đất nước vào 20 năm chiến tranh",
   },
   {
-    year: "1957–58",
-    event: "Gia tăng đàn áp",
-    detail: "Chiến dịch Tố Cộng, Diệt Cộng; bắt giữ hàng loạt, bỏ tù và tái định cư nông thôn.",
-    interpretation: "Sự kiện này củng cố góc nhìn nội chiến: Nó tạo ra những mâu thuẫn nội tại ở miền Nam, nguồn cơn trực tiếp châm ngòi cho cuộc nổi dậy cục bộ.",
-  },
-  {
-    year: "1959",
-    event: "Thông qua Nghị quyết 15",
-    detail: "Đảng cho phép đấu tranh vũ trang ở miền Nam; Đoàn 559 mở các tuyến đường tiếp tế.",
-    interpretation: "Điều này củng cố quan điểm tiến công từ bên ngoài: Nó đánh dấu sự chuyển hướng quân sự có chủ đích từ Hà Nội để bảo trợ và điều phối cuộc chiến ở miền Nam.",
-  },
-  {
-    year: "1960",
-    event: "Thành lập Mặt trận Dân tộc Giải phóng",
-    detail: "Mặt trận Dân tộc Giải phóng miền Nam Việt Nam được thành lập; Đại hội Đảng tái khẳng định mục tiêu thống nhất.",
-    interpretation: "Điều này phản ánh tính chất kép của cuộc chiến: Mặt trận tập hợp những người miền Nam thực sự uất ức, nhưng hoạt động dưới bộ khung chiến lược do Hà Nội định hướng.",
-  },
-  {
-    year: "1961–62",
-    event: "Chương trình Ấp Chiến lược",
-    detail: "Di dời dân nhằm cô lập họ khỏi lực lượng nổi dậy; gây ra sự phẫn nộ lan rộng.",
-    interpretation: "Điều này ủng hộ luận điểm nội chiến cục bộ: Một chính sách xây dựng nhà nước thất bại đã đào sâu thêm sự phân hóa xã hội ở nông thôn miền Nam.",
-  },
-  {
-    year: "1963",
-    event: "Khủng hoảng Phật giáo và sự sụp đổ của Diệm",
-    detail: "Sự kiện tự thiêu của Thích Quảng Đức; cuộc đảo chính quân sự lật đổ Diệm vào tháng 11.",
-    interpretation: "Đây là ví dụ điển hình cho lăng kính nội chiến: Sự sụp đổ của miền Nam xuất phát từ những rạn nứt chính trị và tôn giáo trong nước, không phải do tấn công từ bên ngoài.",
-  },
-  {
-    year: "1964",
-    event: "Sự kiện Vịnh Bắc Bộ",
-    detail: "Quốc hội Mỹ thông qua Nghị quyết Vịnh Bắc Bộ; bất ổn chính trị tại Sài Gòn.",
-    interpretation: "Sự kiện này củng cố góc nhìn về chiến tranh ủy nhiệm: Sự leo thang của Mỹ làm thay đổi tính chất cuộc xung đột, biến nó thành một chiến trường của Chiến tranh Lạnh.",
-  },
-  {
-    year: "1965",
-    event: "Quân chiến đấu Mỹ đổ bộ",
-    detail: "Chiến dịch Sấm Rền; Thủy quân lục chiến đổ bộ tại Đà Nẵng; cuộc chiến bị quốc tế hóa.",
-    interpretation: "Điều này làm phức tạp thêm nhận định 'nội chiến': Sự hiện diện khổng lồ của lính ngoại quốc khiến danh xưng nội chiến trở nên không đầy đủ, dù không xóa đi động lực cốt lõi ban đầu.",
+    provision: "Cấm đưa quân đội và cố vấn quân sự nước ngoài vào",
+    reality: "Bị vi phạm nghiêm trọng bởi sự hiện diện của MAAG, CIA và hàng trăm nghìn lính Mỹ",
+    consequence: "Biến Việt Nam thành chiến trường của Chiến tranh Lạnh",
   },
 ];
 
-const BoMayNhaNuocPage = () => {
+const timelineData = [
+  { year: "1954", event: "Chiến thắng Điện Biên Phủ; Ký kết Hiệp định Geneva", detail: "Việt Nam tạm thời phân chia tại vĩ tuyến 17. Pháp rút quân khỏi Đông Dương." },
+  { year: "1955", event: "Trưng cầu dân ý gian lận, thành lập VNCH", detail: "Ngô Đình Diệm tuyên bố nhận được 98% phiếu bầu; bắt đầu đàn áp các lực lượng chính trị đối lập." },
+  { year: "1956", event: "Tổng tuyển cử thống nhất bị ngăn chặn hoàn toàn", detail: "Vi phạm trực tiếp Hiệp định Geneva. Con đường thống nhất hòa bình bị bịt kín." },
+  { year: "1957–58", event: "Chiến dịch \"Tố Cộng, Diệt Cộng\" leo thang", detail: "Hàng chục nghìn người bị bắt, giết hoặc tù đày. Luật 10/59 thiết lập tòa án quân sự đặc biệt." },
+  { year: "1959", event: "Nghị quyết 15 — Bước ngoặt lịch sử", detail: "Đảng chính thức cho phép đấu tranh vũ trang ở miền Nam, khi tất cả con đường hòa bình đã bị bịt kín." },
+  { year: "1959", event: "Thành lập Đoàn 559, khai thông đường Hồ Chí Minh", detail: "Mạng lưới hậu cần khổng lồ chạy xuyên qua rừng núi Lào và Campuchia — minh chứng cho tầm nhìn chiến lược của Đảng." },
+  { year: "1960", event: "MTDTGP miền Nam Việt Nam ra đời", detail: "Đại hội III của Đảng tái khẳng định mục tiêu thống nhất. Mặt trận Dân tộc Giải phóng tập hợp mọi lực lượng yêu nước." },
+  { year: "1961–63", event: "Mỹ triển khai \"Chiến tranh Đặc biệt\"", detail: "Chương trình Ấp Chiến lược thất bại toàn diện. Khủng hoảng Phật giáo 1963; đảo chính lật đổ Diệm." },
+  { year: "1964", event: "Sự kiện Vịnh Bắc Bộ", detail: "Sự kiện được Mỹ dàn dựng; Quốc hội Mỹ thông qua Nghị quyết mở đường cho leo thang chiến tranh." },
+  { year: "1965", event: "Quân chiến đấu Mỹ đổ bộ vào Đà Nẵng", detail: "Chiến tranh bước sang giai đoạn mới — Kháng chiến chống Mỹ cứu nước ở chiều sâu và quy mô toàn quốc." },
+];
+
+const comparisonData = [
+  ["Hệ thống chính trị", "Nhà nước xã hội chủ nghĩa dưới sự lãnh đạo của Đảng Lao động", "Nền cộng hòa tập quyền, phụ thuộc viện trợ Mỹ"],
+  ["Tính chính danh", "Kế thừa Cách mạng Tháng Tám 1945, chiến thắng Điện Biên Phủ", "Trưng cầu dân ý gian lận 1955, dựa vào hỗ trợ nước ngoài"],
+  ["Cơ sở quần chúng", "Liên minh công - nông - trí thức, cải cách ruộng đất", "Thiểu số Công giáo được ưu ái, Phật tử bị phân biệt đối xử"],
+  ["Ngoại giao", "Liên Xô, Trung Quốc (điều hướng khéo léo)", "Hoàn toàn phụ thuộc Mỹ về tài chính, quân sự, chiến lược"],
+  ["Thách thức nội bộ", "Sửa sai Cải cách ruộng đất, cân bằng Xô – Trung", "Mâu thuẫn giáo phái, Khủng hoảng Phật giáo, đảo chính liên miên"],
+  ["Lãnh đạo", "Hồ Chí Minh, Lê Duẩn, Phạm Văn Đồng", "Ngô Đình Diệm (đến 1963), sau đó khủng hoảng lãnh đạo"],
+];
+
+const HistoricalPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="page-shell w-full bg-bone selection:bg-ink selection:text-gold scroll-container-fluid">
+    <div className="w-full bg-bone scroll-container-fluid">
       {/* ═══════════ HERO ═══════════ */}
-      <Section className="items-center justify-center px-4 md:px-10 border-b-[8px] border-ink bg-[#f0f0f0] pt-24 pb-32 relative overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-20 pointer-events-none mix-blend-multiply"
-          style={{
-            backgroundImage:
-              "linear-gradient(#000 1px, transparent 1px), linear-gradient(to right, #000 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
-
-        <div className="flex flex-col items-center justify-center space-y-8 max-w-5xl mx-auto w-full relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex flex-col items-center gap-1"
-          >
-            <div className="bg-ink border-[4px] border-ink px-6 py-2 shadow-[8px_8px_0_#D32F2F] transform -rotate-1">
-              <span className="font-mono font-bold uppercase tracking-widest text-sm md:text-base text-white">
-                HỒ SƠ 01 — BỐI CẢNH LỊCH SỬ
-              </span>
-            </div>
-          </motion.div>
-
-          <div className="relative text-center mt-8">
-            <motion.h1
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.1, duration: 0.25, ease: "linear" }}
-              className="font-display font-black text-[clamp(4.5rem,8vw,8rem)] uppercase text-ink leading-[0.85] tracking-tighter drop-shadow-[8px_8px_0_#F9F9F9] mb-4"
-            >
-              TỪ CHIA CẮT
-            </motion.h1>
-            <motion.h1
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.25, ease: "linear" }}
-              className="font-display font-black text-[clamp(4.5rem,8vw,8rem)] uppercase text-white bg-ink px-8 py-2 border-[6px] border-ink leading-[0.85] tracking-tighter drop-shadow-[8px_8px_0_#D32F2F] mt-4 rotate-1 inline-block shadow-[16px_16px_0_rgba(0,0,0,0.2)]"
-            >
-              ĐẾN XUNG ĐỘT
-            </motion.h1>
-          </div>
+      <RevealSection className="border-b-2 border-charcoal/15">
+        <div className="flex flex-col items-center text-center relative z-10">
+          <R>
+            <span className="brutal-badge bg-olive! mb-6">
+              Trang 1 — Bối cảnh Lịch sử
+            </span>
+          </R>
+          <R>
+            <h1 className="font-display font-black text-fluid-hero uppercase text-ink leading-[1.05] tracking-tight mb-2">
+              BỐI CẢNH LỊCH SỬ
+            </h1>
+          </R>
+          <R>
+            <h1 className="font-display font-black text-fluid-hero uppercase text-crimson leading-[1.05] tracking-tight mb-4">
+              1954–1965
+            </h1>
+          </R>
+          <R>
+            <p className="font-body text-xl text-graphite mt-4 max-w-2xl mx-auto">
+              Từ Hiệp Định Geneva Đến Ngưỡng Cửa Chiến Tranh Toàn Diện
+            </p>
+          </R>
 
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="absolute bottom-[-100px] left-1/2 -translate-x-1/2 text-ink opacity-50"
+            className="mt-14 text-charcoal/30"
           >
-            <ArrowDown size={32} />
+            <ArrowDown size={28} />
           </motion.div>
         </div>
-      </Section>
+      </RevealSection>
 
-      {/* ═══════════ WHY CONTEXT MATTERS ═══════════ */}
-      <Section className="items-center justify-center bg-ink text-bone py-32 border-b-[8px] border-crimson">
-        <div className="max-w-screen-md mx-auto relative z-10 border-[6px] border-bone p-10 md:p-16">
-          <div className="absolute -top-[30px] left-[-6px] bg-bone text-ink font-mono font-bold text-sm tracking-widest uppercase px-6 py-2 border-[6px] border-b-0 border-bone">
-            GHI CHÚ NGHIÊN CỨU
-          </div>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="font-body text-3xl md:text-4xl text-bone leading-tight font-bold"
-          >
-            Trước khi đánh giá xem cuộc xung đột Việt Nam có phải là một cuộc nội chiến hay không, bạn cần
-            hiểu rõ các điều kiện đã tạo ra nó. Trang này xây dựng nền tảng bằng chứng — không phải một
-            lịch sử Việt Nam toàn diện, mà là những phát triển chính trị cụ thể khiến câu hỏi này
-            thực sự trở nên phức tạp.
-          </motion.p>
+      {/* ═══════════ INTRO CONTEXT ═══════════ */}
+      <RevealSection dark fullHeight={false}>
+        <div className="max-w-3xl mx-auto text-center py-6">
+          <R>
+            <p className="font-body text-2xl text-bone/75 leading-relaxed">
+              Để hiểu bản chất thật sự của cuộc chiến tranh ở Việt Nam giai đoạn 1954–1965,
+              ta phải bắt đầu từ nền tảng: những điều kiện lịch sử cụ thể đã tạo ra cuộc chiến
+              đó là gì? Ai đã hành động như thế nào, và vì lý do gì?
+            </p>
+          </R>
         </div>
-      </Section>
+      </RevealSection>
 
-      {/* ═══════════ AFTER GENEVA ═══════════ */}
-      <Section
-        scrollable={true}
-        className="items-center justify-center px-4 md:px-10 bg-[#FAFAFA] relative overflow-hidden border-b-[8px] border-ink py-32"
-      >
-        <div className="max-w-screen-lg mx-auto w-full relative z-10">
-          <div className="relative z-10 mb-12 w-fit max-w-[90%]">
-            <div className="bg-ink text-white font-mono text-sm font-bold px-6 py-2 inline-block border-[6px] border-ink border-b-0 uppercase tracking-widest relative top-[6px]">
-              VĂN BẢN TRÍCH XUẤT
+      {/* ═══════════ PHẦN 1: HIỆP ĐỊNH GENEVA ═══════════ */}
+      <RevealSection fullHeight={false}>
+        <div className="max-w-5xl mx-auto">
+          <R>
+            <div className="flex items-center gap-4 mb-8">
+              <span className="brutal-badge">PHẦN 1</span>
+              <h2 className="font-display text-fluid-5xl font-black text-ink uppercase leading-tight">
+                Hiệp Định Geneva 1954
+              </h2>
             </div>
-            <h2 className="text-[clamp(3rem,5vw,5rem)] font-display font-black text-ink uppercase leading-none bg-paper border-[6px] border-ink p-8 shadow-[16px_16px_0px_#1976D2]">
-              Sau Geneva:<br/>Đất Nước Bị Chia Cắt
-            </h2>
-          </div>
+          </R>
 
-          <div className="absolute right-[-70%] top-[18%] w-[120%] md:w-[100%] lg:w-[90%] opacity-80 z-0 pointer-events-none select-none">
-            <div 
-              className="w-full h-full scale-[2.6]"
-              style={{
-                maskImage: 'radial-gradient(ellipse at center, black 20%, transparent 60%)',
-                WebkitMaskImage: 'radial-gradient(ellipse at center, black 20%, transparent 60%)'
-              }}
-            >
-              <img 
-                src="/historical/ViTuyen17.png" 
-                alt="Vĩ tuyến 17 chia cắt đất nước sau thời kỳ hiệp định Geneva" 
-                className="w-full h-auto object-cover mix-blend-multiply grayscale-[50%]"
-              />
-            </div>
-          </div>
+          <R>
+            <div className="relative border-2 border-charcoal/15 bg-paper p-8 md:p-10">
+              <div className="absolute right-[-50%] top-[10%] w-[80%] opacity-15 pointer-events-none select-none z-0">
+                <div className="w-full h-full scale-[2]" style={{
+                  maskImage: "radial-gradient(ellipse at center, black 20%, transparent 60%)",
+                  WebkitMaskImage: "radial-gradient(ellipse at center, black 20%, transparent 60%)",
+                }}>
+                  <img src="/historical/ViTuyen17.png" alt="" className="w-full h-auto object-cover grayscale" />
+                </div>
+              </div>
 
-          <div className="relative z-10 brutal-card border-[8px] border-ink shadow-[16px_16px_0_#000] bg-white p-10 md:p-16 transition-transform hover:-translate-y-2">
-            
-            {/* Stamp Overlay */}
-            <div className="absolute -top-6 -right-6 md:top-8 md:-right-12 z-20 transform rotate-12 opacity-90 pointer-events-none">
-              <div className="border-[6px] border-crimson text-crimson font-display font-black text-4xl px-4 py-2 uppercase tracking-widest mix-blend-multiply">
-                TÀI LIỆU LƯU TRỮ
+              <div className="relative z-10 space-y-5 text-lg text-ink leading-relaxed max-w-3xl">
+                <p>
+                  Mùa xuân năm 1954, sau thất bại thảm hại tại lòng chảo Điện Biên Phủ, quân đội viễn chinh
+                  Pháp buộc phải ngồi vào bàn đàm phán tại Geneva. Hiệp định được ký kết vào tháng 7 năm
+                  1954 là kết quả của những thỏa hiệp chiến lược đầy phức tạp.
+                </p>
+                <p className="font-semibold border-l-4 border-crimson pl-6">
+                  Điểm then chốt: Hiệp định Geneva không tạo ra hai quốc gia Việt Nam. Vĩ tuyến 17 chỉ là
+                  ranh giới quân sự tạm thời. Tổng tuyển cử tự do phải được tổ chức vào tháng 7 năm 1956
+                  trên toàn lãnh thổ Việt Nam.
+                </p>
+                <p>
+                  Lãnh đạo Hà Nội chấp nhận điều khoản này với sự tự tin có cơ sở: mọi đánh giá tình báo,
+                  kể cả của chính phủ Mỹ, đều thừa nhận rằng Chủ tịch Hồ Chí Minh sẽ giành chiến thắng áp
+                  đảo trong bất kỳ cuộc bầu cử tự do nào. Nhưng cuộc bầu cử đó đã không bao giờ được tổ chức.
+                </p>
               </div>
             </div>
+          </R>
 
-            <div className="space-y-8 text-2xl text-ink font-medium leading-relaxed max-w-3xl relative z-10">
-              <p>
-                Hiệp định Geneva năm 1954 kết thúc Chiến tranh Đông Dương lần thứ nhất chống Pháp và tạm thời chia cắt Việt Nam tại vĩ tuyến 17. Hiệp định kêu gọi tổ chức tổng tuyển cử thống nhất đất nước vào năm 1956, nhưng cuộc bầu cử này chưa bao giờ diễn ra.
-              </p>
-              <p>
-                Chính phủ miền Nam của Ngô Đình Diệm từ chối tham gia, lập luận rằng bầu cử tự do là không thể thực hiện ở miền Bắc. Hà Nội coi đây là hành động vi phạm Hiệp định và nhận ra rằng quá trình thống nhất sẽ đòi hỏi nhiều hơn là các biện pháp ngoại giao.
-              </p>
-              <p>
-                Hệ quả là sự nổi lên của hai nhà nước đối lập, mỗi bên đều tuyên bố đại diện cho toàn bộ dân tộc: Việt Nam Dân chủ Cộng hòa ở miền Bắc theo định hướng xã hội chủ nghĩa, và Việt Nam Cộng hòa ở miền Nam xây dựng nhà nước chống cộng với sự trợ lực từ Mỹ.
+          {/* Geneva Table */}
+          <R className="mt-8">
+            <div className="overflow-x-auto border-2 border-charcoal/20">
+              <table className="w-full text-base">
+                <thead>
+                  <tr className="bg-olive text-bone font-display uppercase tracking-wider">
+                    <th className="p-4 text-left border-r border-bone/20">Điều khoản Geneva</th>
+                    <th className="p-4 text-left border-r border-bone/20">Thực tế lịch sử</th>
+                    <th className="p-4 text-left">Hệ quả</th>
+                  </tr>
+                </thead>
+                <tbody className="font-body text-ink">
+                  {genevaTableData.map((row, idx) => (
+                    <tr key={idx} className={`border-t border-charcoal/15 ${idx % 2 === 0 ? "bg-bone" : "bg-paper"}`}>
+                      <td className="p-4 border-r border-charcoal/10 font-semibold">{row.provision}</td>
+                      <td className="p-4 border-r border-charcoal/10">{row.reality}</td>
+                      <td className="p-4 font-mono text-sm font-semibold text-ember">{row.consequence}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </R>
+
+          <R className="mt-6">
+            <div className="bg-crimson/8 border-l-4 border-crimson p-5 max-w-3xl">
+              <p className="font-body text-lg text-ink font-semibold italic">
+                Sự phá vỡ hoàn toàn các điều khoản Geneva là nguồn gốc trực tiếp dẫn đến xung đột
+                vũ trang. Đây không phải là một cuộc nội chiến tự nhiên nảy sinh; đây là hậu quả
+                của một âm mưu có tính toán nhằm chia cắt vĩnh viễn Việt Nam.
               </p>
             </div>
-
-            <div className="mt-12 bg-crimson border-[6px] border-ink p-8 shadow-[8px_8px_0_#000] max-w-3xl transform -rotate-1 relative z-10">
-              <p className="font-body text-2xl text-white font-bold italic leading-snug">
-                "Việc thất bại trong việc tổ chức tuyển cử thống nhất năm 1956 thường được xem là bước ngoặt quyết định — khoảnh khắc khiến xung đột vũ trang ngày càng dễ xảy ra và khả năng thống nhất hòa bình gần như khép lại."
-              </p>
-            </div>
-          </div>
+          </R>
         </div>
-      </Section>
+      </RevealSection>
 
-      {/* ═══════════ TWO STATES, TWO SYSTEMS ═══════════ */}
-      <Section
-        scrollable={true}
-        className="items-center justify-center px-4 md:px-10 bg-ink text-paper border-b-[8px] border-ink py-32"
-      >
-        <div className="max-w-screen-2xl mx-auto w-full relative z-10">
-          <div className="text-center mb-20 relative">
-            <h2 className="font-display text-[clamp(4rem,6vw,6rem)] font-black uppercase mb-6 text-white tracking-tighter leading-none">
+      {/* ═══════════ PHẦN 2 & 3: HAI NHÀ NƯỚC — A: Miền Bắc (left), B: Miền Nam (right) ═══════════ */}
+      <RevealSection dark fullHeight={false}>
+        <div className="max-w-6xl mx-auto">
+          <R className="text-center mb-12">
+            <span className="brutal-badge bg-bone! text-ink! mb-4">PHẦN 2 & 3</span>
+            <h2 className="font-display text-fluid-6xl font-black uppercase mt-4 mb-4 text-bone">
               Hai Nhà Nước, Hai Thể Chế
             </h2>
-            <p className="font-body text-2xl font-medium text-bone max-w-4xl mx-auto bg-crimson inline-block px-4 py-2 border-[4px] border-white shadow-[6px_6px_0_#000] transform rotate-1">
-              Hiểu rõ động lực nội bộ hai miền là chìa khóa của cuộc tranh luận.
+            <p className="font-body text-xl text-bone/70 max-w-3xl mx-auto">
+              Trái ngược hoàn toàn về nền tảng chính trị và tính chính danh lịch sử.
             </p>
-          </div>
+          </R>
 
-          <div className="grid md:grid-cols-2 gap-0 border-[8px] border-white shadow-[16px_16px_0_0_#D32F2F]">
-            {/* NORTH */}
-            <div className="bg-[#1A1A1A] md:border-r-[8px] md:border-white border-b-[8px] border-white md:border-b-0 p-10 md:p-16 relative overflow-hidden">
-              <div className="absolute -left-8 top-12 -rotate-90 text-[120px] font-display font-black text-white/5 pointer-events-none uppercase">
-                HỒ SƠ BẮC
-              </div>
-              
-              <div className="relative z-10">
-                <div className="flex flex-col md:flex-row items-start md:items-center gap-6 mb-12 border-b-[6px] border-white pb-8">
-                  <div className="w-20 h-20 bg-crimson border-[6px] border-white text-white flex items-center justify-center shadow-[6px_6px_0_#000] rotate-3 shrink-0">
-                    <Flag size={40} />
+          <R>
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* A: MIỀN BẮC (favored, left) */}
+              <div className="bg-charcoal border-l-4 border-crimson p-8 md:p-10">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 bg-crimson text-bone flex items-center justify-center">
+                    <Flag size={20} />
                   </div>
                   <div>
-                    <h3 className="font-display text-5xl font-black text-white uppercase tracking-tighter">Miền Bắc</h3>
-                    <div className="bg-white text-ink font-mono font-bold text-sm px-4 py-1 mt-2 inline-block border-[4px] border-ink shadow-[4px_4px_0_#D32F2F]">
-                      VIỆT NAM DÂN CHỦ CỘNG HÒA
-                    </div>
+                    <h3 className="font-display text-2xl font-bold text-bone uppercase">Miền Bắc</h3>
+                    <span className="font-mono text-xs text-bone/60 uppercase tracking-wider">Việt Nam Dân Chủ Cộng Hòa</span>
                   </div>
                 </div>
 
-                <div className="space-y-6 text-bone text-xl md:text-2xl font-medium leading-relaxed">
+                <div className="space-y-4 text-bone/85 text-base leading-relaxed">
                   <p>
-                    Củng cố một nhà nước xã hội chủ nghĩa dưới sự lãnh đạo của Đảng Lao động. Cải cách ruộng đất (1953–56) giúp phân chia lại quyền sở hữu, trong khi công nghiệp hóa được tiến hành với sự hỗ trợ từ Liên Xô và Trung Quốc.
+                    Dưới sự lãnh đạo của Đảng Lao động Việt Nam và Chủ tịch Hồ Chí Minh, VNDCCH sở hữu
+                    điều mà VNCH không bao giờ có được: <strong className="text-bone">tính chính danh lịch sử thực sự</strong>.
+                    Đảng gắn liền với Cách mạng Tháng Tám 1945, cuộc kháng chiến 9 năm chống Pháp, và chiến
+                    thắng Điện Biên Phủ chấn động địa cầu.
                   </p>
                   <p>
-                    Bất đồng nội bộ bị kiểm soát nghiêm ngặt — từ những tiếng nói trong phong trào Nhân Văn – Giai Phẩm, án trí người Công giáo, cho đến các cuộc tranh luận chiến lược trong nội bộ Đảng.
+                    Cải cách ruộng đất (1953–1956) xóa bỏ giai cấp địa chủ phong kiến, phân phối lại đất đai
+                    cho người lao động. Dù có những sai lầm được Đảng thẳng thắn nhìn nhận và kịp thời sửa chữa,
+                    cải cách về cơ bản xây dựng được nền tảng ủng hộ rộng lớn trong tầng lớp nông dân.
                   </p>
-                  <div className="bg-white text-ink border-[6px] border-ink p-6 mt-8 font-mono font-bold text-lg shadow-[8px_8px_0_#000] transform -rotate-1">
-                    Miền Bắc không phải là một khối đồng nhất hoàn toàn. Tranh luận nội bộ về chiến lược là đa chiều.
+                  <p>
+                    Về ngoại giao, VNDCCH điều hướng khéo léo giữa Liên Xô và Trung Quốc để đảm bảo nguồn
+                    viện trợ vật chất và ngoại giao cần thiết.
+                  </p>
+                  <p className="text-sm text-bone/60 border-t border-bone/20 pt-4 mt-4 font-mono font-semibold italic">
+                    &ldquo;Yêu nước là xây dựng chủ nghĩa xã hội; xây dựng chủ nghĩa xã hội là yêu nước.&rdquo;
+                    — Phạm Văn Đồng
+                  </p>
+                </div>
+              </div>
+
+              {/* B: MIỀN NAM (right) */}
+              <div className="bg-ink/60 border-l-4 border-graphite p-8 md:p-10">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 bg-graphite text-bone/70 flex items-center justify-center">
+                    <Shield size={20} />
                   </div>
+                  <div>
+                    <h3 className="font-display text-2xl font-bold text-bone/70 uppercase">Miền Nam</h3>
+                    <span className="font-mono text-xs text-bone/40 uppercase tracking-wider">Việt Nam Cộng Hòa</span>
+                  </div>
+                </div>
+
+                <div className="space-y-4 text-bone/65 text-base leading-relaxed">
+                  <p>
+                    VNCH được thành lập qua cuộc trưng cầu dân ý gian lận trắng trợn (1955). Diệm tuyên bố
+                    nhận 98% phiếu bầu — tại Sài Gòn, ông ta thu 605.000 phiếu dù chỉ có 450.000 cử tri.
+                    Ngay cả cố vấn Mỹ cũng đề nghị tỷ lệ &ldquo;hợp lý&rdquo; 60–70% để tránh tai tiếng.
+                  </p>
+                  <p>
+                    Em trai Ngô Đình Nhu nắm an ninh nội địa, thành lập Đảng Cần Lao — tổ chức bí mật thâm
+                    nhập mọi cấp bộ máy. Người Công giáo (thiểu số) được ưu ái, trong khi Phật tử (70–80%
+                    dân số) bị phân biệt đối xử có hệ thống.
+                  </p>
+                  <p>
+                    Luật 10/59 thiết lập tòa án quân sự đặc biệt chỉ với hai mức hình phạt: tử hình hoặc tù
+                    chung thân. Chương trình Ấp Chiến lược cưỡng bức di dời hàng triệu nông dân — không những
+                    thất bại mà còn trở thành nguồn tuyển dụng cho lực lượng giải phóng.
+                  </p>
+                  <p className="text-sm text-bone/40 border-t border-bone/15 pt-4 mt-4 font-mono font-semibold">
+                    Đỉnh điểm: Hòa thượng Thích Quảng Đức tự thiêu (6/1963). Mỹ bật đèn xanh cho đảo chính
+                    (11/1963). Sau đó VNCH rơi vào vòng xoáy khủng hoảng lãnh đạo liên miên.
+                  </p>
                 </div>
               </div>
             </div>
+          </R>
 
-            {/* SOUTH */}
-            <div className="bg-[#F0F0F0] text-ink p-10 md:p-16 relative overflow-hidden">
-              <div className="absolute -right-8 top-12 rotate-90 text-[120px] font-display font-black text-ink/5 pointer-events-none uppercase">
-                HỒ SƠ NAM
-              </div>
-
-              <div className="relative z-10">
-                <div className="flex flex-col md:flex-row items-start md:items-center gap-6 mb-12 border-b-[6px] border-ink pb-8">
-                  <div className="w-20 h-20 bg-blue border-[6px] border-ink text-white flex items-center justify-center shadow-[6px_6px_0_#D32F2F] -rotate-3 shrink-0">
-                    <Shield size={40} />
-                  </div>
-                  <div>
-                    <h3 className="font-display text-5xl font-black text-ink uppercase tracking-tighter">Miền Nam</h3>
-                    <div className="bg-ink text-white font-mono font-bold text-sm px-4 py-1 mt-2 inline-block border-[4px] border-ink shadow-[4px_4px_0_#1976D2]">
-                      VIỆT NAM CỘNG HÒA
-                    </div>
-                  </div>
-                </div>
-
-                <div className="space-y-6 text-ink text-xl md:text-2xl font-medium leading-relaxed">
-                  <p>
-                    Ngô Đình Diệm củng cố quyền lực, trấn áp các giáo phái đối thủ, phát động chiến dịch "Tố Cộng" và xây dựng nhà nước tập quyền với viện trợ ồ ạt từ Mỹ.
-                  </p>
-                  <p>
-                    Chống đối trong nước lan rộng: bản Tuyên cáo Caravelle (1960), chương trình Ấp chiến lược gây phẫn nộ, Khủng hoảng Phật giáo (1963) dẫn đến cái chết của Diệm trong một cuộc đảo chính quân sự.
-                  </p>
-                  <div className="bg-ink text-white border-[6px] border-white p-6 mt-8 font-mono font-bold text-lg shadow-[8px_8px_0_#D32F2F] transform rotate-1">
-                    Rạn nứt nội bộ do khủng hoảng tính chính danh là bằng chứng trọng yếu cho luận điểm nội chiến.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Synthesis note */}
-          <div className="mt-12 text-center max-w-3xl mx-auto">
-            <p className="font-body text-xl text-bone/80 italic font-medium">
-              Khi so sánh hai nhà nước này, một vấn đề trở nên rõ ràng hơn: đây là xung đột
-              giữa những khuôn khổ được áp đặt từ bên ngoài, hay giữa những tầm nhìn chính trị thực sự
-              của người Việt Nam? Bằng chứng cho thấy tồn tại cả hai yếu tố này.
-            </p>
-          </div>
-
-          {/* Comparison table */}
-          <div className="mt-16 overflow-x-auto bg-paper border-4 border-ink">
-            <table className="w-full text-base">
-              <thead>
-                <tr className="bg-crimson text-bone font-display uppercase tracking-wider text-xl">
-                  <th className="p-5 text-left border-r-4 border-ink">Khía Cạnh</th>
-                  <th className="p-5 text-left border-r-4 border-ink">Miền Bắc (VNDCCH)</th>
-                  <th className="p-5 text-left">Miền Nam (VNCH)</th>
-                </tr>
-              </thead>
-              <tbody className="font-body text-ink font-medium">
-                {[
-                  ["Hệ thống chính trị", "Nhà nước xã hội chủ nghĩa độc đảng", "Nền cộng hòa theo xu hướng tập quyền"],
-                  ["Hệ tư tưởng", "Chủ nghĩa Mác - Lênin, chủ nghĩa dân tộc", "Chống cộng, tính chính danh quốc gia"],
-                  ["Sự hỗ trợ quốc tế", "Liên Xô, Trung Quốc", "Mỹ, Pháp (giai đoạn đầu)"],
-                  ["Thách thức nội bộ", "Chấn chỉnh Cải cách ruộng đất, kiểm soát tư tưởng", "Mâu thuẫn giáo phái, Khủng hoảng Phật giáo, Đảo chính"],
-                  ["Nhà lãnh đạo", "Hồ Chí Minh, Lê Duẩn", "Ngô Đình Diệm (đến năm 1963), Hội đồng Quân nhân"],
-                  ["Lý do chính danh", "Thắng lợi chống thực dân, thống nhất", "Chủ quyền, độc lập chống cộng"],
-                ].map(([dim, north, south], idx) => (
-                  <tr key={idx} className="border-t-4 border-ink hover:bg-gold/20 transition-colors">
-                    <td className="p-5 font-bold border-r-4 border-ink">{dim}</td>
-                    <td className="p-5 border-r-4 border-ink">{north}</td>
-                    <td className="p-5">{south}</td>
+          {/* Comparison table — A (North) column before B (South) */}
+          <R className="mt-10">
+            <div className="overflow-x-auto border-2 border-bone/15">
+              <table className="w-full text-base">
+                <thead>
+                  <tr className="bg-olive text-bone font-display uppercase tracking-wider">
+                    <th className="p-4 text-left border-r border-bone/20">Khía Cạnh</th>
+                    <th className="p-4 text-left border-r border-bone/20">Miền Bắc (VNDCCH)</th>
+                    <th className="p-4 text-left">Miền Nam (VNCH)</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody className="font-body text-ink">
+                  {comparisonData.map(([dim, north, south], idx) => (
+                    <tr key={idx} className={`border-t border-charcoal/15 ${idx % 2 === 0 ? "bg-bone" : "bg-paper"}`}>
+                      <td className="p-4 font-semibold border-r border-charcoal/10">{dim}</td>
+                      <td className="p-4 border-r border-charcoal/10">{north}</td>
+                      <td className="p-4 text-graphite">{south}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </R>
         </div>
-      </Section>
+      </RevealSection>
 
-      {/* ═══════════ CPV STRATEGY — reframed ═══════════ */}
-      <Section
-        scrollable={true}
-        className="items-center justify-center px-4 md:px-10 bg-white border-b-[8px] border-ink py-32"
-      >
-        <div className="max-w-screen-xl mx-auto w-full">
-          <div className="bg-ink text-white font-mono text-sm font-bold uppercase tracking-widest px-6 py-2 inline-block border-[6px] border-ink border-b-0 mb-[-6px] relative z-20">
-            HỒ SƠ TÌNH BÁO / ĐÁNH GIÁ CHIẾN LƯỢC
-          </div>
-          <div className="border-[8px] border-ink bg-[#FAFAFA] shadow-[16px_16px_0_0_#D32F2F] p-10 md:p-16 relative z-10">
-            <h2 className="text-[clamp(3.5rem,5.5vw,5.5rem)] font-display font-black text-ink uppercase leading-none mb-8 tracking-tighter drop-shadow-[4px_4px_0_#FFF]">
-              Chiến lược Vận động<br/>của Đảng Cộng sản
+      {/* ═══════════ PHẦN 4: ĐƯỜNG LỐI CÁCH MẠNG ═══════════ */}
+      <RevealSection fullHeight={false}>
+        <div className="max-w-5xl mx-auto">
+          <R>
+            <span className="brutal-badge mb-4">PHẦN 4</span>
+            <h2 className="font-display text-fluid-5xl font-black text-ink uppercase leading-none mt-2 mb-4">
+              Đường Lối Cách Mạng Của Đảng Ở Miền Nam
             </h2>
-            <p className="font-body text-2xl font-bold text-ink mb-16 max-w-4xl border-l-[8px] border-crimson pl-6">
-              Chiến lược của Đảng trả lời thế nào cho câu hỏi về hệ quả nội chiến? Trọng tâm phụ thuộc vào việc bạn nhấn mạnh sự chỉ đạo từ miền Bắc hay quyền chủ động đòi hỏi vũ trang từ miền Nam.
+            <p className="font-body text-xl text-graphite mb-10 max-w-3xl">
+              Từ đấu tranh chính trị đến đấu tranh vũ trang — một tiến trình tất yếu khi mọi con đường
+              hòa bình đã bị bịt kín bởi bạo lực của kẻ thù.
             </p>
+          </R>
 
-            <div className="grid md:grid-cols-2 gap-0 border-[6px] border-ink shadow-[12px_12px_0_0_#000]">
-              {/* Political strategy */}
-              <div className="relative border-b-[6px] md:border-b-0 md:border-r-[6px] border-ink p-10 bg-white">
-                <h3 className="font-display text-4xl font-black text-ink uppercase mb-6 bg-crimson text-white inline-block px-4 py-2 border-[4px] border-ink shadow-[4px_4px_0_#000]">
-                  GIAI ĐOẠN ĐẤU TRANH CHÍNH TRỊ
+          <R>
+            <div className="grid md:grid-cols-2 gap-6 max-w-5xl">
+              <div className="border-2 border-charcoal/15 bg-paper p-8">
+                <h3 className="font-display text-xl font-bold text-ink uppercase mb-4 pb-3 border-b-2 border-charcoal/15">
+                  1954–1959: Đấu tranh chính trị
                 </h3>
-                <div className="space-y-6 text-xl md:text-2xl text-ink font-medium leading-relaxed">
+                <div className="space-y-3 text-ink leading-relaxed">
                   <p>
-                    Ngay sau Geneva, sự chú ý ban đầu của Đảng là huy động chính trị trong Nam, kỳ vọng rằng cuộc bầu cử thống nhất sẽ giải quyết sự chia rẽ hòa bình. Khi bầu cử bị chặn đứng, các cán bộ miền Nam dấy lên sức ép, đòi hỏi quyền vũ trang đánh trả sự đàn áp của chính quyền Diệm.
+                    Ngay sau Geneva, Đảng chủ trương kiên trì đấu tranh chính trị và ngoại giao, chờ đợi
+                    Tổng tuyển cử. Các cơ sở cách mạng được duy trì bí mật ở miền Nam. Nhưng dưới áp lực
+                    của Luật 10/59, nhiều cán bộ cơ sở bị tiêu diệt, mạng lưới cách mạng bị tổn thất nặng nề.
                   </p>
-                  <p className="bg-bone text-ink border-[4px] border-ink p-6 font-bold shadow-[6px_6px_0_#D32F2F] transform -rotate-1 mt-6">
-                    Giai đoạn này hỗ trợ luận điểm nội chiến: yêu cầu vũ trang xuất phát một phần từ dưới lên để tự vệ trước các điều kiện áp bức.
+                  <p className="text-sm text-graphite border-t border-charcoal/10 pt-3 mt-3 font-mono font-semibold">
+                    Áp lực đòi được quyền vũ trang tự vệ từ các cán bộ miền Nam ngày càng mạnh và cấp bách.
                   </p>
                 </div>
               </div>
 
-              {/* Military strategy */}
-              <div className="relative p-10 bg-[#EEEEEE]">
-                <h3 className="font-display text-4xl font-black text-ink uppercase mb-6 bg-blue text-white inline-block px-4 py-2 border-[4px] border-ink shadow-[4px_4px_0_#000]">
-                  GIAI ĐOẠN CHUYỂN HƯỚNG QUÂN SỰ
+              <div className="border-2 border-charcoal/15 bg-paper p-8">
+                <h3 className="font-display text-xl font-bold text-ink uppercase mb-4 pb-3 border-b-2 border-charcoal/15">
+                  Từ 1959: Chuyển sang đấu tranh vũ trang
                 </h3>
-                <div className="space-y-6 text-xl md:text-2xl text-ink font-medium leading-relaxed">
+                <div className="space-y-3 text-ink leading-relaxed">
                   <p>
-                    Nghị quyết 15 (1959) chính thức cho phép đấu tranh vũ trang. Đoàn 559 thiết lập đường Hồ Chí Minh. Đến năm 1963, khi Sài Gòn thoái trào vì biến động nội bộ, Hà Nội đã chủ động gia tăng thiết bị và quân lực cho chiến tuyến.
+                    <strong>Nghị quyết 15 (1/1959)</strong> chính thức cho phép đấu tranh vũ trang — con đường
+                    cách mạng miền Nam là dùng bạo lực cách mạng đánh đổ chính quyền Diệm và đánh bại sự can
+                    thiệp Mỹ. <strong>Đoàn 559 (5/1959)</strong> khai thông đường Hồ Chí Minh.
+                    <strong> MTDTGP (12/1960)</strong> tập hợp mọi lực lượng yêu nước.
                   </p>
-                  <p className="bg-ink text-white border-[4px] border-ink p-6 font-bold shadow-[6px_6px_0_#1976D2] transform rotate-1 mt-6">
-                    Giai đoạn này củng cố góc nhìn về cuộc nổi dậy có chỉ đạo: Hà Nội tiến hành điều phối hậu cần và tổ chức bộ máy xuyên suốt ranh giới.
+                  <p className="text-sm text-graphite border-t border-charcoal/10 pt-3 mt-3 font-mono font-semibold">
+                    Đến cuối 1964, &ldquo;Chiến tranh Đặc biệt&rdquo; hoàn toàn phá sản. Mỹ buộc phải đưa
+                    quân chiến đấu trực tiếp tham chiến.
                   </p>
                 </div>
               </div>
             </div>
+          </R>
 
-            <div className="mt-16 brutal-card bg-ink text-white border-[8px] border-ink p-10 max-w-5xl shadow-[16px_16px_0_0_#D32F2F] relative z-20 md:-mr-12 md:-mb-12">
-              <p className="font-body text-2xl font-bold leading-relaxed">
-                Dù là chiến lược chính trị hay quân sự, sự tùy biến của Đảng cho thấy cuộc chiến mang cả dáng dấp của một cuộc nổi dậy có chỉ đạo lẫn một cuộc đánh trả tự phát từ cơ sở. Sự dịch chuyển từ đấu tranh chính trị sang quân sự là sự phản ứng không ngừng trước áp lực của cán bộ nằm vùng và các chính sách khốc liệt của Diệm.
-              </p>
+          <R className="mt-8">
+            <div className="bg-crimson/8 border-l-4 border-crimson p-6 max-w-5xl flex items-start gap-3">
+              <AlertTriangle size={22} className="text-crimson shrink-0 mt-1" />
+              <div>
+                <h3 className="font-display text-lg font-bold text-ink uppercase mb-2">
+                  1961–1965: &ldquo;Chiến tranh Đặc biệt&rdquo; — Bản chất thực dân mới
+                </h3>
+                <p className="font-body text-base text-ink leading-relaxed">
+                  Mỹ triển khai chiến lược dùng quân đội VNCH (được trang bị vũ khí và có cố vấn Mỹ kèm cặp)
+                  làm lực lượng chiến đấu trực tiếp — biểu hiện điển hình của chủ nghĩa thực dân mới. Dưới sự
+                  lãnh đạo của Lê Duẩn và Bộ Chính trị, cách mạng miền Nam liên tục giành thắng lợi, khiến
+                  &ldquo;Chiến tranh Đặc biệt&rdquo; hoàn toàn phá sản.
+                </p>
+              </div>
             </div>
-          </div>
+          </R>
         </div>
-      </Section>
+      </RevealSection>
 
-      {/* ═══════════ INTERPRETED TIMELINE ═══════════ */}
-      <Section
-        scrollable={true}
-        className="items-center justify-center px-4 md:px-10 bg-paper border-b-[6px] border-ink"
-      >
-        <div className="max-w-screen-lg mx-auto w-full py-24">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-fluid-6xl font-black uppercase mb-4 text-ink drop-shadow-[4px_4px_0px_#D32F2F]">
+      {/* ═══════════ MỐC THỜI GIAN ═══════════ */}
+      <RevealSection fullHeight={false} className="bg-sand border-y-2 border-charcoal/10">
+        <div className="max-w-4xl mx-auto">
+          <R className="text-center mb-14">
+            <h2 className="font-display text-fluid-6xl font-black uppercase text-ink">
               Mốc Thời Gian: 1954–1965
             </h2>
-            <p className="text-ink font-bold text-xl max-w-2xl mx-auto">
-              Không chỉ là những gì đã xảy ra — mà là lý do mỗi sự kiện càng làm phức tạp thêm câu hỏi nghiên cứu.
-            </p>
-          </div>
+          </R>
 
           <div className="relative">
-            {/* Timeline center line */}
-            <div className="absolute left-[22px] md:left-[30px] top-0 bottom-0 border-l-[6px] border-[#1976D2]"></div>
+            <div className="absolute left-4.5 md:left-6 top-0 bottom-0 border-l-2 border-charcoal/30" />
 
-            <div className="space-y-16">
+            <div className="space-y-10">
               {timelineData.map((item, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, x: idx % 2 === 0 ? -40 : 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1, duration: 0.4, ease: "easeOut" }}
-                  className="relative pl-16 md:pl-20"
-                >
-                  {/* Timeline dot */}
-                  <div className="absolute left-[13px] md:left-[21px] top-1 w-6 h-6 bg-crimson border-[4px] border-ink z-10 hover:scale-110 hover:shadow-[4px_4px_0_#000] transition-all cursor-default"></div>
+                <R key={idx}>
+                  <div className="relative pl-14 md:pl-16">
+                    <div className="absolute left-3 md:left-4.5 top-2 w-3.5 h-3.5 bg-crimson border-2 border-charcoal rounded-full z-10" />
 
-                  {/* Year badge */}
-                  <div className="inline-block font-mono text-3xl font-black text-white bg-blue border-[4px] border-ink shadow-[4px_4px_0_#000] px-4 py-1 mb-4">
-                    {item.year}
-                  </div>
-
-                  {/* Event card */}
-                  <div className="border-[4px] border-ink bg-white shadow-[12px_12px_0_#000] p-8 hover:-translate-y-2 hover:shadow-[16px_16px_0_#000] transition-transform">
-                    <div className="font-display text-fluid-2xl font-bold uppercase text-ink leading-tight mb-4 border-b-[4px] border-ink pb-2">
+                    <div className="inline-block font-display text-xl font-black text-ink bg-gold/20 border border-gold/40 px-3 py-0.5 mb-2">
+                      {item.year}
+                    </div>
+                    <div className="font-display text-lg font-bold uppercase text-ink leading-tight mb-2">
                       {item.event}
                     </div>
-                    <p className="font-body text-xl text-[#212121] mb-8 font-medium">
-                      {item.detail}
-                    </p>
-                  
-                    {/* Interpretation piece */}
-                    <div className="border-[4px] border-ink p-6 bg-[#FAFAFA] shadow-[8px_8px_0_#D32F2F] relative">
-                      <div className="absolute -top-4 -left-2 bg-crimson text-white border-[4px] border-ink px-3 py-1 font-mono text-sm font-bold shadow-[4px_4px_0_#000] rotate-[-2deg]">
-                        QUAN ĐIỂM TRANH LUẬN
-                      </div>
-                      <p className="font-body text-lg text-ink font-bold leading-relaxed mt-2">
-                        {item.interpretation}
-                      </p>
-                    </div>
+                    <p className="font-body text-base text-graphite leading-relaxed">{item.detail}</p>
                   </div>
-                </motion.div>
+                </R>
               ))}
             </div>
           </div>
         </div>
-      </Section>
+      </RevealSection>
 
-      {/* ═══════════ SYNTHESIS + TRANSITION CTA ═══════════ */}
-      <Section className="items-center justify-center bg-ink border-t-[8px] border-crimson py-32">
-        <div className="max-w-screen-md mx-auto text-center relative z-10">
-          <div className="absolute -top-[52px] right-0 bg-crimson text-white font-display font-black text-2xl uppercase px-8 py-3 border-[8px] border-b-0 border-white">
-            KẾT LUẬN & CHUYỂN TIẾP
-          </div>
-          <div className="space-y-8 text-2xl md:text-3xl text-ink font-bold leading-relaxed border-[8px] border-white shadow-[20px_20px_0_0_#D32F2F] p-12 md:p-16 bg-white text-left">
-            <p className="border-l-[8px] border-ink pl-6">
-              Bạn đang nắm trong tay nền móng lịch sử. Những tham vọng là xác thực, những hố sâu ngăn cách là có thật, và bạo lực đã leo thang vuột khỏi tầm nhìn của chính những người tham dự.
-            </p>
-            <p className="bg-ink text-white p-6 md:p-8 transform rotate-1 shadow-[8px_8px_0_#000]">
-              Câu hỏi khó nhất nằm ở phía trước: ba luồng tư tưởng lịch sử vạch ra ba hệ luận đối lập — và toàn bộ bằng chứng mà bạn vừa đọc đều chỉ vào một khu vực màu xám giữa các lằn ranh đó.
-            </p>
-
-            <div className="mt-16 text-center">
-              <Button
-                variant="danger"
-                size="lg"
-                onClick={() => navigate("/tranh-luan-ket-luan")}
-                className="gap-4 text-xl md:text-2xl px-12 py-6 border-[6px] border-ink shadow-[8px_8px_0_#000] hover:shadow-[16px_16px_0_#000] hover:-translate-y-2 uppercase font-black"
-              >
-                Bước Vào Vòng Tranh Luận <ArrowRight size={28} strokeWidth={4} />
-              </Button>
+      {/* ═══════════ CTA ═══════════ */}
+      <RevealSection className="bg-sand border-t-2 border-charcoal/10">
+        <div className="max-w-2xl mx-auto text-center">
+          <R>
+            <div className="border-2 border-charcoal/15 bg-bone p-8 text-left space-y-4 text-lg text-ink leading-relaxed">
+              <p>
+                Bạn đã nắm vững nền tảng lịch sử: sự thật về Hiệp định Geneva, bản chất chế độ Ngô Đình
+                Diệm, tính chính danh của Việt Nam Dân chủ Cộng hoà, và đường lối cách mạng sáng suốt của Đảng.
+              </p>
+              <p className="font-semibold">
+                Bước tiếp theo: đối chiếu hai quan điểm học thuật &ldquo;kháng chiến chống Mỹ&rdquo; và &ldquo;nội chiến&rdquo; dựa trên hệ thống bằng chứng lịch sử — và đi đến kết luận thuyết phục.
+              </p>
             </div>
-          </div>
+          </R>
+
+          <R className="mt-12">
+            <Button
+              variant="danger"
+              size="lg"
+              onClick={() => navigate("/tranh-luan-ket-luan")}
+              className="gap-3 text-lg px-10 py-5"
+            >
+              So Sánh Và Kết Luận <ArrowRight size={22} strokeWidth={2.5} />
+            </Button>
+          </R>
         </div>
-      </Section>
+      </RevealSection>
     </div>
   );
 };
 
-export default BoMayNhaNuocPage;
-
+export default HistoricalPage;

@@ -10,38 +10,12 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Track scroll for header animation
   useEffect(() => {
-    let cleanupContainer = null;
-
-    const setupScrollListener = () => {
-      const container = document.querySelector(".snap-container");
-
-      const handleScroll = () => {
-        const scrollTop = container ? container.scrollTop : window.scrollY;
-        setScrolled(scrollTop > 20);
-      };
-
-      if (container) {
-        container.addEventListener("scroll", handleScroll, { passive: true });
-        cleanupContainer = () =>
-          container.removeEventListener("scroll", handleScroll);
-        // Initial check
-        handleScroll();
-      } else {
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        cleanupContainer = () =>
-          window.removeEventListener("scroll", handleScroll);
-      }
-    };
-
-    const timeoutId = setTimeout(setupScrollListener, 100);
-
-    return () => {
-      clearTimeout(timeoutId);
-      if (cleanupContainer) cleanupContainer();
-    };
-  }, [location.pathname]);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { name: "Trang chủ", path: "/" },
@@ -58,8 +32,8 @@ export default function Header() {
     setMobileMenuOpen(false);
   };
 
-  const headerBgClass = "bg-paper border-b-[6px] border-ink";
-  const headerShadowClass = scrolled ? "shadow-[0_8px_0_0_#000]" : "";
+  const headerBgClass = "bg-paper border-b-2 border-charcoal/20";
+  const headerShadowClass = scrolled ? "shadow-[0_2px_12px_rgba(0,0,0,0.12)]" : "";
 
   return (
     <>
@@ -68,14 +42,13 @@ export default function Header() {
         animate={{ y: 0 }}
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-100 ${headerBgClass} ${headerShadowClass}`}
       >
-        <nav className="flex justify-between items-center h-20 max-w-screen-2xl mx-auto px-4 md:px-10 lg:px-16">
-          {/* Logo / Brand */}
+        <nav className="flex justify-between items-center h-16 max-w-screen-2xl mx-auto px-4 md:px-10 lg:px-16">
           <div
             onClick={() => handleNavigate("/")}
-            className="font-display font-black text-3xl text-ink cursor-pointer select-none border-[4px] border-transparent hover:border-ink hover:bg-blue hover:text-white hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0_#000] px-2 py-1 transition-all"
+            className="font-display font-black text-2xl text-ink cursor-pointer select-none hover:text-crimson px-2 py-1 transition-colors"
           >
             VNR<span className="text-crimson">202</span>
-            <span className="hidden md:inline-block ml-3 text-xs font-mono font-bold tracking-widest border-l-[4px] border-ink pl-3">
+            <span className="hidden md:inline-block ml-3 text-xs font-mono font-semibold tracking-widest border-l-2 border-charcoal/30 pl-3 text-graphite">
               LỊCH SỬ ĐẢNG
             </span>
           </div>
@@ -135,11 +108,11 @@ export default function Header() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "tween", duration: 0.3 }}
-              className="absolute right-0 top-0 h-full w-4/5 max-w-sm bg-paper border-l-[6px] border-ink shadow-[-12px_12px_0_0_#000] p-6 pt-24"
+              className="absolute right-0 top-0 h-full w-4/5 max-w-sm bg-paper border-l-2 border-charcoal/20 shadow-[-4px_0_20px_rgba(0,0,0,0.15)] p-6 pt-24"
             >
               <div className="flex flex-col gap-4">
-                <div className="border-b-[4px] border-ink pb-4 mb-4">
-                  <h3 className="font-display font-black text-2xl text-ink uppercase">
+                <div className="border-b-2 border-charcoal/20 pb-4 mb-4">
+                  <h3 className="font-display font-black text-xl text-ink uppercase">
                     Điều hướng
                   </h3>
                 </div>

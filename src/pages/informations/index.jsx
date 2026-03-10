@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import {
   Crown,
   FileText,
@@ -11,8 +10,9 @@ import {
   ArrowRight,
   ShieldAlert,
 } from "lucide-react";
-import { KineticSubline } from "../../components/ui/KineticText";
-import Section from "../../components/layout/Section";
+import RevealSection from "../../components/layout/RevealSection";
+
+const R = RevealSection.Item;
 
 const members = [
   {
@@ -86,21 +86,21 @@ const tools = [
       "/images/ai-usage/notebooklm1.jpg",
       "/images/ai-usage/notebooklm2.jpg",
     ],
-    color: "bg-green-100",
+    color: "bg-olive text-bone",
     status: "OPERATIONAL",
   },
   {
     category: "CHATBOT OPERATION",
-    name: "Vận hành Chatbot Cộng",
+    name: "Vận hành Chatbot",
     tools: ["Google AI Studio", "Groq Cloud"],
     icon: Cpu,
     description: [
       "Fine-tune Gemini 1.5 Flash với dữ liệu Tư tưởng Hồ Chí Minh.",
       "Tối ưu độ trễ phản hồi (<1s) với Groq LPU.",
-      "Xây dựng Persona 'Cộng' gần gũi, học thuật.",
+      "Xây dựng Persona 'Sử Đảng' gần gũi, học thuật.",
     ],
     images: ["/images/ai-usage/googlestudio.png", "/images/ai-usage/groq.png"],
-    color: "bg-orange-100",
+    color: "bg-gold text-ink",
     status: "OPTIMIZED",
   },
   {
@@ -109,15 +109,17 @@ const tools = [
     tools: ["Gemini Advanced"],
     icon: Layout,
     description: [
-      "Generate code UI React/Tailwind chuẩn Neo-Brutalist.",
+      "Generate code UI React/Tailwind chuẩn thiết kế.",
       "Tối ưu Responsive & Animation (Framer Motion).",
       "Debug logic & Refactor code base.",
     ],
     images: ["/images/ai-usage/gemini_1.png", "/images/ai-usage/gemini_2.png"],
-    color: "bg-blue-100",
+    color: "bg-blue text-bone",
     status: "ACTIVE",
   },
 ];
+
+/* ─────────────── Cards ─────────────── */
 
 const ProfileCard = ({ member }) => {
   const isLeader = member.role === "leader";
@@ -125,42 +127,41 @@ const ProfileCard = ({ member }) => {
   const avatarSrc = isFemale ? "/images/user/female.png" : "/images/user/male.png";
 
   return (
-    <div className="brutal-card relative group h-full flex flex-col p-6 md:p-8 overflow-hidden border-[6px] border-ink shadow-[12px_12px_0_0_#000] bg-white">
-      <div className="flex justify-between items-start mb-6">
-        <div className="w-20 h-20 border-[4px] border-ink bg-bone shrink-0 flex items-center justify-center relative shadow-[4px_4px_0_#000] overflow-hidden">
+    <div className="brutal-card relative group h-full flex flex-col bg-paper">
+      <div className="flex justify-between items-start mb-5">
+        <div className="w-16 h-16 border-2 border-charcoal bg-bone shrink-0 flex items-center justify-center relative shadow-hard-sm overflow-hidden">
           <img
             src={avatarSrc}
             alt={member.name}
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 filter grayscale group-hover:grayscale-0"
           />
           {isLeader && (
-            <div className="absolute -top-1 -right-1 w-6 h-6 bg-gold border-[2px] border-ink flex items-center justify-center shadow-sm">
-              <Crown size={12} className="text-ink" />
+            <div className="absolute -top-0.5 -right-0.5 w-5 h-5 bg-gold border border-charcoal flex items-center justify-center">
+              <Crown size={10} className="text-ink" />
             </div>
           )}
         </div>
-
         <div className="text-right flex-1 pl-4">
-          <h3 className="font-display text-2xl text-ink leading-tight uppercase mb-2">
+          <h3 className="font-display text-xl text-ink leading-tight uppercase mb-1">
             {member.name}
           </h3>
-          <div className="text-sm font-mono text-ink/60 mb-1">{member.studentCode}</div>
+          <div className="text-xs font-mono text-graphite mb-1">{member.studentCode}</div>
           <span
-            className={`inline-block px-3 py-1 text-[10px] font-black uppercase tracking-widest border-2 border-ink shadow-[2px_2px_0_#000] ${isLeader ? "bg-gold text-ink" : "bg-[#f0f0f0] text-ink"}`}
+            className={`inline-block px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider border-2 border-charcoal ${isLeader ? "bg-gold text-ink" : "bg-sand text-ink"}`}
           >
             {isLeader ? "Trưởng Nhóm" : "Thành Viên"}
           </span>
         </div>
       </div>
 
-      <div className="mt-auto border-t-2 border-dashed border-ink/20 pt-4">
+      <div className="mt-auto border-t-2 border-dashed border-charcoal/15 pt-4">
         <ul className="space-y-2">
           {member.task.map((taskItem) => (
             <li
               key={`${member.studentCode}-${taskItem}`}
-              className="flex items-start gap-2 text-sm font-body text-ink leading-snug"
+              className="flex items-start gap-2 text-sm font-body text-graphite leading-snug"
             >
-              <span className="mt-1.5 w-1.5 h-1.5 bg-crimson rounded-full shrink-0" />
+              <span className="mt-1.5 w-1.5 h-1.5 bg-crimson shrink-0" />
               {taskItem}
             </li>
           ))}
@@ -181,7 +182,6 @@ const ReferenceCard = ({ reference }) => {
         return Newspaper;
     }
   };
-
   const Icon = getIcon(reference.type);
 
   return (
@@ -189,18 +189,20 @@ const ReferenceCard = ({ reference }) => {
       href={reference.link}
       target="_blank"
       rel="noopener noreferrer"
-      className="block group brutal-card relative bg-white border-[6px] border-ink shadow-[12px_12px_0_#000] hover:shadow-[16px_16px_0_#d91c1c] hover:translate-y-[-4px] hover:-translate-x-1 transition-all h-full"
+      className="block group brutal-card relative bg-paper h-full hover:shadow-hard-lg transition-all"
     >
-      <div className="p-8 flex flex-col h-full">
-        <div className="mb-4 flex items-center justify-between">
-          <span className="inline-flex items-center gap-2 bg-bone px-2 py-1 text-xs font-bold font-mono uppercase border border-ink/20 rounded-sm">
+      <div className="flex flex-col h-full">
+        <div className="mb-3 flex items-center justify-between">
+          <span className="inline-flex items-center gap-1.5 bg-bone px-2 py-0.5 text-xs font-bold font-mono uppercase border border-charcoal/20">
             <Icon size={14} />
             {reference.type}
           </span>
-          <ExternalLink size={16} className="text-ink/40 group-hover:text-crimson transition-colors" />
+          <ExternalLink
+            size={14}
+            className="text-graphite group-hover:text-crimson transition-colors"
+          />
         </div>
-
-        <h3 className="font-display text-lg font-bold text-ink leading-tight group-hover:text-crimson transition-colors line-clamp-2">
+        <h3 className="font-display text-lg font-bold text-ink leading-tight group-hover:text-crimson transition-colors">
           {reference.title}
         </h3>
       </div>
@@ -210,36 +212,41 @@ const ReferenceCard = ({ reference }) => {
 
 const ToolCard = ({ item }) => {
   const Icon = item.icon;
+  const statusColor =
+    item.status === "OPERATIONAL"
+      ? "bg-olive"
+      : item.status === "OPTIMIZED"
+        ? "bg-gold"
+        : "bg-blue";
 
   return (
-    <div className="brutal-card h-full flex flex-col p-6 md:p-8 bg-white border-[6px] border-ink shadow-[16px_16px_0_#000]">
+    <div className="brutal-card h-full flex flex-col bg-paper">
       <div className="flex-1">
-        <div className="flex justify-between items-start mb-6">
+        <div className="flex justify-between items-start mb-5">
           <div>
             <span
-              className={`inline-block border-[4px] border-ink px-3 py-1 font-black font-mono text-xs mb-4 uppercase shadow-[4px_4px_0_#000] ${item.color}`}
+              className={`inline-block border-2 border-charcoal px-2 py-0.5 font-bold font-mono text-xs mb-3 uppercase shadow-hard-sm ${item.color}`}
             >
               {item.category}
             </span>
-            <h3 className="font-display text-4xl text-ink leading-[0.9] uppercase font-black tracking-tighter">
+            <h3 className="font-display text-fluid-3xl text-ink leading-none uppercase font-black tracking-tight">
               {item.name}
             </h3>
           </div>
-
-          <div className="shrink-0 p-4 border-[4px] border-ink bg-[#f0f0f0] shadow-[6px_6px_0_#000]">
-            <Icon size={36} strokeWidth={2.5} className="text-ink" />
+          <div className="shrink-0 p-3 border-2 border-charcoal bg-bone shadow-hard-sm">
+            <Icon size={28} strokeWidth={2} className="text-ink" />
           </div>
         </div>
 
-        <div className="mb-6">
-          <h4 className="font-bold font-mono text-xs text-ink/60 uppercase mb-2 tracking-widest">
-            Tools Used:
+        <div className="mb-5">
+          <h4 className="font-mono text-xs text-graphite uppercase mb-2 tracking-wider font-bold">
+            Công cụ sử dụng:
           </h4>
           <div className="flex flex-wrap gap-2">
             {item.tools.map((toolName) => (
               <span
                 key={`${item.category}-${toolName}`}
-                className="px-3 py-1 border-2 border-ink bg-bone font-bold text-sm"
+                className="px-2 py-0.5 border-2 border-charcoal/30 bg-bone font-bold text-sm font-mono"
               >
                 {toolName}
               </span>
@@ -247,22 +254,25 @@ const ToolCard = ({ item }) => {
           </div>
         </div>
 
-        <ul className="space-y-3 mb-6">
+        <ul className="space-y-2 mb-5">
           {item.description.map((descriptionItem) => (
-            <li key={`${item.name}-${descriptionItem}`} className="flex items-start gap-3 text-base text-ink leading-snug">
-              <ArrowRight size={20} className="text-crimson shrink-0 mt-0.5" />
+            <li
+              key={`${item.name}-${descriptionItem}`}
+              className="flex items-start gap-2 text-sm text-ink leading-snug"
+            >
+              <ArrowRight size={16} className="text-crimson shrink-0 mt-0.5" />
               <span>{descriptionItem}</span>
             </li>
           ))}
         </ul>
 
         {item.images && item.images.length > 0 && (
-          <div className="mb-6">
-            <h4 className="font-bold font-mono text-xs text-ink/60 uppercase mb-3 tracking-widest">
-              Screenshots:
+          <div className="mb-5">
+            <h4 className="font-mono text-xs text-graphite uppercase mb-2 tracking-wider font-bold">
+              Ảnh minh họa:
             </h4>
             <div
-              className={`grid gap-3 ${item.images.length === 1 ? "grid-cols-1" : item.images.length === 2 ? "grid-cols-2" : "grid-cols-2 md:grid-cols-3"}`}
+              className={`grid gap-2 ${item.images.length === 1 ? "grid-cols-1" : item.images.length === 2 ? "grid-cols-2" : "grid-cols-2 md:grid-cols-3"}`}
             >
               {item.images.map((img) => (
                 <a
@@ -270,12 +280,12 @@ const ToolCard = ({ item }) => {
                   href={img}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block border-2 border-ink overflow-hidden hover:shadow-hard transition-shadow duration-200 bg-ink/5"
+                  className="block border-2 border-charcoal/20 overflow-hidden hover:shadow-hard-sm transition-shadow bg-bone"
                 >
                   <img
                     src={img}
                     alt={item.name}
-                    className="w-full h-32 object-cover object-top hover:scale-105 transition-transform duration-300"
+                    className="w-full h-28 object-cover object-top hover:scale-105 transition-transform duration-300"
                   />
                 </a>
               ))}
@@ -284,147 +294,127 @@ const ToolCard = ({ item }) => {
         )}
       </div>
 
-      <div className="mt-auto pt-4 border-t-2 border-dashed border-ink flex items-center justify-between">
-        <div className="flex items-center gap-2 font-mono text-xs font-bold text-ink/70">
-          <div
-            className={`w-2 h-2 rounded-full ${item.status === "OPERATIONAL" ? "bg-green-500" : item.status === "OPTIMIZED" ? "bg-orange-500" : "bg-blue-500"}`}
-          />
-          {item.status}
-        </div>
+      <div className="mt-auto pt-3 border-t-2 border-dashed border-charcoal/15 flex items-center gap-2 font-mono text-xs font-bold text-graphite">
+        <div className={`w-2 h-2 ${statusColor}`} />
+        {item.status}
       </div>
     </div>
   );
 };
 
+/* ─────────────── Page ─────────────── */
+
 const InformationsPage = () => {
   return (
-    <div className="w-full bg-[#FAFAFA] min-h-screen page-shell selection:bg-gold selection:text-ink">
-      <Section autoHeight={true} className="pt-24 pb-32 px-4 md:px-8 border-b-[8px] border-ink bg-[#f0f0f0] relative overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-20 pointer-events-none mix-blend-multiply"
-          style={{
-            backgroundImage:
-              "linear-gradient(#000 1px, transparent 1px), linear-gradient(to right, #000 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
-
-        <div className="flex flex-col items-center justify-center space-y-8 max-w-5xl mx-auto w-full relative z-10 mb-20 mt-5">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="bg-ink border-[4px] border-ink px-6 py-2 shadow-[8px_8px_0_#D32F2F] transform -rotate-1"
-          >
-            <span className="font-mono font-bold uppercase tracking-widest text-sm md:text-base text-white">
-              HỒ SƠ 05 — TÀI LIỆU DỰ ÁN & BÁO CÁO
-            </span>
-          </motion.div>
-
-          <div className="relative text-center mt-6">
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-              className="font-display font-black text-[clamp(4rem,6vw,6rem)] uppercase text-ink tracking-tighter text-center leading-none drop-shadow-[6px_6px_0px_#1976D2] mb-4"
-            >
-              HỒ SƠ <span className="text-crimson bg-white px-4 border-[6px] border-ink drop-shadow-[6px_6px_0_#D32F2F] ml-2 transform rotate-1 inline-block">DỰ ÁN</span>
-            </motion.h1>
-          </div>
-
-          <div className="max-w-3xl mx-auto text-2xl font-bold bg-white px-6 py-4 border-[4px] border-ink shadow-[6px_6px_0_#F9A826] mt-8 text-center text-ink leading-relaxed">
-            Tổng hợp thành viên thực hiện, tài liệu tham khảo và báo cáo ứng dụng AI trong dự án VNR202.
-          </div>
+    <div className="w-full bg-bone scroll-container-fluid">
+      {/* ═══════════ HERO ═══════════ */}
+      <RevealSection className="border-b-2 border-charcoal/15">
+        <div className="flex flex-col items-center text-center">
+          <R>
+            <span className="brutal-badge mb-6">Hồ sơ 05 — Tài liệu dự án & Báo cáo</span>
+          </R>
+          <R>
+            <h1 className="font-display font-black text-fluid-hero uppercase text-ink leading-[1.05] tracking-tight mb-2">
+              HỒ SƠ
+            </h1>
+          </R>
+          <R>
+            <h1 className="font-display font-black text-fluid-hero uppercase text-crimson leading-[1.05] tracking-tight mb-6">
+              DỰ ÁN
+            </h1>
+          </R>
+          <R>
+            <p className="font-body text-xl text-graphite max-w-2xl mx-auto">
+              Tổng hợp thành viên thực hiện, tài liệu tham khảo và báo cáo ứng dụng AI
+              trong dự án VNR202.
+            </p>
+          </R>
         </div>
+      </RevealSection>
 
-        <div className="max-w-7xl mx-auto mb-20 relative z-10">
-          <div className="flex items-center justify-center mb-16 relative">
-            <h2 className="text-[clamp(2.5rem,4vw,4rem)] font-display font-black text-ink uppercase tracking-tighter bg-white px-8 py-4 border-[6px] border-ink shadow-[12px_12px_0_#000] inline-block -rotate-1 relative z-10">
-              Nhân Sự Hạch Tâm
-            </h2>
-            <div className="absolute left-0 right-0 h-[6px] bg-ink top-1/2 -translate-y-1/2 z-0"></div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+      {/* ═══════════ TEAM ═══════════ */}
+      <RevealSection fullHeight={false} className="border-b-2 border-charcoal/15">
+        <R>
+          <h2 className="font-display text-fluid-5xl font-black text-ink uppercase text-center mb-14 tracking-tight">
+            Nhân Sự Dự Án
+          </h2>
+        </R>
+        <R>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {members.map((member) => (
-              <div key={member.studentCode} className="w-full h-full">
-                <ProfileCard member={member} />
-              </div>
+              <ProfileCard key={member.studentCode} member={member} />
             ))}
           </div>
-        </div>
+        </R>
+      </RevealSection>
 
-        <div className="max-w-5xl mx-auto mb-20 relative z-10">
-          <div className="flex items-center justify-center mb-16 relative">
-            <h2 className="text-[clamp(2.5rem,4vw,4rem)] font-display font-black text-ink uppercase tracking-tighter bg-[#1976D2] text-white px-8 py-4 border-[6px] border-ink shadow-[12px_12px_0_#000] inline-block rotate-1 relative z-10">
-              Tài Liệu Chiếu Khảo
-            </h2>
-            <div className="absolute left-0 right-0 h-[6px] bg-ink top-1/2 -translate-y-1/2 z-0 hidden md:block"></div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+      {/* ═══════════ REFERENCES ═══════════ */}
+      <RevealSection dark fullHeight={false} className="border-b-2 border-charcoal/15">
+        <R>
+          <h2 className="font-display text-fluid-5xl font-black text-bone uppercase text-center mb-14 tracking-tight">
+            Tài Liệu Tham Khảo
+          </h2>
+        </R>
+        <R>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {references.map((reference) => (
-              <div key={reference.link} className="w-full h-full">
-                <ReferenceCard reference={reference} />
-              </div>
+              <ReferenceCard key={reference.link} reference={reference} />
             ))}
           </div>
-        </div>
+        </R>
+      </RevealSection>
 
-        <div className="max-w-7xl mx-auto mb-24 relative z-10">
-          <div className="flex items-center justify-center mb-16 relative">
-            <h2 className="text-[clamp(2.5rem,4vw,4rem)] font-display font-black text-ink uppercase tracking-tighter bg-gold px-8 py-4 border-[6px] border-ink shadow-[12px_12px_0_#000] inline-block -rotate-1 relative z-10">
-              Báo Cáo Công Nghệ
-            </h2>
-            <div className="absolute left-0 right-0 h-[6px] bg-ink top-1/2 -translate-y-1/2 z-0 hidden md:block"></div>
-          </div>
-
-          <div className="max-w-4xl mx-auto text-2xl font-bold bg-white text-ink border-[6px] border-ink shadow-[8px_8px_0_#D32F2F] text-center leading-relaxed mb-16 p-8">
-            Báo cáo minh bạch cách nhóm sử dụng AI trong nghiên cứu, vận hành chatbot và tối ưu website.
-          </div>
-
+      {/* ═══════════ AI TOOLS REPORT ═══════════ */}
+      <RevealSection fullHeight={false} className="border-b-2 border-charcoal/15">
+        <R>
+          <h2 className="font-display text-fluid-5xl font-black text-ink uppercase text-center mb-4 tracking-tight">
+            Báo Cáo Công Nghệ
+          </h2>
+        </R>
+        <R>
+          <p className="font-body text-xl text-graphite text-center max-w-3xl mx-auto mb-14">
+            Báo cáo minh bạch cách nhóm sử dụng AI trong nghiên cứu, vận hành chatbot
+            và tối ưu website.
+          </p>
+        </R>
+        <R>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
             {tools.map((item) => (
-              <div key={item.category} className="h-full">
-                <ToolCard item={item} />
-              </div>
+              <ToolCard key={item.category} item={item} />
             ))}
           </div>
-        </div>
+        </R>
+      </RevealSection>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-5xl mx-auto pb-12 relative z-10"
-        >
-          <div className="bg-white border-[8px] border-ink p-10 md:p-16 text-center relative shadow-[24px_24px_0_#D32F2F]">
-            <div className="absolute -top-[28px] left-1/2 -translate-x-1/2 bg-crimson text-white px-8 py-3 font-black font-mono uppercase text-lg border-[6px] border-ink shadow-[8px_8px_0_#000] whitespace-nowrap">
-              CẢNH BÁO: HỌC THUẬT NGHIÊM NGẶT
-            </div>
-
-            <ShieldAlert size={80} className="text-crimson mx-auto mb-8 stroke-[1.5]" />
-
-            <h3 className="font-display text-[clamp(2.5rem,4vw,4rem)] font-black text-ink uppercase mb-6 tracking-tighter">
+      {/* ═══════════ ACADEMIC INTEGRITY ═══════════ */}
+      <RevealSection dark fullHeight={false}>
+        <R>
+          <div className="max-w-3xl mx-auto text-center">
+            <ShieldAlert size={56} className="text-crimson mx-auto mb-6 stroke-[1.5]" />
+            <h3 className="font-display text-fluid-4xl font-black text-bone uppercase mb-6 tracking-tight">
               Cam Kết Toàn Vẹn Học Thuật
             </h3>
-
-            <div className="space-y-6 text-ink font-bold text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto bg-[#FAFAFA] border-[4px] border-ink p-8 shadow-[8px_8px_0_#1976D2]">
+            <div className="space-y-5 text-bone/85 font-body text-lg leading-relaxed text-left border-2 border-bone/15 p-8 bg-charcoal/50">
               <p>
-                Trí tuệ nhân tạo (AI) chỉ đóng vai trò là <strong>công cụ hỗ trợ</strong> nghiên cứu biểu hiện qua (tra cứu, tổng hợp, tối ưu phần mềm),
-                <span className="text-crimson font-black text-2xl uppercase underline decoration-4 underline-offset-4 decoration-crimson bg-gold px-2 ml-2"> KHÔNG</span> thay thế tư duy và lập trường.
+                Trí tuệ nhân tạo (AI) chỉ đóng vai trò là{" "}
+                <strong className="text-bone">công cụ hỗ trợ</strong> nghiên cứu
+                (tra cứu, tổng hợp, tối ưu phần mềm),{" "}
+                <span className="text-crimson font-black uppercase">không</span>{" "}
+                thay thế tư duy và lập trường.
               </p>
               <p>
-                Mọi nội dung chuyên môn đều được đối chiếu chéo cẩn trọng với các tài liệu <strong>Giáo trình chính quy</strong> và
+                Mọi nội dung chuyên môn đều được đối chiếu chéo cẩn trọng với
+                các tài liệu{" "}
+                <strong className="text-bone">Giáo trình chính quy</strong> và
                 nguồn dẫn gốc được công nhận.
               </p>
             </div>
+            <p className="font-mono text-xs text-bone/40 uppercase tracking-widest mt-10">
+              Đại học FPT © 2026
+            </p>
           </div>
-        </motion.div>
-
-        <div className="text-center pb-12 opacity-50">
-          <p className="font-mono text-xs uppercase tracking-widest text-ink">Đại học FPT &copy; 2026</p>
-        </div>
-      </Section>
+        </R>
+      </RevealSection>
     </div>
   );
 };

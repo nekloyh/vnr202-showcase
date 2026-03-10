@@ -3,8 +3,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 const DEFAULT_TRANSITION = {
   type: "spring",
-  stiffness: 140,
-  damping: 24,
+  stiffness: 100,
+  damping: 20,
   mass: 0.65,
 };
 

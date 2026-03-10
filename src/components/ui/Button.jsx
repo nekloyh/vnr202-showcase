@@ -11,17 +11,17 @@ const Button = ({
     ...props
 }) => {
     const baseStyles =
-        "inline-flex items-center justify-center font-bold uppercase tracking-wider border-[4px] border-ink transition-transform transition-shadow duration-200 ease-out select-none disabled:opacity-50 disabled:pointer-events-none cursor-pointer rounded-none";
+        "inline-flex items-center justify-center font-bold uppercase tracking-wider border-2 border-charcoal transition-transform transition-shadow duration-200 ease-out select-none disabled:opacity-50 disabled:pointer-events-none cursor-pointer rounded-none";
 
     const variants = {
         primary:
-            "bg-blue text-white shadow-[6px_6px_0_#000] hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[10px_10px_0_#000] active:translate-x-1 active:translate-y-1 active:shadow-[2px_2px_0_#000]",
+            "bg-olive text-bone shadow-[4px_4px_0_var(--color-charcoal)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_var(--color-charcoal)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0_var(--color-charcoal)]",
         outline:
-            "bg-paper text-ink hover:bg-blue hover:text-white hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0_#000] active:translate-x-1 active:translate-y-1 active:shadow-none",
+            "bg-paper text-ink hover:bg-olive hover:text-bone hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0_var(--color-charcoal)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none",
         ghost:
-            "bg-transparent text-ink border-transparent hover:border-ink hover:bg-blue hover:text-white hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0_#000] active:translate-x-1 active:translate-y-1 active:shadow-none",
+            "bg-transparent text-ink border-transparent hover:border-charcoal hover:bg-olive hover:text-bone hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0_var(--color-charcoal)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none",
         danger:
-            "bg-crimson text-white shadow-[6px_6px_0_#000] hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[10px_10px_0_#000] active:translate-x-1 active:translate-y-1 active:shadow-[2px_2px_0_#000]",
+            "bg-crimson text-bone shadow-[4px_4px_0_var(--color-charcoal)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_var(--color-charcoal)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0_var(--color-charcoal)]",
     };
 
     const sizes = {
