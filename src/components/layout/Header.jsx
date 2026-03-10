@@ -49,8 +49,7 @@ export default function Header() {
     { name: "Tranh luận & Kết luận", path: "/tranh-luan-ket-luan" },
     { name: "Trò chơi", path: "/tro-choi" },
     { name: "Trợ lý VNR202", path: "/ai-chatbot" },
-    { name: "Công cụ AI", path: "/ai-usage" },
-    { name: "Thông tin", path: "/informations" },
+    { name: "Thông tin dự án", path: "/thong-tin-du-an" },
   ];
 
   const handleNavigate = (href) => {
