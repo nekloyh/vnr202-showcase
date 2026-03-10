@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   forwardRef,
   useCallback,
@@ -15,13 +15,10 @@ import {
   ZoomableGroup,
 } from "react-simple-maps";
 import useMapSpring from "../../hooks/useMapSpring";
-import vietnamMapEvents from "../../data/vietnamMapEvents";
+import { timelineEvents as defaultEvents } from "../../data/timelineEvents";
 import ArrowLayer from "./ArrowLayer";
 
-export const GEO_URL =
-  "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json";
 export const VN_PROVINCES_URL = "/vietnam-provinces-topo.json";
-export const VIETNAM_ID = 704;
 
 const MAP_WIDTH = 1000;
 const MAP_HEIGHT = 760;
@@ -56,32 +53,6 @@ function isCoord(value) {
     typeof value[0] === "number" &&
     typeof value[1] === "number"
   );
-}
-
-function isVietnam(geo) {
-  const geoId = Number(geo.id);
-  const iso = geo.properties?.ISO_A3 || geo.properties?.iso_a3;
-  return (
-    geoId === VIETNAM_ID || geo.id === String(VIETNAM_ID) || iso === "VNM"
-  );
-}
-
-function splitLines(text = "", maxChars = 34) {
-  if (!text) return [];
-  const words = text.split(" ");
-  const lines = [];
-  let current = "";
-  words.forEach((word) => {
-    const next = current ? `${current} ${word}` : word;
-    if (next.length <= maxChars) {
-      current = next;
-    } else {
-      if (current) lines.push(current);
-      current = word;
-    }
-  });
-  if (current) lines.push(current);
-  return lines.slice(0, 3);
 }
 
 function normalizeInfluencePaths(rawPaths, originCoords, eventKey) {
@@ -156,12 +127,12 @@ function findEventById(events, id) {
 /* ═══════════════════════════════════════════════════════════════ */
 
 const InteractiveVietnamMap = forwardRef(function InteractiveVietnamMap(
-  { events = vietnamMapEvents, selectedEventId, onSelectEvent, className = "" },
+  { events = defaultEvents, selectedEventId, onSelectEvent, className = "" },
   ref,
 ) {
   const normalizedEvents = useMemo(() => {
     const source =
-      Array.isArray(events) && events.length > 0 ? events : vietnamMapEvents;
+      Array.isArray(events) && events.length > 0 ? events : defaultEvents;
     return source.map((event, index) => normalizeEvent(event, index));
   }, [events]);
 
@@ -169,8 +140,7 @@ const InteractiveVietnamMap = forwardRef(function InteractiveVietnamMap(
   const [internalSelectedId, setInternalSelectedId] = useState(
     normalizedEvents[0]?.id ?? null,
   );
-  const [hoveredMarkerId, setHoveredMarkerId] = useState(null);
-  const [pinnedMarkerId, setPinnedMarkerId] = useState(null);
+
 
   const effectiveSelectedId = controlled ? selectedEventId : internalSelectedId;
   const selectedEvent = useMemo(
@@ -203,12 +173,6 @@ const InteractiveVietnamMap = forwardRef(function InteractiveVietnamMap(
       .map((id) => REGION_ANCHORS[id])
       .filter(isCoord);
   }, [highlightedRegionIds]);
-
-  const visibleTooltipEventId = pinnedMarkerId ?? hoveredMarkerId;
-  const tooltipEvent = useMemo(
-    () => findEventById(normalizedEvents, visibleTooltipEventId),
-    [normalizedEvents, visibleTooltipEventId],
-  );
 
   const selectEvent = useCallback(
     (eventId) => {
@@ -244,9 +208,6 @@ const InteractiveVietnamMap = forwardRef(function InteractiveVietnamMap(
   const handleMarkerClick = useCallback(
     (eventData) => {
       selectEvent(eventData.id);
-      setPinnedMarkerId((current) =>
-        current === eventData.id ? null : eventData.id,
-      );
     },
     [selectEvent],
   );
@@ -317,23 +278,13 @@ const InteractiveVietnamMap = forwardRef(function InteractiveVietnamMap(
             />
           </pattern>
           {/* Compact glow for active marker */}
-          <filter id="markerGlow" x="-60%" y="-60%" width="220%" height="220%">
+          <filter id="markerGlow" x="-50%" y="-50%" width="200%" height="200%">
             <feDropShadow
               dx="0"
               dy="0"
-              stdDeviation="1.5"
+              stdDeviation="1"
               floodColor="var(--color-vintage-gold)"
-              floodOpacity="0.5"
-            />
-          </filter>
-          {/* Vietnam silhouette shadow */}
-          <filter id="vnShadow" x="-3%" y="-3%" width="106%" height="106%">
-            <feDropShadow
-              dx="1"
-              dy="1"
-              stdDeviation="2"
-              floodColor="#000"
-              floodOpacity="0.6"
+              floodOpacity="0.35"
             />
           </filter>
           <radialGradient id="oceanGrad" cx="50%" cy="50%" r="60%">
@@ -362,44 +313,7 @@ const InteractiveVietnamMap = forwardRef(function InteractiveVietnamMap(
             [MAP_WIDTH + 500, MAP_HEIGHT + 300],
           ]}
         >
-          {/* ── World: faint neighboring countries ── */}
-          <Geographies geography={GEO_URL}>
-            {({ geographies }) =>
-              geographies.map((geo) => {
-                const vietnam = isVietnam(geo);
-                if (vietnam) return null; // skip — silhouette from provinces
-                return (
-                  <Geography
-                    key={geo.rsmKey}
-                    geography={geo}
-                    tabIndex={-1}
-                    style={{
-                      default: {
-                        fill: "#1A1410",
-                        stroke: "#2A2018",
-                        strokeWidth: 0.3,
-                        outline: "none",
-                      },
-                      hover: {
-                        fill: "#1E1812",
-                        stroke: "#2A2018",
-                        strokeWidth: 0.3,
-                        outline: "none",
-                      },
-                      pressed: {
-                        fill: "#1A1410",
-                        stroke: "#2A2018",
-                        strokeWidth: 0.3,
-                        outline: "none",
-                      },
-                    }}
-                  />
-                );
-              })
-            }
-          </Geographies>
-
-          {/* ── Vietnam: unified silhouette, no province borders ── */}
+          {/* ── Vietnam: unified silhouette ── */}
           <Geographies geography={VN_PROVINCES_URL}>
             {({ geographies }) =>
               geographies.map((geo) => (
@@ -409,25 +323,19 @@ const InteractiveVietnamMap = forwardRef(function InteractiveVietnamMap(
                   tabIndex={-1}
                   style={{
                     default: {
-                      fill: "#221C16",
-                      stroke: "#221C16",
-                      strokeWidth: 0.15,
+                      fill: "#251E17",
+                      stroke: "none",
                       outline: "none",
-                      filter: "url(#vnShadow)",
                     },
                     hover: {
-                      fill: "#28221A",
-                      stroke: "#28221A",
-                      strokeWidth: 0.15,
+                      fill: "#251E17",
+                      stroke: "none",
                       outline: "none",
-                      filter: "url(#vnShadow)",
                     },
                     pressed: {
-                      fill: "#221C16",
-                      stroke: "#221C16",
-                      strokeWidth: 0.15,
+                      fill: "#251E17",
+                      stroke: "none",
                       outline: "none",
-                      filter: "url(#vnShadow)",
                     },
                   }}
                 />
@@ -439,21 +347,21 @@ const InteractiveVietnamMap = forwardRef(function InteractiveVietnamMap(
           {ARCHIPELAGOS.map((arch) => (
             <Marker key={arch.id} coordinates={arch.center}>
               <circle
-                r={2}
+                r={1.3}
                 fill="#DDA84B"
-                fillOpacity={0.5}
+                fillOpacity={0.35}
                 stroke="#A08530"
-                strokeWidth="0.4"
+                strokeWidth="0.3"
               />
               <text
-                y={7}
+                y={5}
                 textAnchor="middle"
                 fill="#6B5B2E"
                 fontFamily="IBM Plex Mono, monospace"
-                fontSize="4"
+                fontSize="3"
                 fontWeight="500"
-                letterSpacing="0.06em"
-                opacity="0.6"
+                letterSpacing="0.05em"
+                opacity="0.35"
               >
                 {arch.label}
               </text>
@@ -467,25 +375,25 @@ const InteractiveVietnamMap = forwardRef(function InteractiveVietnamMap(
               coordinates={coords}
             >
               <motion.circle
-                r={6}
-                fill="rgba(184, 134, 11, 0.12)"
+                r={3}
+                fill="rgba(184, 134, 11, 0.1)"
                 animate={{
-                  scale: [1, 1.25, 1],
-                  opacity: [0.4, 0.15, 0.4],
+                  scale: [1, 1.15, 1],
+                  opacity: [0.35, 0.1, 0.35],
                 }}
                 transition={{
-                  duration: 2,
+                  duration: 2.5,
                   repeat: Infinity,
                   ease: "easeInOut",
                   delay: index * 0.1,
                 }}
               />
               <motion.circle
-                r={2.5}
+                r={1.3}
                 fill="var(--color-vintage-crimson)"
-                fillOpacity={0.75}
+                fillOpacity={0.6}
                 initial={{ scale: 0.5, opacity: 0 }}
-                animate={{ scale: 1, opacity: 0.75 }}
+                animate={{ scale: 1, opacity: 0.6 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
               />
             </Marker>
@@ -497,41 +405,29 @@ const InteractiveVietnamMap = forwardRef(function InteractiveVietnamMap(
             activeKey={selectedEvent?.id ?? "event"}
           />
 
-          {/* ── Event markers ── */}
+          {/* ── Event markers (all visible, active emphasized) ── */}
           {normalizedEvents.map((eventData) => {
             const isActive = eventData.id === selectedEvent?.id;
-            if (!isActive && selectedEvent !== null) return null;
-
-            const showTooltip = tooltipEvent?.id === eventData.id;
-            const tooltipLines = splitLines(eventData.shortDesc, 30);
-            const tooltipHeight = 34 + tooltipLines.length * 11;
-            const tooltipWidth = 170;
 
             return (
               <Marker key={eventData.id} coordinates={eventData.coords}>
                 <g
-                  onMouseEnter={() => setHoveredMarkerId(eventData.id)}
-                  onMouseLeave={() =>
-                    setHoveredMarkerId((c) =>
-                      c === eventData.id ? null : c,
-                    )
-                  }
                   onClick={() => handleMarkerClick(eventData)}
                   className="cursor-pointer"
                 >
                   {/* Pulse ring (active only) */}
                   {isActive && (
                     <motion.circle
-                      r={8}
+                      r={5}
                       fill="none"
                       stroke="var(--color-vintage-gold)"
-                      strokeWidth={0.6}
+                      strokeWidth={0.4}
                       animate={{
-                        scale: [1, 1.6, 1],
-                        opacity: [0.5, 0, 0.5],
+                        scale: [1, 1.4, 1],
+                        opacity: [0.4, 0, 0.4],
                       }}
                       transition={{
-                        duration: 2.2,
+                        duration: 2.5,
                         repeat: Infinity,
                         ease: "easeOut",
                       }}
@@ -539,7 +435,7 @@ const InteractiveVietnamMap = forwardRef(function InteractiveVietnamMap(
                   )}
                   {/* Main dot */}
                   <motion.circle
-                    r={isActive ? 3.5 : 2.5}
+                    r={isActive ? 2.5 : 1.3}
                     fill={
                       isActive
                         ? "var(--color-vintage-gold)"
@@ -550,10 +446,10 @@ const InteractiveVietnamMap = forwardRef(function InteractiveVietnamMap(
                         ? "var(--color-vintage-gold)"
                         : "var(--color-vintage-stone)"
                     }
-                    strokeWidth={isActive ? 1 : 0.5}
+                    strokeWidth={isActive ? 0.6 : 0.3}
                     animate={{
-                      scale: isActive ? 1 : 0.9,
-                      opacity: isActive ? 1 : 0.7,
+                      scale: isActive ? 1 : 0.85,
+                      opacity: isActive ? 1 : 0.4,
                     }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
                     style={{
@@ -561,75 +457,13 @@ const InteractiveVietnamMap = forwardRef(function InteractiveVietnamMap(
                     }}
                   />
                   {/* Inner dot */}
-                  <circle
-                    r={isActive ? 1.2 : 0.8}
-                    fill={
-                      isActive
-                        ? "var(--color-vintage-bg)"
-                        : "var(--color-vintage-crimson)"
-                    }
-                  />
-                </g>
-
-                {/* Tooltip */}
-                <AnimatePresence>
-                  {showTooltip && (
-                    <motion.g
-                      initial={{ opacity: 0, y: 3 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 3 }}
-                      transition={{ duration: 0.18 }}
-                      transform="translate(8, -38)"
-                      style={{ pointerEvents: "none" }}
-                    >
-                      <rect
-                        x="0"
-                        y="0"
-                        rx="1.5"
-                        width={tooltipWidth}
-                        height={tooltipHeight}
-                        fill="#E9DFC9"
-                        stroke="#5D564C"
-                        strokeWidth="0.6"
-                      />
-                      <rect
-                        x="0"
-                        y="0"
-                        width={tooltipWidth}
-                        height="16"
-                        rx="1.5"
-                        fill="#D5C7AB"
-                      />
-                      <text
-                        x="5"
-                        y="11.5"
-                        fill="#3B352D"
-                        fontFamily="IBM Plex Mono, monospace"
-                        fontSize="7"
-                        fontWeight="700"
-                      >
-                        {eventData.year} · {eventData.title}
-                      </text>
-                      <text
-                        x="5"
-                        y="25"
-                        fill="#2F2923"
-                        fontFamily="Be Vietnam Pro, sans-serif"
-                        fontSize="7.5"
-                      >
-                        {tooltipLines.map((line, li) => (
-                          <tspan
-                            key={`${eventData.id}-l-${li}`}
-                            x="5"
-                            dy={li === 0 ? 0 : 11}
-                          >
-                            {line}
-                          </tspan>
-                        ))}
-                      </text>
-                    </motion.g>
+                  {isActive && (
+                    <circle
+                      r={0.8}
+                      fill="var(--color-vintage-bg)"
+                    />
                   )}
-                </AnimatePresence>
+                </g>
               </Marker>
             );
           })}
@@ -637,7 +471,7 @@ const InteractiveVietnamMap = forwardRef(function InteractiveVietnamMap(
       </ComposableMap>
 
       {/* Bottom-left event label */}
-      <div className="absolute left-3 bottom-3 bg-[#E9DFC9]/90 border border-[#5D564C] px-3 py-1 text-[10px] font-mono uppercase tracking-[0.15em] text-[#2F2923] shadow-hard-sm">
+      <div className="absolute left-3 bottom-3 bg-[#E9DFC9]/80 border border-[#5D564C] px-2.5 py-0.5 text-[9px] font-mono uppercase tracking-[0.12em] text-[#2F2923] shadow-hard-sm">
         {selectedEvent?.year ?? "--"} · {selectedEvent?.title ?? ""}
       </div>
 

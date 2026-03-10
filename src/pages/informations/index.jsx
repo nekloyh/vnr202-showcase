@@ -74,7 +74,7 @@ const tools = [
   {
     category: "RESEARCH & DATA",
     name: "Nghiên cứu & Tổng hợp",
-    tools: ["ChatGPT 5", "NotebookLM"],
+    tools: ["ChatGPT 5", "NotebookLM", "Gemini"],
     icon: Search,
     description: [
       "Phân tích, đối chiếu quan điểm giáo trình & văn kiện Đảng.",
@@ -82,9 +82,9 @@ const tools = [
       "Kiểm tra chéo (Cross-check) kiến thức lịch sử.",
     ],
     images: [
-      "/images/ai-usage/gpt.jpg",
-      "/images/ai-usage/notebooklm1.jpg",
-      "/images/ai-usage/notebooklm2.jpg",
+      "/images/ai-usage/gpt.png",
+      "/images/ai-usage/notebooklm1.png",
+      "/images/ai-usage/notebooklm2.png",
     ],
     color: "bg-olive text-bone",
     status: "OPERATIONAL",
@@ -95,8 +95,8 @@ const tools = [
     tools: ["Google AI Studio", "Groq Cloud"],
     icon: Cpu,
     description: [
-      "Fine-tune Gemini 1.5 Flash với dữ liệu Tư tưởng Hồ Chí Minh.",
-      "Tối ưu độ trễ phản hồi (<1s) với Groq LPU.",
+      "Prompting Gemini 2.5 Flash trả lời câu hỏi về Đảng Cộng sản Việt Nam.",
+      "Tối ưu độ trễ phản hồi với Groq LPU.",
       "Xây dựng Persona 'Sử Đảng' gần gũi, học thuật.",
     ],
     images: ["/images/ai-usage/googlestudio.png", "/images/ai-usage/groq.png"],
@@ -106,7 +106,7 @@ const tools = [
   {
     category: "WEB DEVELOPMENT",
     name: "Xây dựng Website",
-    tools: ["Gemini Advanced"],
+    tools: ["Gemini 3 Pro", "Antigravity"],
     icon: Layout,
     description: [
       "Generate code UI React/Tailwind chuẩn thiết kế.",
@@ -311,7 +311,7 @@ const InformationsPage = () => {
       <RevealSection className="border-b-2 border-charcoal/15">
         <div className="flex flex-col items-center text-center">
           <R>
-            <span className="brutal-badge mb-6">Hồ sơ 05 — Tài liệu dự án & Báo cáo</span>
+            <span className="brutal-badge mb-6">Hồ sơ 06 — Tài liệu dự án & Báo cáo</span>
           </R>
           <R>
             <h1 className="font-display font-black text-fluid-hero uppercase text-ink leading-[1.05] tracking-tight mb-2">

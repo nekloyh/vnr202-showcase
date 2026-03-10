@@ -76,7 +76,7 @@ export default function ArrowLayer({ paths = [], activeKey = 0 }) {
           d,
           dashed: source.dashed ?? true,
           color: source.color ?? "#C9484A",
-          strokeWidth: Math.min(source.strokeWidth ?? 0.8, 1.5),
+          strokeWidth: Math.min(source.strokeWidth ?? 0.6, 1.2),
         };
       })
       .filter(Boolean);
@@ -90,14 +90,14 @@ export default function ArrowLayer({ paths = [], activeKey = 0 }) {
         {/* Compact triangular arrowhead */}
         <marker
           id={markerId}
-          markerWidth="4"
-          markerHeight="4"
-          refX="3.5"
-          refY="2"
+          markerWidth="3"
+          markerHeight="3"
+          refX="2.8"
+          refY="1.5"
           orient="auto"
           markerUnits="strokeWidth"
         >
-          <path d="M0,0.5 L0,3.5 L3.5,2 z" fill="#C9484A" fillOpacity="0.7" />
+          <path d="M0,0.4 L0,2.6 L2.8,1.5 z" fill="#C9484A" fillOpacity="0.6" />
         </marker>
       </defs>
 
@@ -109,8 +109,8 @@ export default function ArrowLayer({ paths = [], activeKey = 0 }) {
           stroke={path.color}
           strokeWidth={path.strokeWidth}
           strokeLinecap="round"
-          strokeDasharray={path.dashed ? "5 4" : undefined}
-          strokeOpacity={0.55}
+          strokeDasharray={path.dashed ? "4 3" : undefined}
+          strokeOpacity={0.4}
           markerEnd={`url(#${markerId})`}
           initial={{ pathLength: 0, opacity: 0 }}
           animate={{ pathLength: 1, opacity: 1 }}

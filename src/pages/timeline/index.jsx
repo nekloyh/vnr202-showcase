@@ -26,29 +26,31 @@ function EventListItem({ event, isActive, onClick }) {
           : "rgba(184,134,11,0.08)",
       }}
       transition={{ duration: 0.2 }}
-      className={`w-full text-left px-4 py-3 border-b border-vintage-stone/30 cursor-pointer transition-colors ${isActive ? "border-l-[3px] border-l-(--color-vintage-gold)" : "border-l-[3px] border-l-transparent"}`}
+      className={`w-full text-left px-5 py-3.5 border-b border-vintage-stone/30 cursor-pointer transition-colors ${isActive ? "border-l-[3px] border-l-(--color-vintage-gold)" : "border-l-[3px] border-l-transparent"}`}
     >
-      <div className="flex items-baseline gap-3">
+      <div className="flex items-start gap-3">
         <span
-          className={`font-mono text-xs font-bold tracking-wider shrink-0 ${isActive ? "text-(--color-vintage-gold)" : "text-(--color-vintage-gold)/60"}`}
+          className={`font-mono text-[11px] font-bold tracking-wider shrink-0 mt-0.5 tabular-nums ${isActive ? "text-(--color-vintage-gold)" : "text-(--color-vintage-gold)/60"}`}
         >
           {event.year}
         </span>
-        <h3
-          className={`font-display text-sm font-black uppercase leading-tight ${isActive ? "text-vintage-parchment" : "text-vintage-parchment/70"}`}
-        >
-          {event.title}
-        </h3>
+        <div className="min-w-0">
+          <h3
+            className={`font-display text-[13px] font-black uppercase leading-snug ${isActive ? "text-vintage-parchment" : "text-vintage-parchment/70"}`}
+          >
+            {event.title}
+          </h3>
+          {isActive && event.badge && (
+            <motion.span
+              initial={{ opacity: 0, y: -4 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="inline-block mt-1.5 px-1.5 py-0.5 font-mono text-[9px] font-bold uppercase tracking-wider border border-(--color-vintage-gold)/40 text-(--color-vintage-gold)"
+            >
+              {event.badge}
+            </motion.span>
+          )}
+        </div>
       </div>
-      {isActive && event.badge && (
-        <motion.span
-          initial={{ opacity: 0, y: -4 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="inline-block mt-1.5 ml-[calc(3ch+0.75rem)] px-1.5 py-0.5 font-mono text-[9px] font-bold uppercase tracking-wider border border-(--color-vintage-gold)/40 text-(--color-vintage-gold)"
-        >
-          {event.badge}
-        </motion.span>
-      )}
     </motion.button>
   );
 }
@@ -69,7 +71,7 @@ function EventDetail({ event }) {
         className="h-full flex flex-col"
       >
         {/* Hero image */}
-        <div className="relative w-full h-48 lg:h-56 shrink-0 border-b-2 border-vintage-stone/40 overflow-hidden">
+        <div className="relative w-full h-52 lg:h-60 xl:h-64 shrink-0 border-b-2 border-vintage-stone/40 overflow-hidden">
           {event.image ? (
             <img
               src={event.image}
@@ -94,10 +96,10 @@ function EventDetail({ event }) {
         </div>
 
         {/* Content body */}
-        <div className="flex-1 p-5 lg:p-6 overflow-y-auto custom-scrollbar flex flex-col gap-5">
+        <div className="flex-1 p-5 lg:p-6 xl:p-7 overflow-y-auto custom-scrollbar flex flex-col gap-5">
           {/* Title block */}
           <div>
-            <h2 className="font-display font-black text-xl lg:text-2xl text-vintage-parchment uppercase leading-tight">
+            <h2 className="font-display font-black text-lg lg:text-xl xl:text-2xl text-vintage-parchment uppercase leading-tight">
               {event.title}
             </h2>
             {event.badge && (
@@ -112,26 +114,26 @@ function EventDetail({ event }) {
 
           {/* Stats row */}
           {event.stats && (
-            <div className="grid grid-cols-2 gap-3">
-              <div className="bg-charcoal border border-graphite/50 p-3 text-center">
+            <div className="grid grid-cols-2 gap-2.5">
+              <div className="bg-charcoal border border-graphite/50 p-2.5 text-center">
                 <div className="flex items-center justify-center gap-1.5 mb-1">
                   <MapPin size={12} className="text-(--color-vintage-gold)" />
                   <span className="font-mono text-[9px] uppercase tracking-widest text-sand/60">
                     Địa điểm
                   </span>
                 </div>
-                <span className="font-display font-black text-base text-(--color-vintage-gold)">
+                <span className="font-display font-black text-sm text-(--color-vintage-gold) line-clamp-2">
                   {event.stats.location || "—"}
                 </span>
               </div>
-              <div className="bg-charcoal border border-graphite/50 p-3 text-center">
+              <div className="bg-charcoal border border-graphite/50 p-2.5 text-center">
                 <div className="flex items-center justify-center gap-1.5 mb-1">
                   <Calendar size={12} className="text-(--color-vintage-gold)" />
                   <span className="font-mono text-[9px] uppercase tracking-widest text-sand/60">
                     Mức độ
                   </span>
                 </div>
-                <span className="font-display font-black text-base text-(--color-vintage-gold)">
+                <span className="font-display font-black text-sm text-(--color-vintage-gold)">
                   {event.stats.significance || "—"}
                 </span>
               </div>
@@ -277,7 +279,7 @@ export default function MocThoiGianPage() {
       <div className="flex-1 flex overflow-hidden relative z-10">
         {/* ─── LEFT: Event List ─── */}
         <aside
-          className="shrink-0 w-64 lg:w-72 xl:w-80 border-r border-vintage-stone/30 flex-col bg-vintage-bg hidden md:flex"
+          className="shrink-0 w-72 lg:w-80 xl:w-88 2xl:w-95 border-r border-vintage-stone/30 flex-col bg-vintage-bg hidden md:flex"
         >
           {/* Progress bar */}
           <div className="shrink-0 h-0.5 bg-vintage-stone/20 relative">
@@ -304,8 +306,8 @@ export default function MocThoiGianPage() {
           </div>
 
           {/* Footer count */}
-          <div className="shrink-0 px-4 py-2 border-t border-vintage-stone/20 font-mono text-[9px] uppercase tracking-widest text-vintage-parchment/30">
-            {events.length} sự kiện · 1945–1975
+          <div className="shrink-0 px-5 py-2.5 border-t border-vintage-stone/20 font-mono text-[9px] uppercase tracking-widest text-vintage-parchment/30">
+            {events.length} sự kiện · {events[0]?.year}–{events[events.length - 1]?.year}
           </div>
         </aside>
 
@@ -383,7 +385,7 @@ export default function MocThoiGianPage() {
         </div>
 
         {/* ─── RIGHT: Event Detail Panel (desktop only) ─── */}
-        <aside className="shrink-0 w-80 lg:w-85 xl:w-95 border-l border-vintage-stone/30 bg-vintage-bg hidden lg:flex flex-col overflow-hidden">
+        <aside className="shrink-0 w-80 lg:w-88 xl:w-100 2xl:w-120 border-l border-vintage-stone/30 bg-vintage-bg hidden lg:flex flex-col overflow-hidden">
           <EventDetail event={activeEvent} />
         </aside>
       </div>

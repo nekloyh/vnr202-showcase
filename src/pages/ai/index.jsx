@@ -118,9 +118,9 @@ const AIPage = () => {
   return (
     <div className="w-full h-screen flex flex-col bg-bone">
       {/* Header */}
-      <div className="shrink-0 pt-20 pb-6 px-6 md:px-10 text-center border-b-2 border-charcoal/15">
-        <span className="brutal-badge mb-3 inline-block">Hồ sơ 06 — Hệ thống truy vấn AI</span>
-        <h1 className="font-display font-black text-fluid-4xl uppercase text-ink tracking-tight leading-none">
+      <div className="shrink-0 pt-20 pb-3 px-6 md:px-10 flex items-center justify-center gap-4 border-b-2 border-charcoal/15">
+        <span className="brutal-badge shrink-0">Hồ sơ 05</span>
+        <h1 className="font-display font-black text-2xl md:text-3xl uppercase text-ink tracking-tight leading-none">
           Hỏi đáp cùng <span className="text-crimson">Bot VNR202</span>
         </h1>
       </div>
@@ -170,11 +170,10 @@ const AIPage = () => {
             </Button>
           </form>
 
-          <div className="flex flex-wrap items-center justify-center gap-2 mt-4 max-w-5xl mx-auto">
+          <div className="flex items-center justify-center gap-2 mt-3 max-w-5xl mx-auto">
             {[
               "Tóm tắt sự ra đời của Đảng Cộng sản Việt Nam năm 1930",
               "Ý nghĩa lịch sử của Cách mạng Tháng Tám 1945 là gì?",
-              "Đại hội VI và đường lối đổi mới của Đảng có nội dung gì?",
             ].map((q, i) => (
               <button
                 key={i}
@@ -183,14 +182,14 @@ const AIPage = () => {
                 onClick={() => {
                   inputRef.current.value = q;
                 }}
-                className="px-3 py-1.5 text-xs font-mono font-bold bg-paper text-ink border-2 border-charcoal/30 hover:border-charcoal hover:shadow-hard-sm transition-all disabled:opacity-50 cursor-pointer"
+                className="px-3 py-1.5 text-xs font-mono font-bold bg-paper text-ink border-2 border-charcoal/30 hover:border-charcoal hover:shadow-hard-sm transition-all disabled:opacity-50 cursor-pointer truncate max-w-xs"
               >
                 {q}
               </button>
             ))}
           </div>
 
-          <p className="text-center text-xs text-graphite font-mono mt-4 max-w-md mx-auto">
+          <p className="text-center text-xs text-graphite font-mono mt-2.5 max-w-md mx-auto">
             * AI có thể mắc lỗi. Luôn đối chiếu với Giáo trình lịch sử ĐCSVN.
           </p>
         </div>
