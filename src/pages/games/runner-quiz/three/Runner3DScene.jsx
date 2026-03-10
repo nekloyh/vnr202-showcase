@@ -26,8 +26,8 @@ const COLORS = {
 
 // --- Components ---
 
-// Chibi Player: Simple Capsule + Head Block with Outline
-function Player({ laneIndex }) {
+// Tank Player: Neo-brutalist blocky tank with blinking feedback
+function Player({ laneIndex, feedback }) {
     const group = useRef();
     const body = useRef();
     const [currentX, setCurrentX] = useState(LANES[1]);
@@ -40,26 +40,30 @@ function Player({ laneIndex }) {
 
         // Snappier movement
         setCurrentX(prev => THREE.MathUtils.lerp(prev, targetX, 15 * delta));
-
         group.current.position.x = currentX;
         group.current.position.y = 0; // Ground level
 
-        // Procedural Animation: Squash & Stretch
+        // Engine Vibration / procedural animation
         const time = state.clock.elapsedTime;
-        const bounce = Math.abs(Math.sin(time * 15)); // Fast feet
+        const rumble = Math.sin(time * 30) * 0.05;
+
+        // Blinking for wrong answer
+        if (feedback?.type === 'WRONG') {
+            // Fast blink every 0.1s
+            const isVisible = Math.floor(time * 15) % 2 === 0;
+            body.current.visible = isVisible;
+        } else {
+            body.current.visible = true;
+        }
 
         if (body.current) {
-            // Bounce up/down
-            body.current.position.y = 1.5 + bounce * 0.5;
-            // Squash when landing
-            const scaleY = 1 + (bounce * 0.1);
-            const scaleXZ = 1 - (bounce * 0.05);
-            body.current.scale.set(scaleXZ, scaleY, scaleXZ);
-
+            // Apply rumble when not dead/feedback-ing, or just basic bounce
+            body.current.position.y = 1.0 + Math.abs(rumble);
+            
             // Tilt forward slightly when running
-            body.current.rotation.x = 0.2;
+            body.current.rotation.x = 0.1;
             // Tilt sideways when moving lanes
-            const tilt = (targetX - currentX) * -0.1;
+            const tilt = (targetX - currentX) * -0.15;
             body.current.rotation.z = THREE.MathUtils.lerp(body.current.rotation.z, tilt, 10 * delta);
         }
     });
@@ -67,38 +71,64 @@ function Player({ laneIndex }) {
     return (
         <group ref={group} position={[0, 0, 4]}>
             <group ref={body}>
-                {/* Body Block */}
+                {/* Main Hull */}
                 <mesh castShadow receiveShadow position={[0, 0, 0]}>
-                    <capsuleGeometry args={[0.8, 1.2, 4, 8]} />
+                    <boxGeometry args={[1.4, 1.2, 2.8]} />
                     <meshStandardMaterial color={COLORS.PLAYER} toneMapped={false} />
                     <Outlines thickness={0.05} color="black" />
                 </mesh>
 
-                {/* Head / Visor (Simple Geometric) */}
-                <mesh position={[0, 0.8, 0.5]}>
-                    <boxGeometry args={[1.0, 0.4, 0.4]} />
-                    <meshBasicMaterial color="black" />
+                {/* Left Track */}
+                <mesh position={[-0.9, -0.4, 0]}>
+                    <boxGeometry args={[0.4, 0.6, 3.2]} />
+                    <meshStandardMaterial color="#2d2d2d" />
+                    <Outlines thickness={0.05} color="black" />
+                </mesh>
+
+                {/* Right Track */}
+                <mesh position={[0.9, -0.4, 0]}>
+                    <boxGeometry args={[0.4, 0.6, 3.2]} />
+                    <meshStandardMaterial color="#2d2d2d" />
+                    <Outlines thickness={0.05} color="black" />
+                </mesh>
+
+                {/* Turret Base */}
+                <mesh castShadow position={[0, 0.8, -0.2]}>
+                    <boxGeometry args={[1.0, 0.6, 1.4]} />
+                    <meshStandardMaterial color={COLORS.PLAYER} toneMapped={false} />
+                    <Outlines thickness={0.05} color="black" />
+                </mesh>
+
+                {/* Cannon */}
+                <mesh position={[0, 0.9, -1.5]} rotation={[Math.PI / 2, 0, 0]}>
+                    <cylinderGeometry args={[0.15, 0.15, 2.0, 8]} />
+                    <meshStandardMaterial color="#2d2d2d" />
+                    <Outlines thickness={0.05} color="black" />
+                </mesh>
+                
+                {/* Turret Hatch */}
+                <mesh position={[0, 1.15, 0]}>
+                    <cylinderGeometry args={[0.3, 0.3, 0.1, 8]} />
+                    <meshStandardMaterial color="black" />
                 </mesh>
             </group>
 
             {/* Shadow Blob */}
             <mesh position={[0, 0.1, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-                <circleGeometry args={[1, 32]} />
+                <planeGeometry args={[3.0, 4.0]} />
                 <meshBasicMaterial color="black" opacity={0.3} transparent />
             </mesh>
         </group>
     );
 }
 
-// Answer Wall: Blocky, Solid Colors, Black Borders
-// Now supports wallBoost prop for early answer acceleration
-const AnswerWall = React.memo(({ id, startZ, speed, wallBoost = 1, onCollide, onDespawn, playerLane }) => {
+// Answer Gate: Arch structures, door opens when correct
+const AnswerWall = React.memo(({ id, startZ, speed, wallBoost = 1, onCollide, onDespawn, playerLane, question }) => {
     const ref = useRef();
     const hasHit = useRef(false);
-    // Use ref to always have fresh playerLane value in animation callback
+    const gateRefs = useRef([]);
     const playerLaneRef = useRef(playerLane);
 
-    // Update ref whenever playerLane prop changes
     useEffect(() => {
         playerLaneRef.current = playerLane;
     }, [playerLane]);
@@ -106,21 +136,36 @@ const AnswerWall = React.memo(({ id, startZ, speed, wallBoost = 1, onCollide, on
     useFrame((state, delta) => {
         if (!ref.current) return;
 
-        // Move - apply wallBoost multiplier for early answer acceleration
         const effectiveSpeed = speed * wallBoost;
         ref.current.position.z += effectiveSpeed * delta;
         const currentZ = ref.current.position.z;
 
-        // Collision Check (Player at Z=PLAYER_Z from config)
         if (!hasHit.current) {
             if (Math.abs(currentZ - GAME_CONFIG.WALL.PLAYER_Z) < GAME_CONFIG.WALL.COLLISION_THRESHOLD) {
                 hasHit.current = true;
-                // Use ref to get current playerLane value, not stale closure value
                 onCollide(id, playerLaneRef.current);
             }
         }
 
-        // Despawn
+        // Animate gate opening if hit and in correct lane
+        if (hasHit.current && question) {
+            const correctLaneIndex = question.answerIndex;
+            // If the player hit the right answer
+            if (playerLaneRef.current === correctLaneIndex && gateRefs.current[correctLaneIndex]) {
+                const gateGroup = gateRefs.current[correctLaneIndex];
+                gateGroup.children.forEach(child => {
+                    if (child.name === 'leftHinge') {
+                        child.rotation.y = THREE.MathUtils.lerp(child.rotation.y, Math.PI / 2, 12 * delta);
+                    } else if (child.name === 'rightHinge') {
+                        child.rotation.y = THREE.MathUtils.lerp(child.rotation.y, -Math.PI / 2, 12 * delta);
+                    } else if (child.name === 'gateText') {
+                        // Shrink text rapidly to make it disappear gracefully
+                        child.scale.setScalar(THREE.MathUtils.lerp(child.scale.x, 0, 15 * delta));
+                    }
+                });
+            }
+        }
+
         if (currentZ > GAME_CONFIG.WALL.DESPAWN_Z) {
             onDespawn(id);
         }
@@ -128,35 +173,65 @@ const AnswerWall = React.memo(({ id, startZ, speed, wallBoost = 1, onCollide, on
 
     return (
         <group ref={ref} position={[0, 0, startZ]}>
-            {/* Top Bar Label */}
-            <mesh position={[0, 7, 0]}>
-                <boxGeometry args={[34, 1.5, 1]} />
-                <meshStandardMaterial color="black" />
+            {/* Massive Top Bar over all gates */}
+            <mesh position={[0, 7.5, 0]}>
+                <boxGeometry args={[34, 1.5, 1.5]} />
+                <meshStandardMaterial color="#4D9DE0" />
+                <Outlines thickness={0.1} color="black" />
             </mesh>
 
-            {/* Lane Gates */}
             {LANES.map((laneX, i) => (
                 <group key={i} position={[laneX, 3, 0]}>
-                    {/* The Gate Block - Widened for new lanes */}
-                    <mesh position={[0, 0, 0]}>
-                        <boxGeometry args={[7, 6, 1.5]} /> {/* Thicker block */}
-                        <meshStandardMaterial color={COLORS.BG} />
-                        <Outlines thickness={0.15} color="black" />
+                    {/* Gate Frame Pillars */}
+                    <mesh position={[-3.5, 0.5, 0]}>
+                        <boxGeometry args={[0.5, 7, 1.5]} />
+                        <meshStandardMaterial color="#2d2d2d" />
+                        <Outlines thickness={0.1} color="black" />
+                    </mesh>
+                    <mesh position={[3.5, 0.5, 0]}>
+                        <boxGeometry args={[0.5, 7, 1.5]} />
+                        <meshStandardMaterial color="#2d2d2d" />
+                        <Outlines thickness={0.1} color="black" />
                     </mesh>
 
-                    {/* Option Text - BIGGER and BOLDER */}
-                    <Text
-                        position={[0, 0, 0.9]} // Pushed out slightly
-                        fontSize={4.5} // Bigger Font
-                        color="black"
-                        font="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hjp-Ek-_EeA.woff"
-                        anchorX="center"
-                        anchorY="middle"
-                        outlineWidth={0.1}
-                        outlineColor="white"
+                    {/* The Split Gate Panel */}
+                    <group 
+                        position={[0, 0, 0]} 
+                        ref={el => gateRefs.current[i] = el}
                     >
-                        {['A', 'B', 'C', 'D'][i]}
-                    </Text>
+                        {/* Left Hinge and Leaf */}
+                        <group name="leftHinge" position={[-3.25, 0, 0]}>
+                            <mesh position={[1.625, 0.5, 0]}>
+                                <boxGeometry args={[3.25, 6, 1]} /> 
+                                <meshStandardMaterial color={COLORS.BG} />
+                                <Outlines thickness={0.15} color="black" />
+                            </mesh>
+                        </group>
+
+                        {/* Right Hinge and Leaf */}
+                        <group name="rightHinge" position={[3.25, 0, 0]}>
+                            <mesh position={[-1.625, 0.5, 0]}>
+                                <boxGeometry args={[3.25, 6, 1]} /> 
+                                <meshStandardMaterial color={COLORS.BG} />
+                                <Outlines thickness={0.15} color="black" />
+                            </mesh>
+                        </group>
+                        
+                        {/* Option Text on the door */}
+                        <Text
+                            name="gateText"
+                            position={[0, 0.5, 0.6]}
+                            fontSize={4.5}
+                            color="black"
+                            font="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hjp-Ek-_EeA.woff"
+                            anchorX="center"
+                            anchorY="middle"
+                            outlineWidth={0.1}
+                            outlineColor="white"
+                        >
+                            {['A', 'B', 'C', 'D'][i]}
+                        </Text>
+                    </group>
                 </group>
             ))}
         </group>
@@ -264,7 +339,8 @@ export default function Runner3DScene({
     gameSpeed = 1, 
     wallBoost = 1, 
     spawnSignal,
-    questionTimeLimit = GAME_CONFIG.TIMING.QUESTION_TIME_LIMIT 
+    questionTimeLimit = GAME_CONFIG.TIMING.QUESTION_TIME_LIMIT,
+    feedback 
 }) {
     const [walls, setWalls] = useState([]);
     const lastSpawnedQuestionRef = useRef(null);
@@ -303,7 +379,7 @@ export default function Runner3DScene({
 
             <NeobrutalEnvironment speed={BASE_SPEED * gameSpeed} />
 
-            <Player laneIndex={playerLane} />
+            <Player laneIndex={playerLane} feedback={feedback} />
 
             {walls.map(wall => (
                 <AnswerWall
@@ -315,6 +391,7 @@ export default function Runner3DScene({
                     onCollide={onWallHit}
                     onDespawn={handleDespawn}
                     playerLane={playerLane}
+                    question={wall.question}
                 />
             ))}
         </>

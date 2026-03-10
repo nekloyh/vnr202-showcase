@@ -587,6 +587,7 @@ export default function RunnerQuiz3D({ onClose }) {
                                         wallBoost={wallBoost}
                                         isQuizActive={gameState === 'QUESTION_GATE'}
                                         questionTimeLimit={currentTimeLimit}
+                                        feedback={feedback}
                                     />
                                 </Suspense>
                             </Canvas>
