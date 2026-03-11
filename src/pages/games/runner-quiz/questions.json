@@ -16,7 +16,7 @@
     "choices": [
       "Giúp nhân dân xây dựng kinh tế.",
       "Thực hiện nghĩa vụ quốc tế về hòa bình.",
-      "Biến miền Nam thuộc loại địa chỉ mới và căn cứ quân sự của Mỹ.",
+      "Biến miền Nam thuộc địa kiểu mới và căn cứ quân sự của Mỹ.",
       "Duy trì chế độ thực hành cũ của Pháp."
     ],
     "answerIndex": 2
@@ -26,7 +26,7 @@
     "question": "Vai trò của cách mạng xã hội chủ nghĩa ở miền Bắc được Đảng xác định tại Đại hội III (1960) là gì?",
     "choices": [
       "Vai trò quyết định trực tiếp.",
-      "Vai trò quyết định nhất cho sự phát triển của toàn bộ cách mạng Việt Nam.",
+      "Vai trò quyết định nhất đối với sự phát triển của toàn bộ cách mạng Việt Nam.",
       "Vai trò hỗ trợ hậu cần cần đơn giản.",
       "Vai trò trung gian hòa bình thế giới."
     ],
@@ -37,7 +37,7 @@
     "question": "Cách mạng dân tộc dân chủ nhân dân ở miền Nam có vai trò gì?",
     "choices": [
       "Vai trò quyết định nhất.",
-      "Vai trò quyết định trực tiếp cho giải pháp miền Nam doanh nghiệp.",
+      "Vai trò quyết định trực tiếp đối với sự nghiệp giải phóng miền Nam, thống nhất đất nước.",
       "Vai trò phụ thuộc vào miền Bắc.",
       "Không có vai trò quan trọng nào cả."
     ],
@@ -48,7 +48,7 @@
     "question": "Tại sao quan điểm cho rằng đây là cuộc 'nội chiến' là sai?",
     "choices": [
       "Vì hai miền đều là người Việt Nam.",
-      "Vì bản chất là phản chiến chống xâm lược, Mỹ là bên điều hành và viện trợ cho chính quyền tay sai.",
+      "Vì đây là cuộc kháng chiến chống xâm lược của nhân dân Việt Nam, Mỹ là thế lực trực tiếp can thiệp, chỉ huy và dựng lên chính quyền tay sai ở miền Nam.",
       "Vì Liên Xô và Trung Quốc trực tiếp chỉ huy.",
       "Vì không có súng nổ."
     ],
@@ -70,7 +70,7 @@
     "question": "Chính sách Bạo cộng, diệt cộng và Luật 10-59 của Ngô Đình Diệm nhắm mục tiêu gì?",
     "choices": [
       "Phát triển kinh tế nông thôn.",
-      "Xây dựng nền dân chủ hòa hòa.",
+      "Xây dựng nền dân chủ hòa bình.",
       "Đàn áp tàn bạo những người kháng chiến cũ và nhân dân yêu nước.",
       "Thực hiện Hiệp định Giơ-ne-vơ."
     ],
@@ -82,7 +82,7 @@
     "choices": [
       "Mỹ phải rút quân về nước.",
       "Giải thích hoàn toàn các thành phố lớn.",
-      "Chuyển cách mạng miền Nam từ thế chứa năng lượng sang thế tiến công.",
+      "Đưa cách mạng miền Nam từ thế giữ gìn lực lượng sang thế tiến công.",
       "Chấm dứt hoàn toàn chế độ Ngô Đình Diệm."
     ],
     "answerIndex": 2
@@ -90,17 +90,17 @@
   {
     "id": "quiz_09",
     "question": "Đại hội đại biểu toàn quốc lần thứ III của Đảng (9/1960) diễn ra tại đâu?",
-    "choices": ["Việt Bắc.", "Hà Nội.", "Sài Gòn.", "Tiến sĩ Tân Trào."],
+    "choices": ["Việt Bắc.", "Hà Nội.", "Sài Gòn.", "Tân Trào."],
     "answerIndex": 1
   },
   {
     "id": "quiz_10",
-    "question": "Chủ đề chiến lược của Đại hội III đối với cách mạng miền Nam là gì?",
+    "question": "Nhiệm vụ chiến lược của Đại hội III đối với cách mạng miền Nam là gì?",
     "choices": [
       "Tiến lên ngay chủ nghĩa xã hội.",
-      "Hoàn thành cách mạng dân tộc chủ nhân dân.",
+      "Hoàn thành cách mạng dân tộc dân chủ nhân dân.",
       "Thương lượng hòa bình với Mỹ.",
-      "Giải thưởng vũ trang năng lượng."
+      "Đẩy mạnh đấu tranh vũ trang."
     ],
     "answerIndex": 1
   },
@@ -117,7 +117,7 @@
   },
   {
     "id": "quiz_12",
-    "question": "Lực lượng đóng vai trò trâu cốt trong chiến lược 'Chiến tranh đặc biệt' là:",
+    "question": "Lực lượng đóng vai trò nòng cốt trong chiến lược 'Chiến tranh đặc biệt' là:",
     "choices": [
       "Quân đội Mỹ.",
       "Quân đội tay sai (ngụy quân).",
@@ -130,7 +130,7 @@
     "id": "quiz_13",
     "question": "Quốc sách mà Mỹ và chính quyền Sài Gòn thực hiện để tách dân ra khỏi cách mạng là gì?",
     "choices": [
-      "cải tạo ruộng đất.",
+      "Cải tạo ruộng đất.",
       "Lập 'Ấp chiến lược'.",
       "Viện hỗ trợ kinh tế.",
       "Xây dựng khu công nghiệp."
@@ -142,7 +142,7 @@
     "question": "Mặt trận dân tộc giải phóng miền Nam Việt Nam ra đời (20/12/1960) nhắm mục tiêu gì?",
     "choices": [
       "Thiết lập chính quyền cộng sản ngay lập tức.",
-      "Đoàn toàn dân đấu tranh thống trị Mỹ - Diệm, xây dựng miền Nam độc lập, dân chủ, hòa bình, trung lập.",
+      "Đoàn kết toàn dân đấu tranh chống chế độ Mỹ - Diệm, xây dựng miền Nam độc lập, dân chủ, hòa bình.",
       "Kêu gọi quân đội Mỹ rút quân hòa bình.",
       "Đại diện cho chính quyền miền Bắc tại miền Nam."
     ],
@@ -150,7 +150,7 @@
   },
   {
     "id": "quiz_15",
-    "question": "Chiến thắng nào mở đầu cho khả năng đánh bại chiến lược 'Chiến tranh đặc biệt'?",
+    "question": "Chiến thắng nào mở đầu cho khả năng đánh bại chiến lược 'Chiến tranh đặc biệt' của Mỹ?",
     "choices": [
       "Chiến thắng Ấp Bắc (1/1963).",
       "Chiến thắng Bình Giã.",
@@ -161,7 +161,7 @@
   },
   {
     "id": "quiz_16",
-    "question": "Tại sao Mỹ phải làm đảo chính Ngô Đình Diệm (11/1/1963)?",
+    "question": "Tại sao Mỹ phải tiến hành đảo chính Ngô Đình Diệm (1/11/1963)?",
     "choices": [
       "Diệm muốn theo cách mạng.",
       "Diệm bất lực trong việc ngăn chặn phong trào cách mạng và không còn phục vụ ý đồ của Mỹ.",
@@ -186,7 +186,7 @@
     "question": "Sự kiện “Vịnh Bắc Bộ” (8/1964) được Mỹ dựng lên nhằm mục tiêu gì?",
     "choices": [
       "Bảo vệ chủ quyền vùng biển quốc tế.",
-      "Lấy được để dùng không quân và hải quân chiến đấu miền Bắc.",
+      "Làm cái cớ để mở rộng chiến tranh ra miền Bắc.",
       "Hỗ trợ chính quyền Sài Gòn mở rộng lãnh thổ.",
       "Kêu gọi Liên hợp quốc can thiệp."
     ],
@@ -194,7 +194,7 @@
   },
   {
     "id": "quiz_19",
-    "question": "Chiến thắng quân sự nào cuối năm 1964 đã tạo nên cơ bản chiến lược 'Chiến tranh đặc biệt'?",
+    "question": "Chiến thắng quân sự nào cuối năm 1964 đã tạo bước phá sản cơ bản chiến lược 'Chiến tranh đặc biệt'?",
     "choices": [
       "Chiến thắng Bình Giã (Bà Rịa).",
       "Chiến thắng Núi Thành.",
@@ -214,7 +214,7 @@
     "question": "Hội nghị Trung ương 11 (3/1965) xác định nhiệm vụ cấp bách lúc này là gì?",
     "choices": [
       "Đàm phán với Mỹ để kết thúc chiến tranh.",
-      "Kiên quyết định chiến thắng cuộc chiến tranh xâm lược của đế quốc Mỹ trong bất kỳ tình huống nào.",
+      "Kiên quyết đánh thắng cuộc chiến tranh xâm lược của đế quốc Mỹ trong bất kỳ tình huống nào.",
       "Tập trung phát triển kinh tế miền Bắc.",
       "Rút quân miền Bắc về hậu phương."
     ],
@@ -225,7 +225,7 @@
     "question": "Nhận định nào sau đây đúng về bản chất của chính quyền Việt Nam Cộng hòa?",
     "choices": [
       "Là một quốc gia độc lập thực sự.",
-      "Là sản phẩm của chủ nghĩa thực dân mới, phụ thuộc hoàn toàn vào viện và chỉ đạo của Mỹ.",
+      "Là sản phẩm của chủ nghĩa thực dân mới, phụ thuộc hoàn toàn vào viện trợ và chỉ đạo của Mỹ.",
       "Là chính quyền kế thừa hợp pháp từ Pháp.",
       "Là đại diện cho ý chí tự do của nhân dân miền Nam."
     ],
@@ -235,7 +235,7 @@
     "id": "quiz_23",
     "question": "Hình thức đấu tranh chủ yếu trong phong trào 'Đồng khởi' là:",
     "choices": [
-      "Đấu tranh vũ trang tinh khiết.",
+      "Đấu tranh vũ trang thuần tuý.",
       "Đấu tranh ngoại giao.",
       "Quần chúng nổi dậy kết hợp với lực lượng vũ trang hỗ trợ.",
       "Chờ đợi quân đội miền Bắc vào giải phóng."
@@ -244,7 +244,7 @@
   },
   {
     "id": "quiz_24",
-    "question": "Mỹ bắt đầu ném bom vào miền Bắc lần thứ hai vào thời điểm nào?",
+    "question": "Mỹ bắt đầu đánh phá miền Bắc bằng không quân, hải quân từ thời điểm nào?",
     "choices": [
       "Năm 1960.",
       "Năm 1963.",
@@ -258,7 +258,7 @@
     "question": "Tại sao miền Bắc phải tiến hành cuộc cách mạng xã hội chủ nghĩa?",
     "choices": [
       "Vì miền Bắc thích theo mô hình Liên Xô.",
-      "Để tạo cơ sở kinh tế, chính trị, quốc gia phòng chắc chắn cho miền Nam và làm gương cho cả nước.",
+      "Để xây dựng miền Bắc thành hậu phương vững chắc cho cách mạng miền Nam và cho sự nghiệp thống nhất đất nước.",
       "Để thay thế hoàn toàn nền kinh tế cũ.",
       "Để không còn ai nghèo đói."
     ],
@@ -266,7 +266,7 @@
   },
   {
     "id": "quiz_26",
-    "question": "Khẩu hiệu nổi tiếng nào có thể hiện tinh thần của miền Bắc trong những năm đánh Mỹ?",
+    "question": "Khẩu hiệu nổi tiếng nào thể hiện tinh thần của miền Bắc trong những năm chống Mỹ?",
     "choices": [
       "“Tất cả vì miền Nam ruột thịt”, “Mỗi người làm việc bằng hai”.",
       "“Hòa bình, thống nhất, độc lập, dân chủ”.",
@@ -277,10 +277,10 @@
   },
   {
     "id": "quiz_27",
-    "question": "Nhận được phán đoán nào đúng về cuộc chiến tranh 1954-1975 của dân tộc ta?",
+    "question": "Nhận định nào sau đây đúng về cuộc chiến tranh 1954-1975 của dân tộc ta?",
     "choices": [
       "Là cuộc xung đột giữa hai ý thức hệ cộng sản và tư bản.",
-      "Là cuộc chiến tranh giải phóng dân tộc và bảo vệ tổ quốc chính nghĩa.",
+      "Là cuộc chiến tranh giải phóng dân tộc và bảo vệ Tổ quốc chính nghĩa.",
       "Là một phần của cuộc nội chiến thế giới.",
       "Là cuộc tranh giành đất đai giữa hai miền."
     ],
@@ -302,7 +302,7 @@
     "question": "Giá trị thực tiễn quan trọng nhất của việc làm khẳng định đây là cuộc chiến kháng Mỹ (không phải nội chiến) là:",
     "choices": [
       "Để được các nước khác giúp đỡ.",
-      "Khẳng định tính chính xác của cuộc đấu tranh, tập hợp sức mạnh dân tộc và sự ủng hộ của nhân loại tiến bộ.",
+      "Khẳng định tính chính nghĩa của cuộc đấu tranh, tập hợp sức mạnh dân tộc và tranh thủ sự ủng hộ của nhân loại tiến bộ.",
       "Để Mỹ phải bồi thường chiến tranh.",
       "Để chứng minh sức mạnh của quân đội."
     ],

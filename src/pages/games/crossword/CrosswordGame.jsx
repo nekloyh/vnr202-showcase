@@ -19,48 +19,53 @@ const CROSSWORD_ROWS = [
   {
     id: 1,
     answer: "KẾ HOẠCH",
-    hint1: "Đây là công cụ quản lý kinh tế tập trung của Nhà nước.",
+    hint1:
+      "Trong cơ chế quản lý tập trung, Nhà nước điều hành nền kinh tế chủ yếu thông qua công cụ này.",
     hint2:
-      "Kế hoạch 5 năm lần thứ nhất nhằm xây dựng bước đầu cơ sở vật chất của CNXH.",
-    clue: "Tên gọi chung cho các chương trình phát triển kinh tế - xã hội ở miền Bắc, tiêu biểu là lần thứ nhất (1961-1965). (7 chữ cái)",
+      "Ở miền Bắc giai đoạn 1961–1965, công cụ này gắn với mục tiêu xây dựng bước đầu cơ sở vật chất - kỹ thuật của chủ nghĩa xã hội.",
+    clue: "Công cụ quản lý kinh tế đặc trưng của cơ chế tập trung bao cấp, gắn với các chỉ tiêu phát triển kinh tế - xã hội ở miền Bắc. (7 chữ cái)",
     verticalIndex: 0,
     anchor: "Chữ K ở vị trí 1",
   },
   {
     id: 2,
     answer: "ĐƯỜNG HỒ CHÍ MINH",
-    hint1: "Còn được gọi là Đường Trường Sơn.",
-    hint2: "Được thành lập bởi Đoàn 559.",
-    clue: "Tuyến đường vận tải chiến lược bắt đầu được xây dựng từ năm 1959 để chi viện cho miền Nam. (13 chữ cái)",
+    hint1:
+      "Đây là tuyến chi viện chiến lược nối hậu phương lớn với tiền tuyến lớn.",
+    hint2: "Tuyến vận tải này gắn với dãy núi chạy dọc phía tây đất nước.",
+    clue: "Tên tuyến vận tải chiến lược được mở từ năm 1959 để chi viện cho chiến trường miền Nam. (13 chữ cái)",
     verticalIndex: 5,
     anchor: "Chữ H ở vị trí 6",
   },
   {
     id: 3,
-    answer: "PHÁ ÁP CHIẾN LƯỢC",
+    answer: "PHÁ ẤP CHIẾN LƯỢC",
     hint1:
-      "Một hình thức dồn dân vào các khu tập trung có rào gai bao quanh của địch.",
-    hint2: 'Khẩu hiệu: "Một tấc không đi, một ly không rời".',
-    clue: 'Nhiệm vụ trọng tâm của quân và dân miền Nam (1961-1965) nhằm đập tan "xương sống" của chiến lược Chiến tranh đặc biệt. (14 chữ cái)',
+      "Nhiệm vụ này nhằm chống lại chính sách dồn dân lập khu tập trung của Mỹ - Diệm.",
+    hint2:
+      "Khẩu hiệu quen thuộc của phong trào này là: ‘Một tấc không đi, một ly không rời’.",
+    clue: "Nhiệm vụ trọng tâm của quân dân miền Nam trong thời kỳ chống chiến lược ‘Chiến tranh đặc biệt’, nhằm làm thất bại quốc sách dồn dân của địch. (14 chữ cái)",
     verticalIndex: 2,
     anchor: "Chữ Á ở vị trí 3",
   },
   {
     id: 4,
     answer: "NGUYỄN VĂN TRỖI",
-    hint1: 'Câu nói nổi tiếng trước khi hy sinh: "Hãy nhớ lấy lời tôi!".',
-    hint2: 'Nhân vật chính trong tác phẩm "Sống như Anh" của Trần Đình Vân.',
-    clue: "Anh hùng liệt sĩ đã có hành động ám sát Bộ trưởng Quốc phòng Mỹ McNamara tại cầu Công Lý năm 1964. (13 chữ cái)",
+    hint1: "Anh là một chiến sĩ biệt động Sài Gòn, hy sinh năm 1964.",
+    hint2:
+      "Tên anh gắn với vụ đặt mìn ở cầu Công Lý nhằm vào phái đoàn quân sự cấp cao của Mỹ.",
+    clue: "Tên người anh hùng liệt sĩ mưu sát Bộ trưởng Quốc phòng Mỹ Robert McNamara tại cầu Công Lý năm 1964. (13 chữ cái)",
     verticalIndex: 0,
     anchor: "Chữ N ở vị trí 1",
   },
   {
     id: 5,
     answer: "GENEVA",
-    hint1: "Một địa danh quốc tế gắn liền với kết thúc kháng chiến chống Pháp.",
+    hint1:
+      "Đây là thành phố của Thụy Sĩ gắn với hiệp định năm 1954 về Đông Dương.",
     hint2:
-      "Hội nghị có sự tham gia của các cường quốc như Liên Xô, Trung Quốc, Mỹ, Anh, Pháp.",
-    clue: "Tên thành phố ở Thụy Sĩ, nơi diễn ra hội nghị ký kết hòa bình cho Đông Dương năm 1954. (6 chữ cái)",
+      "Tên địa danh này thường được phiên âm trong sách giáo khoa là ‘Giơ-ne-vơ’.",
+    clue: "Tên quốc tế của thành phố Thụy Sĩ nơi diễn ra hội nghị chấm dứt chiến tranh ở Đông Dương năm 1954. (6 chữ cái)",
     verticalIndex: 0,
     anchor: "Chữ G ở vị trí 1",
   },
@@ -68,18 +73,19 @@ const CROSSWORD_ROWS = [
     id: 6,
     answer: "CỐ VẤN",
     hint1:
-      "Hệ thống này đóng vai trò điều hành bộ máy chiến tranh của chính quyền tay sai.",
+      "Đội ngũ này giữ vai trò tổ chức, chỉ huy và hỗ trợ quân đội Sài Gòn.",
     hint2:
-      "Mỹ dựa vào lực lượng này thay vì đưa quân viễn chinh ồ ạt vào giai đoạn trước 1965.",
-    clue: 'Lực lượng quân sự Mỹ được cử sang miền Nam để trực tiếp chỉ huy quân đội Sài Gòn trong "Chiến tranh đặc biệt". (5 chữ cái)',
+      "Trong chiến lược ‘Chiến tranh đặc biệt’, Mỹ dựa chủ yếu vào quân ngụy dưới sự chỉ đạo của lực lượng này",
+    clue: "Tên gọi chung của đội ngũ quân sự Mỹ được đưa vào miền Nam để chỉ huy, huấn luyện và hỗ trợ quân đội Sài Gòn trong chiến lược ‘Chiến tranh đặc biệt’. (5 chữ cái)",
     verticalIndex: 0,
     anchor: "Chữ C ở vị trí 1",
   },
   {
     id: 7,
     answer: "HÀ NỘI",
-    hint1: "Trung tâm chính trị, văn hóa của cả nước.",
-    hint2: "Nơi Chủ tịch Hồ Chí Minh sống và làm việc sau năm 1954.",
+    hint1:
+      "Đây là trung tâm chính trị của nước Việt Nam Dân chủ Cộng hòa sau năm 1954.",
+    hint2: "Ngày 10/10/1954, quân ta tiếp quản thành phố này.",
     clue: "Thủ đô của nước Việt Nam Dân chủ Cộng hòa, được tiếp quản ngày 10/10/1954. (5 chữ cái)",
     verticalIndex: 0,
     anchor: "Chữ H ở vị trí 1",
@@ -87,9 +93,11 @@ const CROSSWORD_ROWS = [
   {
     id: 8,
     answer: "ĐIỆN BIÊN PHỦ",
-    hint1: "Kết thúc 9 năm kháng chiến chống thực dân Pháp.",
-    hint2: "Mở đầu cho giai đoạn xây dựng miền Bắc và đấu tranh ở miền Nam.",
-    clue: 'Thắng lợi quân sự vĩ đại năm 1954, "lừng lẫy năm châu, chấn động địa cầu". (12 chữ cái)',
+    hint1:
+      "Thắng lợi này tạo điều kiện để đi tới việc ký Hiệp định Giơ-ne-vơ năm 1954.",
+    hint2:
+      "Đây là chiến thắng quân sự quyết định trong cuộc kháng chiến chống thực dân Pháp.",
+    clue: "Tên chiến dịch quân sự năm 1954 làm phá sản hoàn toàn kế hoạch Nava của Pháp. (12 chữ cái)",
     verticalIndex: 1,
     anchor: "Chữ I ở vị trí 2",
   },
@@ -98,17 +106,18 @@ const CROSSWORD_ROWS = [
     answer: "VĨ TUYẾN 17",
     hint1: "Gắn liền với hình ảnh cầu Hiền Lương và sông Bến Hải.",
     hint2: "Điểm phân chia địa lý tại Quảng Trị.",
-    clue: "Giới tuyến quân sự tạm thời chia cắt đất nước thành hai miền Nam - Bắc theo Hiệp định Giơ-ne-vơ. (10 chữ cái)",
+    clue: "Tên gọi thường dùng của giới tuyến quân sự tạm thời chia cắt hai miền Nam - Bắc sau Hiệp định Giơ-ne-vơ. (10 chữ cái)",
     verticalIndex: 5,
     anchor: "Chữ Ế ở vị trí 7",
   },
   {
     id: 10,
-    answer: "BA SẴN",
+    answer: "BA SẴN SÀNG",
     hint1:
-      "Sẵn sàng chiến đấu; Sẵn sàng gia nhập quân đội; Sẵn sàng đi bất cứ nơi đâu.",
-    hint2: "Một biểu tượng của tinh thần xung kích của tuổi trẻ thời bấy giờ.",
-    clue: "Phong trào thi đua của thanh niên miền Bắc bắt đầu từ năm 1964 để chống Mỹ cứu nước. (5 chữ cái)",
+      "Đây là phong trào thi đua tiêu biểu của thanh niên miền Bắc trong thời kỳ chống Mỹ.",
+    hint2:
+      "Ba nội dung nổi tiếng của phong trào này gắn với chiến đấu, nhập ngũ và đi bất cứ nơi đâu Tổ quốc cần.",
+    clue: "Tên phong trào hành động cách mạng của thanh niên miền Bắc phát động từ năm 1964 nhằm chống Mỹ, cứu nước. (5 chữ cái)",
     verticalIndex: 4,
     anchor: "Chữ N ở vị trí 6",
   },
