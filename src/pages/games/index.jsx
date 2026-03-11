@@ -261,8 +261,7 @@ const GamesPage = () => {
     {
       id: 1,
       title: "Runner Quiz",
-      description:
-        "Endless runner kết hợp giải đố. Nhảy qua chướng ngại vật, trả lời câu hỏi nhanh để ghi điểm. Sai 3 lần là thua!",
+      description: "Lái xe tăng tiến về Sài Gòn, vượt qua các cổng chướng ngại bằng kiến thức lịch sử. Trả lời đúng để mở cổng, sai 3 lần là thất bại!",
       icon: <Zap size={32} className="text-crimson" />,
       status: "Sẵn sàng",
       action: "Chơi ngay",
