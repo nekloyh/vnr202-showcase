@@ -81,11 +81,12 @@ const ConclusionPage = () => {
         <div className="max-w-3xl mx-auto text-center py-6">
           <R>
             <p className="font-body text-xl md:text-2xl text-bone/75 leading-relaxed">
-              Sau khi đã nắm vững bối cảnh lịch sử, ta có đủ nền tảng để đánh
-              giá và đối chiếu hai quan điểm học thuật về bản chất của cuộc
-              chiến tranh ở Việt Nam giai đoạn 1954–1965. Đây không phải là cuộc
-              tranh luận học thuật suông — câu trả lời quy định cách chúng ta
-              hiểu đúng về lịch sử dân tộc.
+              Sau khi đã nắm vững bối cảnh lịch sử và các yếu tố nền tảng quan
+              trọng của giai đoạn này, ta có đủ cơ sở để đánh giá và đối chiếu
+              hai quan điểm học thuật về bản chất của cuộc chiến tranh ở Việt
+              Nam trong giai đoạn 1954 đến 1965. Đây không phải là cuộc tranh
+              luận học thuật suông mà câu trả lời sẽ quy định cách chúng ta hiểu
+              đúng về lịch sử dân tộc.
             </p>
           </R>
         </div>
@@ -152,7 +153,7 @@ const ConclusionPage = () => {
               Bác Bỏ Quan Điểm &ldquo;Nội Chiến&rdquo;
             </h2>
             <p className="text-bone/70 max-w-3xl mx-auto text-lg">
-              Luận cứ từ sử học chính thống và thực tiễn lịch sử — được khẳng
+              Luận cứ từ sử học chính thống và thực tiễn lịch sử đã được khẳng
               định bởi cả các học giả phương Tây nghiêm túc như George Herring
               và Gabriel Kolko.
             </p>
@@ -164,19 +165,19 @@ const ConclusionPage = () => {
                 num: "01",
                 title: "Tính phi pháp của sự phân chia",
                 content:
-                  'Hiệp định Geneva không tạo ra hai nhà nước, mà chỉ tạo ra ranh giới quân sự tạm thời. Việc Mỹ và Ngô Đình Diệm xây dựng VNCH như một "quốc gia có chủ quyền riêng" là hành động vi phạm trực tiếp luật pháp quốc tế. Một cuộc "nội chiến" giả thiết sự tồn tại của hai thực thể có chủ quyền hợp pháp — điều này không có ở đây.',
+                  'Hiệp định Geneva không tạo ra hai nhà nước, mà chỉ tạo ra ranh giới quân sự tạm thời. Việc Mỹ và Ngô Đình Diệm xây dựng VNCH như một "quốc gia có chủ quyền riêng" là hành động vi phạm trực tiếp luật pháp quốc tế. Một cuộc "nội chiến" giả thiết sự tồn tại của hai thực thể có chủ quyền hợp pháp, điều này không có ở đây.',
               },
               {
                 num: "02",
                 title: "VNCH thiếu chủ quyền độc lập thực sự",
                 content:
-                  'Sự tồn tại của VNCH hoàn toàn phụ thuộc vào viện trợ tài chính, vũ khí, và cố vấn chiến lược của Mỹ. Trưng cầu dân ý 1955 với tỷ lệ 98% phiếu là gian lận trắng trợn — ngay cả cố vấn Mỹ cũng thừa nhận. Một nhà nước như vậy không thể được coi là "bên tham chiến nội chiến" bình đẳng và độc lập.',
+                  'Sự tồn tại của VNCH hoàn toàn phụ thuộc vào viện trợ tài chính, vũ khí, và cố vấn chiến lược của Mỹ. Trưng cầu dân ý 1955 với tỷ lệ 98% phiếu là gian lận trắng trợn, ngay cả cố vấn Mỹ cũng thừa nhận. Một nhà nước như vậy không thể được coi là "bên tham chiến nội chiến" bình đẳng và độc lập.',
               },
               {
                 num: "03",
                 title: 'MTDTGP không phải "lực lượng ủy nhiệm" đơn thuần',
                 content:
-                  "Các học giả David Elliott và Philip Catton đã chứng minh cuộc nổi dậy ở miền Nam bắt nguồn từ sức phản kháng của quần chúng nông dân trước sự đàn áp tàn bạo của Diệm. Luật 10/59, đảo ngược cải cách ruộng đất, Ấp Chiến lược — đẩy hàng triệu người vào vòng tay cách mạng trước khi Hà Nội phát động đấu tranh vũ trang.",
+                  "Các học giả David Elliott và Philip Catton đã chứng minh cuộc nổi dậy ở miền Nam bắt nguồn từ sức phản kháng của quần chúng nông dân trước sự đàn áp tàn bạo của Diệm. Luật 10/59, đảo ngược cải cách ruộng đất, Ấp Chiến lược đã đẩy hàng triệu người vào vòng tay cách mạng trước khi Hà Nội phát động đấu tranh vũ trang.",
               },
               {
                 num: "04",
@@ -188,7 +189,7 @@ const ConclusionPage = () => {
                 num: "05",
                 title: '"Chiến tranh Đặc biệt" là chủ nghĩa thực dân mới',
                 content:
-                  "Chiến lược dùng quân đội ARVN làm lực lượng chiến đấu với vũ khí, tài chính và cố vấn Mỹ — là biểu hiện cổ điển của chủ nghĩa thực dân mới: dùng người bản địa đàn áp đồng bào để phục vụ lợi ích nước ngoài. Một cuộc nội chiến thực sự không có cấu trúc bất đối xứng như vậy.",
+                  "Chiến lược dùng quân đội ARVN làm lực lượng chiến đấu với vũ khí, tài chính và cố vấn Mỹ chính là biểu hiện cổ điển của chủ nghĩa thực dân mới: dùng người bản địa đàn áp đồng bào để phục vụ lợi ích nước ngoài. Một cuộc nội chiến thực sự không có cấu trúc bất đối xứng như vậy.",
               },
             ].map((item, idx) => (
               <R key={idx}>
@@ -292,12 +293,16 @@ const ConclusionPage = () => {
                   Về quan điểm &ldquo;nội chiến&rdquo;
                 </span>
                 <p className="text-lg text-bone/85 leading-relaxed mt-3">
-                  Mặc dù có những yếu tố nội bộ — sự phân hóa tư tưởng, xung đột
-                  giáo phái, bạo lực giữa người Việt với người Việt — những yếu
-                  tố này không thể được tách rời khỏi bối cảnh căn bản: sự phân
-                  chia đất nước do nước ngoài áp đặt, việc phá hoại Tổng tuyển
-                  cử, và sự hỗ trợ tài chính-quân sự-chiến lược khổng lồ của Mỹ
-                  cho một chế độ không có tính chính danh thực sự.
+                  Mặc dù trong quá trình lịch sử có những biểu hiện của xung đột
+                  nội bộ như sự phân hóa tư tưởng, những mâu thuẫn giáo phái hay
+                  những cuộc đụng độ giữa người Việt với người Việt, nhưng không
+                  thể tách rời những hiện tượng ấy khỏi bối cảnh lịch sử căn bản
+                  của thời đại. Đất nước Việt Nam bị chia cắt bởi sự áp đặt của
+                  các thế lực bên ngoài, quyền tự quyết của dân tộc bị phủ nhận
+                  khi Tổng tuyển cử thống nhất đất nước bị phá hoại, và một chế
+                  độ ở miền Nam được duy trì bằng nguồn viện trợ tài chính, quân
+                  sự và chiến lược khổng lồ từ Hoa Kỳ. Chính những yếu tố ngoại
+                  sinh đó đã tạo nên điều kiện cho cuộc chiến kéo dài.
                   <strong className="text-bone">
                     {" "}
                     Nếu không có những yếu tố ngoại sinh đó, điều kiện cho một
@@ -313,12 +318,13 @@ const ConclusionPage = () => {
                   Quan điểm chính thống của Đảng
                 </span>
                 <p className="text-lg text-bone/85 leading-relaxed mt-3">
-                  Xem giai đoạn này là giai đoạn mở đầu và leo thang của Cuộc
-                  kháng chiến chống Mỹ cứu nước — cung cấp khung phân tích vừa
-                  chặt chẽ về mặt lịch sử, vừa trung thực với thực tế. Khung này
-                  nắm bắt được: tính liên tục của truyền thống chống ngoại xâm;
-                  tính phi pháp và phi chính danh của sự phân chia đất nước; và
-                  vai trò quyết định của sự can thiệp Mỹ.
+                  Xem giai đoạn này như bước mở đầu và quá trình leo thang của
+                  cuộc kháng chiến chống Mỹ cứu nước phản ánh đúng bản chất của
+                  lịch sử. Cung cấp khung phân tích vừa chặt chẽ về mặt lịch sử,
+                  vừa trung thực với thực tế. Khung này nắm bắt được: tính liên
+                  tục của truyền thống chống ngoại xâm, tính phi pháp và phi
+                  chính danh của sự phân chia đất nước và vai trò quyết định của
+                  sự can thiệp Mỹ.
                 </p>
               </div>
             </R>
@@ -329,14 +335,15 @@ const ConclusionPage = () => {
                   Bằng chứng hùng hồn nhất
                 </span>
                 <p className="text-lg text-bone/85 leading-relaxed mt-3">
-                  Việc Mỹ phải đưa hàng trăm nghìn quân chiến đấu vào miền Nam
-                  từ năm 1965 — sau khi &ldquo;Chiến tranh Đặc biệt&rdquo; hoàn
-                  toàn phá sản — là bằng chứng hùng hồn nhất:
+                  Bằng chứng rõ ràng nhất chính là việc Hoa Kỳ buộc phải đưa
+                  hàng trăm nghìn quân chiến đấu trực tiếp vào miền Nam từ năm
+                  1965 sau khi chiến lược &ldquo;Chiến tranh đặc biệt&rdquo;
+                  hoàn toàn phá sản.{" "}
                   <strong className="text-bone">
                     {" "}
-                    nếu đây là một cuộc &ldquo;nội chiến&rdquo; thực sự, tại sao
-                    cường quốc lớn nhất thế giới cần phải trực tiếp tham chiến
-                    để duy trì chính quyền đó?
+                    Nếu đó thực sự chỉ là một cuộc nội chiến đơn thuần, thì vì
+                    sao cường quốc quân sự mạnh nhất thế giới lại phải trực tiếp
+                    đưa quân đội của mình tham chiến để duy trì chính quyền ấy.
                   </strong>
                 </p>
               </div>
@@ -345,10 +352,11 @@ const ConclusionPage = () => {
 
           <R className="mt-20 pt-12 border-t border-bone/15 max-w-2xl mx-auto">
             <p className="font-display text-2xl md:text-3xl font-black text-crimson uppercase leading-tight">
-              Cuộc đấu tranh mà Đảng lãnh đạo, mà MTDTGP thực hiện, mà toàn thể
-              nhân dân miền Nam tham gia — là cuộc đấu tranh chống lại chế độ do
-              cường quốc nước ngoài dựng lên, vì chủ quyền và quyền tự quyết dân
-              tộc.
+              Cuộc đấu tranh mà Đảng lãnh đạo, mà Mặt trận Dân tộc Giải phóng
+              miền Nam thực hiện, và mà toàn thể nhân dân miền Nam kiên cường
+              tham gia chính là cuộc đấu tranh vì độc lập, vì chủ quyền và vì
+              quyền tự quyết thiêng liêng của dân tộc Việt Nam trước một chế độ
+              được dựng lên và bảo vệ bởi sức mạnh của một cường quốc bên ngoài.
             </p>
           </R>
         </div>
@@ -371,17 +379,17 @@ const ConclusionPage = () => {
               {
                 title: "Ý chí dân tộc không thể bị đè bẹp",
                 content:
-                  "Chủ nghĩa dân tộc không thể bị đè bẹp bởi sức mạnh quân sự và tiền bạc của nước ngoài khi nó gắn liền với khát vọng chính nghĩa của một dân tộc. Ý chí thống nhất và độc lập — được thể hiện qua Cách mạng Tháng Tám, chiến thắng Điện Biên Phủ, và cuộc Kháng chiến chống Mỹ — là sức mạnh không một đế quốc nào khuất phục được.",
+                  "Chủ nghĩa dân tộc không thể bị đè bẹp bởi sức mạnh quân sự và tiền bạc của nước ngoài khi nó gắn liền với khát vọng chính nghĩa của một dân tộc. Ý chí thống nhất và độc lập được thể hiện qua Cách mạng Tháng Tám, chiến thắng Điện Biên Phủ, và cuộc Kháng chiến chống Mỹ. Đây chính là sức mạnh không một đế quốc nào khuất phục được.",
               },
               {
                 title: "Nhãn hiệu lịch sử không phải trung tính",
                 content:
-                  'Việc gọi cuộc chiến này là "nội chiến" không phải là kết quả của nghiên cứu lịch sử khách quan, mà thường là nỗ lực biện hộ cho sự can thiệp của Mỹ và xóa mờ trách nhiệm lịch sử. Ngược lại, nhìn nhận đây là Cuộc kháng chiến chống Mỹ cứu nước không phải là tuyên truyền — mà là sự trung thực với tổng thể bằng chứng lịch sử.',
+                  'Việc gọi cuộc chiến này là "nội chiến" không phải là kết quả của nghiên cứu lịch sử khách quan, mà thường là nỗ lực biện hộ cho sự can thiệp của Mỹ và xóa mờ trách nhiệm lịch sử. Ngược lại, nhìn nhận đây là Cuộc kháng chiến chống Mỹ cứu nước không phải là tuyên truyền mà là sự trung thực với tổng thể bằng chứng lịch sử.',
               },
               {
                 title: "Tài năng lãnh đạo chiến lược của Đảng",
                 content:
-                  "Đường lối và sự lãnh đạo của Đảng CSVN — từ kiên trì đấu tranh ngoại giao và chính trị, đến quyết định lịch sử của Nghị quyết 15, đến xây dựng MTDTGP — thể hiện tài năng lãnh đạo chiến lược xuất sắc, luôn đặt lợi ích dân tộc lên trên hết và tìm ra đường đi đúng đắn trong hoàn cảnh cực kỳ khó khăn.",
+                  "Đường lối và sự lãnh đạo của Đảng Cộng sản Việt Nam từ kiên trì đấu tranh ngoại giao và chính trị, đến quyết định lịch sử của Nghị quyết 15, đến xây dựng Mặt trận Dân tộc Giải phóng thể hiện tài năng lãnh đạo chiến lược xuất sắc, luôn đặt lợi ích dân tộc lên trên hết và tìm ra đường đi đúng đắn trong hoàn cảnh cực kỳ khó khăn.",
               },
             ].map((item, idx) => (
               <R key={idx}>
@@ -447,7 +455,7 @@ const ConclusionPage = () => {
                 Lịch sử không phải là những dòng chữ có thể tùy tiện giản lược
                 hay bóp méo theo những cách nhìn phiến diện. Lịch sử luôn giữ
                 tiếng nói của sự thật. Và trong trường hợp này, sự thật ấy được
-                khẳng định rõ ràng: đó là cuộc Kháng chiến chống Mỹ cứu nước —
+                khẳng định rõ ràng: đó là cuộc Kháng chiến chống Mỹ cứu nước,
                 một cuộc đấu tranh chính nghĩa, một bản anh hùng ca của nhân dân
                 Việt Nam trong hành trình bảo vệ độc lập, gìn giữ tự do và hoàn
                 thành khát vọng thống nhất non sông.

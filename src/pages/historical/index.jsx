@@ -35,11 +35,11 @@ const timelineData = [
   { year: "1956", event: "Tổng tuyển cử thống nhất bị ngăn chặn hoàn toàn", detail: "Vi phạm trực tiếp Hiệp định Geneva. Con đường thống nhất hòa bình bị bịt kín." },
   { year: "1957–58", event: "Chiến dịch \"Tố Cộng, Diệt Cộng\" leo thang", detail: "Hàng chục nghìn người bị bắt, giết hoặc tù đày. Luật 10/59 thiết lập tòa án quân sự đặc biệt." },
   { year: "1959", event: "Nghị quyết 15 — Bước ngoặt lịch sử", detail: "Đảng chính thức cho phép đấu tranh vũ trang ở miền Nam, khi tất cả con đường hòa bình đã bị bịt kín." },
-  { year: "1959", event: "Thành lập Đoàn 559, khai thông đường Hồ Chí Minh", detail: "Mạng lưới hậu cần khổng lồ chạy xuyên qua rừng núi Lào và Campuchia — minh chứng cho tầm nhìn chiến lược của Đảng." },
+  { year: "1959", event: "Thành lập Đoàn 559, khai thông đường Hồ Chí Minh", detail: "Mạng lưới hậu cần khổng lồ chạy xuyên qua rừng núi Lào và Campuchia, minh chứng cho tầm nhìn chiến lược của Đảng." },
   { year: "1960", event: "MTDTGP miền Nam Việt Nam ra đời", detail: "Đại hội III của Đảng tái khẳng định mục tiêu thống nhất. Mặt trận Dân tộc Giải phóng tập hợp mọi lực lượng yêu nước." },
   { year: "1961–63", event: "Mỹ triển khai \"Chiến tranh Đặc biệt\"", detail: "Chương trình Ấp Chiến lược thất bại toàn diện. Khủng hoảng Phật giáo 1963; đảo chính lật đổ Diệm." },
   { year: "1964", event: "Sự kiện Vịnh Bắc Bộ", detail: "Sự kiện được Mỹ dàn dựng; Quốc hội Mỹ thông qua Nghị quyết mở đường cho leo thang chiến tranh." },
-  { year: "1965", event: "Quân chiến đấu Mỹ đổ bộ vào Đà Nẵng", detail: "Chiến tranh bước sang giai đoạn mới — Kháng chiến chống Mỹ cứu nước ở chiều sâu và quy mô toàn quốc." },
+  { year: "1965", event: "Quân chiến đấu Mỹ đổ bộ vào Đà Nẵng", detail: "Chiến tranh bước sang giai đoạn mới. Kháng chiến chống Mỹ cứu nước ở chiều sâu và quy mô toàn quốc." },
 ];
 
 const comparisonData = [
@@ -95,9 +95,10 @@ const HistoricalPage = () => {
         <div className="max-w-3xl mx-auto text-center py-6">
           <R>
             <p className="font-body text-2xl text-bone/75 leading-relaxed">
-              Để hiểu bản chất thật sự của cuộc chiến tranh ở Việt Nam giai đoạn 1954–1965,
-              ta phải bắt đầu từ nền tảng: những điều kiện lịch sử cụ thể đã tạo ra cuộc chiến
-              đó là gì? Ai đã hành động như thế nào, và vì lý do gì?
+              Để hiểu bản chất thật sự của cuộc chiến tranh ở Việt Nam giai đoạn
+              1954–1965, ta phải bắt đầu từ nền tảng: những điều kiện lịch sử cụ
+              thể đã tạo ra cuộc chiến đó là gì? Ai đã hành động như thế nào, và
+              vì lý do gì?
             </p>
           </R>
         </div>
@@ -118,29 +119,42 @@ const HistoricalPage = () => {
           <R>
             <div className="relative border-2 border-charcoal/15 bg-paper p-8 md:p-10">
               <div className="absolute right-[-50%] top-[10%] w-[80%] opacity-15 pointer-events-none select-none z-0">
-                <div className="w-full h-full scale-[2]" style={{
-                  maskImage: "radial-gradient(ellipse at center, black 20%, transparent 60%)",
-                  WebkitMaskImage: "radial-gradient(ellipse at center, black 20%, transparent 60%)",
-                }}>
-                  <img src="/historical/ViTuyen17.png" alt="" className="w-full h-auto object-cover grayscale" />
+                <div
+                  className="w-full h-full scale-[2]"
+                  style={{
+                    maskImage:
+                      "radial-gradient(ellipse at center, black 20%, transparent 60%)",
+                    WebkitMaskImage:
+                      "radial-gradient(ellipse at center, black 20%, transparent 60%)",
+                  }}
+                >
+                  <img
+                    src="/historical/ViTuyen17.png"
+                    alt=""
+                    className="w-full h-auto object-cover grayscale"
+                  />
                 </div>
               </div>
 
               <div className="relative z-10 space-y-5 text-lg text-ink leading-relaxed max-w-3xl">
                 <p>
-                  Mùa xuân năm 1954, sau thất bại thảm hại tại lòng chảo Điện Biên Phủ, quân đội viễn chinh
-                  Pháp buộc phải ngồi vào bàn đàm phán tại Geneva. Hiệp định được ký kết vào tháng 7 năm
-                  1954 là kết quả của những thỏa hiệp chiến lược đầy phức tạp.
+                  Mùa xuân năm 1954, sau thất bại thảm hại tại lòng chảo Điện
+                  Biên Phủ, quân đội viễn chinh Pháp buộc phải ngồi vào bàn đàm
+                  phán tại Geneva. Hiệp định được ký kết vào tháng 7 năm 1954 là
+                  kết quả của những thỏa hiệp chiến lược đầy phức tạp.
                 </p>
                 <p className="font-semibold border-l-4 border-crimson pl-6">
-                  Điểm then chốt: Hiệp định Geneva không tạo ra hai quốc gia Việt Nam. Vĩ tuyến 17 chỉ là
-                  ranh giới quân sự tạm thời. Tổng tuyển cử tự do phải được tổ chức vào tháng 7 năm 1956
-                  trên toàn lãnh thổ Việt Nam.
+                  Điểm then chốt: Hiệp định Geneva không tạo ra hai quốc gia
+                  Việt Nam. Vĩ tuyến 17 chỉ là ranh giới quân sự tạm thời. Tổng
+                  tuyển cử tự do phải được tổ chức vào tháng 7 năm 1956 trên
+                  toàn lãnh thổ Việt Nam.
                 </p>
                 <p>
-                  Lãnh đạo Hà Nội chấp nhận điều khoản này với sự tự tin có cơ sở: mọi đánh giá tình báo,
-                  kể cả của chính phủ Mỹ, đều thừa nhận rằng Chủ tịch Hồ Chí Minh sẽ giành chiến thắng áp
-                  đảo trong bất kỳ cuộc bầu cử tự do nào. Nhưng cuộc bầu cử đó đã không bao giờ được tổ chức.
+                  Lãnh đạo Hà Nội chấp nhận điều khoản này với sự tự tin có cơ
+                  sở: mọi đánh giá tình báo, kể cả của chính phủ Mỹ, đều thừa
+                  nhận rằng Chủ tịch Hồ Chí Minh sẽ giành chiến thắng áp đảo
+                  trong bất kỳ cuộc bầu cử tự do nào. Nhưng cuộc bầu cử đó đã
+                  không bao giờ được tổ chức.
                 </p>
               </div>
             </div>
@@ -152,17 +166,30 @@ const HistoricalPage = () => {
               <table className="w-full text-base">
                 <thead>
                   <tr className="bg-olive text-bone font-display uppercase tracking-wider">
-                    <th className="p-4 text-left border-r border-bone/20">Điều khoản Geneva</th>
-                    <th className="p-4 text-left border-r border-bone/20">Thực tế lịch sử</th>
+                    <th className="p-4 text-left border-r border-bone/20">
+                      Điều khoản Geneva
+                    </th>
+                    <th className="p-4 text-left border-r border-bone/20">
+                      Thực tế lịch sử
+                    </th>
                     <th className="p-4 text-left">Hệ quả</th>
                   </tr>
                 </thead>
                 <tbody className="font-body text-ink">
                   {genevaTableData.map((row, idx) => (
-                    <tr key={idx} className={`border-t border-charcoal/15 ${idx % 2 === 0 ? "bg-bone" : "bg-paper"}`}>
-                      <td className="p-4 border-r border-charcoal/10 font-semibold">{row.provision}</td>
-                      <td className="p-4 border-r border-charcoal/10">{row.reality}</td>
-                      <td className="p-4 font-mono text-sm font-semibold text-ember">{row.consequence}</td>
+                    <tr
+                      key={idx}
+                      className={`border-t border-charcoal/15 ${idx % 2 === 0 ? "bg-bone" : "bg-paper"}`}
+                    >
+                      <td className="p-4 border-r border-charcoal/10 font-semibold">
+                        {row.provision}
+                      </td>
+                      <td className="p-4 border-r border-charcoal/10">
+                        {row.reality}
+                      </td>
+                      <td className="p-4 font-mono text-sm font-semibold text-ember">
+                        {row.consequence}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -173,9 +200,10 @@ const HistoricalPage = () => {
           <R className="mt-6">
             <div className="bg-crimson/8 border-l-4 border-crimson p-5 max-w-3xl">
               <p className="font-body text-lg text-ink font-semibold italic">
-                Sự phá vỡ hoàn toàn các điều khoản Geneva là nguồn gốc trực tiếp dẫn đến xung đột
-                vũ trang. Đây không phải là một cuộc nội chiến tự nhiên nảy sinh; đây là hậu quả
-                của một âm mưu có tính toán nhằm chia cắt vĩnh viễn Việt Nam.
+                Sự phá vỡ hoàn toàn các điều khoản Geneva là nguồn gốc trực tiếp
+                dẫn đến xung đột vũ trang. Đây không phải là một cuộc nội chiến
+                tự nhiên nảy sinh; đây là hậu quả của một âm mưu có tính toán
+                nhằm chia cắt vĩnh viễn Việt Nam.
               </p>
             </div>
           </R>
@@ -186,12 +214,15 @@ const HistoricalPage = () => {
       <RevealSection dark fullHeight={false}>
         <div className="max-w-6xl mx-auto">
           <R className="text-center mb-12">
-            <span className="brutal-badge bg-bone! text-ink! mb-4">PHẦN 2 & 3</span>
+            <span className="brutal-badge bg-bone! text-ink! mb-4">
+              PHẦN 2 & 3
+            </span>
             <h2 className="font-display text-fluid-6xl font-black uppercase mt-4 mb-4 text-bone">
               Hai Nhà Nước, Hai Thể Chế
             </h2>
             <p className="font-body text-xl text-bone/70 max-w-3xl mx-auto">
-              Trái ngược hoàn toàn về nền tảng chính trị và tính chính danh lịch sử.
+              Trái ngược hoàn toàn về nền tảng chính trị và tính chính danh lịch
+              sử.
             </p>
           </R>
 
@@ -204,30 +235,41 @@ const HistoricalPage = () => {
                     <Flag size={20} />
                   </div>
                   <div>
-                    <h3 className="font-display text-2xl font-bold text-bone uppercase">Miền Bắc</h3>
-                    <span className="font-mono text-xs text-bone/60 uppercase tracking-wider">Việt Nam Dân Chủ Cộng Hòa</span>
+                    <h3 className="font-display text-2xl font-bold text-bone uppercase">
+                      Miền Bắc
+                    </h3>
+                    <span className="font-mono text-xs text-bone/60 uppercase tracking-wider">
+                      Việt Nam Dân Chủ Cộng Hòa
+                    </span>
                   </div>
                 </div>
 
                 <div className="space-y-4 text-bone/85 text-base leading-relaxed">
                   <p>
-                    Dưới sự lãnh đạo của Đảng Lao động Việt Nam và Chủ tịch Hồ Chí Minh, VNDCCH sở hữu
-                    điều mà VNCH không bao giờ có được: <strong className="text-bone">tính chính danh lịch sử thực sự</strong>.
-                    Đảng gắn liền với Cách mạng Tháng Tám 1945, cuộc kháng chiến 9 năm chống Pháp, và chiến
-                    thắng Điện Biên Phủ chấn động địa cầu.
+                    Dưới sự lãnh đạo của Đảng Lao động Việt Nam và Chủ tịch Hồ
+                    Chí Minh, VNDCCH sở hữu điều mà VNCH không bao giờ có được:{" "}
+                    <strong className="text-bone">
+                      tính chính danh lịch sử thực sự
+                    </strong>
+                    . Đảng gắn liền với Cách mạng Tháng Tám 1945, cuộc kháng
+                    chiến 9 năm chống Pháp, và chiến thắng Điện Biên Phủ chấn
+                    động địa cầu.
                   </p>
                   <p>
-                    Cải cách ruộng đất (1953–1956) xóa bỏ giai cấp địa chủ phong kiến, phân phối lại đất đai
-                    cho người lao động. Dù có những sai lầm được Đảng thẳng thắn nhìn nhận và kịp thời sửa chữa,
-                    cải cách về cơ bản xây dựng được nền tảng ủng hộ rộng lớn trong tầng lớp nông dân.
+                    Cải cách ruộng đất (1953–1956) xóa bỏ giai cấp địa chủ phong
+                    kiến, phân phối lại đất đai cho người lao động. Dù có những
+                    sai lầm được Đảng thẳng thắn nhìn nhận và kịp thời sửa chữa,
+                    cải cách về cơ bản xây dựng được nền tảng ủng hộ rộng lớn
+                    trong tầng lớp nông dân.
                   </p>
                   <p>
-                    Về ngoại giao, VNDCCH điều hướng khéo léo giữa Liên Xô và Trung Quốc để đảm bảo nguồn
-                    viện trợ vật chất và ngoại giao cần thiết.
+                    Về ngoại giao, VNDCCH điều hướng khéo léo giữa Liên Xô và
+                    Trung Quốc để đảm bảo nguồn viện trợ vật chất và ngoại giao
+                    cần thiết.
                   </p>
                   <p className="text-sm text-bone/60 border-t border-bone/20 pt-4 mt-4 font-mono font-semibold italic">
-                    &ldquo;Yêu nước là xây dựng chủ nghĩa xã hội; xây dựng chủ nghĩa xã hội là yêu nước.&rdquo;
-                    — Phạm Văn Đồng
+                    &ldquo;Yêu nước là xây dựng chủ nghĩa xã hội; xây dựng chủ
+                    nghĩa xã hội là yêu nước.&rdquo; — Phạm Văn Đồng
                   </p>
                 </div>
               </div>
@@ -239,30 +281,40 @@ const HistoricalPage = () => {
                     <Shield size={20} />
                   </div>
                   <div>
-                    <h3 className="font-display text-2xl font-bold text-bone/70 uppercase">Miền Nam</h3>
-                    <span className="font-mono text-xs text-bone/40 uppercase tracking-wider">Việt Nam Cộng Hòa</span>
+                    <h3 className="font-display text-2xl font-bold text-bone/70 uppercase">
+                      Miền Nam
+                    </h3>
+                    <span className="font-mono text-xs text-bone/40 uppercase tracking-wider">
+                      Việt Nam Cộng Hòa
+                    </span>
                   </div>
                 </div>
 
                 <div className="space-y-4 text-bone/65 text-base leading-relaxed">
                   <p>
-                    VNCH được thành lập qua cuộc trưng cầu dân ý gian lận trắng trợn (1955). Diệm tuyên bố
-                    nhận 98% phiếu bầu — tại Sài Gòn, ông ta thu 605.000 phiếu dù chỉ có 450.000 cử tri.
-                    Ngay cả cố vấn Mỹ cũng đề nghị tỷ lệ &ldquo;hợp lý&rdquo; 60–70% để tránh tai tiếng.
+                    VNCH được thành lập qua cuộc trưng cầu dân ý gian lận trắng
+                    trợn (1955). Diệm tuyên bố nhận 98% phiếu bầu. Tại Sài Gòn,
+                    ông ta thu 605.000 phiếu dù chỉ có 450.000 cử tri. Ngay cả
+                    cố vấn Mỹ cũng đề nghị tỷ lệ &ldquo;hợp lý&rdquo; 60–70% để
+                    tránh tai tiếng.
                   </p>
                   <p>
-                    Em trai Ngô Đình Nhu nắm an ninh nội địa, thành lập Đảng Cần Lao — tổ chức bí mật thâm
-                    nhập mọi cấp bộ máy. Người Công giáo (thiểu số) được ưu ái, trong khi Phật tử (70–80%
-                    dân số) bị phân biệt đối xử có hệ thống.
+                    Em trai Ngô Đình Nhu nắm an ninh nội địa, thành lập Đảng Cần
+                    Lao, một tổ chức bí mật thâm nhập mọi cấp bộ máy. Người Công
+                    giáo (thiểu số) được ưu ái, trong khi Phật tử (70–80% dân
+                    số) bị phân biệt đối xử có hệ thống.
                   </p>
                   <p>
-                    Luật 10/59 thiết lập tòa án quân sự đặc biệt chỉ với hai mức hình phạt: tử hình hoặc tù
-                    chung thân. Chương trình Ấp Chiến lược cưỡng bức di dời hàng triệu nông dân — không những
-                    thất bại mà còn trở thành nguồn tuyển dụng cho lực lượng giải phóng.
+                    Luật 10/59 thiết lập tòa án quân sự đặc biệt chỉ với hai mức
+                    hình phạt: tử hình hoặc tù chung thân. Chương trình Ấp Chiến
+                    lược cưỡng bức di dời hàng triệu nông dân. Không những thất
+                    bại mà còn trở thành nguồn tuyển dụng cho lực lượng giải
+                    phóng.
                   </p>
                   <p className="text-sm text-bone/40 border-t border-bone/15 pt-4 mt-4 font-mono font-semibold">
-                    Đỉnh điểm: Hòa thượng Thích Quảng Đức tự thiêu (6/1963). Mỹ bật đèn xanh cho đảo chính
-                    (11/1963). Sau đó VNCH rơi vào vòng xoáy khủng hoảng lãnh đạo liên miên.
+                    Đỉnh điểm: Hòa thượng Thích Quảng Đức tự thiêu (6/1963). Mỹ
+                    bật đèn xanh cho đảo chính (11/1963). Sau đó VNCH rơi vào
+                    vòng xoáy khủng hoảng lãnh đạo liên miên.
                   </p>
                 </div>
               </div>
@@ -275,16 +327,27 @@ const HistoricalPage = () => {
               <table className="w-full text-base">
                 <thead>
                   <tr className="bg-olive text-bone font-display uppercase tracking-wider">
-                    <th className="p-4 text-left border-r border-bone/20">Khía Cạnh</th>
-                    <th className="p-4 text-left border-r border-bone/20">Miền Bắc (VNDCCH)</th>
+                    <th className="p-4 text-left border-r border-bone/20">
+                      Khía Cạnh
+                    </th>
+                    <th className="p-4 text-left border-r border-bone/20">
+                      Miền Bắc (VNDCCH)
+                    </th>
                     <th className="p-4 text-left">Miền Nam (VNCH)</th>
                   </tr>
                 </thead>
                 <tbody className="font-body text-ink">
                   {comparisonData.map(([dim, north, south], idx) => (
-                    <tr key={idx} className={`border-t border-charcoal/15 ${idx % 2 === 0 ? "bg-bone" : "bg-paper"}`}>
-                      <td className="p-4 font-semibold border-r border-charcoal/10">{dim}</td>
-                      <td className="p-4 border-r border-charcoal/10">{north}</td>
+                    <tr
+                      key={idx}
+                      className={`border-t border-charcoal/15 ${idx % 2 === 0 ? "bg-bone" : "bg-paper"}`}
+                    >
+                      <td className="p-4 font-semibold border-r border-charcoal/10">
+                        {dim}
+                      </td>
+                      <td className="p-4 border-r border-charcoal/10">
+                        {north}
+                      </td>
                       <td className="p-4 text-graphite">{south}</td>
                     </tr>
                   ))}
@@ -304,8 +367,9 @@ const HistoricalPage = () => {
               Đường Lối Cách Mạng Của Đảng Ở Miền Nam
             </h2>
             <p className="font-body text-xl text-graphite mb-10 max-w-3xl">
-              Từ đấu tranh chính trị đến đấu tranh vũ trang — một tiến trình tất yếu khi mọi con đường
-              hòa bình đã bị bịt kín bởi bạo lực của kẻ thù.
+              Từ đấu tranh chính trị đến đấu tranh vũ trang. Đây là một tiến
+              trình tất yếu khi mọi con đường hòa bình đã bị bịt kín bởi bạo lực
+              của kẻ thù.
             </p>
           </R>
 
@@ -317,12 +381,15 @@ const HistoricalPage = () => {
                 </h3>
                 <div className="space-y-3 text-ink leading-relaxed">
                   <p>
-                    Ngay sau Geneva, Đảng chủ trương kiên trì đấu tranh chính trị và ngoại giao, chờ đợi
-                    Tổng tuyển cử. Các cơ sở cách mạng được duy trì bí mật ở miền Nam. Nhưng dưới áp lực
-                    của Luật 10/59, nhiều cán bộ cơ sở bị tiêu diệt, mạng lưới cách mạng bị tổn thất nặng nề.
+                    Ngay sau Geneva, Đảng chủ trương kiên trì đấu tranh chính
+                    trị và ngoại giao, chờ đợi Tổng tuyển cử. Các cơ sở cách
+                    mạng được duy trì bí mật ở miền Nam. Nhưng dưới áp lực của
+                    Luật 10/59, nhiều cán bộ cơ sở bị tiêu diệt, mạng lưới cách
+                    mạng bị tổn thất nặng nề.
                   </p>
                   <p className="text-sm text-graphite border-t border-charcoal/10 pt-3 mt-3 font-mono font-semibold">
-                    Áp lực đòi được quyền vũ trang tự vệ từ các cán bộ miền Nam ngày càng mạnh và cấp bách.
+                    Áp lực đòi được quyền vũ trang tự vệ từ các cán bộ miền Nam
+                    ngày càng mạnh và cấp bách.
                   </p>
                 </div>
               </div>
@@ -333,14 +400,18 @@ const HistoricalPage = () => {
                 </h3>
                 <div className="space-y-3 text-ink leading-relaxed">
                   <p>
-                    <strong>Nghị quyết 15 (1/1959)</strong> chính thức cho phép đấu tranh vũ trang — con đường
-                    cách mạng miền Nam là dùng bạo lực cách mạng đánh đổ chính quyền Diệm và đánh bại sự can
-                    thiệp Mỹ. <strong>Đoàn 559 (5/1959)</strong> khai thông đường Hồ Chí Minh.
-                    <strong> MTDTGP (12/1960)</strong> tập hợp mọi lực lượng yêu nước.
+                    <strong>Nghị quyết 15 (1/1959)</strong> chính thức cho phép
+                    đấu tranh vũ trang. Con đường cách mạng miền Nam là dùng bạo
+                    lực cách mạng đánh đổ chính quyền Diệm và đánh bại sự can
+                    thiệp Mỹ. <strong>Đoàn 559 (5/1959)</strong> khai thông
+                    đường Hồ Chí Minh.
+                    <strong> MTDTGP (12/1960)</strong> tập hợp mọi lực lượng yêu
+                    nước.
                   </p>
                   <p className="text-sm text-graphite border-t border-charcoal/10 pt-3 mt-3 font-mono font-semibold">
-                    Đến cuối 1964, &ldquo;Chiến tranh Đặc biệt&rdquo; hoàn toàn phá sản. Mỹ buộc phải đưa
-                    quân chiến đấu trực tiếp tham chiến.
+                    Đến cuối 1964, &ldquo;Chiến tranh Đặc biệt&rdquo; hoàn toàn
+                    phá sản. Mỹ buộc phải đưa quân chiến đấu trực tiếp tham
+                    chiến.
                   </p>
                 </div>
               </div>
@@ -352,13 +423,16 @@ const HistoricalPage = () => {
               <AlertTriangle size={22} className="text-crimson shrink-0 mt-1" />
               <div>
                 <h3 className="font-display text-lg font-bold text-ink uppercase mb-2">
-                  1961–1965: &ldquo;Chiến tranh Đặc biệt&rdquo; — Bản chất thực dân mới
+                  1961–1965: &ldquo;Chiến tranh Đặc biệt&rdquo; Bản chất thực
+                  dân mới
                 </h3>
                 <p className="font-body text-base text-ink leading-relaxed">
-                  Mỹ triển khai chiến lược dùng quân đội VNCH (được trang bị vũ khí và có cố vấn Mỹ kèm cặp)
-                  làm lực lượng chiến đấu trực tiếp — biểu hiện điển hình của chủ nghĩa thực dân mới. Dưới sự
-                  lãnh đạo của Lê Duẩn và Bộ Chính trị, cách mạng miền Nam liên tục giành thắng lợi, khiến
-                  &ldquo;Chiến tranh Đặc biệt&rdquo; hoàn toàn phá sản.
+                  Mỹ triển khai chiến lược dùng quân đội VNCH (được trang bị vũ
+                  khí và có cố vấn Mỹ kèm cặp) làm lực lượng chiến đấu trực
+                  tiếp, biểu hiện điển hình của chủ nghĩa thực dân mới. Dưới sự
+                  lãnh đạo của Lê Duẩn và Bộ Chính trị, cách mạng miền Nam liên
+                  tục giành thắng lợi, khiến &ldquo;Chiến tranh Đặc biệt&rdquo;
+                  hoàn toàn phá sản.
                 </p>
               </div>
             </div>
@@ -367,7 +441,10 @@ const HistoricalPage = () => {
       </RevealSection>
 
       {/* ═══════════ MỐC THỜI GIAN ═══════════ */}
-      <RevealSection fullHeight={false} className="bg-sand border-y-2 border-charcoal/10">
+      <RevealSection
+        fullHeight={false}
+        className="bg-sand border-y-2 border-charcoal/10"
+      >
         <div className="max-w-4xl mx-auto">
           <R className="text-center mb-14">
             <h2 className="font-display text-fluid-6xl font-black uppercase text-ink">
@@ -390,7 +467,9 @@ const HistoricalPage = () => {
                     <div className="font-display text-lg font-bold uppercase text-ink leading-tight mb-2">
                       {item.event}
                     </div>
-                    <p className="font-body text-base text-graphite leading-relaxed">{item.detail}</p>
+                    <p className="font-body text-base text-graphite leading-relaxed">
+                      {item.detail}
+                    </p>
                   </div>
                 </R>
               ))}
@@ -405,11 +484,15 @@ const HistoricalPage = () => {
           <R>
             <div className="border-2 border-charcoal/15 bg-bone p-8 text-left space-y-4 text-lg text-ink leading-relaxed">
               <p>
-                Bạn đã nắm vững nền tảng lịch sử: sự thật về Hiệp định Geneva, bản chất chế độ Ngô Đình
-                Diệm, tính chính danh của Việt Nam Dân chủ Cộng hoà, và đường lối cách mạng sáng suốt của Đảng.
+                Bạn đã nắm vững nền tảng lịch sử cốt lõi cùng những dữ kiện then
+                chốt về Hiệp định Geneva, sự thật về bản chất chế độ Ngô Đình
+                Diệm, tính chính danh của Việt Nam Dân chủ Cộng hoà, và đường
+                lối cách mạng sáng suốt của Đảng.
               </p>
               <p className="font-semibold">
-                Bước tiếp theo: đối chiếu hai quan điểm học thuật &ldquo;kháng chiến chống Mỹ&rdquo; và &ldquo;nội chiến&rdquo; dựa trên hệ thống bằng chứng lịch sử — và đi đến kết luận thuyết phục.
+                Bước tiếp theo: đối chiếu hai quan điểm học thuật &ldquo;kháng
+                chiến chống Mỹ&rdquo; và &ldquo;nội chiến&rdquo; dựa trên hệ
+                thống bằng chứng lịch sử và đi đến kết luận thuyết phục.
               </p>
             </div>
           </R>

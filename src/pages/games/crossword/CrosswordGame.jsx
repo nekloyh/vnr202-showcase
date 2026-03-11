@@ -1,80 +1,116 @@
 import React, { useMemo, useState, useEffect, useRef } from "react";
 import { Mic2, ScrollText, X, HelpCircle, Send, Check, Lightbulb } from "lucide-react";
 
-const VERTICAL_WORD = "MIỀN NAM";
+const VERTICAL_WORD = "KHÁNG CHIẾN";
 
 // Vertical word alignment (non-space cursor index → highlighted char):
-// 1. N Ă [M]   1 9 5 4         -> M (verticalIndex 2)
-// 2. V [Ĩ]   T U Y Ế N        -> Ĩ (verticalIndex 1, base I)
-// 3. T Ổ N G   T U Y [Ể] N   C Ử -> Ể (verticalIndex 7, base E)
-// 4. Đ Ồ [N] G   K H Ở I      -> N (verticalIndex 2)
-// 5. Ấ P   C H I Ế [N]   L Ư Ợ C -> N (verticalIndex 6)
-// 6. C H I Ế N   T R [A] N H  -> A (verticalIndex 7)
-// 7. [M] Ặ T   T R Ậ N        -> M (verticalIndex 0)
+//  1. [K] Ế   H O Ạ C H                  -> K (verticalIndex 0)
+//  2. Đ Ư Ờ N G   [H] Ồ   C H Í   M I N H -> H (verticalIndex 5)
+//  3. P H [Á]   Á P   C H I Ế N   L Ư Ợ C -> Á (verticalIndex 2)
+//  4. [N] G U Y Ễ N   V Ă N   T R Ỗ I     -> N (verticalIndex 0)
+//  5. [G] E N E V A                        -> G (verticalIndex 0)
+//  6. [C] Ố   V Ấ N                        -> C (verticalIndex 0)
+//  7. [H] À   N Ộ I                        -> H (verticalIndex 0)
+//  8. Đ [I] Ệ N   B I Ê N   P H Ủ         -> I (verticalIndex 1)
+//  9. V Ĩ   T U Y [Ế] N   1 7             -> Ế (verticalIndex 5)
+// 10. B A   S Ẵ [N]                        -> N (verticalIndex 4)
 
 const CROSSWORD_ROWS = [
   {
     id: 1,
-    answer: "NĂM 1954",
-    hint1: "Năm ký kết Hiệp định kết thúc chiến tranh Đông Dương lần thứ nhất.",
-    hint2: "Cũng là năm diễn ra chiến thắng Điện Biên Phủ lừng lẫy, \"chấn động địa cầu.\"",
-    clue: "Mốc thời gian quan trọng đánh dấu sự chia cắt đất nước tại một hội nghị quốc tế. (7 ký tự)",
-    verticalIndex: 2,
-    anchor: "Chữ M ở vị trí 3",
+    answer: "KẾ HOẠCH",
+    hint1: "Đây là công cụ quản lý kinh tế tập trung của Nhà nước.",
+    hint2:
+      "Kế hoạch 5 năm lần thứ nhất nhằm xây dựng bước đầu cơ sở vật chất của CNXH.",
+    clue: "Tên gọi chung cho các chương trình phát triển kinh tế - xã hội ở miền Bắc, tiêu biểu là lần thứ nhất (1961-1965). (7 chữ cái)",
+    verticalIndex: 0,
+    anchor: "Chữ K ở vị trí 1",
   },
   {
     id: 2,
-    answer: "VĨ TUYẾN 17",
-    hint1: "Đường phân chia tạm thời chạy ngang qua tỉnh Quảng Trị.",
-    hint2: "Có cầu Hiền Lương, nằm trên sông Bến Hải.",
-    clue: "Đường ranh giới tạm thời chia cắt Việt Nam thành hai miền theo Hiệp định Geneva. (7 chữ cái)",
+    answer: "ĐƯỜNG HỒ CHÍ MINH",
+    hint1: "Còn được gọi là Đường Trường Sơn.",
+    hint2: "Được thành lập bởi Đoàn 559.",
+    clue: "Tuyến đường vận tải chiến lược bắt đầu được xây dựng từ năm 1959 để chi viện cho miền Nam. (13 chữ cái)",
+    verticalIndex: 5,
+    anchor: "Chữ H ở vị trí 6",
+  },
+  {
+    id: 3,
+    answer: "PHÁ ÁP CHIẾN LƯỢC",
+    hint1:
+      "Một hình thức dồn dân vào các khu tập trung có rào gai bao quanh của địch.",
+    hint2: 'Khẩu hiệu: "Một tấc không đi, một ly không rời".',
+    clue: 'Nhiệm vụ trọng tâm của quân và dân miền Nam (1961-1965) nhằm đập tan "xương sống" của chiến lược Chiến tranh đặc biệt. (14 chữ cái)',
+    verticalIndex: 2,
+    anchor: "Chữ Á ở vị trí 3",
+  },
+  {
+    id: 4,
+    answer: "NGUYỄN VĂN TRỖI",
+    hint1: 'Câu nói nổi tiếng trước khi hy sinh: "Hãy nhớ lấy lời tôi!".',
+    hint2: 'Nhân vật chính trong tác phẩm "Sống như Anh" của Trần Đình Vân.',
+    clue: "Anh hùng liệt sĩ đã có hành động ám sát Bộ trưởng Quốc phòng Mỹ McNamara tại cầu Công Lý năm 1964. (13 chữ cái)",
+    verticalIndex: 0,
+    anchor: "Chữ N ở vị trí 1",
+  },
+  {
+    id: 5,
+    answer: "GENEVA",
+    hint1: "Một địa danh quốc tế gắn liền với kết thúc kháng chiến chống Pháp.",
+    hint2:
+      "Hội nghị có sự tham gia của các cường quốc như Liên Xô, Trung Quốc, Mỹ, Anh, Pháp.",
+    clue: "Tên thành phố ở Thụy Sĩ, nơi diễn ra hội nghị ký kết hòa bình cho Đông Dương năm 1954. (6 chữ cái)",
+    verticalIndex: 0,
+    anchor: "Chữ G ở vị trí 1",
+  },
+  {
+    id: 6,
+    answer: "CỐ VẤN",
+    hint1:
+      "Hệ thống này đóng vai trò điều hành bộ máy chiến tranh của chính quyền tay sai.",
+    hint2:
+      "Mỹ dựa vào lực lượng này thay vì đưa quân viễn chinh ồ ạt vào giai đoạn trước 1965.",
+    clue: 'Lực lượng quân sự Mỹ được cử sang miền Nam để trực tiếp chỉ huy quân đội Sài Gòn trong "Chiến tranh đặc biệt". (5 chữ cái)',
+    verticalIndex: 0,
+    anchor: "Chữ C ở vị trí 1",
+  },
+  {
+    id: 7,
+    answer: "HÀ NỘI",
+    hint1: "Trung tâm chính trị, văn hóa của cả nước.",
+    hint2: "Nơi Chủ tịch Hồ Chí Minh sống và làm việc sau năm 1954.",
+    clue: "Thủ đô của nước Việt Nam Dân chủ Cộng hòa, được tiếp quản ngày 10/10/1954. (5 chữ cái)",
+    verticalIndex: 0,
+    anchor: "Chữ H ở vị trí 1",
+  },
+  {
+    id: 8,
+    answer: "ĐIỆN BIÊN PHỦ",
+    hint1: "Kết thúc 9 năm kháng chiến chống thực dân Pháp.",
+    hint2: "Mở đầu cho giai đoạn xây dựng miền Bắc và đấu tranh ở miền Nam.",
+    clue: 'Thắng lợi quân sự vĩ đại năm 1954, "lừng lẫy năm châu, chấn động địa cầu". (12 chữ cái)',
     verticalIndex: 1,
     anchor: "Chữ I ở vị trí 2",
   },
   {
-    id: 3,
-    answer: "TỔNG TUYỂN CỬ",
-    hint1: "Theo Hiệp định Geneva, sự kiện này phải được tổ chức trong vòng 2 năm sau ký kết.",
-    hint2: "Chính quyền Ngô Đình Diệm từ chối tham gia vì lo ngại kết quả bất lợi.",
-    clue: "Cuộc bỏ phiếu toàn quốc dự kiến vào năm 1956 nhằm thống nhất đất nước nhưng không bao giờ diễn ra. (11 chữ cái)",
-    verticalIndex: 7,
-    anchor: "Chữ E ở vị trí 8",
+    id: 9,
+    answer: "VĨ TUYẾN 17",
+    hint1: "Gắn liền với hình ảnh cầu Hiền Lương và sông Bến Hải.",
+    hint2: "Điểm phân chia địa lý tại Quảng Trị.",
+    clue: "Giới tuyến quân sự tạm thời chia cắt đất nước thành hai miền Nam - Bắc theo Hiệp định Giơ-ne-vơ. (10 chữ cái)",
+    verticalIndex: 5,
+    anchor: "Chữ Ế ở vị trí 7",
   },
   {
-    id: 4,
-    answer: "ĐỒNG KHỞI",
-    hint1: "Bắt đầu mạnh mẽ nhất tại tỉnh Bến Tre, lan rộng ra nhiều tỉnh miền Nam.",
-    hint2: "Bà Nguyễn Thị Định là nhân vật tiêu biểu của phong trào này.",
-    clue: "Phong trào đấu tranh vũ trang và chính trị bùng nổ ở miền Nam năm 1960. (8 chữ cái)",
-    verticalIndex: 2,
-    anchor: "Chữ N ở vị trí 3",
-  },
-  {
-    id: 5,
-    answer: "ẤP CHIẾN LƯỢC",
-    hint1: "Chính sách do chính quyền Ngô Đình Diệm thực hiện với sự hậu thuẫn của Mỹ đầu thập niên 1960.",
-    hint2: "Mục đích là tách lực lượng cách mạng ra khỏi nhân dân, nhưng gặp sự phản đối mạnh mẽ.",
-    clue: "Chương trình dồn dân lập làng có hàng rào nhằm cô lập cách mạng khỏi nông thôn miền Nam. (11 chữ cái)",
-    verticalIndex: 6,
-    anchor: "Chữ N ở vị trí 7",
-  },
-  {
-    id: 6,
-    answer: "CHIẾN TRANH",
-    hint1: "Có nhiều cách gọi khác nhau tùy góc nhìn: kháng chiến, nội chiến, hay xung đột ủy nhiệm.",
-    hint2: "Cuộc xung đột này leo thang mạnh từ giữa thập niên 1960 khi Mỹ đưa quân trực tiếp tham chiến.",
-    clue: "Cuộc xung đột vũ trang kéo dài hàng thập kỷ trên lãnh thổ Việt Nam với sự can thiệp của nước ngoài. (10 chữ cái)",
-    verticalIndex: 7,
-    anchor: "Chữ A ở vị trí 8",
-  },
-  {
-    id: 7,
-    answer: "MẶT TRẬN",
-    hint1: "Tên đầy đủ bao gồm cụm từ \"Dân tộc Giải phóng miền Nam Việt Nam.\"",
-    hint2: "Tổ chức chính trị đại diện cho phong trào cách mạng miền Nam, thành lập tháng 12/1960.",
-    clue: "Tổ chức chính trị được thành lập năm 1960 nhằm tập hợp các lực lượng đấu tranh ở miền Nam. (7 chữ cái)",
-    verticalIndex: 0,
-    anchor: "Chữ M ở vị trí 1",
+    id: 10,
+    answer: "BA SẴN",
+    hint1:
+      "Sẵn sàng chiến đấu; Sẵn sàng gia nhập quân đội; Sẵn sàng đi bất cứ nơi đâu.",
+    hint2: "Một biểu tượng của tinh thần xung kích của tuổi trẻ thời bấy giờ.",
+    clue: "Phong trào thi đua của thanh niên miền Bắc bắt đầu từ năm 1964 để chống Mỹ cứu nước. (5 chữ cái)",
+    verticalIndex: 4,
+    anchor: "Chữ N ở vị trí 6",
   },
 ];
 
@@ -357,7 +393,7 @@ const CrosswordGame = ({ onClose }) => {
                       Tiến trình
                     </div>
                     <div className="text-3xl font-black">
-                      {openedRows.length}/7
+                      {openedRows.length}/{CROSSWORD_ROWS.length}
                     </div>
                   </div>
                   <div className="flex-1 bg-[#FACC15] border-4 border-black p-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">

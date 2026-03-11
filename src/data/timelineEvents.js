@@ -128,13 +128,13 @@ export const timelineEvents = [
     badge: "TRẬN ĐÁNH",
     category: "military",
     shortDesc:
-      "Ngày 7/5/1954, quân đội Pháp thất bại tại Điện Biên Phủ sau cuộc bao vây kéo dài, kết thúc chiến tranh Đông Dương lần thứ nhất và mở đường cho Hiệp định Geneva.",
+      "Chiều 7/5/1954, lá cờ Quyết chiến Quyết thắng tung bay trên nóc hầm De Castries — quân và dân Việt Nam đập tan tập đoàn cứ điểm mạnh nhất Đông Dương, kết thúc chín năm kháng chiến chống Pháp và mở đường tới Hiệp định Geneva.",
     longDesc:
-      "Sự sụp đổ của cứ điểm Điện Biên Phủ ngày 7/5/1954 đánh dấu bước ngoặt quân sự và chính trị quyết định. Thất bại của Pháp làm suy yếu vị thế của họ tại Đông Dương và thúc đẩy tiến trình đàm phán dẫn tới Hiệp định Geneva tháng 7/1954, tạm thời chia cắt Việt Nam và định hình lại cuộc xung đột thành cuộc chiến tranh Việt Nam / chiến tranh chống Mỹ.",
+      "Chiến thắng Điện Biên Phủ ngày 7/5/1954 là đỉnh cao của cuộc kháng chiến chống thực dân Pháp, khi quân đội nhân dân Việt Nam dưới sự chỉ huy của Đại tướng Võ Nguyên Giáp bao vây và tiêu diệt hoàn toàn tập đoàn cứ điểm được coi là \"bất khả xâm phạm\" của Pháp. Chiến thắng lừng lẫy năm châu, chấn động địa cầu này buộc thực dân Pháp phải ngồi vào bàn đàm phán, trực tiếp dẫn tới Hiệp định Geneva tháng 7/1954 và khẳng định ý chí độc lập không gì lay chuyển của dân tộc Việt Nam.",
     coords: A.dienbien,
     regionIds: ["VN-DI"],
     zoomLevel: 7.1,
-    image: "/historical/1954_DienBienPhu.png",
+    image: "/images/timelines/Điện Biên Phủ thất thủ.jpg",
     tags: ["điện biên phủ", "đông dương", "nguồn gốc chiến tranh"],
     stats: {
       location: "Điện Biên Phủ, Điện Biên",
@@ -155,13 +155,13 @@ export const timelineEvents = [
     badge: "HIỆP ĐỊNH",
     category: "diplomatic",
     shortDesc:
-      "Hiệp định Geneva (21/7/1954) chấm dứt chiến tranh Đông Dương, thiết lập giới tuyến quân sự tạm thời gần vĩ tuyến 17 và dự kiến tổ chức tổng tuyển cử tháng 7/1956.",
+      "Ngày 21/7/1954, Hiệp định Geneva được ký kết — thừa nhận thắng lợi của nhân dân Việt Nam, thiết lập giới tuyến quân sự tạm thời tại vĩ tuyến 17 và quy định tổng tuyển cử thống nhất đất nước vào tháng 7/1956.",
     longDesc:
-      "Hiệp định Geneva ký ngày 21/7/1954 tạo ra thỏa thuận ngừng bắn, các vùng tập trung quân, và giới tuyến quân sự tạm thời gần vĩ tuyến 17 kèm khu phi quân sự (DMZ). Tuyên bố cuối cùng dự kiến tổng tuyển cử toàn quốc tháng 7/1956 dưới sự giám sát quốc tế để thống nhất đất nước. Trên thực tế, các điều khoản bầu cử không được thực hiện, và sự chia cắt quân sự tạm thời trở thành phân chia chính trị — một trong những nguyên nhân cấu trúc trung tâm của cuộc xung đột Mỹ–Việt Nam sau này.",
+      "Hiệp định Geneva ký ngày 21/7/1954 là thành quả ngoại giao trực tiếp từ chiến thắng Điện Biên Phủ, buộc Pháp công nhận ngừng bắn và thiết lập giới tuyến quân sự tạm thời gần vĩ tuyến 17 cùng khu phi quân sự (DMZ). Tuyên bố cuối cùng quy định tổng tuyển cử toàn quốc vào tháng 7/1956 dưới sự giám sát quốc tế để thống nhất Tổ quốc. Tuy nhiên, chính quyền Ngô Đình Diệm được Mỹ hậu thuẫn đã ngang nhiên phá hoại hiệp định, từ chối tổ chức bầu cử, biến giới tuyến tạm thời thành đường chia cắt lâu dài — gieo mầm cho cuộc kháng chiến chống Mỹ sau này.",
     coords: A.dmz,
     regionIds: ["VN-QT"],
     zoomLevel: 7.0,
-    image: "/historical/1954_GenevaAccords.png",
+    image: "/images/timelines/Hiệp định Geneva — chia cắt tạm thời tại vĩ tuyến 17.jpg",
     tags: ["geneva", "chia cắt", "vĩ tuyến 17", "ngoại giao"],
     stats: {
       location: "Geneva, Thụy Sĩ → Vĩ tuyến 17",
@@ -183,13 +183,13 @@ export const timelineEvents = [
     badge: "LIÊN MINH",
     category: "diplomatic",
     shortDesc:
-      "Ngày 8/9/1954, tám quốc gia ký Hiệp ước phòng thủ tập thể Đông Nam Á tại Manila, tạo khuôn khổ SEATO — được Mỹ sử dụng để biện minh cho các cam kết khu vực liên quan đến Việt Nam.",
+      "Ngày 8/9/1954, Mỹ cùng bảy quốc gia ký Hiệp ước Manila, lập ra khối quân sự SEATO — công cụ để Washington dựng cớ can thiệp vào Đông Nam Á và tìm cách bao vây phong trào giải phóng dân tộc tại Việt Nam.",
     longDesc:
-      "Hiệp ước Manila ký ngày 8/9/1954 bởi Úc, Pháp, New Zealand, Pakistan, Philippines, Thái Lan, Anh và Hoa Kỳ, trở thành nền tảng của Tổ chức Hiệp ước Đông Nam Á (SEATO). Trong tư duy chiến lược của Mỹ, SEATO và các thỏa thuận nghị định thư liên quan tạo thành một phần kiến trúc an ninh Chiến tranh Lạnh tại Đông Nam Á và sau này xuất hiện trong các lập luận chính trị–pháp lý của Mỹ về sự can thiệp vào Việt Nam.",
+      "Chỉ chưa đầy hai tháng sau Hiệp định Geneva, ngày 8/9/1954, Mỹ cùng Úc, Pháp, New Zealand, Pakistan, Philippines, Thái Lan và Anh ký Hiệp ước Manila, lập ra Tổ chức Hiệp ước Đông Nam Á (SEATO). Đây thực chất là một liên minh quân sự trong chiến lược Chiến tranh Lạnh của Mỹ nhằm ngăn chặn phong trào giải phóng dân tộc ở Đông Nam Á. SEATO sau này trở thành vỏ bọc pháp lý để Mỹ leo thang can thiệp quân sự vào Việt Nam, bất chấp tinh thần và nội dung của Hiệp định Geneva.",
     coords: A.saigon,
     regionIds: ["VN-SG"],
     zoomLevel: 6.5,
-    image: "/historical/1954_SEATO_ManilaPact.png",
+    image: "/images/timelines/Hiệp ước phòng thủ tập thể Đông Nam Á (SEATO).jpg",
     tags: ["seato", "manila", "chiến tranh lạnh", "liên minh"],
     stats: {
       location: "Manila, Philippines → Đông Nam Á",
@@ -207,13 +207,13 @@ export const timelineEvents = [
     badge: "DI CƯ",
     category: "social",
     shortDesc:
-      "Sau Hiệp định Geneva, Hải quân Mỹ hỗ trợ cuộc di cư quy mô lớn từ miền Bắc vào miền Nam Việt Nam (8/1954–5/1955), vận chuyển người tị nạn, quân đội và trang thiết bị.",
+      "Từ tháng 8/1954 đến tháng 5/1955, Mỹ tổ chức chiến dịch di cư quy mô lớn từ miền Bắc vào miền Nam, sử dụng tuyên truyền tâm lý chiến và Hải quân Mỹ để di chuyển hàng trăm nghìn người nhằm phục vụ mưu đồ chia cắt lâu dài đất nước.",
     longDesc:
-      "Sau khi Việt Nam tạm thời bị chia cắt, khuôn khổ Geneva cho phép một khoảng thời gian di chuyển giữa hai miền trước khi biên giới đóng lại. Trong khoảng thời gian này, Hải quân Mỹ hỗ trợ cuộc di cư quy mô lớn (8/1954–5/1955), vận chuyển người tị nạn, lực lượng quân sự và trang thiết bị từ các cảng phía Bắc như Hải Phòng vào Nam (bao gồm Sài Gòn). Cuộc di chuyển này đã thay đổi nhân khẩu và chính trị miền Nam Việt Nam.",
+      "Sau khi Hiệp định Geneva được ký kết, khuôn khổ hiệp định cho phép di chuyển tự do giữa hai miền trong thời gian chuyển tiếp. Lợi dụng điều này, Mỹ và chính quyền tay sai tiến hành chiến dịch tuyên truyền tâm lý chiến quy mô lớn (như khẩu hiệu \"Chúa đã vào Nam\"), xúi giục và tổ chức di cư hàng loạt từ miền Bắc vào Nam qua cảng Hải Phòng (8/1954–5/1955). Hải quân Mỹ trực tiếp vận chuyển người dân, binh lính và trang thiết bị. Cuộc di cư này nhằm thay đổi cơ cấu dân số miền Nam, tạo cơ sở xã hội cho chính quyền Ngô Đình Diệm và phá hoại triển vọng thống nhất đất nước.",
     coords: A.haiphong,
     regionIds: ["VN-HP", "VN-SG"],
     zoomLevel: 6.4,
-    image: "/historical/1954_PassageToFreedom.png",
+    image: "/images/timelines/Cuộc di cư lớn từ Bắc vào Nam.jpg",
     tags: ["di cư", "người tị nạn", "hải phòng", "sài gòn"],
     stats: {
       location: "Hải Phòng → Sài Gòn",
@@ -234,13 +234,13 @@ export const timelineEvents = [
     badge: "QUỐC GIA",
     category: "political",
     shortDesc:
-      "Ngày 23/10/1955, miền Nam tổ chức trưng cầu dân ý phế truất cựu hoàng Bảo Đại; ngày 26/10, Ngô Đình Diệm tuyên bố thành lập nước Việt Nam Cộng hòa.",
+      "Ngày 23/10/1955, Ngô Đình Diệm tổ chức cuộc trưng cầu dân ý gian lận để phế truất Bảo Đại; ngày 26/10, Diệm tuyên bố thành lập cái gọi là \"Việt Nam Cộng hòa\" — một chính quyền tay sai phục vụ chiến lược của Mỹ tại Đông Dương.",
     longDesc:
-      "Cuộc trưng cầu dân ý Diệm–Bảo Đại ngày 23/10/1955 là trung tâm của quá trình củng cố chính trị miền Nam. Kết quả chính thức được công bố ngày 26/10/1955 tại Tòa Đô Chính Sài Gòn, khi Ngô Đình Diệm công bố kết quả và tuyên bố quốc gia là nước cộng hòa, khai sinh Việt Nam Cộng hòa. Sự chuyển đổi chính trị này định hình cuộc tranh giành tính chính danh và ảnh hưởng đến quỹ đạo xung đột với phong trào cách mạng được hậu thuẫn từ miền Bắc.",
+      "Cuộc trưng cầu dân ý ngày 23/10/1955 do Ngô Đình Diệm tổ chức là một trò hề chính trị, với kết quả được ngụy tạo lên tới 98,2% phiếu thuận. Ngày 26/10/1955, Diệm tuyên bố thành lập \"Việt Nam Cộng hòa\" tại Sài Gòn, dựng lên một chính quyền đối lập với Việt Nam Dân chủ Cộng hòa hợp pháp. Bước đi này nằm trong âm mưu của Mỹ nhằm chia cắt vĩnh viễn Việt Nam, phá hoại tinh thần Hiệp định Geneva và ngăn cản cuộc tổng tuyển cử thống nhất mà Mỹ biết rằng Hồ Chí Minh sẽ giành chiến thắng áp đảo.",
     coords: A.saigon,
     regionIds: ["VN-SG"],
     zoomLevel: 7.3,
-    image: "/historical/1955_Referendum_RVN.png",
+    image: "/images/timelines/Trưng cầu dân ý Diệm–Bảo Đại — thành lập VNCH.jpg",
     tags: ["ngô đình diệm", "bảo đại", "trưng cầu", "việt nam cộng hòa"],
     stats: {
       location: "Sài Gòn, miền Nam Việt Nam",
@@ -258,13 +258,13 @@ export const timelineEvents = [
     badge: "BẦU CỬ",
     category: "political",
     shortDesc:
-      "Tuyên bố cuối cùng Geneva dự kiến tổng tuyển cử toàn quốc tháng 7/1956 dưới sự giám sát quốc tế, nhưng cuộc bầu cử đã không được thực hiện — làm sâu thêm chia rẽ Bắc–Nam.",
+      "Tháng 7/1956, cuộc tổng tuyển cử thống nhất đất nước theo quy định của Hiệp định Geneva đã bị chính quyền Ngô Đình Diệm và Mỹ ngang nhiên phá hoại, cướp đi quyền tự quyết thiêng liêng của nhân dân Việt Nam.",
     longDesc:
-      "Tuyên bố cuối cùng Geneva quy định tổng tuyển cử sẽ diễn ra vào tháng 7/1956 dưới sự giám sát quốc tế để thống nhất đất nước. Cuộc bầu cử đã không được thực hiện; lãnh đạo miền Nam từ chối thực hiện các điều khoản bầu cử Geneva, và chính sách Chiến tranh Lạnh của Mỹ duy trì sự chia cắt Bắc–Nam. Việc không tổ chức bầu cử đã cố định hóa sự phân chia và tăng cường cuộc đấu tranh chính danh, nuôi dưỡng sự leo thang của chiến tranh du kích và phản du kích.",
+      "Hiệp định Geneva quy định rõ ràng tổng tuyển cử toàn quốc sẽ diễn ra vào tháng 7/1956 dưới sự giám sát quốc tế để thống nhất đất nước bằng con đường hòa bình. Tuy nhiên, chính quyền Ngô Đình Diệm được Mỹ chống lưng đã trắng trợn từ chối tổ chức bầu cử, bởi cả Washington lẫn Sài Gòn đều thừa biết rằng Chủ tịch Hồ Chí Minh sẽ giành chiến thắng. Hành động phá hoại này đóng sập con đường thống nhất hòa bình, buộc nhân dân miền Nam phải đứng lên đấu tranh vũ trang để bảo vệ quyền tự quyết và thống nhất Tổ quốc.",
     coords: A.dmz,
     regionIds: ["VN-QT"],
     zoomLevel: 7.0,
-    image: "/historical/1956_Elections_Not_Held.png",
+    image: null,
     tags: ["geneva 1954", "bầu cử 1956", "chia cắt", "dmz"],
     stats: {
       location: "Cầu Hiền Lương / Sông Bến Hải (vĩ tuyến 17), Quảng Trị",
@@ -282,13 +282,13 @@ export const timelineEvents = [
     badge: "CHỦ QUYỀN",
     category: "diplomatic",
     shortDesc:
-      "Tháng 3/1956, đơn vị đồn trú VNCH thay thế lực lượng Pháp tại một số đảo thuộc quần đảo Hoàng Sa, phản ánh tầm quan trọng chiến lược và chủ quyền của quần đảo.",
+      "Tháng 3/1956, quần đảo Hoàng Sa — phần lãnh thổ thiêng liêng của Việt Nam — chứng kiến sự chuyển giao đồn trú từ Pháp sang chính quyền miền Nam, khẳng định chủ quyền không thể tranh cãi của Việt Nam trên Biển Đông.",
     longDesc:
-      "Các báo cáo đương thời năm 1956 ghi nhận các tuyên bố chủ quyền chồng lấn trên Biển Đông. Nguồn tin thời kỳ đó cho biết Hoàng Sa có \"một đơn vị đồn trú nhỏ của VNCH\" đã \"thay thế Pháp vào tháng 3/1956\" sau khi Lực lượng Viễn chinh Pháp rút khỏi miền Nam Việt Nam. Dù không phải chiến trường trung tâm giai đoạn 1954–1965, sự kiện có ý nghĩa trong việc lập bản đồ môi trường chiến lược và các động lực khủng hoảng sau này về biên giới biển Việt Nam.",
+      "Quần đảo Hoàng Sa từ lâu là lãnh thổ không thể tách rời của Việt Nam, được các triều đại phong kiến Việt Nam khai thác và quản lý liên tục qua nhiều thế kỷ. Tháng 3/1956, khi Lực lượng Viễn chinh Pháp rút khỏi miền Nam, đơn vị đồn trú của chính quyền Sài Gòn tiếp quản một số đảo tại Hoàng Sa. Dù giai đoạn 1954–1965 chưa phải thời điểm căng thẳng đỉnh điểm, sự kiện phản ánh tầm quan trọng chiến lược của quần đảo và khẳng định chủ quyền lịch sử liên tục của Việt Nam trên Biển Đông — vấn đề mà toàn dân tộc luôn kiên quyết bảo vệ.",
     coords: A.hoangsa,
     regionIds: ["VN-DN"],
     zoomLevel: 5.6,
-    image: "/historical/1956_HoangSa_1956.png",
+    image: null,
     tags: ["hoàng sa", "chủ quyền", "biển đông"],
     stats: {
       location: "Quần đảo Hoàng Sa, Biển Đông",
@@ -310,13 +310,13 @@ export const timelineEvents = [
     badge: "HẬU CẦN",
     category: "military",
     shortDesc:
-      "Ngày 19/5/1959, miền Bắc Việt Nam thành lập Đoàn 559 để tổ chức hậu cần và mở hành lang Trường Sơn, cho phép vận chuyển người và vật tư vào chiến trường miền Nam.",
+      "Ngày 19/5/1959 — đúng sinh nhật Bác Hồ — Đoàn 559 được thành lập với sứ mệnh thiêng liêng: mở đường Trường Sơn huyền thoại, nối liền hậu phương lớn miền Bắc với tiền tuyến lớn miền Nam.",
     longDesc:
-      "Khi lãnh đạo miền Bắc chuẩn bị cho cuộc đấu tranh trường kỳ ở miền Nam, hậu cần trở thành yếu tố chiến lược. Ngày 19/5/1959, đơn vị công tác đặc biệt — Đoàn 559 — được giao nhiệm vụ mở hành lang Trường Sơn và tổ chức hỗ trợ cho các chiến trường phía Nam. Quyết định thể chế này đánh dấu sự khởi đầu của hệ thống tiếp vận sau này được quốc tế biết đến là Đường mòn Hồ Chí Minh — yếu tố quyết định cho việc vận chuyển nhân lực và vật tư bất chấp địa hình và các đợt không kích ngăn chặn dữ dội sau này.",
+      "Trước khát vọng thống nhất cháy bỏng và yêu cầu chi viện cho đồng bào miền Nam đang đấu tranh, ngày 19/5/1959, Đoàn 559 được thành lập với nhiệm vụ mở tuyến hành lang chiến lược xuyên dãy Trường Sơn. Đây là khởi đầu của con đường huyền thoại mà thế giới gọi là Đường mòn Hồ Chí Minh — biểu tượng của ý chí sắt đá và sự sáng tạo phi thường của quân và dân Việt Nam. Bất chấp bom đạn, chất độc hóa học và địa hình hiểm trở, hàng vạn chiến sĩ, thanh niên xung phong đã dùng máu và mồ hôi xây dựng nên mạch máu giao thông quyết định, đưa người và vũ khí vào chiến trường miền Nam.",
     coords: A.hanoi,
     regionIds: ["VN-HN"],
     zoomLevel: 6.6,
-    image: "/historical/1959_Group559_TruongSon.png",
+    image: "/images/timelines/Thành lập Đoàn 559 — mở đường Trường Sơn.jpg",
     tags: ["đoàn 559", "đường hồ chí minh", "trường sơn", "hậu cần"],
     stats: {
       location: "Hà Nội (trung tâm quyết định) → Hành lang Trường Sơn",
@@ -338,13 +338,13 @@ export const timelineEvents = [
     badge: "KHỞI NGHĨA",
     category: "political",
     shortDesc:
-      "Ngày 20/12/1960, Mặt trận Dân tộc Giải phóng (MTDTGP) được thành lập tại miền Nam Việt Nam để tổ chức lực lượng chống chính quyền Sài Gòn và theo đuổi thống nhất.",
+      "Ngày 20/12/1960, Mặt trận Dân tộc Giải phóng miền Nam Việt Nam ra đời tại Tây Ninh — ngọn cờ đại đoàn kết tập hợp mọi tầng lớp nhân dân miền Nam đứng lên chống chế độ tay sai, đấu tranh cho thống nhất Tổ quốc.",
     longDesc:
-      "Ngày 20/12/1960, Mặt trận Dân tộc Giải phóng được thành lập như một tổ chức chính trị bao trùm để tổ chức kháng chiến tại miền Nam và theo đuổi thống nhất. Nhiều tài liệu xác định địa điểm thành lập tại Tân Lập, tỉnh Tây Ninh. Sự ra đời của MTDTGP tạo cấu trúc chính trị cho cuộc khởi nghĩa (thường gọi là Việt Cộng) và trở thành động lực chính của xung đột đầu những năm 1960.",
+      "Ngày 20/12/1960, Mặt trận Dân tộc Giải phóng miền Nam Việt Nam được thành lập tại Tân Lập, tỉnh Tây Ninh, đánh dấu bước ngoặt lịch sử của phong trào cách mạng miền Nam. Mặt trận quy tụ công nhân, nông dân, trí thức, tôn giáo và các dân tộc dưới ngọn cờ đại đoàn kết, tạo nên sức mạnh tổng hợp để chống lại chế độ độc tài Ngô Đình Diệm và sự can thiệp của Mỹ. Sự ra đời của Mặt trận chứng minh cuộc kháng chiến không phải là \"xung đột từ bên ngoài\" mà là phong trào chính nghĩa của nhân dân miền Nam đòi quyền tự do và thống nhất.",
     coords: A.tayninh,
     regionIds: ["VN-SG"],
     zoomLevel: 7.0,
-    image: "/historical/1960_NLF_Founding.png",
+    image: "/images/timelines/Thành lập Mặt trận Dân tộc Giải phóng miền Nam.jpg",
     tags: ["mặt trận giải phóng", "việt cộng", "tây ninh", "khởi nghĩa"],
     stats: {
       location: "Tây Ninh (khu vực Tân Lập), miền Nam Việt Nam",
@@ -365,13 +365,13 @@ export const timelineEvents = [
     badge: "LEO THANG",
     category: "military",
     shortDesc:
-      "Đầu 1962, Mỹ tái tổ chức bộ chỉ huy thành MACV (8/2), VNCH chính thức hóa chương trình ấp chiến lược (3/2), và Chiến dịch Ranch Hand bắt đầu (tháng 1) — leo thang phản du kích lớn.",
+      "Đầu năm 1962, Mỹ đổ quân ào ạt vào miền Nam: lập Bộ Tư lệnh MACV (8/2), chính quyền Diệm dựng chương trình ấp chiến lược gồm cầm dân (3/2), và triển khai Chiến dịch Ranch Hand rải chất độc hóa học hủy diệt mùa màng và rừng xanh Việt Nam.",
     longDesc:
-      "Đầu năm 1962 đánh dấu bước leo thang lớn trong phản du kích của Mỹ và VNCH. Chỉ thị của Mỹ thành lập Bộ Tư lệnh Viện trợ Quân sự Mỹ tại Việt Nam (MACV) kể từ ngày 8/2/1962, đặt trụ sở tại Sài Gòn với Tướng Paul D. Harkins chỉ huy. Song song, Tổng thống Ngô Đình Diệm ký nghị định ngày 3/2/1962 thành lập Ủy ban Liên bộ về Ấp chiến lược. Cùng lúc, Chiến dịch Ranch Hand — chương trình phun chất diệt cỏ của Không quân Mỹ — bắt đầu vào tháng 1/1962. Các biện pháp này thể hiện bước chuyển sang kiểm soát tổ chức sâu hơn của Mỹ và các phương pháp an ninh dân cư cùng công nghệ quyết liệt hơn trong chiến tranh nông thôn.",
+      "Đầu năm 1962 chứng kiến bước leo thang nguy hiểm của đế quốc Mỹ tại miền Nam. Ngày 8/2/1962, Mỹ thành lập Bộ Tư lệnh Viện trợ Quân sự (MACV) tại Sài Gòn do Tướng Paul D. Harkins chỉ huy, trực tiếp nắm quyền điều hành chiến tranh. Song song, Ngô Đình Diệm ký nghị định ngày 3/2/1962 lập Ủy ban Liên bộ về Ấp chiến lược — nhốt nhân dân nông thôn vào các trại gồm cầm để cắt đứt mối liên hệ với cách mạng. Cùng lúc, Chiến dịch Ranch Hand bắt đầu từ tháng 1/1962, rải hàng triệu lít chất độc da cam hủy diệt mùa màng và rừng rậm, gây hậu quả thảm khốc cho môi trường và sức khỏe người dân nhiều thế hệ.",
     coords: A.saigon,
     regionIds: ["VN-SG"],
     zoomLevel: 7.2,
-    image: "/historical/1962_MACV_StrategicHamlets_RanchHand.png",
+    image: "/images/timelines/Leo thang phản du kích.jpg",
     tags: ["macv", "ấp chiến lược", "ranch hand", "phản du kích", "kennedy"],
     stats: {
       location: "Sài Gòn (Bộ TL MACV) / nông thôn miền Nam",
@@ -389,13 +389,13 @@ export const timelineEvents = [
     badge: "TRẬN ĐÁNH",
     category: "military",
     shortDesc:
-      "Ngày 2/1/1963, lực lượng VNCH giao tranh với Việt Cộng tại Ấp Bắc (Định Tường), trận đánh trở thành phép thử quan trọng cho chiến thuật phản du kích được Mỹ hậu thuẫn.",
+      "Ngày 2/1/1963, quân giải phóng miền Nam giành chiến thắng vang dội tại Ấp Bắc (Định Tường), đánh bại lực lượng VNCH dù địch có ưu thế quân số, trực thăng và xe bọc thép Mỹ trang bị.",
     longDesc:
-      "Trận Ấp Bắc (2/1/1963) diễn ra tại tỉnh Định Tường (nay thuộc Tiền Giang), cách Sài Gòn khoảng 55 km về phía tây nam trong vùng Đồng bằng sông Cửu Long. Lực lượng VNCH giao chiến với một tiểu đoàn Việt Cộng dù có ưu thế quân số và hỏa lực, bao gồm trực thăng và xe bọc thép. Trận đánh mang ý nghĩa biểu tượng vì phơi bày các vấn đề chiến thuật và tổ chức của QLVNCH, nuôi dưỡng tranh luận tại Washington về hướng đi của cuộc chiến.",
+      "Trận Ấp Bắc ngày 2/1/1963 tại tỉnh Định Tường (nay thuộc Tiền Giang), cách Sài Gòn 55 km về phía tây nam, là chiến thắng xuất sắc của quân giải phóng. Chỉ với một tiểu đoàn, các chiến sĩ đã đánh bại lực lượng VNCH đông gấp nhiều lần được trang bị trực thăng, xe bọc thép và cố vấn Mỹ. Trận đánh làm chấn động dư luận Mỹ, phơi bày sự bất lực của quân đội Sài Gòn và chứng minh rằng dù được Mỹ trang bị hiện đại, VNCH không thể dập tắt được ý chí đấu tranh của nhân dân miền Nam.",
     coords: A.apbac,
     regionIds: ["VN-SG"],
     zoomLevel: 8.0,
-    image: "/historical/1963_ApBac.png",
+    image: "/images/timelines/Trận Ấp Bắc phơi bày yếu kém chiến thuật QLVNCH.jpg",
     tags: ["ấp bắc", "đồng bằng cửu long", "QLVNCH", "việt cộng"],
     stats: {
       location: "Ấp Bắc, Định Tường (Tiền Giang), ĐBSCL",
@@ -416,13 +416,13 @@ export const timelineEvents = [
     badge: "PHẢN ĐỐI",
     category: "social",
     shortDesc:
-      "Ngày 11/6/1963, hòa thượng Thích Quảng Đức tự thiêu tại Sài Gòn để phản đối phân biệt tôn giáo, tạo ra hình ảnh biểu tượng làm tăng áp lực chính trị lên chính quyền Diệm.",
+      "Ngày 11/6/1963, Hòa thượng Thích Quảng Đức tự thiêu giữa Sài Gòn để phản đối chính sách đàn áp tôn giáo của chế độ Diệm — ngọn lửa chính nghĩa làm rung chuyển lương tâm nhân loại và phơi bày bộ mặt độc tài của chính quyền tay sai.",
     longDesc:
-      "Hành động tự thiêu của Thích Quảng Đức ngày 11/6/1963 diễn ra tại một giao lộ đông đúc ở Sài Gòn giữa cuộc khủng hoảng Phật giáo, khi các Phật tử phản đối phân biệt và đàn áp dưới chế độ Diệm. Những bức ảnh của Malcolm Browne lan truyền khắp thế giới và trở thành biểu tượng của cuộc khủng hoảng chính danh mà chính quyền Sài Gòn và những người ủng hộ Mỹ phải đối mặt. Sự kiện góp phần vào tình trạng bất ổn ngày càng tăng, đỉnh điểm là cuộc đảo chính tháng 11/1963.",
+      "Giữa cuộc khủng hoảng Phật giáo khi chính quyền Ngô Đình Diệm đàn áp dã man các Phật tử, ngày 11/6/1963, Hòa thượng Thích Quảng Đức đã tự thiêu tại một giao lộ đông đúc ở Sài Gòn để thức tỉnh lương tri thế giới. Những bức ảnh của Malcolm Browne ghi lại hình ảnh ngọn lửa chính nghĩa lan truyền khắp thế giới, vạch trần bản chất độc tài, phản dân của chính quyền được Mỹ dựng lên. Sự kiện để lại dấu ấn sâu sắc trong lịch sử, góp phần làm suy sụp hệ thống chính trị của chế độ Diệm và dẫn tới cuộc đảo chính tháng 11/1963.",
     coords: A.saigon,
     regionIds: ["VN-SG"],
     zoomLevel: 7.5,
-    image: "/historical/1963_QuangDuc.png",
+    image: "/images/timelines/Thích Quảng Đức tự thiêu — khủng hoảng Phật giáo.jpg",
     tags: ["khủng hoảng phật giáo", "tự thiêu", "thích quảng đức", "sài gòn"],
     stats: {
       location: "Sài Gòn, miền Nam Việt Nam",
@@ -440,13 +440,13 @@ export const timelineEvents = [
     badge: "ĐẢO CHÍNH",
     category: "political",
     shortDesc:
-      "Ngày 1–2/11/1963, các tướng lĩnh VNCH lật đổ Tổng thống Ngô Đình Diệm; Diệm và em trai Ngô Đình Nhu bị sát hại, mở ra thời kỳ bất ổn chính trị.",
+      "Ngày 1–2/11/1963, các tướng lĩnh Sài Gòn lật đổ Ngô Đình Diệm; Diệm và em trai bị sát hại. Chính quyền tay sai Mỹ lao vào khủng hoảng triền miên, phơi bày bản chất mục ruỗng của chế độ phản động.",
     longDesc:
-      "Sau nhiều tháng biến động chính trị và cuộc khủng hoảng Phật giáo, các sĩ quan quân đội VNCH phát động đảo chính ngày 1/11/1963. Đến ngày 2/11, Tổng thống Ngô Đình Diệm và em trai Ngô Đình Nhu đã thiệt mạng. Cuộc đảo chính chấm dứt chế độ Diệm nhưng mở ra giai đoạn thay đổi chính phủ nhanh chóng, làm phức tạp nỗ lực chiến tranh của VNCH và chiến lược của Mỹ.",
+      "Sau nhiều tháng khủng hoảng chính trị và phong trào phản đối mạnh mẽ của nhân dân miền Nam, các tướng lĩnh VNCH phát động đảo chính ngày 1/11/1963. Đến ngày 2/11, Ngô Đình Diệm và em trai Ngô Đình Nhu đã bị sát hại. Sự sụp đổ của chế độ Diệm — một chính quyền đã du nhập hàng tỷ đôla Mỹ — chứng minh rằng không có độc tài tay sai nào có thể đứng vững khi đi ngược lại ý nguyện của nhân dân. Sau đó, miền Nam lao vào chuỗi đảo chính liên tiếp, làm phức tạp thêm chiến lược của Mỹ và khẳng định sự bất lực của họ trong việc dựng lên một chính quyền vững chắc.",
     coords: A.saigon,
     regionIds: ["VN-SG"],
     zoomLevel: 7.5,
-    image: "/historical/1963_Coup_Diem.png",
+    image: "/images/timelines/Đảo chính lật đổ Ngô Đình Diệm — Diệm và Nhu bị sát hại.jpg",
     tags: ["diệm", "đảo chính", "1963", "khủng hoảng chính trị"],
     stats: {
       location: "Sài Gòn, miền Nam Việt Nam",
@@ -464,13 +464,13 @@ export const timelineEvents = [
     badge: "NGHỊ QUYẾT",
     category: "diplomatic",
     shortDesc:
-      "Giữa ngày 2–4/8/1964, hải quân Mỹ và Bắc Việt đụng độ tại Vịnh Bắc Bộ; sau báo cáo về cuộc tấn công thứ hai (sau đó xác định là sai), Quốc hội thông qua Nghị quyết Vịnh Bắc Bộ ngày 7/8.",
+      "Ngày 2–4/8/1964, Mỹ dựng lên \"Sự kiện Vịnh Bắc Bộ\" với báo cáo nguy tạo về cuộc tấn công ngày 4/8, làm cớ để Quốc hội Mỹ thông qua Nghị quyết Vịnh Bắc Bộ (7/8), trao quyền chiến tranh không giới hạn cho Tổng thống Johnson.",
     longDesc:
-      "Các sự kiện Vịnh Bắc Bộ diễn ra từ 2–4/8/1964. Ngày 2/8, tàu tuần tra Bắc Việt tấn công tàu khu trục USS Maddox; báo cáo về cuộc tấn công thứ hai ngày 4/8 sau đó được đánh giá là sai trong các tài liệu lịch sử hải quân Mỹ. Hậu quả chính trị là tức thì: chính quyền Johnson tìm kiếm và có được Nghị quyết Vịnh Bắc Bộ (thông qua 7/8/1964; ký 10/8), một sự ủy quyền của Quốc hội mở rộng đáng kể quyền sử dụng vũ lực của tổng thống tại Đông Nam Á.",
+      "Sự kiện Vịnh Bắc Bộ (2–4/8/1964) là một trong những mưu đồ trắc trở nhất của đế quốc Mỹ. Ngày 2/8, tàu khu trục USS Maddox xâm phạm lãnh hải Việt Nam và bị tàu tuần tra hải quân Việt Nam đánh trả. Đến ngày 4/8, Mỹ dựng lên báo cáo giả về một cuộc tấn công thứ hai — sau này chính tài liệu hải quân Mỹ xác nhận là bao ngụy. Chính quyền Johnson lợi dụng sự kiện giả tạo này để thúc đẩy Quốc hội thông qua Nghị quyết Vịnh Bắc Bộ (7/8/1964; ký 10/8), trao quyền sử dụng vũ lực không giới hạn — mở đường cho cuộc chiến tranh xâm lược quy mô lớn.",
     coords: A.tonkin,
     regionIds: [],
     zoomLevel: 6.0,
-    image: "/historical/1964_Tonkin_Gulf.png",
+    image: "/images/timelines/Sự kiện Vịnh Bắc Bộ và Nghị quyết mở rộng quyền chiến tranh Mỹ.jpg",
     tags: ["vịnh bắc bộ", "maddox", "nghị quyết", "leo thang mỹ"],
     stats: {
       location: "Vịnh Bắc Bộ (Vịnh Tonkin)",
@@ -491,13 +491,13 @@ export const timelineEvents = [
     badge: "CHIẾN ĐẤU MỸ",
     category: "military",
     shortDesc:
-      "Cuối tháng 2 – đầu tháng 3/1965, Mỹ bắt đầu ném bom bền vững miền Bắc trong Chiến dịch Rolling Thunder và triển khai Thủy quân lục chiến đến Đà Nẵng, đánh dấu chuyển đổi từ cố vấn sang chiến đấu trực tiếp.",
+      "Cuối tháng 2 – đầu tháng 3/1965, Mỹ phát động chiến dịch ném bom Rolling Thunder hủy diệt miền Bắc và đổ quân Thủy quân lục chiến lên Đà Nẵng — chính thức biến cuộc chiến thành chiến tranh xâm lược trực tiếp của Mỹ.",
     longDesc:
-      "Đầu năm 1965 đánh dấu bước leo thang quyết định của Mỹ. Các nhiệm vụ Rolling Thunder bắt đầu ngày 2/3/1965 theo tài liệu lịch sử hải quân, trong khi tài liệu Không quân Mỹ mô tả chiến dịch bắt đầu cuối tháng 2/1965. Song song, lịch sử Thủy quân lục chiến ghi nhận lính thủy đánh bộ đổ bộ căn cứ không quân Đà Nẵng ngày 8/3/1965. Tổng hợp lại, những diễn biến này báo hiệu chuyển đổi từ hỗ trợ cố vấn chủ yếu sang ném bom chiến lược bền vững và triển khai các đơn vị chiến đấu lớn của Mỹ, thay đổi quy mô và tính chất cuộc chiến.",
+      "Đầu năm 1965 đánh dấu giai đoạn đế quốc Mỹ lộ rõ bộ mặt xâm lược. Từ cuối tháng 2/1965, Chiến dịch Rolling Thunder bắt đầu trút hàng nghìn tấn bom xuống miền Bắc, hủy diệt cầu đường, nhà máy, trường học và bệnh viện. Ngày 8/3/1965, 3.500 lính Thủy quân lục chiến Mỹ đổ bộ lên bãi biển Đà Nẵng — đánh dấu sự chuyển đổi từ vai trò \"cố vấn\" sang chiến tranh xâm lược trực tiếp. Nhưng chính sự leo thang điên cuồng này đã thổi bùng ngọn lửa kháng chiến của toàn dân tộc, mở ra cuộc chiến tranh chống Mỹ cứu nước vĩ đại nhất trong lịch sử dân tộc.",
     coords: A.danang,
     regionIds: ["VN-DN"],
     zoomLevel: 7.0,
-    image: "/historical/1965_RollingThunder_DaNang.png",
+    image: "/images/timelines/Rolling Thunder và Thủy quân lục chiến đổ bộ Đà Nẵng.jpg",
     tags: ["rolling thunder", "đà nẵng", "thủy quân lục chiến", "leo thang 1965"],
     stats: {
       location: "Đà Nẵng, miền Nam Việt Nam",

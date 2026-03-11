@@ -50,7 +50,7 @@ const GuideModal = ({ gameId, onClose }) => {
         {
           heading: "Luật chơi",
           content: [
-            "Giải 7 hàng ngang để tìm ra từ khóa dọc bí ẩn",
+            "Giải 10 hàng ngang để tìm ra từ khóa dọc bí ẩn",
             "Mỗi hàng ngang là một câu hỏi về lịch sử Việt Nam giai đoạn 1954–1965",
             "Nhập đáp án vào ô trống (có dấu, có khoảng cách)",
           ],
@@ -273,7 +273,7 @@ const GamesPage = () => {
       id: 2,
       title: "Ô Chữ Lịch Sử",
       description:
-        "Giải 7 hàng ngang về lịch sử Việt Nam giai đoạn 1954–1965, lộ diện từ khóa bí ẩn. Đáp án đúng sẽ làm chữ dọc bừng sáng.",
+        "Giải 10 hàng ngang về lịch sử Việt Nam giai đoạn 1954–1965, lộ diện từ khóa bí ẩn. Đáp án đúng sẽ làm chữ dọc bừng sáng.",
       icon: <ScrollText size={32} className="text-gold" />,
       status: "Sẵn sàng",
       action: "Chơi ngay",
