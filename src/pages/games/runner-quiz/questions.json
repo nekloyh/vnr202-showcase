@@ -1,332 +1,322 @@
 [
   {
     "id": "quiz_01",
-    "question": "Dân chủ là gì?",
+    "question": "Đặc điểm lớn nhất của tình hình nước ta sau Hiệp định Giơ-ne-vơ năm 1954 là gì?",
     "choices": [
-      "Là quyền lực thuộc về nhân dân",
-      "Là quyền của con người",
-      "Là quyền tự do của mỗi người",
-      "Là quyền lực thuộc về công nhân"
+      "Đất nước hoàn toàn độc lập, thống nhất.",
+      "Đất nước tạm thời được chia làm hai miền với hai chế độ chính trị khác nhau.",
+      "Miền Bắc hoàn thành cách mạng dân tộc dân chủ nhân dân.",
+      "Mỹ rút hết quân khỏi Việt Nam."
     ],
-    "answerIndex": 0
+    "answerIndex": 1
   },
   {
     "id": "quiz_02",
-    "question": "Mục đích cuối cùng của nhà nước xã hội chủ nghĩa là gì?",
+    "question": "Mục tiêu chiến lược của Mỹ khi thay chân Pháp tại miền Nam Việt Nam là gì?",
     "choices": [
-      "Xây dựng thành công xã hội mới",
-      "Cải tạo xã hội cũ, xây dựng xã hội cộng sản chủ nghĩa",
-      "Cải tạo xã hội cũ, xây dựng xã hội xã hội chủ nghĩa thành công",
-      "Xây dựng thành công một nhà nước của dân, do dân, vì dân"
+      "Giúp nhân dân xây dựng kinh tế.",
+      "Thực hiện nghĩa vụ quốc tế về hòa bình.",
+      "Biến miền Nam thuộc loại địa chỉ mới và căn cứ quân sự của Mỹ.",
+      "Duy trì chế độ thực hành cũ của Pháp."
     ],
     "answerIndex": 2
   },
   {
     "id": "quiz_03",
-    "question": "Nếu xem xét dân chủ với tư cách là một chế độ dân chủ, thì nhân loại đã và đang trải qua bao nhiêu chế độ dân chủ?",
+    "question": "Vai trò của cách mạng xã hội chủ nghĩa ở miền Bắc được Đảng xác định tại Đại hội III (1960) là gì?",
     "choices": [
-      "2",
-      "3",
-      "4",
-      "5"
+      "Vai trò quyết định trực tiếp.",
+      "Vai trò quyết định nhất cho sự phát triển của toàn bộ cách mạng Việt Nam.",
+      "Vai trò hỗ trợ hậu cần cần đơn giản.",
+      "Vai trò trung gian hòa bình thế giới."
     ],
     "answerIndex": 1
   },
   {
     "id": "quiz_04",
-    "question": "Nhà nước xã hội chủ nghĩa đại diện cho lợi ích của ai?",
+    "question": "Cách mạng dân tộc dân chủ nhân dân ở miền Nam có vai trò gì?",
     "choices": [
-      "Giai cấp công nhân, nông dân và tầng lớp trí thức",
-      "Giai cấp công nhân và nông dân",
-      "Đại đa số nhân dân lao động",
-      "Toàn thể nhân dân lao động"
+      "Vai trò quyết định nhất.",
+      "Vai trò quyết định trực tiếp cho giải pháp miền Nam doanh nghiệp.",
+      "Vai trò phụ thuộc vào miền Bắc.",
+      "Không có vai trò quan trọng nào cả."
     ],
-    "answerIndex": 2
+    "answerIndex": 1
   },
   {
     "id": "quiz_05",
-    "question": "Nguyên tắc tổ chức và hoạt động của Nhà nước pháp quyền xã hội chủ nghĩa Việt Nam là gì?",
+    "question": "Tại sao quan điểm cho rằng đây là cuộc 'nội chiến' là sai?",
     "choices": [
-      "Nguyên tắc kiểm tra giám sát",
-      "Nguyên tắc tập trung dân chủ",
-      "Nguyên tắc dân chủ và thống nhất quyền lực",
-      "Nguyên tắc tổ chức xây dựng"
+      "Vì hai miền đều là người Việt Nam.",
+      "Vì bản chất là phản chiến chống xâm lược, Mỹ là bên điều hành và viện trợ cho chính quyền tay sai.",
+      "Vì Liên Xô và Trung Quốc trực tiếp chỉ huy.",
+      "Vì không có súng nổ."
     ],
     "answerIndex": 1
   },
   {
     "id": "quiz_06",
-    "question": "So với các nền dân chủ trước đây, tính ưu việt của nền dân chủ xã hội chủ nghĩa được thể hiện ở điểm nào?",
+    "question": "Hội nghị Trung ương nào của Đảng (khóa II) đã mở đường cho phong trào 'Đồng khởi'?",
     "choices": [
-      "Là nền dân chủ không còn mang tính giai cấp",
-      "Là nền dân chủ cho tất cả các giai cấp, tầng lớp",
-      "Là nền dân chủ cho tất cả nhân dân lao động",
-      "Là nền dân chủ rộng rãi cho giai cấp công nhân và nhân dân lao động"
+      "Hội nghị Trung ương 13.",
+      "Hội nghị Trung ương 15 (1/1959).",
+      "Hội nghị Trung ương 14.",
+      "Hội nghị Trung ương 16."
     ],
-    "answerIndex": 3
+    "answerIndex": 1
   },
   {
     "id": "quiz_07",
-    "question": "Dân chủ với tư cách là một chế độ chính trị ra đời khi nào?",
+    "question": "Chính sách Bạo cộng, diệt cộng và Luật 10-59 của Ngô Đình Diệm nhắm mục tiêu gì?",
     "choices": [
-      "Khi Cách mạng Tháng Mười Nga thành công",
-      "Khi xã hội có sự phân chia về giai cấp",
-      "Khi nhà nước xã hội chủ nghĩa được thiết lập",
-      "Khi mâu thuẫn giữa giai cấp tư sản và vô sản ngày càng gay gắt"
+      "Phát triển kinh tế nông thôn.",
+      "Xây dựng nền dân chủ hòa hòa.",
+      "Đàn áp tàn bạo những người kháng chiến cũ và nhân dân yêu nước.",
+      "Thực hiện Hiệp định Giơ-ne-vơ."
     ],
     "answerIndex": 2
   },
   {
     "id": "quiz_08",
-    "question": "Trong thời kỳ quá độ lên chủ nghĩa xã hội, chức năng nào của nhà nước xã hội chủ nghĩa sẽ chiếm ưu thế?",
+    "question": "Ý nghĩa quan trọng nhất của phong trào “Đồng khởi” (1959-1960) là gì?",
     "choices": [
-      "Chức năng trấn áp",
-      "Chức năng tổ chức và xây dựng",
-      "Cả A, B đều đúng",
-      "Cả A, B đều sai"
+      "Mỹ phải rút quân về nước.",
+      "Giải thích hoàn toàn các thành phố lớn.",
+      "Chuyển cách mạng miền Nam từ thế chứa năng lượng sang thế tiến công.",
+      "Chấm dứt hoàn toàn chế độ Ngô Đình Diệm."
     ],
-    "answerIndex": 1
+    "answerIndex": 2
   },
   {
     "id": "quiz_09",
-    "question": "Nhà nước xã hội chủ nghĩa mang bản chất của giai cấp nào?",
-    "choices": [
-      "Mang bản chất của giai cấp công nhân",
-      "Mang bản chất của đa số nhân dân lao động",
-      "Mang bản chất của giai cấp nông dân",
-      "Vừa mang bản chất của giai cấp công nhân, vừa mang bản chất của nhân dân lao động và tính dân tộc sâu sắc"
-    ],
-    "answerIndex": 0
+    "question": "Đại hội đại biểu toàn quốc lần thứ III của Đảng (9/1960) diễn ra tại đâu?",
+    "choices": ["Việt Bắc.", "Hà Nội.", "Sài Gòn.", "Tiến sĩ Tân Trào."],
+    "answerIndex": 1
   },
   {
     "id": "quiz_10",
-    "question": "Bản chất kinh tế của nền dân chủ xã hội chủ nghĩa dựa trên cơ sở nào?",
+    "question": "Chủ đề chiến lược của Đại hội III đối với cách mạng miền Nam là gì?",
     "choices": [
-      "Chế độ chính trị của giai cấp công nhân",
-      "Cơ chế quản lý kinh tế xã hội chủ nghĩa",
-      "Bản chất chính trị của chế độ xã hội chủ nghĩa",
-      "Chế độ công hữu về tư liệu sản xuất chủ yếu"
-    ],
-    "answerIndex": 3
-  },
-  {
-    "id": "quiz_11",
-    "question": "Chế độ dân chủ nhân dân ở Việt Nam được xác lập trong thời gian nào?",
-    "choices": [
-      "Sau Cách mạng Tháng Tám năm 1945",
-      "Sau khi đất nước đổi tên thành Cộng hoà xã hội chủ nghĩa Việt Nam năm 1976",
-      "Sau Đại hội VI năm 1986",
-      "Sau khi kháng chiến chống thực dân Pháp thành công năm 1954 tại miền Bắc"
-    ],
-    "answerIndex": 0
-  },
-  {
-    "id": "quiz_12",
-    "question": "Phương châm thực hiện quy chế dân chủ xã hội chủ nghĩa ở Việt Nam là gì?",
-    "choices": [
-      "Dân bàn, dân làm, dân biết, dân kiểm tra",
-      "Dân biết, dân làm, dân bàn, dân kiểm tra",
-      "Dân biết, dân bàn, dân làm, dân kiểm tra",
-      "Dân biết, dân bàn, dân kiểm tra, dân làm"
-    ],
-    "answerIndex": 2
-  },
-  {
-    "id": "quiz_13",
-    "question": "Căn cứ vào tính chất của quyền lực, nhà nước xã hội chủ nghĩa có những chức năng nào?",
-    "choices": [
-      "Chức năng đối nội và chức năng đối ngoại",
-      "Chức năng trấn áp và chức năng chính trị",
-      "Chức năng giai cấp và chức năng xây dựng",
-      "Chức năng giai cấp và chức năng xã hội"
-    ],
-    "answerIndex": 3
-  },
-  {
-    "id": "quiz_14",
-    "question": "Nhà nước pháp quyền xã hội chủ nghĩa và nhà nước pháp trị có điểm gì giống nhau?",
-    "choices": [
-      "Dùng pháp luật để quản lý xã hội",
-      "Khẳng định quyền lực tốt cao của pháp luật",
-      "Đại biểu nhà nước do nhân dân bầu ra",
-      "Tất cả A, B, C đều đúng"
-    ],
-    "answerIndex": 0
-  },
-  {
-    "id": "quiz_15",
-    "question": "Nhà nước pháp quyền tư bản chủ nghĩa sử dụng chủ yếu phương pháp nào để quản lý đời sống xã hội?",
-    "choices": [
-      "Giáo dục và thuyết phục",
-      "Cưỡng chế",
-      "Thuyết phục và cưỡng chế",
-      "Thuyết phục"
+      "Tiến lên ngay chủ nghĩa xã hội.",
+      "Hoàn thành cách mạng dân tộc chủ nhân dân.",
+      "Thương lượng hòa bình với Mỹ.",
+      "Giải thưởng vũ trang năng lượng."
     ],
     "answerIndex": 1
   },
   {
-    "id": "quiz_16",
-    "question": "Theo chủ nghĩa Mác - Lênin, dân chủ là một phạm trù vĩnh viễn khi được xem xét trên phương diện nào?",
+    "id": "quiz_11",
+    "question": "Sau thất bại của chiến tranh đơn phương, từ năm 1961 Mỹ chuyển sang chiến lược gì?",
     "choices": [
-      "Một nguyên tắc tổ chức và quản lý xã hội",
-      "Một chế độ xã hội",
-      "Một giá trị xã hội",
-      "Một hình thái nhà nước"
+      "Chiến tranh cục bộ.",
+      "Chiến tranh đặc biệt.",
+      "Việt Nam hóa chiến tranh.",
+      "Đông Dương hóa chiến tranh."
     ],
-    "answerIndex": 2
+    "answerIndex": 1
   },
   {
-    "id": "quiz_17",
-    "question": "Nhân tố nào là điều kiện cho dân chủ nghĩa ra đời, tồn tại và phát triển?",
+    "id": "quiz_12",
+    "question": "Lực lượng đóng vai trò trâu cốt trong chiến lược 'Chiến tranh đặc biệt' là:",
     "choices": [
-      "Đảng Cộng sản",
-      "Nhà nước xã hội chủ nghĩa",
-      "Tinh thần tự giác của nhân dân",
-      "Sự thành công của cách mạng xã hội chủ nghĩa"
+      "Quân đội Mỹ.",
+      "Quân đội tay sai (ngụy quân).",
+      "Quân các nước đồng minh Mỹ.",
+      "Nhân viên quân đội."
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "quiz_13",
+    "question": "Quốc sách mà Mỹ và chính quyền Sài Gòn thực hiện để tách dân ra khỏi cách mạng là gì?",
+    "choices": [
+      "cải tạo ruộng đất.",
+      "Lập 'Ấp chiến lược'.",
+      "Viện hỗ trợ kinh tế.",
+      "Xây dựng khu công nghiệp."
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "quiz_14",
+    "question": "Mặt trận dân tộc giải phóng miền Nam Việt Nam ra đời (20/12/1960) nhắm mục tiêu gì?",
+    "choices": [
+      "Thiết lập chính quyền cộng sản ngay lập tức.",
+      "Đoàn toàn dân đấu tranh thống trị Mỹ - Diệm, xây dựng miền Nam độc lập, dân chủ, hòa bình, trung lập.",
+      "Kêu gọi quân đội Mỹ rút quân hòa bình.",
+      "Đại diện cho chính quyền miền Bắc tại miền Nam."
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "quiz_15",
+    "question": "Chiến thắng nào mở đầu cho khả năng đánh bại chiến lược 'Chiến tranh đặc biệt'?",
+    "choices": [
+      "Chiến thắng Ấp Bắc (1/1963).",
+      "Chiến thắng Bình Giã.",
+      "Chiến thắng Vạn Tường.",
+      "Chiến thắng Điện Biên Phủ."
     ],
     "answerIndex": 0
   },
   {
-    "id": "quiz_18",
-    "question": "Chế độ dân chủ đầu tiên gắn liền với hình thái kinh tế - xã hội nào?",
+    "id": "quiz_16",
+    "question": "Tại sao Mỹ phải làm đảo chính Ngô Đình Diệm (11/1/1963)?",
     "choices": [
-      "Cộng sản nguyên thuỷ",
-      "Chiếm hữu nô lệ",
-      "Phong kiến",
-      "Tư bản chủ nghĩa"
+      "Diệm muốn theo cách mạng.",
+      "Diệm bất lực trong việc ngăn chặn phong trào cách mạng và không còn phục vụ ý đồ của Mỹ.",
+      "Diệm đã hoàn thành nhiệm vụ.",
+      "Nhân dân miền Nam yêu cầu Mỹ thay đổi."
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "quiz_17",
+    "question": "Ba mũi giáp công trong đấu tranh ở miền Nam là gì?",
+    "choices": [
+      "Đấu tranh kinh tế, ngoại giao, văn hóa.",
+      "Chính trị, quân sự, binh vận.",
+      "Đấu tranh trên không, trên biển, trên mặt đất.",
+      "Biểu tình, đình công, bãi thị."
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "quiz_18",
+    "question": "Sự kiện “Vịnh Bắc Bộ” (8/1964) được Mỹ dựng lên nhằm mục tiêu gì?",
+    "choices": [
+      "Bảo vệ chủ quyền vùng biển quốc tế.",
+      "Lấy được để dùng không quân và hải quân chiến đấu miền Bắc.",
+      "Hỗ trợ chính quyền Sài Gòn mở rộng lãnh thổ.",
+      "Kêu gọi Liên hợp quốc can thiệp."
     ],
     "answerIndex": 1
   },
   {
     "id": "quiz_19",
-    "question": "Chức năng của Nhà nước xã hội chủ nghĩa là gì?",
+    "question": "Chiến thắng quân sự nào cuối năm 1964 đã tạo nên cơ bản chiến lược 'Chiến tranh đặc biệt'?",
     "choices": [
-      "Tổ chức xây dựng chủ nghĩa xã hội",
-      "Thiết lập khối đại đoàn kết dân tộc, thực hiện sự nghiệp công nghiệp hoá",
-      "Tổ chức xây dựng xã hội và trấn áp những lực lượng chống phá sự nghiệp xây dựng chủ nghĩa xã hội",
-      "Đề ra chủ trương, chính sách để xây dựng xã hội chủ nghĩa"
+      "Chiến thắng Bình Giã (Bà Rịa).",
+      "Chiến thắng Núi Thành.",
+      "Chiến Thắng Pleime.",
+      "Chiến thắng Đồng Xoài."
     ],
-    "answerIndex": 2
+    "answerIndex": 0
   },
   {
     "id": "quiz_20",
-    "question": "Dân chủ xã hội chủ nghĩa và nhà nước xã hội chủ nghĩa có mối quan hệ như thế nào?",
-    "choices": [
-      "Dân chủ là cơ sở, nền tảng cho hoạt động của nhà nước xã hội chủ nghĩa",
-      "Dân chủ xã hội chủ nghĩa là yếu tố quyết định sự tồn tại của nhà nước xã hội chủ nghĩa",
-      "Nhà nước xã hội chủ nghĩa là công cụ quan trọng cho việc thực thi quyền làm chủ của nhân dân",
-      "Nhà nước xã hội chủ nghĩa và dân chủ xã hội chủ nghĩa có mối quan hệ biện chứng, tác động qua lại lẫn nhau."
-    ],
-    "answerIndex": 3
+    "question": "Kế hoạch Staley-Taylor (1961) dự định 'bình định' miền Nam trong bao lâu?",
+    "choices": ["6 tháng.", "12 tháng.", "18 tháng.", "24 tháng."],
+    "answerIndex": 2
   },
   {
     "id": "quiz_21",
-    "question": "Hình thức dân chủ gián tiếp được thực hiện như thế nào trong việc thực thi dân chủ ở nước ta hiện nay?",
+    "question": "Hội nghị Trung ương 11 (3/1965) xác định nhiệm vụ cấp bách lúc này là gì?",
     "choices": [
-      "Nhân dân trực tiếp thực hiện quyền làm chủ của mình đối với các hoạt động của nhà nước và xã hội",
-      "Thông qua hình thức trưng cầu dân ý trong nhân dân",
-      "Nhân dân được bàn bạc các công việc của nhà nước và cộng đồng dân cư",
-      "Nhân dân uỷ thác quyền lực của mình cho các đại biểu do mình bầu ra"
+      "Đàm phán với Mỹ để kết thúc chiến tranh.",
+      "Kiên quyết định chiến thắng cuộc chiến tranh xâm lược của đế quốc Mỹ trong bất kỳ tình huống nào.",
+      "Tập trung phát triển kinh tế miền Bắc.",
+      "Rút quân miền Bắc về hậu phương."
     ],
-    "answerIndex": 3
+    "answerIndex": 1
   },
   {
     "id": "quiz_22",
-    "question": "Theo chủ nghĩa Mác - Lênin, dân chủ là một phạm trù lịch sử khi được xem xét trên phương diện nào? (trung bình)",
+    "question": "Nhận định nào sau đây đúng về bản chất của chính quyền Việt Nam Cộng hòa?",
     "choices": [
-      "Là một hình thái nhà nước",
-      "Là một giá trị chung của nhân loại",
-      "Là một giá trị xã hội",
-      "Là quyền lực thuộc về nhân dân"
+      "Là một quốc gia độc lập thực sự.",
+      "Là sản phẩm của chủ nghĩa thực dân mới, phụ thuộc hoàn toàn vào viện và chỉ đạo của Mỹ.",
+      "Là chính quyền kế thừa hợp pháp từ Pháp.",
+      "Là đại diện cho ý chí tự do của nhân dân miền Nam."
     ],
-    "answerIndex": 0
+    "answerIndex": 1
   },
   {
     "id": "quiz_23",
-    "question": "Tổ chức nào quan trọng để thực thi quyền lực của nhân dân?",
+    "question": "Hình thức đấu tranh chủ yếu trong phong trào 'Đồng khởi' là:",
     "choices": [
-      "Đảng Cộng sản",
-      "Nhà nước xã hội chủ nghĩa",
-      "Mặt trận tổ quốc",
-      "Các tổ chức chính trị -xã hội và đoàn thể nhân dân"
-    ],
-    "answerIndex": 1
-  },
-  {
-    "id": "quiz_24",
-    "question": "Dân chủ xã hội chủ nghĩa mang bản chất của giai cấp nào?",
-    "choices": [
-      "Giai cấp công nhân",
-      "Giai cấp nông dân",
-      "Tầng lớp trí thức",
-      "Tầng lớp doanh nhân"
-    ],
-    "answerIndex": 0
-  },
-  {
-    "id": "quiz_25",
-    "question": "Nhà nước xã hội chủ nghĩa dùng công cụ chủ yếu nào để quản lý xã hội?",
-    "choices": [
-      "Kế hoạch",
-      "Giáo dục",
-      "Chính sách",
-      "Pháp luật"
-    ],
-    "answerIndex": 3
-  },
-  {
-    "id": "quiz_26",
-    "question": "Bản chất tốt đẹp và tính ưu việt của nền dân chủ xã hội chủ nghĩa ở Việt Nam được thể hiện ở điểm nào?",
-    "choices": [
-      "Đề cao tinh thần thượng tôn pháp luật",
-      "Lấy dân làm gốc",
-      "Đường lối lãnh đạo của Đảng",
-      "Chính sách pháp luật của Nhà nước"
-    ],
-    "answerIndex": 1
-  },
-  {
-    "id": "quiz_27",
-    "question": "\"Dân chủ xã hội chủ nghĩa là bản chất của chế độ ta, vừa là mục tiêu, vừa là động lực của sự phát triển đất nước\". Điền vào chỗ trống (...) để hoàn thiện quan điểm của Đảng ta về xây dựng nền dân chủ xã hội chủ nghĩa.",
-    "choices": [
-      "bản chất/động lực",
-      "cơ sở/nền tảng",
-      "bản chất/nền tảng",
-      "cơ sở/động lực"
-    ],
-    "answerIndex": 0
-  },
-  {
-    "id": "quiz_28",
-    "question": "\"Chế độ dân chủ vô sản so với bất cứ chế độ dân chủ tư sản nào, cũng dân chủ hơn gấp triệu lần\". Đây là luận điểm của ai?",
-    "choices": [
-      "C. Mác",
-      "C. Mác và Ph. Ăngghen",
-      "V.I. Lênin",
-      "Hồ Chí Minh"
+      "Đấu tranh vũ trang tinh khiết.",
+      "Đấu tranh ngoại giao.",
+      "Quần chúng nổi dậy kết hợp với lực lượng vũ trang hỗ trợ.",
+      "Chờ đợi quân đội miền Bắc vào giải phóng."
     ],
     "answerIndex": 2
   },
   {
-    "id": "quiz_29",
-    "question": "Kiểu nhà nước nào được Lênin gọi là \"nhà nước nửa nhà nước\"?",
+    "id": "quiz_24",
+    "question": "Mỹ bắt đầu ném bom vào miền Bắc lần thứ hai vào thời điểm nào?",
     "choices": [
-      "Nhà nước chủ nô",
-      "Nhà nước phong kiến",
-      "Nhà nước tư sản",
-      "Nhà nước xã hội chủ nghĩa"
+      "Năm 1960.",
+      "Năm 1963.",
+      "Năm 1964 (sau sự kiện Vịnh Bắc Bộ).",
+      "Năm 1965."
     ],
-    "answerIndex": 3
+    "answerIndex": 2
+  },
+  {
+    "id": "quiz_25",
+    "question": "Tại sao miền Bắc phải tiến hành cuộc cách mạng xã hội chủ nghĩa?",
+    "choices": [
+      "Vì miền Bắc thích theo mô hình Liên Xô.",
+      "Để tạo cơ sở kinh tế, chính trị, quốc gia phòng chắc chắn cho miền Nam và làm gương cho cả nước.",
+      "Để thay thế hoàn toàn nền kinh tế cũ.",
+      "Để không còn ai nghèo đói."
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "quiz_26",
+    "question": "Khẩu hiệu nổi tiếng nào có thể hiện tinh thần của miền Bắc trong những năm đánh Mỹ?",
+    "choices": [
+      "“Tất cả vì miền Nam ruột thịt”, “Mỗi người làm việc bằng hai”.",
+      "“Hòa bình, thống nhất, độc lập, dân chủ”.",
+      "“Kháng chiến nhất định thắng lợi”.",
+      "“Xây dựng cuộc sống mới”."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "id": "quiz_27",
+    "question": "Nhận được phán đoán nào đúng về cuộc chiến tranh 1954-1975 của dân tộc ta?",
+    "choices": [
+      "Là cuộc xung đột giữa hai ý thức hệ cộng sản và tư bản.",
+      "Là cuộc chiến tranh giải phóng dân tộc và bảo vệ tổ quốc chính nghĩa.",
+      "Là một phần của cuộc nội chiến thế giới.",
+      "Là cuộc tranh giành đất đai giữa hai miền."
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "quiz_28",
+    "question": "Kế hoạch Johnson-McNamara (1964) ra đời sau thất bại của các kế hoạch nào?",
+    "choices": [
+      "Staley-Taylor.",
+      "Navarre.",
+      "Revere.",
+      "De Lattre de Tassigny."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "id": "quiz_29",
+    "question": "Giá trị thực tiễn quan trọng nhất của việc làm khẳng định đây là cuộc chiến kháng Mỹ (không phải nội chiến) là:",
+    "choices": [
+      "Để được các nước khác giúp đỡ.",
+      "Khẳng định tính chính xác của cuộc đấu tranh, tập hợp sức mạnh dân tộc và sự ủng hộ của nhân loại tiến bộ.",
+      "Để Mỹ phải bồi thường chiến tranh.",
+      "Để chứng minh sức mạnh của quân đội."
+    ],
+    "answerIndex": 1
   },
   {
     "id": "quiz_30",
-    "question": "Căn cứ vào phạm vi tác động của quyền lực, nhà nước xã hội chủ nghĩa có những chức năng nào?",
+    "question": "“Đội quân tóc dài” xuất hiện lần đầu trong phong trào nào?",
     "choices": [
-      "Chức năng đối nội và chức năng đối ngoại",
-      "Chức năng trấn áp và chức năng chính trị",
-      "Chức năng giai cấp và chức năng xây dựng",
-      "Chức năng giai cấp và chức năng xã hội"
+      "Phong trào học sinh sinh viên Sài Gòn.",
+      "Phong trào Đồng khởi.",
+      "Chiến dịch Ấp Bắc.",
+      "Cuộc kháng chiến chống Pháp."
     ],
-    "answerIndex": 0
+    "answerIndex": 1
   }
 ]
