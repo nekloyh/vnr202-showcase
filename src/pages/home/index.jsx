@@ -175,7 +175,7 @@ const HomePage = () => {
         <div className="max-w-6xl mx-auto">
           <R>
             <h2 className="font-display text-fluid-5xl font-black text-bone uppercase text-center mb-4">
-              Hai Quan Điểm — Và Sự Thật Lịch Sử
+              Hai Quan Điểm Và Sự Thật Lịch Sử
             </h2>
           </R>
           <R>

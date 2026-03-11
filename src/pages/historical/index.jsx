@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import RevealSection from "../../components/layout/RevealSection";
 import Button from "../../components/ui/Button";
-import { ArrowDown, ArrowRight, Flag, Shield, AlertTriangle } from "lucide-react";
+import { ArrowDown, ArrowRight, Flag, Crown, AlertTriangle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const R = RevealSection.Item;
@@ -30,15 +30,15 @@ const genevaTableData = [
 ];
 
 const timelineData = [
-  { year: "1954", event: "Chiến thắng Điện Biên Phủ; Ký kết Hiệp định Geneva", detail: "Việt Nam tạm thời phân chia tại vĩ tuyến 17. Pháp rút quân khỏi Đông Dương." },
-  { year: "1955", event: "Trưng cầu dân ý gian lận, thành lập VNCH", detail: "Ngô Đình Diệm tuyên bố nhận được 98% phiếu bầu; bắt đầu đàn áp các lực lượng chính trị đối lập." },
+  { year: "1954", event: "Chiến thắng Điện Biên Phủ, Ký kết Hiệp định Geneva", detail: "Việt Nam tạm thời phân chia tại vĩ tuyến 17. Pháp rút quân khỏi Đông Dương." },
+  { year: "1955", event: "Trưng cầu dân ý gian lận, thành lập VNCH", detail: "Ngô Đình Diệm tuyên bố nhận được 98% phiếu bầu, bắt đầu đàn áp các lực lượng chính trị đối lập." },
   { year: "1956", event: "Tổng tuyển cử thống nhất bị ngăn chặn hoàn toàn", detail: "Vi phạm trực tiếp Hiệp định Geneva. Con đường thống nhất hòa bình bị bịt kín." },
   { year: "1957–58", event: "Chiến dịch \"Tố Cộng, Diệt Cộng\" leo thang", detail: "Hàng chục nghìn người bị bắt, giết hoặc tù đày. Luật 10/59 thiết lập tòa án quân sự đặc biệt." },
-  { year: "1959", event: "Nghị quyết 15 — Bước ngoặt lịch sử", detail: "Đảng chính thức cho phép đấu tranh vũ trang ở miền Nam, khi tất cả con đường hòa bình đã bị bịt kín." },
+  { year: "1959", event: "Nghị quyết 15: Bước ngoặt lịch sử", detail: "Đảng chính thức cho phép đấu tranh vũ trang ở miền Nam, khi tất cả con đường hòa bình đã bị bịt kín." },
   { year: "1959", event: "Thành lập Đoàn 559, khai thông đường Hồ Chí Minh", detail: "Mạng lưới hậu cần khổng lồ chạy xuyên qua rừng núi Lào và Campuchia, minh chứng cho tầm nhìn chiến lược của Đảng." },
   { year: "1960", event: "MTDTGP miền Nam Việt Nam ra đời", detail: "Đại hội III của Đảng tái khẳng định mục tiêu thống nhất. Mặt trận Dân tộc Giải phóng tập hợp mọi lực lượng yêu nước." },
-  { year: "1961–63", event: "Mỹ triển khai \"Chiến tranh Đặc biệt\"", detail: "Chương trình Ấp Chiến lược thất bại toàn diện. Khủng hoảng Phật giáo 1963; đảo chính lật đổ Diệm." },
-  { year: "1964", event: "Sự kiện Vịnh Bắc Bộ", detail: "Sự kiện được Mỹ dàn dựng; Quốc hội Mỹ thông qua Nghị quyết mở đường cho leo thang chiến tranh." },
+  { year: "1961–63", event: "Mỹ triển khai \"Chiến tranh Đặc biệt\"", detail: "Chương trình Ấp Chiến lược thất bại toàn diện. Khủng hoảng Phật giáo 1963, đảo chính lật đổ Diệm." },
+  { year: "1964", event: "Sự kiện Vịnh Bắc Bộ", detail: "Sự kiện được Mỹ dàn dựng, Quốc hội Mỹ thông qua Nghị quyết mở đường cho leo thang chiến tranh." },
   { year: "1965", event: "Quân chiến đấu Mỹ đổ bộ vào Đà Nẵng", detail: "Chiến tranh bước sang giai đoạn mới. Kháng chiến chống Mỹ cứu nước ở chiều sâu và quy mô toàn quốc." },
 ];
 
@@ -202,7 +202,7 @@ const HistoricalPage = () => {
               <p className="font-body text-lg text-ink font-semibold italic">
                 Sự phá vỡ hoàn toàn các điều khoản Geneva là nguồn gốc trực tiếp
                 dẫn đến xung đột vũ trang. Đây không phải là một cuộc nội chiến
-                tự nhiên nảy sinh; đây là hậu quả của một âm mưu có tính toán
+                tự nhiên nảy sinh, đây là hậu quả của một âm mưu có tính toán
                 nhằm chia cắt vĩnh viễn Việt Nam.
               </p>
             </div>
@@ -278,7 +278,7 @@ const HistoricalPage = () => {
               <div className="bg-ink/60 border-l-4 border-graphite p-8 md:p-10">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-10 h-10 bg-graphite text-bone/70 flex items-center justify-center">
-                    <Shield size={20} />
+                    <Crown size={20} />
                   </div>
                   <div>
                     <h3 className="font-display text-2xl font-bold text-bone/70 uppercase">

@@ -8,19 +8,19 @@ const R = RevealSection.Item;
 const evidenceTableData = [
   {
     criteria: "Nguồn gốc sự phân chia",
-    resistance: "Sự phân chia được áp đặt bởi các cường quốc tại Geneva; Mỹ ngăn chặn Tổng tuyển cử",
+    resistance: "Sự phân chia được áp đặt bởi các cường quốc tại Geneva, Mỹ ngăn chặn Tổng tuyển cử",
     civilWar: "Phân hóa tư tưởng giữa người Việt từ sau Thế chiến II",
     conclusion: "Sự phân chia được duy trì nhân tạo bởi can thiệp nước ngoài",
   },
   {
     criteria: "Tính chính danh của các bên",
-    resistance: "VNDCCH kế thừa Cách mạng Tháng Tám 1945; VNCH qua bầu cử gian lận, phụ thuộc Mỹ",
+    resistance: "VNDCCH kế thừa Cách mạng Tháng Tám 1945, VNCH qua bầu cử gian lận, phụ thuộc Mỹ",
     civilWar: "VNCH tuyên bố xây dựng nhà nước độc lập",
-    conclusion: "VNDCCH có tính chính danh lịch sử; VNCH dựa vào gian lận và hỗ trợ nước ngoài",
+    conclusion: "VNDCCH có tính chính danh lịch sử, VNCH dựa vào gian lận và hỗ trợ nước ngoài",
   },
   {
     criteria: "Bản chất lực lượng tham chiến",
-    resistance: "VNCH hoàn toàn được tài trợ và chỉ đạo bởi Mỹ; PLAF tiếp nối truyền thống chống thực dân",
+    resistance: "VNCH hoàn toàn được tài trợ và chỉ đạo bởi Mỹ, PLAF tiếp nối truyền thống chống thực dân",
     civilWar: "Người Việt chiến đấu ở cả hai phía",
     conclusion: "Cấu trúc quyền lực bất đối xứng, bị dẫn dắt bởi nước ngoài",
   },

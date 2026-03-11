@@ -59,7 +59,7 @@ const AIPage = () => {
   const [chatHistory, setChatHistory] = useState([
     {
       role: "ai",
-      text: `Xin chào. Tôi là Sử Đảng – trợ lý học thuật chuyên về môn Lịch sử Đảng Cộng sản Việt Nam. Tôi có thể hỗ trợ bạn tìm hiểu, ôn tập và hệ thống hóa kiến thức các giai đoạn: sự ra đời của Đảng (1920–1930), đấu tranh giành chính quyền (1930–1945), kháng chiến chống Pháp và Mỹ (1945–1975), cùng công cuộc đổi mới (1975–2018). Bạn muốn bắt đầu từ nội dung nào?`,
+      text: `Xin chào. Tôi là Sử Đảng, trợ lý học thuật chuyên về môn Lịch sử Đảng Cộng sản Việt Nam. Tôi có thể hỗ trợ bạn tìm hiểu, ôn tập và hệ thống hóa kiến thức giai đoạn đấu tranh kháng chiến chống Pháp và Mỹ (1945–1975). Bạn muốn bắt đầu từ nội dung nào?`,
     },
   ]);
   const inputRef = useRef();
